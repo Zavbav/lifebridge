@@ -23,9 +23,17 @@ a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}
 .ai-chat{display:flex;flex-direction:column;gap:12px}.ai-messages{display:flex;flex-direction:column;gap:10px;max-height:280px;overflow:auto}.ai-msg{padding:12px 14px;border-radius:15px;max-width:94%;white-space:pre-wrap;overflow-wrap:anywhere}.ai-msg.bot{background:#f0ebff;color:#291c56;align-self:flex-start}.ai-msg.user{background:#7047ff;color:white;align-self:flex-end}.ai-form{display:flex;gap:8px}.ai-form input{min-width:0;flex:1;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}.social-post{border:1px solid var(--line);border-radius:18px;padding:17px;background:var(--surface)}.social-post p{white-space:pre-wrap}.tag{display:inline-block;background:#eee8ff;color:#5534c5;border-radius:99px;padding:4px 9px;font-size:.78rem;font-weight:800}
 @media(max-width:720px){.feature-grid{grid-template-columns:1fr}.ai-form{flex-direction:column}}
 
+
+/* Always-available LifeBuddy floating launcher */
+.lifebuddy-float{position:fixed;right:20px;bottom:20px;z-index:1000;display:flex;align-items:center;gap:9px;padding:13px 17px;border:2px solid #fff;border-radius:999px;background:linear-gradient(115deg,#7047ff,#a644ff);color:#fff;font-weight:850;box-shadow:0 10px 30px #37207855;text-decoration:none;transition:transform .18s,box-shadow .18s}
+.lifebuddy-float:hover{transform:translateY(-3px);box-shadow:0 14px 34px #37207870}
+.lifebuddy-float .buddy-face{font-size:1.35rem;line-height:1}
+@media(max-width:480px){.lifebuddy-float{right:12px;bottom:12px;padding:11px 14px;font-size:.92rem}}
+
 </style>
 </head>
 <body>
+<a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true">🤖</span><span>Chat with LifeBuddy</span><span aria-hidden="true">↗</span></a>
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark">↗</span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button></nav></div></header>
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">✨ YOUR EVERYDAY LIFE, UPGRADED</div><h1>Big goals. <span class="pop">Small wins.</span> Your level-up starts here.</h1><p>School stuff, money questions, everyday chaos? You’ve got this. Grab a tool, make a plan, and take your next step — one win at a time.</p><div class="hero-actions"><a class="btn primary" href="#tools" style="text-decoration:none">Explore helpful tools ↓</a><a class="btn" href="#learn" style="text-decoration:none">Start learning</a></div></div><aside class="hero-art" aria-label="LifeBridge encouragement"><div class="art-circle" aria-hidden="true">🚀</div><div class="art-note">Welcome to your next chapter ✨</div><div class="art-sub">Learn something. Get organized. Feel more ready.</div></aside></div></section>
