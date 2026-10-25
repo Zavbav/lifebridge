@@ -30,6 +30,21 @@ a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}
 .lifebuddy-float .buddy-face{font-size:1.35rem;line-height:1}
 @media(max-width:480px){.lifebuddy-float{right:12px;bottom:12px;padding:11px 14px;font-size:.92rem}}
 
+
+/* Fresh layout: make LifeBuddy a main feature, not an afterthought */
+:root{--bg:#f8f7ff;--surface:#fff;--ink:#21163f;--muted:#6f6688;--brand:#7148ff;--brand2:#eee8ff;--line:#e5def7;--shadow:0 16px 38px #38216e13}
+body{background:linear-gradient(180deg,#fbfaff 0%,#f4f1ff 46%,#f5fffb 100%)}
+.topbar{background:#ffffffeb;backdrop-filter:blur(16px)}
+#lifebuddy{padding:30px 0 54px;scroll-margin-top:92px}
+#lifebuddy .panel{background:linear-gradient(140deg,#fff 55%,#f1edff);border:1px solid #dcd0ff;border-radius:28px;padding:clamp(18px,3vw,30px);box-shadow:0 22px 55px #5a36bd1b}
+#lifebuddy .ai-messages{min-height:170px;max-height:340px;padding:14px;background:linear-gradient(140deg,#f8f5ff,#f1fffb);border:1px solid #e5dcff;border-radius:20px}
+#lifebuddy .ai-msg{font-size:1rem;line-height:1.55;border-radius:18px;padding:13px 16px}
+#lifebuddy .ai-msg.bot{background:#fff;border:1px solid #e7e0fb;box-shadow:0 5px 15px #38216e0a}
+#lifebuddy .ai-msg.user{background:linear-gradient(120deg,#7047ff,#9e49f6);box-shadow:0 6px 14px #7047ff2c}
+.cards{gap:18px}.tool-card{border-radius:26px;min-height:232px;background:linear-gradient(155deg,#fff,#faf8ff);box-shadow:0 12px 30px #38216e0c}.tool-icon{width:60px;height:60px;border-radius:20px}
+.lifebuddy-float{right:18px;bottom:18px;box-shadow:0 10px 34px #4b2bbf65;border:2px solid #fff}
+@media(max-width:600px){#lifebuddy{padding:24px 0 36px}.lifebuddy-float{right:10px;bottom:10px}}
+
 </style>
 </head>
 <body>
@@ -37,6 +52,12 @@ a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark">↗</span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button></nav></div></header>
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">✨ YOUR EVERYDAY LIFE, UPGRADED</div><h1>Big goals. <span class="pop">Small wins.</span> Your level-up starts here.</h1><p>School stuff, money questions, everyday chaos? You’ve got this. Grab a tool, make a plan, and take your next step — one win at a time.</p><div class="hero-actions"><a class="btn primary" href="#tools" style="text-decoration:none">Explore helpful tools ↓</a><a class="btn" href="#learn" style="text-decoration:none">Start learning</a></div></div><aside class="hero-art" aria-label="LifeBridge encouragement"><div class="art-circle" aria-hidden="true">🚀</div><div class="art-note">Welcome to your next chapter ✨</div><div class="art-sub">Learn something. Get organized. Feel more ready.</div></aside></div></section>
+<section class="section" id="lifebuddy"><div class="wrap"><div class="section-head"><div><span class="tag">YOUR HELPER</span><h2 style="margin-top:10px">🤖 Meet LifeBuddy</h2><p>Get help breaking down a task, brainstorming, studying, or planning your next step.</p></div></div>
+<div class="panel"><div class="ai-chat"><div class="ai-messages" id="aiMessages" aria-live="polite"><div class="ai-msg bot">Hey! 👋 I'm LifeBuddy. Tell me what you're working on and we'll break it into manageable steps.
+
+Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</div></div>
+<form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="What do you need help with?" required><button class="btn primary" type="submit" id="aiSend">Ask LifeBuddy ↗</button></form><p class="notice" id="aiNotice">AI connection needs a secure server setup before it can answer with a live AI model. Never put an API key in this page.</p></div></div></div></section>
+
 <section class="section hidden" id="accessPanel"><div class="wrap panel"><h2>Make LifeBridge comfortable for you</h2><p class="notice">These display settings stay on this device.</p><div class="access"><button class="btn" id="textToggle">Increase text size</button><button class="btn" id="contrastToggle">High contrast</button><button class="btn" id="resetDisplay">Reset display</button></div></div></section>
 <section class="section" id="tools"><div class="wrap"><div class="section-head"><div><h2>Pick your next win 🎯</h2><p>Little tools for the stuff life throws at you. What are we tackling today?</p></div><input class="search" id="toolSearch" type="search" placeholder="Search tools, e.g. budget…" aria-label="Search helpful tools"></div><div class="cards" id="toolCards">
 <article class="tool-card" data-search="school homework learning grade percentage calculator"><div class="tool-icon">📚</div><h3>Learning Center</h3><p>Work through grades, percentages, and school tasks step by step.</p><button data-target="learn">Explore learning →</button></article>
@@ -56,11 +77,7 @@ a{color:inherit}button,input,select,textarea{font:inherit}button{cursor:pointer}
 <div class="fun-panel"><h3>⚡ Your LifeBridge Level</h3><div class="stat-row"><span class="stat-pill">⭐ Level <span id="xpLevel">1</span></span><span class="stat-pill">⚡ <span id="xpTotal">0</span> XP</span><span class="stat-pill">🏅 <span id="badgeTotal">0</span> badges</span></div><div class="xp-track"><div class="xp-fill" id="xpFill"></div></div><p id="xpNext">Complete a task to earn your first XP!</p><p class="notice" style="color:#e6e0ff">XP is for encouragement, not pressure. Take breaks whenever you need.</p></div>
 <div class="fun-panel"><h3>🎯 Daily mini-challenge</h3><div class="challenge"><strong id="challengeTitle">One small win</strong><p id="challengeDesc">Write down one thing you want to get done today.</p><button id="challengeDone">I did it! +10 XP</button></div><p id="challengeStatus" aria-live="polite" style="color:#e6e0ff"></p></div>
 </div></div></section>
-<section class="section" id="lifebuddy"><div class="wrap"><div class="section-head"><div><span class="tag">YOUR HELPER</span><h2 style="margin-top:10px">🤖 Meet LifeBuddy</h2><p>Get help breaking down a task, brainstorming, studying, or planning your next step.</p></div></div>
-<div class="panel"><div class="ai-chat"><div class="ai-messages" id="aiMessages" aria-live="polite"><div class="ai-msg bot">Hey! 👋 I'm LifeBuddy. Tell me what you're working on and we'll break it into manageable steps.
 
-Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</div></div>
-<form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="What do you need help with?" required><button class="btn primary" type="submit" id="aiSend">Ask LifeBuddy ↗</button></form><p class="notice" id="aiNotice">AI connection needs a secure server setup before it can answer with a live AI model. Never put an API key in this page.</p></div></div></div></section>
 <section class="section" id="sharekit" style="background:#f0ebff"><div class="wrap"><div class="section-head"><div><span class="tag">SPREAD THE WORD</span><h2 style="margin-top:10px">📣 Launch your social page</h2><p>Ready-to-use content for TikTok, Instagram, YouTube Shorts, or a school/community page.</p></div></div><div class="tool-layout">
 <div class="social-post"><strong>🚀 Intro post</strong><p id="socialIntro">Meet LifeBridge 💜 Your new spot for school help, life tools, daily challenges, and small wins. We're building something useful for real life — one level-up at a time. Follow along and help shape what comes next! ✨</p><button class="btn" data-copy="socialIntro">Copy intro post</button></div>
 <div class="social-post"><strong>🎯 First challenge post</strong><p id="socialChallenge">TODAY'S MINI-CHALLENGE: Pick ONE thing you've been putting off and work on it for just 5 minutes. That's a win. 🏆 What's your tiny goal today? #LifeBridge #SmallWins #DailyChallenge</p><button class="btn" data-copy="socialChallenge">Copy challenge post</button></div>
