@@ -45,6 +45,7 @@ body{background:linear-gradient(180deg,#fbfaff 0%,#f4f1ff 46%,#f5fffb 100%)}
 .lifebuddy-float{right:18px;bottom:18px;box-shadow:0 10px 34px #4b2bbf65;border:2px solid #fff}
 @media(max-width:600px){#lifebuddy{padding:24px 0 36px}.lifebuddy-float{right:10px;bottom:10px}}
 
+.prompt-chips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}.prompt-chip{border:1px solid #ddd2ff;border-radius:999px;padding:8px 12px;background:#fff;color:#5634b9;font-weight:750;font-size:.88rem}.prompt-chip:hover{background:#eee8ff;transform:translateY(-1px)}#lifebuddy .ai-form input{border:1.5px solid #d8cef8;border-radius:15px;padding:14px 16px}#lifebuddy .ai-form .btn{border-radius:15px;padding:12px 18px}
 </style>
 </head>
 <body>
@@ -56,7 +57,7 @@ body{background:linear-gradient(180deg,#fbfaff 0%,#f4f1ff 46%,#f5fffb 100%)}
 <div class="panel"><div class="ai-chat"><div class="ai-messages" id="aiMessages" aria-live="polite"><div class="ai-msg bot">Hey! 👋 I'm LifeBuddy. Tell me what you're working on and we'll break it into manageable steps.
 
 Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</div></div>
-<form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="What do you need help with?" required><button class="btn primary" type="submit" id="aiSend">Ask LifeBuddy ↗</button></form><p class="notice" id="aiNotice">AI connection needs a secure server setup before it can answer with a live AI model. Never put an API key in this page.</p></div></div></div></section>
+<div class="prompt-chips" aria-label="Try asking LifeBuddy"><button type="button" class="prompt-chip" data-prompt="Help me make a homework plan">📚 Homework plan</button><button type="button" class="prompt-chip" data-prompt="Help me make a simple budget">💸 Simple budget</button><button type="button" class="prompt-chip" data-prompt="Help me break a big task into small steps">✅ Break down a task</button><button type="button" class="prompt-chip" data-prompt="Give me ideas for a fun weekend">✨ Weekend ideas</button></div><form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="What do you need help with?" required><button class="btn primary" type="submit" id="aiSend">Ask LifeBuddy ↗</button></form><p class="notice" id="aiNotice">AI connection needs a secure server setup before it can answer with a live AI model. Never put an API key in this page.</p></div></div></div></section>
 
 <section class="section hidden" id="accessPanel"><div class="wrap panel"><h2>Make LifeBridge comfortable for you</h2><p class="notice">These display settings stay on this device.</p><div class="access"><button class="btn" id="textToggle">Increase text size</button><button class="btn" id="contrastToggle">High contrast</button><button class="btn" id="resetDisplay">Reset display</button></div></div></section>
 <section class="section" id="tools"><div class="wrap"><div class="section-head"><div><h2>Pick your next win 🎯</h2><p>Little tools for the stuff life throws at you. What are we tackling today?</p></div><input class="search" id="toolSearch" type="search" placeholder="Search tools, e.g. budget…" aria-label="Search helpful tools"></div><div class="cards" id="toolCards">
