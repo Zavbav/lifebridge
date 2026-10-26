@@ -112,12 +112,29 @@ body:before{content:"";position:fixed;z-index:9999;left:0;top:0;height:4px;width
 @media(max-width:520px){.upgrade-grid{grid-template-columns:1fr}.quickstats{grid-template-columns:1fr 1fr}.stat-card:last-child{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){.progress-track span,#toast{transition:none}}
 
+
+/* Calendar planner */
+.calendar-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.8fr);gap:18px;align-items:start}
+.calendar-panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);min-width:0}
+.calendar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.calendar-head h3{margin:0;font-size:1.25rem}.calendar-nav{display:flex;gap:6px}.calendar-weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.calendar-weekdays{text-align:center;color:var(--muted);font-size:.78rem;font-weight:800;margin-bottom:5px}
+.cal-day{position:relative;min-height:76px;padding:6px 5px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);text-align:left;display:flex;flex-direction:column;gap:3px;overflow:hidden}
+.cal-day:hover{border-color:var(--brand)}.cal-day.outside{opacity:.48}.cal-day.today{outline:2px solid var(--brand);outline-offset:-2px}.cal-day.selected{background:var(--brand2);border-color:var(--brand)}
+.cal-num{font-size:.9rem;font-weight:850}.cal-dot{font-size:.65rem;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:4px;padding:2px 3px;background:#e9e2ff;color:#5632b6}.cal-dot.holiday{background:#d8fff1;color:#126c58}.cal-dot.event{background:#fff0d9;color:#805000}
+.calendar-legend{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.78rem;margin-top:12px}.calendar-legend span{display:flex;align-items:center;gap:5px}
+.calendar-selected-title{margin:0 0 10px}.calendar-event-list{display:grid;gap:8px;margin:12px 0}.calendar-event{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;gap:9px;align-items:flex-start}.calendar-event .event-copy{flex:1;min-width:0}.calendar-event small{display:block;color:var(--muted)}.calendar-event.holiday-event{background:#f0fff9}.calendar-event .event-actions{display:flex;gap:5px;flex-wrap:wrap}
+.calendar-form{display:grid;gap:9px;margin-top:14px}.calendar-form input,.calendar-form select,.calendar-form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:var(--surface);color:var(--ink)}.calendar-form textarea{resize:vertical;min-height:66px}
+.calendar-empty{color:var(--muted);font-size:.9rem;padding:12px 0}.calendar-help{font-size:.82rem;color:var(--muted)}
+@media(max-width:850px){.calendar-layout{grid-template-columns:1fr}.cal-day{min-height:62px}}
+@media(max-width:520px){.calendar-panel{padding:12px}.calendar-grid{gap:3px}.cal-day{min-height:54px;padding:4px 3px;border-radius:7px}.cal-num{font-size:.8rem}.cal-dot{font-size:.58rem;padding:1px}.calendar-weekdays{font-size:.68rem;gap:3px}}
+
 </style>
 </head>
 <body>
 <button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true">🤖</span><span>Chat with LifeBuddy</span><span aria-hidden="true">↗</span></a>
-<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#focus">Focus & goals</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
+<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#calendar">Calendar</a><a href="#focus">Focus & goals</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">✨ YOUR EVERYDAY LIFE, UPGRADED</div><h1>Big goals. <span class="pop">Small wins.</span> Your level-up starts here.</h1><p>School stuff, money questions, everyday chaos? You’ve got this. Grab a tool, make a plan, and take your next step — one win at a time.</p><div class="hero-actions"><a class="btn primary" href="#tools" style="text-decoration:none">Explore helpful tools ↓</a><a class="btn" href="#learn" style="text-decoration:none">Start learning</a></div></div><aside class="hero-art" aria-label="LifeBridge encouragement"><div class="art-circle" aria-hidden="true">🚀</div><div class="art-note">Welcome to your next chapter ✨</div><div class="art-sub">Learn something. Get organized. Feel more ready.</div></aside></div></section>
 <section class="section" id="lifebuddy"><div class="wrap"><div class="section-head"><div><span class="tag">YOUR HELPER</span><h2 style="margin-top:10px">🤖 Meet LifeBuddy</h2><p>Get help breaking down a task, brainstorming, studying, or planning your next step.</p></div></div>
@@ -197,6 +214,33 @@ Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</d
 <div id="accountMessage" class="result" aria-live="polite">Accounts are not connected yet. Your existing tools still work without signing in.</div>
 <p class="notice">Never reuse a sensitive password here while account setup is incomplete. No password is stored by this page.</p></div></div>
 
+
+
+<section class="section" id="calendar"><div class="wrap">
+<div class="eyebrow">🗓️ YOUR MONTH, AT A GLANCE</div><h2>Calendar & important dates.</h2><p class="section-intro">Plan your month, add your own events, mark important days, and see major U.S. federal holidays. Select a date to manage what happens that day.</p>
+<div class="calendar-layout">
+<div class="calendar-panel">
+<div class="calendar-head"><button class="smallbtn" id="calPrev" type="button" aria-label="Previous month">←</button><h3 id="calMonth" aria-live="polite">Calendar</h3><div class="calendar-nav"><button class="smallbtn" id="calToday" type="button">Today</button><button class="smallbtn" id="calNext" type="button" aria-label="Next month">→</button></div></div>
+<div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div class="calendar-grid" id="calendarGrid" role="group" aria-label="Calendar dates"></div>
+<div class="calendar-legend"><span><i class="cal-dot holiday">Holiday</i> Federal holiday</span><span><i class="cal-dot event">Your event</i> Your event</span></div>
+<p class="calendar-help">Federal holiday dates are included for 2025–2030. Some holidays are observed on a nearby weekday. Dates are shown in your local calendar.</p>
+</div>
+<div class="calendar-panel">
+<h3 class="calendar-selected-title" id="selectedDateTitle">Selected date</h3>
+<div id="calendarEvents" class="calendar-event-list"></div>
+<form id="calendarForm" class="calendar-form">
+<strong>Add an event or reminder</strong>
+<label for="eventTitle">What is it?</label><input id="eventTitle" maxlength="100" required placeholder="e.g. Science project due">
+<label for="eventCategory">Type</label><select id="eventCategory"><option value="event">Event / reminder</option><option value="school">School</option><option value="personal">Personal</option><option value="birthday">Birthday</option><option value="deadline">Deadline</option></select>
+<label for="eventTime">Time (optional)</label><input id="eventTime" type="time">
+<label for="eventNotes">Notes (optional)</label><textarea id="eventNotes" maxlength="500" placeholder="Add a detail to remember"></textarea>
+<button type="submit" class="btn primary">＋ Add to calendar</button>
+</form>
+<p class="calendar-help">Your events are saved in this browser on this device. They are not shared or synced to other devices yet.</p>
+</div>
+</div>
+</div></section>
 
 <section class="section" id="focus"><div class="wrap">
 <div class="eyebrow">🧭 YOUR PERSONAL SPACE</div><h2>Make room for your next win.</h2><p class="section-intro">Small, practical tools to help you focus, build routines, and keep goals moving. Your data stays in this browser on this device.</p>
@@ -334,6 +378,37 @@ if(supabaseClient){
 } else paintAccountButton(null);
 
 
+
+
+/* Local calendar with preloaded U.S. federal holiday dates (2025–2030). */
+(function(){
+ const KEY='lifebridge-calendar-v1';
+ const $c=id=>document.getElementById(id);
+ const pad=n=>String(n).padStart(2,'0');
+ const keyDate=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+ const parseDate=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,12);};
+ const today=new Date();let selected=keyDate(today),viewYear=today.getFullYear(),viewMonth=today.getMonth();
+ let events=[];try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(v))events=v.filter(e=>e&&typeof e.date==='string'&&typeof e.title==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(e.date));}catch(e){}
+ const fixed=(y,m,d,name)=>({date:y+'-'+pad(m)+'-'+pad(d),title:name,category:'holiday',holiday:true});
+ function nthWeekday(y,m,weekday,n){const first=new Date(y,m-1,1,12);return 1+(weekday-first.getDay()+7)%7+(n-1)*7;}
+ function lastWeekday(y,m,weekday){const last=new Date(y,m,0,12);return last.getDate()-(last.getDay()-weekday+7)%7;}
+ function easterSunday(y){const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),month=Math.floor((h+l-7*m+114)/31),day=(h+l-7*m+114)%31+1;return new Date(y,month-1,day,12);}
+ function observed(y,m,d,name){const dt=new Date(y,m-1,d,12);if(dt.getDay()===6)dt.setDate(dt.getDate()-1);else if(dt.getDay()===0)dt.setDate(dt.getDate()+1);return {date:keyDate(dt),title:name,category:'holiday',holiday:true};}
+ function holidays(y){const a=[observed(y,1,1,'New Year’s Day'),fixed(y,1,nthWeekday(y,1,1,3),'Martin Luther King Jr. Day'),fixed(y,2,nthWeekday(y,2,1,3),'Washington’s Birthday (Presidents Day)'),fixed(y,5,lastWeekday(y,5,1),'Memorial Day'),observed(y,6,19,'Juneteenth National Independence Day'),observed(y,7,4,'Independence Day'),fixed(y,9,nthWeekday(y,9,1,1),'Labor Day'),fixed(y,10,nthWeekday(y,10,1,2),'Columbus Day'),observed(y,11,11,'Veterans Day'),fixed(y,11,nthWeekday(y,11,4,4),'Thanksgiving Day'),observed(y,12,25,'Christmas Day')];if(y>=2026)a.push(fixed(y,1,nthWeekday(y,1,1,3)+1,'Inauguration Day (DC-area federal employees only)'));return a.filter(h=>parseDate(h.date).getFullYear()===y);}
+ function holidayEvents(y){return [...holidays(y),...holidays(y+1).filter(h=>h.date.startsWith(String(y+1)))];}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(events));}catch(e){toastCal('Could not save: browser storage is unavailable.');}}
+ function toastCal(msg){const el=document.getElementById('toast');if(!el)return;el.textContent=msg;el.classList.add('visible');setTimeout(()=>el.classList.remove('visible'),2400);}
+ function allFor(date){const y=Number(date.slice(0,4));return [...holidayEvents(y),...holidayEvents(y-1),...events].filter(e=>e.date===date).sort((a,b)=>(a.holiday?0:1)-(b.holiday?0:1)||String(a.time||'').localeCompare(String(b.time||'')));}
+ function fmt(date,opts){return parseDate(date).toLocaleDateString(undefined,opts);}
+ function renderGrid(){const grid=$c('calendarGrid');grid.replaceChildren();$c('calMonth').textContent=new Date(viewYear,viewMonth,1,12).toLocaleDateString(undefined,{month:'long',year:'numeric'});const first=new Date(viewYear,viewMonth,1,12);const start=new Date(viewYear,viewMonth,1-first.getDay(),12);for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);const ds=keyDate(d),list=allFor(ds);const b=document.createElement('button');b.type='button';b.className='cal-day'+(d.getMonth()!==viewMonth?' outside':'')+(ds===keyDate(today)?' today':'')+(ds===selected?' selected':'');b.setAttribute('aria-label',fmt(ds,{weekday:'long',month:'long',day:'numeric',year:'numeric'})+(list.length?', '+list.length+' items':''));b.setAttribute('aria-pressed',String(ds===selected));const n=document.createElement('span');n.className='cal-num';n.textContent=d.getDate();b.append(n);list.slice(0,2).forEach(e=>{const dot=document.createElement('span');dot.className='cal-dot '+(e.holiday?'holiday':'event');dot.textContent=e.title;dot.title=e.title;b.append(dot);});if(list.length>2){const more=document.createElement('span');more.className='calendar-help';more.textContent='+'+(list.length-2)+' more';b.append(more);}b.addEventListener('click',()=>{selected=ds;viewYear=d.getFullYear();viewMonth=d.getMonth();renderGrid();renderEvents();});grid.append(b);}}
+ function renderEvents(){const list=$c('calendarEvents');list.replaceChildren();$c('selectedDateTitle').textContent=fmt(selected,{weekday:'long',month:'long',day:'numeric',year:'numeric'});const items=allFor(selected);if(!items.length){const p=document.createElement('p');p.className='calendar-empty';p.textContent='Nothing scheduled yet. Add an event below, or enjoy the open space.';list.append(p);return;}items.forEach(e=>{const card=document.createElement('div');card.className='calendar-event'+(e.holiday?' holiday-event':'');const icon=document.createElement('span');icon.textContent=e.holiday?'🇺🇸':'📌';const copy=document.createElement('div');copy.className='event-copy';const title=document.createElement('strong');title.textContent=e.title;copy.append(title);const meta=document.createElement('small');meta.textContent=(e.holiday?'U.S. federal holiday':(e.category||'event').replace(/^./,x=>x.toUpperCase()))+(e.time?' · '+fmtTime(e.time):'');copy.append(meta);if(e.notes){const note=document.createElement('small');note.textContent=e.notes;copy.append(note);}card.append(icon,copy);if(!e.holiday){const actions=document.createElement('div');actions.className='event-actions';const del=document.createElement('button');del.type='button';del.className='smallbtn';del.textContent='Delete';del.setAttribute('aria-label','Delete '+e.title);del.addEventListener('click',()=>{events=events.filter(x=>x.id!==e.id);save();renderGrid();renderEvents();toastCal('Event deleted.');});actions.append(del);card.append(actions);}list.append(card);});}
+ function fmtTime(t){const [h,m]=t.split(':').map(Number);return new Date(2000,0,1,h,m).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});}
+ $c('calPrev').addEventListener('click',()=>{viewMonth--;if(viewMonth<0){viewMonth=11;viewYear--;}renderGrid();});
+ $c('calNext').addEventListener('click',()=>{viewMonth++;if(viewMonth>11){viewMonth=0;viewYear++;}renderGrid();});
+ $c('calToday').addEventListener('click',()=>{selected=keyDate(new Date());viewYear=new Date().getFullYear();viewMonth=new Date().getMonth();renderGrid();renderEvents();});
+ $c('calendarForm').addEventListener('submit',e=>{e.preventDefault();const title=$c('eventTitle').value.trim();if(!title)return;events.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),date:selected,title,category:$c('eventCategory').value,time:$c('eventTime').value,notes:$c('eventNotes').value.trim()});save();renderGrid();renderEvents();e.target.reset();toastCal('Added to your calendar!');});
+ renderGrid();renderEvents();
+})();
 
 /* Focus timer, daily habits, and goal board. Stored locally; never treat this as synced account data. */
 (function(){
