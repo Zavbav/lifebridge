@@ -6,6 +6,11 @@
 <meta name="theme-color" content="#6d4aff">
 <meta name="description" content="LifeBridge makes school, money, and everyday life easier with fun, friendly tools.">
 <title>LifeBridge — Your life, your level-up</title>
+<link rel="icon" type="image/svg+xml" href="/lifebridge-logo.svg">
+<meta property="og:title" content="LifeBridge — Your life, your level-up">
+<meta property="og:description" content="A friendly home for learning, planning, money tools, habits, and small wins.">
+<meta name="color-scheme" content="light">
+
 <style>
 :root{--bg:#f7f5ff;--surface:#fff;--ink:#201744;--muted:#6f6888;--brand:#7047ff;--brand2:#eee8ff;--line:#e6defb;--shadow:0 14px 34px #4932a315}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 8% 15%,#f0eaff 0,transparent 30%),radial-gradient(ellipse at 92% 55%,#e5fff6 0,transparent 25%),var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body.large-text{font-size:20px}body.high-contrast{--bg:#fff;--surface:#fff;--ink:#000;--muted:#222;--brand:#00534d;--brand2:#e5fff9;--line:#555}
@@ -85,12 +90,34 @@ body:before{content:"";position:fixed;z-index:9999;left:0;top:0;height:4px;width
 @media(max-width:600px){.reveal-ready .reveal{transform:translateY(14px)}.hero-art{animation:none}.back-top{right:14px;bottom:78px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal-ready .reveal{opacity:1;transform:none}}
 
+
+/* LifeBridge upgrade pack */
+.logo-mark{background:transparent;box-shadow:none;border-radius:13px;overflow:hidden;flex:none}.logo-mark img{display:block;width:42px;height:42px}
+.quickstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.stat-card,.focus-card,.habit-card,.goal-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.stat-card strong{display:block;font-size:1.5rem;letter-spacing:-.04em}.stat-card span{color:var(--muted);font-size:.88rem}
+.upgrade-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.upgrade-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.upgrade-card h3{margin:6px 0}.upgrade-card p{color:var(--muted);margin:6px 0 14px}
+.pill{display:inline-flex;background:var(--brand2);color:var(--brand);padding:4px 9px;border-radius:999px;font-size:.78rem;font-weight:800}
+.field input,.field textarea,.field select,.upgrade-card input,.upgrade-card textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:var(--surface);color:var(--ink)}
+.focus-clock{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-.06em;text-align:center;margin:12px 0;font-variant-numeric:tabular-nums}
+.focus-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.progress-track{height:9px;border-radius:99px;background:var(--brand2);overflow:hidden;margin:10px 0}.progress-track span{display:block;height:100%;background:linear-gradient(90deg,#7047ff,#00b899);width:0;transition:width .2s}
+.habit-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.habit-row:last-child{border-bottom:0}.habit-row label{flex:1}.habit-row input{width:18px;height:18px;accent-color:var(--brand)}
+.goal-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.goal-row:last-child{border-bottom:0}
+.site-description{max-width:780px;color:var(--muted);font-size:.95rem}.footer{padding-bottom:30px}
+#toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,18px);background:#201744;color:white;padding:11px 16px;border-radius:12px;z-index:30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:0 10px 30px #20174433}#toast.visible{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){.upgrade-grid{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr}.hero-art{max-width:440px}.nav{align-items:flex-start;padding:12px 0;flex-direction:column}.navlinks{gap:10px}.quickstats{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.upgrade-grid{grid-template-columns:1fr}.quickstats{grid-template-columns:1fr 1fr}.stat-card:last-child{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.progress-track span,#toast{transition:none}}
+
 </style>
 </head>
 <body>
 <button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true">🤖</span><span>Chat with LifeBuddy</span><span aria-hidden="true">↗</span></a>
-<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark">↗</span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
+<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark">↗</span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#focus">Focus & goals</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">✨ YOUR EVERYDAY LIFE, UPGRADED</div><h1>Big goals. <span class="pop">Small wins.</span> Your level-up starts here.</h1><p>School stuff, money questions, everyday chaos? You’ve got this. Grab a tool, make a plan, and take your next step — one win at a time.</p><div class="hero-actions"><a class="btn primary" href="#tools" style="text-decoration:none">Explore helpful tools ↓</a><a class="btn" href="#learn" style="text-decoration:none">Start learning</a></div></div><aside class="hero-art" aria-label="LifeBridge encouragement"><div class="art-circle" aria-hidden="true">🚀</div><div class="art-note">Welcome to your next chapter ✨</div><div class="art-sub">Learn something. Get organized. Feel more ready.</div></aside></div></section>
 <section class="section" id="lifebuddy"><div class="wrap"><div class="section-head"><div><span class="tag">YOUR HELPER</span><h2 style="margin-top:10px">🤖 Meet LifeBuddy</h2><p>Get help breaking down a task, brainstorming, studying, or planning your next step.</p></div></div>
@@ -170,7 +197,33 @@ Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</d
 <div id="accountMessage" class="result" aria-live="polite">Accounts are not connected yet. Your existing tools still work without signing in.</div>
 <p class="notice">Never reuse a sensitive password here while account setup is incomplete. No password is stored by this page.</p></div></div>
 
-<footer class="footer"><div class="wrap footer-inner"><span><strong>LifeBridge</strong> — a little help for everyday life.</span><span>Simple tools. Your pace. Your next step.</span></div></footer>
+
+<section class="section" id="focus"><div class="wrap">
+<div class="eyebrow">🧭 YOUR PERSONAL SPACE</div><h2>Make room for your next win.</h2><p class="section-intro">Small, practical tools to help you focus, build routines, and keep goals moving. Your data stays in this browser on this device.</p>
+<div class="quickstats" aria-label="Your LifeBridge snapshot">
+<div class="stat-card"><span>Today's habits</span><strong id="habitStat">0 / 3</strong><span>tiny steps count</span></div>
+<div class="stat-card"><span>Goals in progress</span><strong id="goalStat">0</strong><span>one step at a time</span></div>
+<div class="stat-card"><span>Focus sessions</span><strong id="focusStat">0</strong><span>sessions completed here</span></div>
+</div>
+<div class="upgrade-grid">
+<div class="upgrade-card"><span class="pill">⏳ FOCUS TIMER</span><h3>One thing at a time</h3><p>Try a short focus sprint. Pick a task, start the timer, and take a breath afterward.</p>
+<label for="focusTask">What are you working on?</label><input id="focusTask" maxlength="100" placeholder="e.g. Finish science homework" style="margin:6px 0">
+<div class="focus-clock" id="focusClock" aria-live="off">25:00</div><div class="focus-actions"><button class="btn primary" id="focusStart" type="button">Start focus</button><button class="btn" id="focusPause" type="button">Pause</button><button class="btn" id="focusReset" type="button">Reset</button></div><p id="focusMessage" role="status">Ready when you are.</p></div>
+<div class="upgrade-card"><span class="pill">🌱 DAILY HABITS</span><h3>Three small promises</h3><p>Check off habits as you finish them. They reset each day, without judgment.</p>
+<div id="habitList">
+<div class="habit-row"><input type="checkbox" id="habit1"><label for="habit1">Drink some water</label></div>
+<div class="habit-row"><input type="checkbox" id="habit2"><label for="habit2">Move or stretch for 5 minutes</label></div>
+<div class="habit-row"><input type="checkbox" id="habit3"><label for="habit3">Spend 10 minutes learning</label></div>
+</div><div class="progress-track"><span id="habitProgress"></span></div><p id="habitMessage" role="status">Every little bit counts.</p></div>
+<div class="upgrade-card"><span class="pill">🎯 GOAL BOARD</span><h3>Turn a goal into a step</h3><p>Write a goal and one small action you can take next.</p>
+<form id="goalForm"><label for="goalInput">My goal</label><input id="goalInput" maxlength="90" required placeholder="e.g. Save for a new bike" style="margin:6px 0 10px"><label for="goalStep">My next step</label><input id="goalStep" maxlength="120" required placeholder="e.g. Save $5 this week" style="margin:6px 0 10px"><button class="btn primary" type="submit">Add goal</button></form>
+<div id="goalList" style="margin-top:10px"></div></div>
+</div>
+</div></section>
+<section class="section"><div class="wrap"><div class="panel"><div class="eyebrow">💜 THE LIFEBridge PROMISE</div><h2>Helpful, not overwhelming.</h2><p>LifeBridge brings school support, everyday calculators, planning tools, and encouragement into one friendly place. Use what helps, skip what doesn't, and take progress at your own pace. You don't need to have everything figured out to take one useful next step.</p><p class="site-description">LifeBridge is an independent everyday-support website. Its learning and planning tools are designed for general guidance and practice, not professional financial, medical, or mental-health advice. Your local habits, goals, and focus-session counts are saved in your browser on this device; they do not automatically sync across devices or create a cloud account.</p><p><strong>LifeBridge — bridge the gap between where you are and where you want to be.</strong></p></div></div></section>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<footer class="footer"><div class="wrap footer-inner"><span><strong>LifeBridge</strong> — bridge the gap to your next win.</span><span>Learn • Plan • Grow • Repeat</span></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const $=id=>document.getElementById(id);
@@ -280,6 +333,30 @@ if(supabaseClient){
  refreshAccountSession();
 } else paintAccountButton(null);
 
+
+
+/* Focus timer, daily habits, and goal board. Stored locally; never treat this as synced account data. */
+(function(){
+ const KEY='lifebridge-upgrades-v1';
+ const today=()=>new Date().toLocaleDateString('en-CA');
+ const defaults=()=>({date:today(),habits:[false,false,false],goals:[],focusSessions:0});
+ let data=defaults();
+ try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&typeof saved==='object'){data={...defaults(),...saved};if(data.date!==today()){data.date=today();data.habits=[false,false,false];}if(!Array.isArray(data.goals))data.goals=[];if(!Array.isArray(data.habits))data.habits=[false,false,false];}}catch(e){}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){toast('Browser storage is unavailable; changes may not persist.');}}
+ let toastTimer;
+ function toast(msg){const el=$('toast');if(!el)return;el.textContent=msg;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),2400);}
+ function renderHabits(){data.habits.forEach((v,i)=>{const el=$('habit'+(i+1));if(el)el.checked=!!v;});const count=data.habits.filter(Boolean).length;$('habitStat').textContent=count+' / 3';$('habitProgress').style.width=(count/3*100)+'%';$('habitMessage').textContent=count===3?'All three done — amazing! 🎉':count?'Nice start. Keep going at your pace.':'Every little bit counts.';}
+ function renderGoals(){const list=$('goalList');list.replaceChildren();data.goals.forEach((g,i)=>{const row=document.createElement('div');row.className='goal-row';const copy=document.createElement('div');const title=document.createElement('strong');title.textContent=g.title;const step=document.createElement('div');step.textContent='Next: '+g.step;step.style.color='var(--muted)';step.style.fontSize='.9rem';copy.append(title,step);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const done=document.createElement('button');done.type='button';done.className='smallbtn';done.textContent=g.done?'Done ✓':'Complete';done.setAttribute('aria-label',(g.done?'Reopen ':'Complete ')+g.title);done.addEventListener('click',()=>{data.goals[i].done=!data.goals[i].done;save();renderGoals();});const remove=document.createElement('button');remove.type='button';remove.className='smallbtn';remove.textContent='×';remove.setAttribute('aria-label','Delete '+g.title);remove.addEventListener('click',()=>{data.goals.splice(i,1);save();renderGoals();});actions.append(done,remove);row.append(copy,actions);if(g.done){title.style.textDecoration='line-through';row.style.opacity='.7';}list.append(row);});$('goalStat').textContent=data.goals.filter(g=>!g.done).length;}
+ data.habits.forEach((v,i)=>{const el=$('habit'+(i+1));el.addEventListener('change',()=>{data.habits[i]=el.checked;save();renderHabits();});});renderHabits();renderGoals();$('focusStat').textContent=data.focusSessions;
+ $('goalForm').addEventListener('submit',e=>{e.preventDefault();const title=$('goalInput').value.trim(),step=$('goalStep').value.trim();if(!title||!step)return;data.goals.unshift({title,step,done:false});data.goals=data.goals.slice(0,30);save();renderGoals();e.target.reset();toast('Goal added — you’ve got this!');});
+ let remaining=25*60, interval=null, running=false;
+ const clock=()=>{const m=Math.floor(remaining/60),s=remaining%60;$('focusClock').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');};
+ function stop(){if(interval!==null)clearInterval(interval);interval=null;running=false;}
+ $('focusStart').addEventListener('click',()=>{if(running)return;running=true;$('focusMessage').textContent='Focus on: '+($('focusTask').value.trim()||'your next task');interval=setInterval(()=>{remaining--;clock();if(remaining<=0){stop();remaining=0;clock();data.focusSessions++;save();$('focusStat').textContent=data.focusSessions;$('focusMessage').textContent='Focus sprint complete! Take a short break. 🎉';toast('Focus session complete!');}},1000);});
+ $('focusPause').addEventListener('click',()=>{stop();$('focusMessage').textContent='Paused. Take your time.';});
+ $('focusReset').addEventListener('click',()=>{stop();remaining=25*60;clock();$('focusMessage').textContent='Timer reset. Ready when you are.';});clock();
+ window.addEventListener('beforeunload',stop);
+})();
 
 /* Scroll animations and polished navigation */
 (function(){
