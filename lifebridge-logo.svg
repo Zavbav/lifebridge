@@ -1,10 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
-<title id="title">LifeBridge logo</title><desc id="desc">A purple and mint bridge forming a rising path toward a star.</desc>
-<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7047ff"/><stop offset="1" stop-color="#b14cff"/></linearGradient><linearGradient id="path" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#b9fff0"/><stop offset="1" stop-color="#fff"/></linearGradient></defs>
-<rect x="3" y="3" width="122" height="122" rx="34" fill="url(#bg)"/>
-<circle cx="95" cy="29" r="17" fill="#fff" opacity=".13"/>
-<path d="M22 85h84M30 85c0-23 15-39 34-39s34 16 34 39" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
-<path d="M27 101h74" fill="none" stroke="#b9fff0" stroke-width="7" stroke-linecap="round"/>
-<path d="M64 88V67m0 0-9 9m9-9 9 9" fill="none" stroke="url(#path)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="m92 17 3.2 7 7.5.7-5.7 4.9 1.7 7.3-6.7-3.8-6.4 3.8 1.4-7.3-5.5-4.9 7.4-.7z" fill="#d9fff5"/>
+<title id="title">LifeBridge</title><desc id="desc">A futuristic cyan bridge mark connecting two glowing paths.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101c35"/><stop offset="1" stop-color="#080d19"/></linearGradient>
+ <linearGradient id="cyan" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#37cfff"/><stop offset="1" stop-color="#9af7ff"/></linearGradient>
+ <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8d82ff"/><stop offset="1" stop-color="#48dcff"/></linearGradient>
+ <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="3" y="3" width="122" height="122" rx="30" fill="url(#bg)" stroke="#31516d" stroke-width="2"/>
+<path d="M19 91h90M25 82c5-23 18-36 39-36s34 13 39 36" fill="none" stroke="url(#cyan)" stroke-width="5" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M29 103h70" fill="none" stroke="#8d82ff" stroke-width="4" stroke-linecap="round"/>
+<path d="M64 91V61m0 0-12 12m12-12 12 12" fill="none" stroke="url(#cyan)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+<circle cx="64" cy="25" r="3" fill="#a4f7ff"/><path d="M64 14v4M64 32v4M53 25h4M71 25h4" stroke="#58e6ff" stroke-width="2" stroke-linecap="round"/>
+<path d="M20 25h17M91 25h17" stroke="#526e91" stroke-width="2" stroke-linecap="round"/>
 </svg>
