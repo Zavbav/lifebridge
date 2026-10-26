@@ -69,3 +69,17 @@ The page disables the account submit button until the Supabase settings are supp
 
 
 - Also includes major Catholic liturgical dates and feast days, such as Ash Wednesday, Palm Sunday, Holy Thursday, Good Friday, Easter, Pentecost, All Saints’ Day, All Souls’ Day, the Assumption, the Immaculate Conception, and Our Lady of Guadalupe. Movable dates are calculated from Easter. Local observance can vary by country and diocese; verify obligations and Mass schedules with your parish.
+
+
+
+## Futuristic LifeBridge command center
+
+The home page now uses a futuristic dark interface with neon mint/purple accents, glass-like panels, a subtle grid, and responsive layouts. The new **Personal Command Center** includes:
+
+- A daily mission list with add, complete, and delete actions.
+- Live counts for open missions, completed missions, and progress percentage.
+- Quick links to the calendar, organizer, focus timer, and Skill Quest.
+- Browser-local persistence for missions. Tasks are not synced across browsers or devices.
+- Reduced-motion support remains enabled for users who prefer less animation.
+
+The existing LifeBuddy, calendar, learning tools, goals, habits, focus timer, budget helper, and Skill Quest remain part of the site. The interface redesign does not by itself activate Supabase account syncing; authentication still needs the configuration described above.
