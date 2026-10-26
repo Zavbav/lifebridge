@@ -42,3 +42,19 @@ LifeBridge uses [Supabase Auth](https://supabase.com/auth) so passwords are hand
 7. Test **Sign up** with an email you can access, click the confirmation link if requested, and then test **Sign in**.
 
 The page disables the account submit button until the Supabase settings are supplied. Supabase handles passwords; the site does not store them itself. The current account feature provides email/password registration, sign-in, session persistence, and sign-out. It does not yet create a user profile database or sync learning progress across devices.
+
+
+## Latest LifeBridge upgrades
+
+- Custom purple-and-mint bridge logo, used as the site mark and SVG favicon.
+- Search/social preview metadata for clearer sharing.
+- **Focus & Goals** section with a 25-minute focus timer, pause/reset controls, a daily habit checklist, progress bar, and editable goal board.
+- Local browser persistence for goals, habit checks, and completed focus sessions. Habits reset on a new local date; the timer itself is not intended to run in the background.
+- Responsive cards and mobile layouts, accessible status messages, and reduced-motion-aware styling.
+- A closing brand description explaining the site's purpose, local-data behavior, and general-guidance limitations.
+
+### Important current limitations
+
+- Supabase authentication will only work after you add your own Supabase Project URL and publishable/anon key to `index.html`, and configure allowed redirect URLs in Supabase. Never put a Supabase secret/service-role key in front-end code.
+- Goals, habits, focus sessions, the to-do list, and other browser-only features are not currently synced across devices or attached to user accounts.
+- This is a static website plus the existing Vercel AI endpoint; the new tools do not require a new database.
