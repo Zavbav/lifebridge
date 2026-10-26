@@ -58,3 +58,11 @@ The page disables the account submit button until the Supabase settings are supp
 - Supabase authentication will only work after you add your own Supabase Project URL and publishable/anon key to `index.html`, and configure allowed redirect URLs in Supabase. Never put a Supabase secret/service-role key in front-end code.
 - Goals, habits, focus sessions, the to-do list, and other browser-only features are not currently synced across devices or attached to user accounts.
 - This is a static website plus the existing Vercel AI endpoint; the new tools do not require a new database.
+
+
+### Calendar & date planner
+
+- Month-view calendar with previous/next month navigation and a Today shortcut.
+- Select any date to see scheduled items, then add an event, school task, birthday, deadline, or reminder with optional time and notes.
+- Preloaded major U.S. federal holidays for 2025–2030, including observed dates for holidays that fall on weekends.
+- Events are stored in this browser's local storage and can be deleted. They are not currently synced to a signed-in account or across devices.
