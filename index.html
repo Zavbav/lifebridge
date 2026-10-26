@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#6d4aff">
+<meta name="theme-color" content="#090d1b">
 <meta name="description" content="LifeBridge makes school, money, and everyday life easier with fun, friendly tools.">
 <title>LifeBridge — Your life, your level-up</title>
 <link rel="icon" type="image/svg+xml" href="/lifebridge-logo.svg">
 <meta property="og:title" content="LifeBridge — Your life, your level-up">
 <meta property="og:description" content="A friendly home for learning, planning, money tools, habits, and small wins.">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="dark">
 
 <style>
 :root{--bg:#f7f5ff;--surface:#fff;--ink:#201744;--muted:#6f6888;--brand:#7047ff;--brand2:#eee8ff;--line:#e6defb;--shadow:0 14px 34px #4932a315}
@@ -129,6 +129,64 @@ body:before{content:"";position:fixed;z-index:9999;left:0;top:0;height:4px;width
 @media(max-width:850px){.calendar-layout{grid-template-columns:1fr}.cal-day{min-height:62px}}
 @media(max-width:520px){.calendar-panel{padding:12px}.calendar-grid{gap:3px}.cal-day{min-height:54px;padding:4px 3px;border-radius:7px}.cal-num{font-size:.8rem}.cal-dot{font-size:.58rem;padding:1px}.calendar-weekdays{font-size:.68rem;gap:3px}}
 
+
+/* FUTURE MODE — LifeBridge command-center redesign */
+:root{color-scheme:dark;--bg:#070914;--surface:#101426;--ink:#edf2ff;--muted:#9ba8c7;--brand:#8b7cff;--brand2:#211e43;--line:#252d49;--shadow:0 18px 55px #0008}
+body{background:radial-gradient(ellipse at 12% 0%,#202052 0,transparent 34%),radial-gradient(ellipse at 90% 26%,#073b40 0,transparent 30%),#070914;color:var(--ink)}
+.topbar{background:#090d1beF;border-color:#242b48;backdrop-filter:blur(22px)}
+.navlinks a{color:#b7c3e0}.navlinks a:hover{color:#76f7e4}
+.logo{color:#f3f6ff}.logo-mark img{filter:drop-shadow(0 0 12px #7b72ff66)}
+.hero{background:radial-gradient(ellipse at 80% 20%,#3930798a 0,transparent 40%),radial-gradient(ellipse at 5% 90%,#005a5580 0,transparent 35%),linear-gradient(135deg,#090d1c,#10132b 55%,#071b25);border-bottom:1px solid #26304d;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#a2b3ff08 1px,transparent 1px),linear-gradient(90deg,#a2b3ff08 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(to bottom,#000,transparent)}
+.hero-grid{position:relative;z-index:1}.hero h1{color:#f4f6ff}.hero h1 .pop{background:linear-gradient(100deg,#9a8bff,#65f4df 75%);background-clip:text;-webkit-background-clip:text}
+.hero p,.section-head p,.tool-card p,.upgrade-card p,.site-description{color:#aab5d1}
+.eyebrow{background:#141a30;color:#9cfff0;border-color:#34435d;box-shadow:0 0 30px #32dfd20d}
+.hero-art,.panel,.tool-card,.upgrade-card,.stat-card,.focus-card,.habit-card,.goal-card,.calendar-panel,.math-box,.math-step{background:linear-gradient(145deg,#131a2e,#0d1222);border-color:#293452;color:var(--ink);box-shadow:0 15px 45px #0005}
+.art-circle{background:radial-gradient(circle at 50% 35%,#6254bd,#22214c 55%,#0b3039);box-shadow:inset 0 0 60px #75fff21a,0 0 35px #6558e52a}
+.art-note{color:#f1f4ff}.art-sub{color:#9eabc9}
+.btn,.smallbtn,.field input,.field select,.field textarea,.search,.ai-form input,.upgrade-card input,.upgrade-card textarea{background:#11182b;color:#edf2ff;border-color:#303a59}
+.btn.primary,.challenge button{background:linear-gradient(110deg,#7868ff,#27cdbd);color:#07131c;box-shadow:0 0 25px #6c68ff25}
+.tool-card{background:linear-gradient(155deg,#151c31,#0e1424);border-radius:22px;box-shadow:0 12px 35px #0004}
+.tool-card:hover,.upgrade-card:hover{border-color:#6f75c7;box-shadow:0 18px 45px #5b54c326}
+.tool-icon{background:linear-gradient(145deg,#292657,#123a43);box-shadow:inset 0 0 20px #75fff20c}
+.tag,tag,.pill{background:#202044;color:#a9a0ff}
+.feature-band{background:linear-gradient(125deg,#0c1022,#201b4b 55%,#06433f);border-top:1px solid #303458;border-bottom:1px solid #1f4951}
+.fun-panel{background:#11182bbf;border-color:#394263}.stat-pill{background:#19223a;border-color:#38415f}
+.challenge{background:linear-gradient(120deg,#252047,#142e37);color:#edf2ff;border:1px solid #46416d}
+#lifebuddy .panel{background:linear-gradient(145deg,#141a30,#101526);border-color:#41416f}
+#lifebuddy .ai-messages{background:#090f1d;border-color:#2a3453}
+#lifebuddy .ai-msg.bot{background:#19213a;border-color:#303a5b;color:#edf2ff}
+#lifebuddy .ai-msg.user{background:linear-gradient(120deg,#6c5ce7,#159c99);color:#fff}
+.prompt-chip{background:#151b31;border-color:#3a4166;color:#b8b2ff}
+.prompt-chip:hover{background:#24264d}
+.account-btn{background:linear-gradient(110deg,#7968ff,#27cdbd);color:#07131c}
+.account-card{background:#11182b;color:#edf2ff;border:1px solid #3a4264}.account-card .field input{background:#0a1020;color:#edf2ff}
+.account-tabs button{background:#161e33;color:#dbe2ff;border-color:#343d5d}.account-tabs button.active{background:#7868ff;color:#fff}
+.math-tabs button{background:#12192c;color:#dce4ff;border-color:#303a59}.math-tabs button.active{background:#7868ff}
+.math-step{border-left-color:#7d74ff;background:#191d3a}
+.result{background:#172b39;color:#a8fff0}
+.calendar-panel,.cal-day{background:#101629;color:#edf2ff;border-color:#2b3552}.cal-day.selected{background:#25204c;border-color:#8d80ff}.cal-day.today{outline-color:#57e7d8}
+.calendar-weekdays,.calendar-empty,.notice,.footer{color:#9ba8c7}
+#toast{background:#d9fff7;color:#07131c}
+.lifebuddy-float{background:linear-gradient(115deg,#7868ff,#25cdbd);color:#07131c;border-color:#b5fff7;box-shadow:0 0 35px #32d8c333}
+.back-top{background:#1b2140;border:1px solid #4c5580}
+body:before{background:linear-gradient(90deg,#8c7cff,#43efdb,#d18aff);box-shadow:0 0 15px #43efdb55}
+.footer{border-color:#242d49}
+::selection{background:#5c52b7;color:#fff}
+.command-center{padding:30px 0 40px;background:linear-gradient(180deg,#090e1c,#0b1020);border-bottom:1px solid #242c49}
+.command-head{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.command-kicker{font-size:.76rem;font-weight:900;letter-spacing:.16em;color:#66eadc}
+.command-title{font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.06em;line-height:1.1;margin:7px 0}
+.command-sub{color:#9ba8c7;margin:0}
+.command-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.command-card{background:linear-gradient(145deg,#151b31,#0d1324);border:1px solid #2d3756;border-radius:22px;padding:20px;box-shadow:0 16px 45px #0004;min-width:0}
+.command-card h3{margin:0 0 12px}.command-inputrow{display:flex;gap:8px}.command-inputrow input{flex:1;min-width:0;padding:12px 13px;background:#090f1e;border:1px solid #333d60;color:#edf2ff;border-radius:12px}
+.command-task{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #242e4b}.command-task:last-child{border-bottom:0}.command-task label{flex:1;overflow-wrap:anywhere}.command-task input{accent-color:#6cebdc;width:18px;height:18px}.command-task.done label{text-decoration:line-through;color:#7886a7}
+.command-empty{color:#8998bb;font-size:.92rem;padding:12px 0}.command-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:14px}.command-stat{padding:12px;border-radius:14px;background:#0b1223;border:1px solid #26314e}.command-stat strong{display:block;font-size:1.4rem;color:#80f5e4}.command-stat span{font-size:.76rem;color:#9ba8c7}
+.command-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.command-actions a{font-size:.88rem;text-decoration:none}
+.command-tip{padding:14px;border-radius:14px;background:linear-gradient(110deg,#20204a,#12343a);border:1px solid #3d426e;color:#dce7ff;margin-top:12px}
+@media(max-width:720px){.command-grid{grid-template-columns:1fr}.command-inputrow{flex-direction:column}.command-head{align-items:flex-start}.command-center{padding:24px 0}}
+
 </style>
 </head>
 <body>
@@ -137,6 +195,16 @@ body:before{content:"";position:fixed;z-index:9999;left:0;top:0;height:4px;width
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#calendar">Calendar</a><a href="#focus">Focus & goals</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">✨ YOUR EVERYDAY LIFE, UPGRADED</div><h1>Big goals. <span class="pop">Small wins.</span> Your level-up starts here.</h1><p>School stuff, money questions, everyday chaos? You’ve got this. Grab a tool, make a plan, and take your next step — one win at a time.</p><div class="hero-actions"><a class="btn primary" href="#tools" style="text-decoration:none">Explore helpful tools ↓</a><a class="btn" href="#learn" style="text-decoration:none">Start learning</a></div></div><aside class="hero-art" aria-label="LifeBridge encouragement"><div class="art-circle" aria-hidden="true">🚀</div><div class="art-note">Welcome to your next chapter ✨</div><div class="art-sub">Learn something. Get organized. Feel more ready.</div></aside></div></section>
+
+<section class="command-center" id="today">
+ <div class="wrap">
+  <div class="command-head"><div><div class="command-kicker">LIFEBRIDGE // PERSONAL COMMAND CENTER</div><h2 class="command-title">Make today count.</h2><p class="command-sub">One clear next step. Your goals, right here. Your progress, building every day.</p></div><a class="btn primary" href="#focus" style="text-decoration:none">Start a focus sprint ↗</a></div>
+  <div class="command-grid">
+   <div class="command-card"><h3>◈ Today's mission</h3><form id="todayTaskForm" class="command-inputrow"><input id="todayTaskInput" maxlength="140" placeholder="Add a task, assignment, or tiny win…" aria-label="New task" required><button class="btn primary" type="submit">+ Add mission</button></form><div id="todayTaskList" aria-live="polite"></div><div class="command-stats"><div class="command-stat"><strong id="todayOpenCount">0</strong><span>OPEN MISSIONS</span></div><div class="command-stat"><strong id="todayDoneCount">0</strong><span>COMPLETED</span></div><div class="command-stat"><strong id="todayPercent">0%</strong><span>PROGRESS</span></div></div></div>
+   <div class="command-card"><h3>✦ Your launch sequence</h3><p class="command-sub">A simple path from overwhelmed to in motion.</p><div class="command-tip"><strong>01 / Choose one thing</strong><br>Pick the task that matters most today. Smaller is okay.</div><div class="command-tip"><strong>02 / Focus for 25 minutes</strong><br>Use a sprint to protect your attention and make a start.</div><div class="command-tip"><strong>03 / Record the win</strong><br>Check off the task and build momentum, one step at a time.</div><div class="command-actions"><a class="btn" href="#calendar">Open calendar</a><a class="btn" href="#organize">Organize tasks</a><a class="btn" href="#lifequest">Play Skill Quest</a></div></div>
+  </div>
+ </div>
+</section>
 <section class="section" id="lifebuddy"><div class="wrap"><div class="section-head"><div><span class="tag">YOUR HELPER</span><h2 style="margin-top:10px">🤖 Meet LifeBuddy</h2><p>Get help breaking down a task, brainstorming, studying, or planning your next step.</p></div></div>
 <div class="panel"><div class="ai-chat"><div class="ai-messages" id="aiMessages" aria-live="polite"><div class="ai-msg bot">Hey! 👋 I'm LifeBuddy. Tell me what you're working on and we'll break it into manageable steps.
 
@@ -485,6 +553,31 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
    const id=link.getAttribute('href').slice(1);const target=id?document.getElementById(id):null;
    if(target){e.preventDefault();target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});if(target.id==='lifebuddy')setTimeout(()=>$('aiInput')?.focus({preventScroll:true}),350)}
  }));
+})();
+
+
+/* Daily command center: tasks persist in this browser only. */
+(function(){
+ const key='lifebridge-today-missions-v1';
+ const $=id=>document.getElementById(id);
+ let tasks=[];
+ try{const parsed=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(parsed))tasks=parsed.filter(t=>t&&typeof t.text==='string').slice(0,100);}catch(e){}
+ const save=()=>{try{localStorage.setItem(key,JSON.stringify(tasks));}catch(e){}};
+ function render(){
+  const list=$('todayTaskList');list.replaceChildren();
+  if(!tasks.length){const empty=document.createElement('p');empty.className='command-empty';empty.textContent='No missions yet. Add one small thing you want to finish today.';list.append(empty);}
+  tasks.forEach(task=>{
+   const row=document.createElement('div');row.className='command-task'+(task.done?' done':'');
+   const check=document.createElement('input');check.type='checkbox';check.checked=!!task.done;check.setAttribute('aria-label','Mark '+task.text+' complete');check.addEventListener('change',()=>{task.done=check.checked;save();render();});
+   const label=document.createElement('label');label.textContent=task.text;
+   const del=document.createElement('button');del.type='button';del.className='smallbtn';del.textContent='×';del.setAttribute('aria-label','Delete '+task.text);del.addEventListener('click',()=>{tasks=tasks.filter(t=>t.id!==task.id);save();render();});
+   row.append(check,label,del);list.append(row);
+  });
+  const done=tasks.filter(t=>t.done).length,open=tasks.length-done;
+  $('todayOpenCount').textContent=open;$('todayDoneCount').textContent=done;$('todayPercent').textContent=(tasks.length?Math.round(done/tasks.length*100):0)+'%';
+ }
+ $('todayTaskForm').addEventListener('submit',e=>{e.preventDefault();const input=$('todayTaskInput'),text=input.value.trim();if(!text)return;tasks.unshift({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),text,done:false});tasks=tasks.slice(0,100);save();render();input.value='';input.focus();});
+ render();
 })();
 
 renderXp();initChallenge();
