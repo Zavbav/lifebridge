@@ -22,3 +22,23 @@ GitHub Pages can host the static front end, but it cannot run the `/api/chat` se
 - The API key is read only on the server from `OPENAI_API_KEY`.
 - The endpoint accepts POST requests only and limits each message to 1,200 characters.
 - Avoid entering passwords, payment information, or other sensitive personal information into the chatbot.
+
+
+## Enable real sign-up and sign-in
+
+LifeBridge uses [Supabase Auth](https://supabase.com/auth) so passwords are handled by a dedicated authentication service rather than stored by the website.
+
+1. Create a free project at [Supabase](https://supabase.com/dashboard).
+2. In the Supabase dashboard, open **Project Settings → API** (or **Data API / API Keys**, depending on the dashboard version). Copy the **Project URL** and the **publishable key** (or legacy **anon/public** key). Never use a secret or service-role key in the website.
+3. Open `index.html` in this GitHub repository and find:
+   ```js
+   const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+   const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+   ```
+   Replace those two placeholder values with the Project URL and publishable/anon key from your own Supabase project. These are intended for browser use; keep secret/service-role keys private.
+4. In Supabase, open **Authentication → URL Configuration**. Set the Site URL to `https://lifebridge-alpha.vercel.app` and add that same URL to the allowed redirect URLs.
+5. In **Authentication → Providers → Email**, enable email/password sign-in. For safer new-account verification, leave email confirmation enabled.
+6. Commit the change to GitHub. Vercel should redeploy the site automatically if it is connected to this repository's `main` branch.
+7. Test **Sign up** with an email you can access, click the confirmation link if requested, and then test **Sign in**.
+
+The page disables the account submit button until the Supabase settings are supplied. Supabase handles passwords; the site does not store them itself. The current account feature provides email/password registration, sign-in, session persistence, and sign-out. It does not yet create a user profile database or sync learning progress across devices.
