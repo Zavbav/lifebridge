@@ -271,6 +271,70 @@ body:before{height:2px;background:#347c70;box-shadow:none}
 .art-circle svg{width:min(52%,150px);height:auto;position:relative;z-index:1}
 .tool-icon svg{width:29px;height:29px;color:#276b62}
 .prompt-chip{display:inline-flex;align-items:center;gap:7px}
+
+
+/* LifeBridge: futuristic interface system */
+:root{
+ --bg:#070b16;--surface:#0d1424;--ink:#edf5ff;--muted:#91a4bf;
+ --brand:#58e6ff;--brand2:#102d42;--line:#1c3550;
+ --shadow:0 18px 55px #0008;
+}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+ background:
+  radial-gradient(ellipse at 12% 0%,#12314a88 0,transparent 34%),
+  radial-gradient(ellipse at 92% 26%,#28205b55 0,transparent 32%),
+  linear-gradient(145deg,#070b16,#090f1e 58%,#080c18);
+ color:var(--ink);
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.14;
+ background-image:linear-gradient(#3bdcff12 1px,transparent 1px),linear-gradient(90deg,#3bdcff12 1px,transparent 1px);
+ background-size:44px 44px;
+ mask-image:linear-gradient(to bottom,black,transparent 78%);
+}
+.topbar,.nav,.site-header{background:#080e1ce8!important;border-color:#1b3249!important;backdrop-filter:blur(18px)}
+a{transition:color .18s ease}
+button,.btn,.smallbtn,.tool-card,.card,.panel,.feature-band,.command-center,.section{
+ border-color:var(--line);
+}
+button,.btn,.smallbtn{
+ border-radius:12px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+button:hover,.btn:hover,.smallbtn:hover{border-color:#58e6ff88;box-shadow:0 0 22px #26c9ff16}
+.tool-card,.card,.panel,.feature-band,.command-center,.section-card,.hero-panel{
+ background:linear-gradient(145deg,#111d30ed,#0b1322f5)!important;
+ border:1px solid #25425d!important;border-radius:18px;
+ box-shadow:0 12px 34px #0003,inset 0 1px #ffffff08;
+}
+.tool-card{position:relative;overflow:hidden}
+.tool-card:before,.card:before,.panel:before{
+ content:"";position:absolute;left:16px;right:16px;top:0;height:1px;
+ background:linear-gradient(90deg,transparent,#58e6ff88,#a18bff66,transparent);pointer-events:none;
+}
+.tool-card:hover{transform:translateY(-4px);border-color:#58e6ff88!important;box-shadow:0 16px 42px #0006,0 0 28px #39d7ff12}
+h1,h2,h3{color:#f2f8ff;letter-spacing:-.035em}
+h1{ text-shadow:0 0 38px #47dfff18}
+p,.muted,.subtitle{color:var(--muted)}
+.brand-mark{border-color:#58e6ff;color:#58e6ff;background:#58e6ff12;box-shadow:0 0 20px #58e6ff20}
+.ui-icon,.section-icon,.tool-icon svg{color:#58e6ff!important}
+input,select,textarea{
+ background:#080f1d!important;color:#edf5ff!important;border:1px solid #28425b!important;border-radius:11px!important;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid #58e6ff88!important;outline-offset:1px;box-shadow:0 0 0 4px #58e6ff12!important}
+::placeholder{color:#7187a4!important}
+.prompt-chip{background:#0e2033!important;border:1px solid #24445e!important;color:#cdefff!important}
+.hero-art .art-circle{background:radial-gradient(circle,#123a50,#111a31 62%,#0a1120)!important;border:1px solid #3edbff55;box-shadow:0 0 55px #20c9ff18,inset 0 0 35px #20c9ff12}
+.hero-art svg{filter:drop-shadow(0 0 10px #58e6ff25)}
+.lifebuddy-float{background:linear-gradient(135deg,#123b52,#18204a)!important;border:1px solid #58e6ff99!important;box-shadow:0 0 30px #24caff25!important}
+.progress,.progress-bar{background:#17283c!important}
+.progress-bar{background:linear-gradient(90deg,#32c9ff,#8d8aff)!important;box-shadow:0 0 14px #39d9ff66}
+.badge,.tag,.pill{background:#10263a!important;border-color:#2d526c!important;color:#8deaff!important}
+hr{border-color:#20384f}
+footer,.footer{border-color:#1b3249!important}
+@media(max-width:700px){body:before{background-size:32px 32px}.tool-card,.card,.panel{border-radius:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
 </style>
 </head>
 <body>
