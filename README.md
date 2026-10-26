@@ -66,3 +66,6 @@ The page disables the account submit button until the Supabase settings are supp
 - Select any date to see scheduled items, then add an event, school task, birthday, deadline, or reminder with optional time and notes.
 - Preloaded major U.S. federal holidays for 2025–2030, including observed dates for holidays that fall on weekends.
 - Events are stored in this browser's local storage and can be deleted. They are not currently synced to a signed-in account or across devices.
+
+
+- Also includes major Catholic liturgical dates and feast days, such as Ash Wednesday, Palm Sunday, Holy Thursday, Good Friday, Easter, Pentecost, All Saints’ Day, All Souls’ Day, the Assumption, the Immaculate Conception, and Our Lady of Guadalupe. Movable dates are calculated from Easter. Local observance can vary by country and diocese; verify obligations and Mass schedules with your parish.
