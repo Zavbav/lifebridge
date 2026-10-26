@@ -171,8 +171,16 @@ Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</d
 <p class="notice">Never reuse a sensitive password here while account setup is incomplete. No password is stored by this page.</p></div></div>
 
 <footer class="footer"><div class="wrap footer-inner"><span><strong>LifeBridge</strong> — a little help for everyday life.</span><span>Simple tools. Your pace. Your next step.</span></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const $=id=>document.getElementById(id);
+// Public Supabase project settings. Replace these with the values from your own Supabase project.
+const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+let supabaseClient = null;
+if (window.supabase && SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && SUPABASE_ANON_KEY && !SUPABASE_ANON_KEY.includes("YOUR_")) {
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
 const num=id=>{const v=$(id).value.trim();return v===''?NaN:Number(v)};
 function show(id,msg){$(id).textContent=msg}
 $('gradeBtn').addEventListener('click',()=>{const e=num('earned'),p=num('possible');if(!Number.isFinite(e)||!Number.isFinite(p)||p<=0||e<0||e>p){show('gradeResult','Please enter valid points. Earned points must be between 0 and total points.');return}const pct=e/p*100;show('gradeResult',`${pct.toFixed(2)}% — ${e} out of ${p} points.`)});
@@ -216,13 +224,61 @@ let currentQuiz=0;function newQuiz(){currentQuiz=Math.floor(Math.random()*quizBa
 $('quizCheck').addEventListener('click',()=>{const value=num('quizAnswer');if(!Number.isFinite(value)){show('quizFeedback','Type an answer first.');return}const item=quizBank[currentQuiz];show('quizFeedback',Math.abs(value-item.a)<0.000001?'Correct! 🎉 '+item.explain:'Not quite yet. '+item.explain)});
 $('quizNew').addEventListener('click',newQuiz);newQuiz();
 
-/* Account UI scaffold: does not store passwords or pretend local data is a secure account. */
-let accountMode='signin';function setAccountMode(mode){accountMode=mode;$('signInTab').classList.toggle('active',mode==='signin');$('signUpTab').classList.toggle('active',mode==='signup');$('accountNameField').hidden=mode!=='signup';$('accountTitle').textContent=mode==='signin'?'Welcome back 👋':'Create your LifeBridge account';$('accountSubmit').textContent=mode==='signin'?'Sign in':'Create account';$('accountPassword').setAttribute('autocomplete',mode==='signin'?'current-password':'new-password');$('accountMessage').textContent='Secure accounts are not connected yet. Your existing tools still work without signing in.'}
-$('accountOpen').addEventListener('click',()=>{$('accountModal').classList.remove('hidden');setAccountMode('signin');$('accountEmail').focus()});
+/* Supabase-backed account flow. Passwords are handled by Supabase, never stored in this page. */
+let accountMode='signin';
+function setAccountMode(mode){
+ accountMode=mode;
+ $('signInTab').classList.toggle('active',mode==='signin');
+ $('signUpTab').classList.toggle('active',mode==='signup');
+ $('accountNameField').hidden=mode!=='signup';
+ $('accountTitle').textContent=mode==='signin'?'Welcome back 👋':'Create your LifeBridge account';
+ $('accountSubmit').textContent=mode==='signin'?'Sign in':'Create account';
+ $('accountPassword').setAttribute('autocomplete',mode==='signin'?'current-password':'new-password');
+ show('accountMessage',supabaseClient?'Enter your details to '+(mode==='signin'?'sign in.':'create your account.'):'Account setup needs one final connection: add your Supabase project URL and publishable/anon key in index.html. See README.md for the steps.');
+ $('accountSubmit').disabled=!supabaseClient;
+}
+function paintAccountButton(session){
+ const btn=$('accountOpen');
+ if(session?.user){btn.textContent='My account · Sign out';btn.title=session.user.email||'Signed in';}
+ else {btn.textContent='Sign in / Sign up';btn.title='Open your LifeBridge account';}
+}
+async function refreshAccountSession(){
+ if(!supabaseClient){paintAccountButton(null);return;}
+ const {data,error}=await supabaseClient.auth.getSession();
+ if(error) console.error('Could not read account session',error);
+ paintAccountButton(data?.session||null);
+}
+$('accountOpen').addEventListener('click',async()=>{
+ if(supabaseClient){const {data}=await supabaseClient.auth.getSession();if(data?.session){if(confirm('Sign out of LifeBridge?')){const {error}=await supabaseClient.auth.signOut();if(error)show('accountMessage',error.message);else{paintAccountButton(null);$('accountModal').classList.remove('hidden');setAccountMode('signin');show('accountMessage','You have signed out. See you next time!');} }return;}}
+ $('accountModal').classList.remove('hidden');setAccountMode('signin');$('accountEmail').focus();
+});
 $('accountClose').addEventListener('click',()=>$('accountModal').classList.add('hidden'));
 $('accountModal').addEventListener('click',e=>{if(e.target===$('accountModal'))$('accountModal').classList.add('hidden')});
 $('signInTab').addEventListener('click',()=>setAccountMode('signin'));$('signUpTab').addEventListener('click',()=>setAccountMode('signup'));
-$('accountForm').addEventListener('submit',e=>{e.preventDefault();show('accountMessage','Account sign-in is not active yet. I have not saved your password. Next step: connect LifeBridge to a secure authentication provider so accounts can work across devices.')});
+$('accountForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ if(!supabaseClient){show('accountMessage','Account setup is not finished. Follow the Supabase setup steps in README.md, then add your project URL and publishable/anon key.');return;}
+ const email=$('accountEmail').value.trim(),password=$('accountPassword').value,name=$('accountName').value.trim();
+ const submit=$('accountSubmit');submit.disabled=true;submit.textContent=accountMode==='signin'?'Signing in…':'Creating account…';show('accountMessage','Please wait…');
+ try{
+  let result;
+  if(accountMode==='signup') result=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name},emailRedirectTo:window.location.origin}});
+  else result=await supabaseClient.auth.signInWithPassword({email,password});
+  if(result.error) throw result.error;
+  if(accountMode==='signup'&&!result.data.session){
+   show('accountMessage','Account created! Check your email for a confirmation link, then return here and sign in.');
+  } else {
+   show('accountMessage',accountMode==='signin'?'You are signed in! Welcome back.':'Your account is ready! Welcome to LifeBridge.');
+   paintAccountButton(result.data.session);
+   if(accountMode==='signin')setTimeout(()=>$('accountModal').classList.add('hidden'),900);
+  }
+ }catch(err){show('accountMessage',err.message||'Could not complete account request. Please try again.');}
+ finally{submit.disabled=!supabaseClient;submit.textContent=accountMode==='signin'?'Sign in':'Create account';}
+});
+if(supabaseClient){
+ supabaseClient.auth.onAuthStateChange((_event,session)=>paintAccountButton(session));
+ refreshAccountSession();
+} else paintAccountButton(null);
 
 
 /* Scroll animations and polished navigation */
