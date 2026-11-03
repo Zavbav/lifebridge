@@ -350,6 +350,40 @@ input:focus,select:focus,textarea:focus{outline:2px solid #72b8c2!important;outl
 ::selection{background:#cce8e8;color:#173247}
 @media(max-width:700px){body:before{background-size:20px 20px}.hero{border-radius:18px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* LifeBridge signature dashboard homepage */
+.hero-upgraded{position:relative;overflow:hidden;padding:64px 0 58px!important;background:linear-gradient(120deg,#f9fcfe 0%,#eaf4f8 54%,#e7f5ef 100%)!important}
+.hero-upgraded:before{content:"";position:absolute;width:520px;height:520px;border:1px solid #b8d5dd66;border-radius:50%;right:-150px;top:-310px;box-shadow:0 0 0 48px #c6dfe333,0 0 0 96px #d5e8e933;pointer-events:none}
+.hero-upgraded .hero-grid{position:relative;grid-template-columns:1.02fr .98fr;gap:clamp(28px,5vw,68px)}
+.hero-copy{max-width:610px}.hero-date{margin-top:25px;color:#668494;font-size:.76rem;font-weight:850;letter-spacing:.16em}
+.hero-upgraded h1{font-size:clamp(3rem,6vw,5.35rem);max-width:650px;line-height:.99;margin:12px 0 20px;letter-spacing:-.075em}
+.hero-upgraded .hero-copy>p{font-size:1.08rem;line-height:1.75;max-width:560px;color:#526f80}
+.hero-secondary{background:#fff!important;border-color:#d5e4e9!important;color:#24536a!important}
+.hero-trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:25px;color:#6c8491;font-size:.8rem;font-weight:650}
+.hero-trust span{display:flex;align-items:center;gap:7px}.hero-trust i{width:7px;height:7px;border-radius:50%;background:#42a68b;box-shadow:0 0 0 4px #42a68b1c}
+.hero-dashboard{padding:25px 25px 18px;border:1px solid #d3e4e9;border-radius:25px;background:rgba(255,255,255,.88);box-shadow:0 24px 65px rgba(30,79,99,.13),inset 0 1px #fff;backdrop-filter:blur(14px);min-width:0}
+.hero-dash-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.dash-overline{font-size:.65rem;letter-spacing:.14em;font-weight:900;color:#77919e}
+.hero-dash-top h2{font-size:1.55rem;letter-spacing:-.045em;margin:5px 0 0;color:#193b50}
+.dash-status{font-size:.64rem;letter-spacing:.1em;font-weight:900;color:#39816e;background:#eaf6f0;border:1px solid #d5ebe0;padding:6px 9px;border-radius:99px;white-space:nowrap}
+.dash-status span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#40a47c;margin:0 5px 1px 0}
+.hero-focus{display:flex;align-items:center;gap:20px;padding:24px 0 20px;border-bottom:1px solid #e5eef1;margin-top:12px}
+.focus-orbit{width:124px;height:124px;position:relative;flex:none}.focus-orbit svg{width:100%;height:100%;overflow:visible}
+.orbit-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.orbit-center strong{font-size:1.8rem;line-height:1;color:#1d5367;letter-spacing:-.06em}.orbit-center span{font-size:.59rem;letter-spacing:.15em;font-weight:900;color:#8298a2;margin-top:5px}
+.hero-focus-copy{min-width:0}.hero-focus-copy>strong{display:block;font-size:1.03rem;color:#1d3f53;margin:7px 0 4px}
+.hero-focus-copy p{font-size:.82rem;line-height:1.5;color:#718794;margin:0 0 8px}
+.hero-focus-copy a{font-size:.78rem;font-weight:850;color:#187b89;text-decoration:none}.hero-focus-copy a:hover{text-decoration:underline}
+.hero-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);padding:17px 0 14px}
+.hero-mini-stats div{display:grid;gap:2px;padding-left:16px;border-left:1px solid #e3ecef}.hero-mini-stats div:first-child{padding-left:0;border:0}
+.hero-mini-stats strong{font-size:1.35rem;line-height:1.2;letter-spacing:-.04em;color:#1c4b60}
+.hero-mini-stats span{font-size:.58rem;letter-spacing:.1em;font-weight:850;color:#8296a0}
+.hero-dash-bottom{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:13px;background:#f0f7f7}
+.hero-dash-bottom p{font-size:.78rem;color:#55717c;margin:0;flex:1}
+.dash-spark{color:#238e91;font-size:1.05rem}.hero-dash-bottom button{width:30px;height:30px;border:0;border-radius:9px;background:#176f91;color:#fff;font-size:1.2rem;line-height:1}
+@media(max-width:850px){.hero-upgraded{padding:45px 0 38px!important}.hero-upgraded .hero-grid{grid-template-columns:1fr}.hero-dashboard{max-width:590px}.hero-upgraded h1{max-width:680px}}
+@media(max-width:480px){.hero-dashboard{padding:19px 16px 14px;border-radius:19px}.hero-focus{gap:12px}.focus-orbit{width:100px;height:100px}.hero-mini-stats div{padding-left:9px}.hero-mini-stats strong{font-size:1.2rem}.hero-upgraded h1{font-size:clamp(2.65rem,13vw,4rem)}.hero-trust{gap:10px;flex-direction:column}}
+
 </style>
 </head>
 <body>
@@ -357,7 +391,22 @@ input:focus,select:focus,textarea:focus{outline:2px solid #72b8c2!important;outl
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true">↗</span></a>
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#calendar">Calendar</a><a href="#focus">Focus & goals</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
-<section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow"><span class="brand-mark" aria-hidden="true">LB</span> YOUR EVERYDAY LIFE, UPGRADED</div><h1>Big goals. <span class="pop">Small wins.</span> Your level-up starts here.</h1><p>School stuff, money questions, everyday chaos? You’ve got this. Grab a tool, make a plan, and take your next step — one win at a time.</p><div class="hero-actions"><a class="btn primary" href="#tools" style="text-decoration:none">Explore helpful tools ↓</a><a class="btn" href="#learn" style="text-decoration:none">Start learning</a></div></div><aside class="hero-art" aria-label="LifeBridge encouragement"><div class="art-circle" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M65 16c15 5 25 17 28 34L68 75 45 52 65 16Z" fill="#fff" fill-opacity=".25"/><path d="m45 52-17 2-9 17 26-2M68 75l-2 17-17 9 2-26"/><circle cx="68" cy="42" r="8"/><path d="m45 75-8 8M53 83l-5 11M36 65l-11 5"/><path d="M28 91c-2-10 4-16 13-18-2 9-7 15-13 18Z" fill="#fff" fill-opacity=".3"/></svg></div><div class="art-note">Welcome to your next chapter</div><div class="art-sub">Learn something. Get organized. Feel more ready.</div></aside></div></section>
+<section class="hero hero-upgraded"><div class="wrap hero-grid">
+ <div class="hero-copy">
+  <div class="eyebrow"><span class="brand-mark" aria-hidden="true">LB</span> YOUR PERSONAL LIFE DASHBOARD</div>
+  <div class="hero-date" id="heroDate">YOUR DAY, AT A GLANCE</div>
+  <h1>Make room for <span class="pop">what matters.</span></h1>
+  <p>One place to learn, plan, stay on top of things, and make progress. Start with one small win — LifeBridge will help you build from there.</p>
+  <div class="hero-actions"><a class="btn primary" href="#today" style="text-decoration:none">Open my dashboard <span aria-hidden="true">↗</span></a><a class="btn hero-secondary" href="#lifebuddy" style="text-decoration:none">Talk to LifeBuddy</a></div>
+  <div class="hero-trust"><span><i></i> Your tools, all together</span><span><i></i> Progress saved on this device</span></div>
+ </div>
+ <aside class="hero-dashboard" aria-label="Daily overview">
+  <div class="hero-dash-top"><div><span class="dash-overline">LIFEBRIDGE / DAILY BRIEFING</span><h2 id="heroGreeting">A fresh start.</h2></div><div class="dash-status"><span></span> READY</div></div>
+  <div class="hero-focus"><div class="focus-orbit"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#d9e9ed" stroke-width="7"/><circle cx="50" cy="50" r="42" fill="none" stroke="#238e91" stroke-width="7" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)" id="heroProgressRing"/><path d="M50 29v22l14 9" fill="none" stroke="#176f91" stroke-width="4" stroke-linecap="round"/></svg><div class="orbit-center"><strong id="heroPercent">0%</strong><span>DONE</span></div></div><div class="hero-focus-copy"><span class="dash-overline">YOUR MOMENTUM</span><strong id="heroProgressTitle">Start with one win.</strong><p id="heroProgressText">Add a mission to your dashboard and watch your progress grow.</p><a href="#today">View today's missions <span aria-hidden="true">→</span></a></div></div>
+  <div class="hero-mini-stats"><div><strong id="heroOpen">0</strong><span>TO DO</span></div><div><strong id="heroDone">0</strong><span>COMPLETED</span></div><div><strong id="heroTools">12</strong><span>WAYS TO LEVEL UP</span></div></div>
+  <div class="hero-dash-bottom"><span class="dash-spark">✦</span><p id="heroDailyLine">Small steps count. Pick one thing and begin.</p><button type="button" id="heroQuickAdd" aria-label="Add a mission">+</button></div>
+ </aside>
+</div></section>
 
 <section class="command-center" id="today">
  <div class="wrap">
@@ -741,6 +790,28 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  }
  $('todayTaskForm').addEventListener('submit',e=>{e.preventDefault();const input=$('todayTaskInput'),text=input.value.trim();if(!text)return;tasks.unshift({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),text,done:false});tasks=tasks.slice(0,100);save();render();input.value='';input.focus();});
  render();
+})();
+
+
+/* Live homepage briefing mirrors the actual mission board. */
+(function(){
+ const $=id=>document.getElementById(id);
+ const date=$('heroDate'),greeting=$('heroGreeting');
+ if(date){date.textContent=new Intl.DateTimeFormat(undefined,{weekday:'long',month:'long',day:'numeric'}).format(new Date()).toUpperCase();}
+ if(greeting){const h=new Date().getHours();greeting.textContent=h<12?'Good morning.':h<17?'Good afternoon.':'Good evening.';}
+ const lines=['Small steps count. Pick one thing and begin.','Progress beats perfect. Keep it moving.','You do not have to do everything — just the next thing.','Make today a little easier for your future self.','A focused 10 minutes is a real start.'];
+ const day=Math.floor(Date.now()/86400000);$('heroDailyLine').textContent=lines[day%lines.length];
+ function sync(){
+  const open=Number($('todayOpenCount')?.textContent||0),done=Number($('todayDoneCount')?.textContent||0),pct=parseInt($('todayPercent')?.textContent||'0',10)||0;
+  $('heroOpen').textContent=open;$('heroDone').textContent=done;$('heroPercent').textContent=pct+'%';
+  $('heroProgressRing').style.strokeDashoffset=264-(264*pct/100);
+  $('heroProgressTitle').textContent=done?'You're building momentum.':open?'Your next win is waiting.':'Start with one win.';
+  $('heroProgressText').textContent=done?done+' mission'+(done===1?'':'s')+' completed. Keep your streak going.':open?open+' mission'+(open===1?'':'s')+' ready when you are.':'Add a mission to your dashboard and watch your progress grow.';
+ }
+ const board=$('todayTaskList');if(board&&window.MutationObserver)new MutationObserver(sync).observe(board,{childList:true,subtree:true,characterData:true});
+ const stats=$('todayPercent');if(stats&&window.MutationObserver)new MutationObserver(sync).observe(stats,{childList:true,characterData:true,subtree:true});
+ sync();
+ $('heroQuickAdd')?.addEventListener('click',()=>{document.getElementById('todayTaskInput')?.focus();document.getElementById('todayTaskInput')?.scrollIntoView({behavior:'smooth',block:'center'});});
 })();
 
 renderXp();initChallenge();
