@@ -1471,7 +1471,7 @@ renderXp();initChallenge();
  function activate(id,update=true){
   if(!routeIds.has(id))id="today";
   const hero=main.querySelector(".hero-upgraded");
-  const panels=[...main.querySelectorAll(":scope > section, :scope > .feature-band")];
+  const panels=[...main.querySelectorAll(":scope > section:not(#accessPanel), :scope > .feature-band")];
   panels.forEach(panel=>{
    const isHome=(id==="today"&&(panel===hero||panel.id==="today"));
    const active=isHome||panel.id===id;
