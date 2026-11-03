@@ -288,116 +288,68 @@ body:before{height:2px;background:#347c70;box-shadow:none}
 .prompt-chip{display:inline-flex;align-items:center;gap:7px}
 
 
-/* LifeBridge: futuristic interface system */
+/* LifeBridge visual refresh — one consistent blue + teal theme */
 :root{
- --bg:#070b16;--surface:#0d1424;--ink:#edf5ff;--muted:#91a4bf;
- --brand:#58e6ff;--brand2:#102d42;--line:#1c3550;
- --shadow:0 18px 55px #0008;
+ --bg:#f2f7fb;--surface:#ffffff;--ink:#173247;--muted:#60798b;
+ --brand:#176f91;--brand2:#e5f2f6;--line:#d8e6ed;
+ --shadow:0 16px 42px rgba(25,67,88,.10);
 }
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{
- background:
-  radial-gradient(ellipse at 12% 0%,#12314a88 0,transparent 34%),
-  radial-gradient(ellipse at 92% 26%,#28205b55 0,transparent 32%),
-  linear-gradient(145deg,#070b16,#090f1e 58%,#080c18);
- color:var(--ink);
+ background:linear-gradient(180deg,#edf5fa 0%,#f8fbfd 46%,#eef7f4 100%)!important;
+ color:#173247!important;
 }
 body:before{
- content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.14;
- background-image:linear-gradient(#3bdcff12 1px,transparent 1px),linear-gradient(90deg,#3bdcff12 1px,transparent 1px);
- background-size:44px 44px;
- mask-image:linear-gradient(to bottom,black,transparent 78%);
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.22;
+ background-image:radial-gradient(#8bb7c8 1px,transparent 1px);
+ background-size:24px 24px;
+ mask-image:linear-gradient(to bottom,black,transparent 72%);
 }
-.topbar,.nav,.site-header{background:#080e1ce8!important;border-color:#1b3249!important;backdrop-filter:blur(18px)}
-a{transition:color .18s ease}
-button,.btn,.smallbtn,.tool-card,.card,.panel,.feature-band,.command-center,.section{
- border-color:var(--line);
-}
-button,.btn,.smallbtn{
- border-radius:12px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease;
-}
-button:hover,.btn:hover,.smallbtn:hover{border-color:#58e6ff88;box-shadow:0 0 22px #26c9ff16}
-.tool-card,.card,.panel,.feature-band,.command-center,.section-card,.hero-panel{
- background:linear-gradient(145deg,#111d30ed,#0b1322f5)!important;
- border:1px solid #25425d!important;border-radius:18px;
- box-shadow:0 12px 34px #0003,inset 0 1px #ffffff08;
-}
-.tool-card{position:relative;overflow:hidden}
-.tool-card:before,.card:before,.panel:before{
- content:"";position:absolute;left:16px;right:16px;top:0;height:1px;
- background:linear-gradient(90deg,transparent,#58e6ff88,#a18bff66,transparent);pointer-events:none;
-}
-.tool-card:hover{transform:translateY(-4px);border-color:#58e6ff88!important;box-shadow:0 16px 42px #0006,0 0 28px #39d7ff12}
-h1,h2,h3{color:#f2f8ff;letter-spacing:-.035em}
-h1{ text-shadow:0 0 38px #47dfff18}
-p,.muted,.subtitle{color:var(--muted)}
-.brand-mark{border-color:#58e6ff;color:#58e6ff;background:#58e6ff12;box-shadow:0 0 20px #58e6ff20}
-.ui-icon,.section-icon,.tool-icon svg{color:#58e6ff!important}
-input,select,textarea{
- background:#080f1d!important;color:#edf5ff!important;border:1px solid #28425b!important;border-radius:11px!important;
-}
-input:focus,select:focus,textarea:focus{outline:2px solid #58e6ff88!important;outline-offset:1px;box-shadow:0 0 0 4px #58e6ff12!important}
-::placeholder{color:#7187a4!important}
-.prompt-chip{background:#0e2033!important;border:1px solid #24445e!important;color:#cdefff!important}
-.hero-art .art-circle{background:radial-gradient(circle,#123a50,#111a31 62%,#0a1120)!important;border:1px solid #3edbff55;box-shadow:0 0 55px #20c9ff18,inset 0 0 35px #20c9ff12}
-.hero-art svg{filter:drop-shadow(0 0 10px #58e6ff25)}
-.lifebuddy-float{background:linear-gradient(135deg,#123b52,#18204a)!important;border:1px solid #58e6ff99!important;box-shadow:0 0 30px #24caff25!important}
-.progress,.progress-bar{background:#17283c!important}
-.progress-bar{background:linear-gradient(90deg,#32c9ff,#8d8aff)!important;box-shadow:0 0 14px #39d9ff66}
-.badge,.tag,.pill{background:#10263a!important;border-color:#2d526c!important;color:#8deaff!important}
-hr{border-color:#20384f}
-footer,.footer{border-color:#1b3249!important}
-@media(max-width:700px){body:before{background-size:32px 32px}.tool-card,.card,.panel{border-radius:15px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
-
-
-/* LifeBridge visual refinement: calm blue + teal palette */
-:root{
- --bg:#f4f8fb;--surface:#ffffff;--ink:#172b3a;--muted:#607486;
- --brand:#167c91;--brand2:#e5f4f5;--line:#dce8ed;
- --shadow:0 14px 34px rgba(28,67,83,.09);
-}
-body{
- background:
-  radial-gradient(ellipse at 8% 8%,rgba(210,235,244,.72),transparent 32%),
-  radial-gradient(ellipse at 94% 48%,rgba(216,244,234,.68),transparent 28%),
-  #f4f8fb;
- color:var(--ink);
-}
-.topbar{background:rgba(255,255,255,.92);border-bottom-color:#dce8ed}
-.logo-mark{background:linear-gradient(135deg,#176f91,#32a995);box-shadow:0 7px 18px rgba(23,111,145,.2)}
-.navlinks a:hover,.tool-card button{color:#167c91}
-.btn.primary{background:linear-gradient(110deg,#176f91,#27a18f);box-shadow:0 8px 20px rgba(23,111,145,.2)}
+.topbar{background:rgba(255,255,255,.94)!important;border-bottom:1px solid #d8e6ed!important;backdrop-filter:blur(16px)}
+.navlinks a{color:#36566a}.navlinks a:hover{color:#147b91}
+.logo{color:#173247}.logo-mark{background:linear-gradient(135deg,#176f91,#32a995)!important;box-shadow:0 8px 20px #176f9130}
 .hero{
- background:
-  radial-gradient(ellipse at 86% 12%,rgba(192,226,239,.8),transparent 38%),
-  radial-gradient(ellipse at 8% 86%,rgba(194,235,222,.72),transparent 34%),
-  linear-gradient(140deg,#fbfdfe,#edf6f8);
+ background:linear-gradient(125deg,#ffffff 0%,#e8f3f8 58%,#e4f4ed 100%)!important;
+ border:1px solid #d7e7ed!important;border-radius:26px;
+ box-shadow:0 18px 48px rgba(27,73,94,.09);
 }
-.eyebrow{color:#176f91;border-color:#cfe5eb;box-shadow:0 5px 18px rgba(23,111,145,.08)}
-.hero h1 .pop{background:linear-gradient(100deg,#176f91 10%,#258f9c 55%,#239b7e);background-clip:text;-webkit-background-clip:text;color:transparent}
-.art-circle{background:linear-gradient(145deg,#176f91,#299e9a 58%,#78c9aa);box-shadow:inset 0 0 50px #ffffff24}
-.tool-card{background:linear-gradient(155deg,#fff,#f7fbfc);border-color:#dce8ed}
-.tool-card:hover{border-color:#a9d1d8;box-shadow:0 20px 42px rgba(28,67,83,.13)}
-.tool-icon{background:linear-gradient(145deg,#e4f1f7,#def4eb);box-shadow:0 5px 13px rgba(23,111,145,.08)}
-.panel{border-color:#dce8ed}
-.result{background:#e5f4f5}
-.feature-band{background:linear-gradient(130deg,#17394c,#176f91 55%,#167d70)}
-.xp-fill{background:linear-gradient(90deg,#8be0c0,#f2d98a)}
-.ai-msg.bot{background:#edf5f7;color:#19394a}
-.ai-msg.user{background:linear-gradient(120deg,#176f91,#279b91)}
-#lifebuddy .panel{background:linear-gradient(140deg,#fff 55%,#edf7f8);border-color:#cfe3e8;box-shadow:0 22px 55px rgba(28,67,83,.1)}
-#lifebuddy .ai-messages{background:linear-gradient(140deg,#f5fafc,#effaf5);border-color:#dce9e9}
-#lifebuddy .ai-msg.bot{background:#fff;border-color:#dce8ed}
-#lifebuddy .ai-msg.user{background:linear-gradient(120deg,#176f91,#279b91);box-shadow:0 6px 14px rgba(23,111,145,.2)}
-.lifebuddy-float{background:linear-gradient(115deg,#176f91,#279b91);box-shadow:0 10px 30px rgba(23,111,145,.3)}
-.prompt-chip{border-color:#cfe3e8;color:#176f91}
-.prompt-chip:hover{background:#e5f4f5}
-.challenge{background:linear-gradient(120deg,#f1f8e8,#e4f4f2);color:#19394a}
-.challenge button{background:#176f91}
-tag{background:#e5f4f5;color:#176f91}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
+.hero h1,.hero h2,.section h2,.section h3{color:#173247!important}
+.hero h1 .pop{background:linear-gradient(100deg,#176f91,#229a91 70%,#399c78)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important}
+.eyebrow{color:#176f91!important;background:#e8f3f7!important;border:1px solid #cfe2e9!important;box-shadow:none!important}
+.art-circle{background:linear-gradient(145deg,#176f91,#299e9a 58%,#78c9aa)!important;box-shadow:0 18px 42px #176f9130!important}
+.tool-card,.card,.panel,.section-card,.hero-panel,.command-card{
+ background:#fff!important;border:1px solid #d9e6eb!important;border-radius:18px!important;
+ box-shadow:0 8px 26px rgba(27,73,94,.07)!important;
+}
+.tool-card:hover{transform:translateY(-4px);border-color:#8fc4cc!important;box-shadow:0 18px 36px rgba(27,73,94,.13)!important}
+.tool-icon{background:linear-gradient(145deg,#e5f1f7,#e1f3eb)!important;color:#176f91!important}
+.tool-icon svg,.section-icon,.ui-icon{color:#176f91!important}
+.btn.primary,.account-btn{background:linear-gradient(110deg,#176f91,#279b8e)!important;color:#fff!important;border-color:transparent!important;box-shadow:0 8px 18px #176f9128!important}
+.btn,.smallbtn{border-radius:12px}
+input,select,textarea{background:#fff!important;color:#173247!important;border:1px solid #cddfe6!important;border-radius:11px!important}
+input:focus,select:focus,textarea:focus{outline:2px solid #72b8c2!important;outline-offset:1px}
+::placeholder{color:#8297a4!important}
+.feature-band{background:linear-gradient(120deg,#17394c,#176f91 55%,#168575)!important;color:#fff!important;border:0!important}
+.feature-band h2,.feature-band p{color:#fff!important}
+.progress,.progress-bar{background:#e3edf0!important}.progress-bar{background:linear-gradient(90deg,#176f91,#45b89b)!important}
+.ai-msg.bot{background:#edf5f7!important;color:#19394a!important}
+.ai-msg.user{background:linear-gradient(120deg,#176f91,#279b91)!important;color:#fff!important}
+#lifebuddy .panel{background:linear-gradient(140deg,#fff,#edf7f8)!important;border-color:#cfe3e8!important}
+#lifebuddy .ai-messages{background:#f4f9fa!important;border-color:#dce9e9!important}
+#lifebuddy .ai-msg.bot{background:#fff!important;border:1px solid #dce8ed!important}
+#lifebuddy .ai-msg.user{color:#fff!important}
+.lifebuddy-float{background:linear-gradient(115deg,#176f91,#279b91)!important;color:#fff!important;border:1px solid #176f91!important;box-shadow:0 10px 28px #176f9135!important}
+.prompt-chip{background:#f0f7f8!important;border:1px solid #cfe3e8!important;color:#176f91!important}
+.prompt-chip:hover{background:#e1f1f2!important}
+.challenge{background:linear-gradient(120deg,#f1f8e8,#e4f4f2)!important;color:#19394a!important}
+.challenge button{background:#176f91!important;color:#fff!important}
+.calendar-panel,.cal-day{background:#fff!important;color:#202a2b!important;border-color:#dce8ed!important}
+.cal-day.selected{background:#e5f4f5!important;border-color:#5597a5!important}
+#toast{background:#17394c!important;color:#fff!important}
+.footer{border-color:#d8e6ed!important;color:#60798b!important}
+::selection{background:#cce8e8;color:#173247}
+@media(max-width:700px){body:before{background-size:20px 20px}.hero{border-radius:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
