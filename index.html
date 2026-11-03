@@ -932,7 +932,7 @@ Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</d
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const $=id=>document.getElementById(id);
-// Public Supabase project settings. Replace these with the values from your own Supabase project.
+// Supabase's public browser configuration is delivered by the server-side /api/config route.
 let supabaseClient = null;
 let supabaseConfigStatus = "loading";
 let activeCloudUserId = null;
@@ -1033,6 +1033,25 @@ async function handleLifeBridgeSession(session) {
     paintAccountButton(null);
     return;
   }
+  const ownerKey = "lb-cloud-owner";
+  const previousOwner = localStorage.getItem(ownerKey);
+  if (previousOwner && previousOwner !== user.id) {
+    const previousSnapshot = collectLifeBridgeSnapshot();
+    try { localStorage.setItem("lb-local-backup:" + previousOwner, JSON.stringify(previousSnapshot)); } catch {}
+    const keysToClear = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith("lifebridge-") && key !== "lifebridge-display-settings") keysToClear.push(key);
+    }
+    keysToClear.forEach(key => localStorage.removeItem(key));
+    try {
+      const saved = JSON.parse(localStorage.getItem("lb-local-backup:" + user.id) || "{}");
+      for (const [key, value] of Object.entries(saved)) {
+        if (key.startsWith("lifebridge-") && localStorage.getItem(key) === null && typeof value === "string") localStorage.setItem(key, value);
+      }
+    } catch {}
+  }
+  localStorage.setItem(ownerKey, user.id);
   activeCloudUserId = user.id;
   paintAccountButton(session);
   const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "LifeBridge learner";
