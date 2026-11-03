@@ -53,14 +53,48 @@ export default async function handler(req, res) {
 
     const data = await upstream.json().catch(() => ({}));
     if (!upstream.ok) {
-      console.error("OpenAI Responses API error:", upstream.status, data?.error?.code || "unknown");
-      return res.status(502).json({ error: "LifeBuddy couldn't get an answer right now. Please try again." });
+      const upstreamCode = typeof data?.error?.code === "string" ? data.error.code : "unknown";
+      console.error("OpenAI Responses API error:", upstream.status, upstreamCode);
+      if (upstream.status === 401 || upstreamCode === "invalid_api_key") {
+        return res.status(503).json({
+          error: "OPENAI_INVALID_API_KEY",
+          message: "LifeBuddy's OpenAI API key is being rejected. Update OPENAI_API_KEY in Vercel, then redeploy."
+        });
+      }
+      if (upstream.status === 429 && (upstreamCode === "insufficient_quota" || upstreamCode === "billing_hard_limit_reached")) {
+        return res.status(503).json({
+          error: "OPENAI_BILLING_LIMIT",
+          message: "The OpenAI API project has reached its usage or billing limit. Check API billing and usage."
+        });
+      }
+      if (upstreamCode === "model_not_found" || upstreamCode === "unsupported_model") {
+        return res.status(503).json({
+          error: "OPENAI_MODEL_UNAVAILABLE",
+          message: "The configured OpenAI model is unavailable to this API project. Check OPENAI_MODEL in Vercel."
+        });
+      }
+      if (upstream.status === 429) {
+        return res.status(503).json({
+          error: "OPENAI_RATE_LIMIT",
+          message: "LifeBuddy is receiving too many requests. Wait a moment and try again."
+        });
+      }
+      return res.status(502).json({
+        error: "OPENAI_UPSTREAM_ERROR",
+        message: "LifeBuddy reached OpenAI, but the service returned an error. Check the Vercel runtime logs."
+      });
     }
     const reply = typeof data.output_text === "string" ? data.output_text.trim() : "";
     if (!reply) return res.status(502).json({ error: "LifeBuddy received an empty reply. Please try again." });
     return res.status(200).json({ reply });
   } catch (error) {
-    console.error("LifeBuddy backend request failed:", error?.message || "unknown error");
-    return res.status(500).json({ error: "LifeBuddy is temporarily unavailable. Please try again." });
+    const timedOut = error?.name === "TimeoutError" || error?.name === "AbortError";
+    console.error("LifeBuddy backend request failed:", timedOut ? "OpenAI request timed out" : (error?.message || "unknown error"));
+    return res.status(timedOut ? 504 : 500).json({
+      error: timedOut ? "OPENAI_TIMEOUT" : "LIFEBUDDY_SERVER_ERROR",
+      message: timedOut
+        ? "LifeBuddy's AI request timed out. Please try again."
+        : "LifeBuddy hit a server error. Check the Vercel runtime logs."
+    });
   }
 }
