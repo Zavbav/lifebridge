@@ -31,18 +31,13 @@ LifeBridge uses [Supabase Auth](https://supabase.com/auth) so passwords are hand
 
 1. Create a free project at [Supabase](https://supabase.com/dashboard).
 2. In the Supabase dashboard, open **Project Settings → API** (or **Data API / API Keys**, depending on the dashboard version). Copy the **Project URL** and the **publishable key** (or legacy **anon/public** key). Never use a secret or service-role key in the website.
-3. Open `index.html` in this GitHub repository and find:
-   ```js
-   const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-   const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
-   ```
-   Replace those two placeholder values with the Project URL and publishable/anon key from your own Supabase project. These are intended for browser use; keep secret/service-role keys private.
-4. In Supabase, open **Authentication → URL Configuration**. Set the Site URL to `https://lifebridge-alpha.vercel.app` and add that same URL to the allowed redirect URLs.
+3. In Vercel, add `SUPABASE_URL` and `SUPABASE_ANON_KEY` under **Settings → Environment Variables**. Use the Supabase Project URL and publishable key (or legacy anon/public key). Do not use a secret/service-role key.
+4. In Supabase, open **Authentication → URL Configuration**. Set the Site URL to your deployed LifeBridge URL and add that URL to the allowed redirect URLs.
 5. In **Authentication → Providers → Email**, enable email/password sign-in. For safer new-account verification, leave email confirmation enabled.
-6. Commit the change to GitHub. Vercel should redeploy the site automatically if it is connected to this repository's `main` branch.
+6. Redeploy the Vercel project after adding the variables.
 7. Test **Sign up** with an email you can access, click the confirmation link if requested, and then test **Sign in**.
 
-The page disables the account submit button until the Supabase settings are supplied. Supabase handles passwords; the site does not store them itself. The current account feature provides email/password registration, sign-in, session persistence, and sign-out. It does not yet create a user profile database or sync learning progress across devices.
+The account page disables submission until the secure configuration route returns valid Supabase settings. Supabase handles passwords; the site does not store them itself. The account feature provides email/password registration, sign-in, session persistence, sign-out, profile creation, and account-level progress backup/sync through the existing `user_progress` table.
 
 
 ## Latest LifeBridge upgrades
@@ -56,9 +51,9 @@ The page disables the account submit button until the Supabase settings are supp
 
 ### Important current limitations
 
-- Supabase authentication will only work after you add your own Supabase Project URL and publishable/anon key to `index.html`, and configure allowed redirect URLs in Supabase. Never put a Supabase secret/service-role key in front-end code.
-- Goals, habits, focus sessions, the to-do list, and other browser-only features are not currently synced across devices or attached to user accounts.
-- This is a static website plus the existing Vercel AI endpoint; the new tools do not require a new database.
+- Supabase authentication and cloud progress sync require `SUPABASE_URL` and `SUPABASE_ANON_KEY` in Vercel, plus the correct allowed redirect URLs in Supabase. Never put a Supabase secret/service-role key in front-end code.
+- Browser keys beginning with `lifebridge` are backed up to the signed-in user's `user_progress.stats` record. This provides account-level backup and basic new-device restoration, not conflict resolution for simultaneous edits on multiple devices.
+- LifeBuddy requires a separate server-side `OPENAI_API_KEY` in Vercel. OpenAI API use may incur charges.
 
 
 ### Calendar & date planner
@@ -83,7 +78,7 @@ The home page now uses a futuristic dark interface with neon mint/purple accents
 - Browser-local persistence for missions. Tasks are not synced across browsers or devices.
 - Reduced-motion support remains enabled for users who prefer less animation.
 
-The existing LifeBuddy, calendar, learning tools, goals, habits, focus timer, budget helper, and Skill Quest remain part of the site. The interface redesign does not by itself activate Supabase account syncing; authentication still needs the configuration described above.
+The existing LifeBuddy, calendar, learning tools, goals, habits, focus timer, budget helper, and Skill Quest remain part of the site. Supabase account syncing is activated when the Vercel environment variables described above are configured.
 
 
 ## Cloud accounts and cross-device progress
