@@ -75,8 +75,8 @@ function render(){
  el('courseAnswer').value='';
  const f=el('courseFeedback');f.textContent='Try it before looking back at the lesson.';f.className='course-feedback';
  el('courseLessonProgress').textContent='Lesson '+(currentIndex+1)+' of '+curriculum[currentSubject].lessons.length;
- el('courseComplete').textContent=done(key())?'Completed ✓':'Mark lesson complete →';
- el('courseComplete').disabled=done(key());
+ el('courseComplete').textContent=done(key())?'Completed ✓':(answeredCorrect?'Mark lesson complete →':'Answer correctly to unlock completion');
+ el('courseComplete').disabled=done(key())||!answeredCorrect;
  renderList();renderCount();
 }
 function renderCount(){el('courseCompleted').textContent=Object.keys(progress).filter(k=>progress[k]===true).length;}
@@ -88,7 +88,7 @@ function check(){
  const f=el('courseFeedback');
  f.textContent=correct?'That’s right. '+current().explain:'Not quite yet. Revisit the lesson and try again. Hint: '+current().explain;
  f.className='course-feedback '+(correct?'good':'try');
- if(correct){el('courseComplete').focus();}
+ if(correct){el('courseComplete').disabled=done(key());el('courseComplete').textContent=done(key())?'Completed ✓':'Mark lesson complete →';}
 }
 subject.addEventListener('change',()=>{currentSubject=subject.value;currentIndex=0;populateLessons();render();});
 el('courseLesson').addEventListener('change',e=>{currentIndex=Number(e.target.value)||0;render();});
