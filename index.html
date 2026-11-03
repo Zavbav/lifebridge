@@ -23,7 +23,89 @@
   "applicationCategory":"ProductivityApplication",
   "operatingSystem":"Any",
   "url":"https://lifebridge-alpha.vercel.app/"
-}</script>
+}
+/* LifeBridge guided course engine: lesson rendering, checks, and local mastery */
+(()=>{
+const el=id=>document.getElementById(id);
+const subject=el('courseSubject');
+if(!subject||!el('courseLessonList'))return;
+const curriculum={
+math:{label:'MATHEMATICS',lessons:[
+{title:'Fractions are parts of a whole',intro:'A fraction describes how many equal parts we have out of the total number of equal parts.',content:'<p>The <strong>denominator</strong> (bottom number) tells how many equal parts make one whole. The <strong>numerator</strong> (top number) tells how many of those parts we are counting.</p><ul><li>In 3/4, the whole is split into 4 equal parts.</li><li>We are talking about 3 of those parts.</li><li>Fractions can represent pieces, measurements, and parts of a group.</li></ul>',example:'Imagine a pizza cut into 8 equal slices. If you eat 3 slices, you ate 3/8 of the pizza.',question:'In the fraction 5/8, what does the 8 tell us?',answers:['how many equal parts make the whole','the total number of equal parts','the denominator'],explain:'The denominator is 8. It tells us the whole is divided into 8 equal parts.'},
+{title:'Equivalent fractions',intro:'Different-looking fractions can represent exactly the same amount.',content:'<p>To make an equivalent fraction, multiply or divide the numerator and denominator by the <strong>same nonzero number</strong>. This changes the numbers, but not the value.</p><ul><li>1/2 = 2/4 = 4/8.</li><li>Each fraction describes one-half of a whole.</li><li>Use a picture or common denominator to compare fractions.</li></ul>',example:'To change 3/5 into an equivalent fraction with denominator 20, multiply top and bottom by 4: 3 × 4 = 12 and 5 × 4 = 20. So 3/5 = 12/20.',question:'Which fraction is equivalent to 2/3: 4/6 or 4/5?',answers:['4/6'],explain:'Multiply both 2 and 3 by 2. That gives 4/6, so the value stays the same.'},
+{title:'Add fractions with unlike denominators',intro:'Before adding fractions, rewrite them so they describe pieces of the same size.',content:'<p>Find a <strong>common denominator</strong>, rewrite each fraction, add the numerators, and keep the shared denominator.</p><ul><li>For 1/3 + 1/6, a common denominator is 6.</li><li>Rewrite 1/3 as 2/6.</li><li>Now add: 2/6 + 1/6 = 3/6 = 1/2.</li></ul>',example:'1/4 + 1/2 → 1/4 + 2/4 = 3/4. The pieces are now the same size, so we can add them.',question:'What is 1/3 + 1/6? Give your answer as a simplified fraction.',answers:['1/2','3/6'],explain:'Rewrite 1/3 as 2/6. Then 2/6 + 1/6 = 3/6, which simplifies to 1/2.'}]},
+science:{label:'SCIENCE',lessons:[
+{title:'Cells: the building blocks of life',intro:'Living things are made of cells. A cell is the smallest unit that can carry out the processes of life.',content:'<p>Cells have structures called <strong>organelles</strong> that perform different jobs.</p><ul><li>The cell membrane controls what enters and leaves.</li><li>The nucleus stores DNA and helps direct cell activities.</li><li>Mitochondria release usable energy from food.</li></ul>',example:'Think of a cell as a school: the nucleus is like the office that stores important information, while the membrane is like the doors that control who enters.',question:'Which cell structure controls what enters and leaves the cell?',answers:['cell membrane','membrane'],explain:'The cell membrane acts as a selective barrier around the cell.'},
+{title:'Matter and its states',intro:'Matter is anything that has mass and takes up space. It commonly exists as a solid, liquid, or gas.',content:'<ul><li><strong>Solid:</strong> particles stay close together and mainly vibrate in place.</li><li><strong>Liquid:</strong> particles stay close but can slide past one another.</li><li><strong>Gas:</strong> particles spread out and move freely.</li></ul><p>Heating or cooling can change how particles move and cause a change of state.</p>',example:'Ice melts into liquid water when it gains enough thermal energy. The substance is still water; its state has changed.',question:'Which state of matter has a fixed volume but takes the shape of its container?',answers:['liquid','a liquid'],explain:'A liquid keeps a fixed volume but flows to match the shape of its container.'},
+{title:'Forces and motion',intro:'A force is a push or pull. Forces can change an object’s speed, direction, or shape.',content:'<p>Forces are measured in newtons (N). When forces are balanced, an object’s motion does not change. When forces are unbalanced, the object accelerates.</p><ul><li>Gravity pulls objects toward one another.</li><li>Friction opposes motion between surfaces.</li><li>A larger net force causes greater acceleration for the same mass.</li></ul>',example:'If you push a box to the right with 10 N and friction pushes left with 4 N, the net force is 6 N to the right.',question:'A box has 10 N pushing right and 4 N pushing left. What is the net force?',answers:['6','6 n','6 newtons','6n'],explain:'Opposite forces subtract: 10 N − 4 N = 6 N to the right.'}]},
+reading:{label:'READING & WRITING',lessons:[
+{title:'Find the main idea',intro:'The main idea is the most important point a passage communicates. Details help explain or support it.',content:'<p>To find a main idea:</p><ul><li>Ask what the whole passage is mostly about.</li><li>Notice ideas that appear more than once.</li><li>Separate the big point from examples and extra details.</li></ul>',example:'If a passage describes how trees provide shade, shelter animals, and absorb carbon dioxide, its main idea may be that trees are important to healthy environments.',question:'Is the main idea the overall point or one small supporting detail?',answers:['overall point','the overall point','main point'],explain:'The main idea is the overall point. Supporting details explain or prove it.'},
+{title:'Use evidence from a text',intro:'Strong answers point to specific details in the reading rather than relying only on guesses.',content:'<p>Use a simple pattern: <strong>claim → evidence → explanation</strong>.</p><ul><li>Claim: answer the question clearly.</li><li>Evidence: quote or describe a relevant detail from the text.</li><li>Explanation: connect that detail to your claim.</li></ul>',example:'Claim: Maya is determined. Evidence: the passage says she practiced every day after failing her first audition. Explanation: continuing to practice shows she did not give up.',question:'What part of a written answer uses a detail from the passage to support a claim?',answers:['evidence'],explain:'Evidence is the text detail that supports your claim.'},
+{title:'Build a clear paragraph',intro:'A focused paragraph develops one main idea in a logical order.',content:'<p>A useful structure is:</p><ul><li><strong>Topic sentence:</strong> introduces the main point.</li><li><strong>Supporting sentences:</strong> give reasons, examples, or evidence.</li><li><strong>Closing sentence:</strong> reinforces the point or shows why it matters.</li></ul>',example:'Topic: Daily reading builds skills. Support: it grows vocabulary and improves comprehension. Closing: even a short reading habit can make a difference over time.',question:'Which sentence usually introduces the paragraph’s main point?',answers:['topic sentence','the topic sentence'],explain:'The topic sentence tells the reader what the paragraph will focus on.'}]},
+history:{label:'HISTORY & CIVICS',lessons:[
+{title:'Primary and secondary sources',intro:'Historians use sources to investigate the past. The source’s relationship to an event matters.',content:'<ul><li><strong>Primary source:</strong> created during the time being studied by someone with direct experience, such as a diary, photograph, letter, or law.</li><li><strong>Secondary source:</strong> created later to explain or analyze the past, such as a textbook or documentary.</li></ul><p>Both can be useful, and both should be evaluated for perspective and reliability.</p>',example:'A soldier’s letter written during a war is a primary source. A modern history book analyzing that war is a secondary source.',question:'A diary written by someone during an event is what kind of source?',answers:['primary','primary source','a primary source'],explain:'The diary was created by someone living through the event, so it is a primary source.'},
+{title:'How local government works',intro:'Local governments make decisions about services and rules that affect communities every day.',content:'<p>Depending on the community, local government may oversee:</p><ul><li>Roads, public spaces, and trash collection.</li><li>Local planning, permits, and building rules.</li><li>Fire protection, libraries, and other community services.</li></ul><p>Residents can participate by voting, attending public meetings, and contacting local representatives.</p>',example:'A city council may hold a public meeting to discuss a proposed park improvement and hear from residents.',question:'Which level of government commonly manages city streets and local parks?',answers:['local government','city government','municipal government'],explain:'City or municipal government commonly manages local streets, parks, and other community services.'},
+{title:'Why the Constitution matters',intro:'A constitution establishes the basic framework and limits of government.',content:'<p>The U.S. Constitution:</p><ul><li>Creates the legislative, executive, and judicial branches.</li><li>Divides powers among branches and between federal and state governments.</li><li>Sets rules for how government operates and how it can be changed.</li></ul><p>The first ten amendments are called the Bill of Rights and protect important individual freedoms.</p>',example:'The separation of powers means Congress makes federal laws, the president carries them out, and courts interpret them.',question:'What are the first ten amendments to the U.S. Constitution called?',answers:['bill of rights','the bill of rights'],explain:'The first ten amendments are known as the Bill of Rights.'}]}
+};
+const progressKey='lifebridge-course-progress-v1';
+let progress={};try{progress=JSON.parse(localStorage.getItem(progressKey)||'{}')||{};}catch{progress={};}
+let currentSubject='math',currentIndex=0,answeredCorrect=false;
+const current=()=>curriculum[currentSubject].lessons[currentIndex];
+const done=(key)=>!!progress[key];
+const key=()=>currentSubject+':'+currentIndex;
+function saveProgress(){try{localStorage.setItem(progressKey,JSON.stringify(progress));}catch{}}
+function renderList(){
+ const root=el('courseLessonList');root.replaceChildren();
+ curriculum[currentSubject].lessons.forEach((lesson,i)=>{
+  const b=document.createElement('button');b.type='button';b.className='course-outline-item'+(i===currentIndex?' active':'')+(done(currentSubject+':'+i)?' done':'');
+  const dot=document.createElement('span');dot.className='course-dot';dot.textContent=done(currentSubject+':'+i)?'✓':String(i+1);
+  const name=document.createElement('span');name.textContent=lesson.title;b.append(dot,name);
+  b.addEventListener('click',()=>{currentIndex=i;render();});root.append(b);
+ });
+}
+function render(){
+ const l=current();answeredCorrect=false;
+ el('courseLesson').value=String(currentIndex);
+ el('courseUnit').textContent=curriculum[currentSubject].label;
+ el('courseDuration').textContent='5 MIN LESSON';
+ el('courseTitle').textContent=l.title;el('courseIntro').textContent=l.intro;
+ el('courseContent').innerHTML=l.content;
+ el('courseExample').innerHTML='<strong>WORKED EXAMPLE</strong>'+l.example;
+ el('courseQuestion').textContent=l.question;
+ el('courseAnswer').value='';
+ const f=el('courseFeedback');f.textContent='Try it before looking back at the lesson.';f.className='course-feedback';
+ el('courseLessonProgress').textContent='Lesson '+(currentIndex+1)+' of '+curriculum[currentSubject].lessons.length;
+ el('courseComplete').textContent=done(key())?'Completed ✓':'Mark lesson complete →';
+ el('courseComplete').disabled=done(key());
+ renderList();renderCount();
+}
+function renderCount(){el('courseCompleted').textContent=Object.keys(progress).filter(k=>progress[k]===true).length;}
+function check(){
+ const value=el('courseAnswer').value.trim().toLowerCase().replace(/[.!?]/g,'').replace(/\s+/g,' ');
+ if(!value){el('courseFeedback').textContent='Type an answer first, then check it.';el('courseFeedback').className='course-feedback try';return;}
+ const correct=current().answers.some(a=>a.toLowerCase()===value);
+ answeredCorrect=correct;
+ const f=el('courseFeedback');
+ f.textContent=correct?'That’s right. '+current().explain:'Not quite yet. Revisit the lesson and try again. Hint: '+current().explain;
+ f.className='course-feedback '+(correct?'good':'try');
+ if(correct){el('courseComplete').focus();}
+}
+subject.addEventListener('change',()=>{currentSubject=subject.value;currentIndex=0;populateLessons();render();});
+el('courseLesson').addEventListener('change',e=>{currentIndex=Number(e.target.value)||0;render();});
+function populateLessons(){const select=el('courseLesson');select.replaceChildren();curriculum[currentSubject].lessons.forEach((l,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=(i+1)+'. '+l.title;select.append(o);});}
+el('courseCheck').addEventListener('click',check);
+el('courseAnswer').addEventListener('keydown',e=>{if(e.key==='Enter')check();});
+el('courseComplete').addEventListener('click',()=>{
+ if(done(key()))return;
+ progress[key()]=true;saveProgress();render();
+ const next=currentIndex+1;
+ if(next<curriculum[currentSubject].lessons.length){currentIndex=next;render();}
+ else{el('courseFeedback').textContent='You completed this subject’s starter course. Choose another subject to keep learning.';el('courseFeedback').className='course-feedback good';}
+});
+populateLessons();render();
+})();
+
+</script>
 <meta name="color-scheme" content="light">
 
 <style>
@@ -594,6 +676,46 @@ body{background:#f5f8fa;color:var(--ink);line-height:1.62}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
+
+/* Structured course library */
+.course-library{margin:0 0 22px;padding:clamp(18px,3vw,26px);border:1px solid #dce7eb;border-radius:19px;background:#fff;box-shadow:0 8px 24px rgba(22,62,78,.045)}
+.course-library-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px}
+.course-library-head h3{font-size:1.42rem;letter-spacing:-.035em;margin:8px 0 4px;color:#234957}
+.course-library-head p{margin:0;color:#667e88;max-width:670px}
+.course-progress-summary{min-width:115px;padding:12px;border:1px solid #dce7eb;border-radius:13px;background:#f5f9fa;text-align:center}
+.course-progress-summary strong{display:block;font-size:1.55rem;color:#176f91}
+.course-progress-summary span,.course-outline-title{font-size:.65rem;letter-spacing:.1em;font-weight:900;color:#718791}
+.course-controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:15px}
+.course-controls label{display:grid;gap:6px;color:#536e79;font-size:.82rem;font-weight:800}
+.course-controls select{width:100%;padding:10px 12px;border:1px solid #d6e3e7;border-radius:10px;background:#fff;color:#244a5a}
+.course-body{display:grid;grid-template-columns:minmax(190px,.34fr) minmax(0,1fr);gap:15px}
+.course-outline{padding:15px;border:1px solid #e2eaed;border-radius:14px;background:#f7fafb}
+.course-outline-title{margin:2px 0 10px}
+.course-outline-item{display:flex;align-items:flex-start;gap:9px;width:100%;padding:10px 9px;border:0;border-radius:10px;background:transparent;text-align:left;color:#4f6974;font-size:.83rem;line-height:1.35}
+.course-outline-item.active{background:#e8f2f4;color:#176f91;font-weight:850}
+.course-outline-item .course-dot{width:21px;height:21px;flex:none;display:grid;place-items:center;border-radius:50%;background:#e5edef;color:#66808a;font-size:.7rem;font-weight:900}
+.course-outline-item.done .course-dot{background:#e2f2eb;color:#26795f}
+.course-lesson{min-width:0;padding:clamp(16px,2.5vw,23px);border:1px solid #e2eaed;border-radius:14px}
+.course-lesson-meta{display:flex;justify-content:space-between;gap:10px;color:#728791;font-size:.65rem;font-weight:900;letter-spacing:.09em}
+.course-lesson h4{font-size:clamp(1.25rem,2.5vw,1.7rem);letter-spacing:-.04em;margin:9px 0;color:#234957}
+.course-intro{color:#617984;margin:0 0 15px}
+.course-content{line-height:1.65;color:#385763}
+.course-content p{margin:9px 0}
+.course-content ul{padding-left:21px}
+.course-example{margin:15px 0;padding:14px 16px;border-left:4px solid #238e91;border-radius:0 11px 11px 0;background:#f0f7f7;color:#315762;line-height:1.6}
+.course-example strong{display:block;margin-bottom:5px;color:#176f91}
+.course-check{margin-top:17px;padding:15px;border:1px solid #dce8eb;border-radius:13px;background:#f7fafb}
+.course-check>strong{font-size:.68rem;letter-spacing:.1em;color:#66808a}
+.course-check p{margin:7px 0 10px;color:#355762}
+.course-answer-row{display:flex;gap:8px}
+.course-answer-row input{min-width:0;flex:1;padding:10px 12px;border:1px solid #d6e3e7;border-radius:10px;background:#fff;color:#193746}
+.course-feedback{font-size:.85rem;margin:8px 0 0!important;min-height:1.4em}
+.course-feedback.good{color:#26795f;font-weight:750}.course-feedback.try{color:#9a6426}
+.course-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:15px;color:#718791;font-size:.78rem}
+.course-footer button:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:720px){.course-body{grid-template-columns:1fr}.course-outline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}.course-outline-title{grid-column:1/-1}.course-library-head{flex-direction:column}.course-progress-summary{width:100%;text-align:left}.course-progress-summary strong{display:inline;margin-right:8px}}
+@media(max-width:480px){.course-controls{grid-template-columns:1fr}.course-outline{grid-template-columns:1fr 1fr}.course-answer-row{flex-direction:column}.course-footer{align-items:flex-start;flex-direction:column}.course-footer button{width:100%}}
+
 </style>
 </head>
 <body>
@@ -675,6 +797,13 @@ Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</d
  </div>
  <div class="learning-path"><div><span class="pill">YOUR NEXT STEP</span><h4>Choose a learning goal</h4><p class="notice">A useful next step beats randomly jumping between topics.</p></div><div class="path-controls"><label class="hidden" for="learningGoal">Learning goal</label><select id="learningGoal"><option value="math">Get stronger at math</option><option value="science">Understand science</option><option value="reading">Improve reading & writing</option><option value="study">Build better study habits</option></select><label class="hidden" for="learningLevel">Current level</label><select id="learningLevel"><option value="starter">I'm just starting</option><option value="building" selected>I know some of this</option><option value="confident">I want a challenge</option></select><button type="button" class="btn primary" id="makeLearningPath">Build my next steps</button></div><div class="path-result" id="learningPathResult" aria-live="polite">Choose a goal and level to get a focused three-step learning plan.</div></div>
 </div>
+
+<div class="course-library" id="courseLibrary">
+ <div class="course-library-head"><div><span class="pill">GUIDED COURSES</span><h3>Learn something, one lesson at a time</h3><p>Short lessons, worked examples, and a check-your-understanding question. Your completed lessons are saved on this device.</p></div><div class="course-progress-summary"><strong id="courseCompleted">0</strong><span>LESSONS COMPLETED</span></div></div>
+ <div class="course-controls"><label>Subject<select id="courseSubject"><option value="math">Mathematics</option><option value="science">Science</option><option value="reading">Reading & writing</option><option value="history">History & civics</option></select></label><label>Lesson<select id="courseLesson"></select></label></div>
+ <div class="course-body"><div class="course-outline"><div class="course-outline-title">YOUR LEARNING PATH</div><div id="courseLessonList"></div></div><article class="course-lesson"><div class="course-lesson-meta"><span id="courseUnit">MATHEMATICS</span><span id="courseDuration">5 MIN LESSON</span></div><h4 id="courseTitle">Fractions are parts of a whole</h4><p id="courseIntro" class="course-intro"></p><div id="courseContent" class="course-content"></div><div class="course-example" id="courseExample"></div><div class="course-check"><strong>CHECK YOUR UNDERSTANDING</strong><p id="courseQuestion"></p><div class="course-answer-row"><input id="courseAnswer" type="text" maxlength="100" placeholder="Type your answer" aria-label="Your lesson answer"><button type="button" class="btn primary" id="courseCheck">Check answer</button></div><p id="courseFeedback" class="course-feedback" aria-live="polite">Try it before looking back at the lesson.</p></div><div class="course-footer"><span id="courseLessonProgress">Lesson 1 of 3</span><button type="button" class="btn primary" id="courseComplete">Mark lesson complete →</button></div></article></div>
+</div>
+
 <div class="panel math-feature">
 <h3>🧠 Math Lab — learn it, practice it, understand it</h3>
 <p class="notice">Choose a topic. Get worked examples, practice questions, and feedback—not just an answer.</p>
