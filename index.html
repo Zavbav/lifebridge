@@ -719,6 +719,38 @@ body{background:#f5f8fa;color:var(--ink);line-height:1.62}
 @media(max-width:480px){.course-controls{grid-template-columns:1fr}.course-outline{grid-template-columns:1fr 1fr}.course-answer-row{flex-direction:column}.course-footer{align-items:flex-start;flex-direction:column}.course-footer button{width:100%}}
 
 </style>
+
+<style id="lifebridge-workspace-system">
+/* Workspace navigation: one focused destination at a time. */
+:root{--lb-rail:#142d3b;--lb-rail-soft:#1c3b4b;--lb-accent:#238e91;--lb-accent-soft:#e5f5f3}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);box-shadow:0 5px 24px rgba(16,45,59,.06)}
+.nav{min-height:76px;gap:18px}
+.navlinks{flex:1;justify-content:flex-end;gap:7px;flex-wrap:nowrap;min-width:0}
+.navlinks a[data-lb-route]{white-space:nowrap;padding:9px 12px;border-radius:12px;font-size:.91rem;color:#60717a;transition:background .18s,color .18s}
+.navlinks a[data-lb-route]:hover,.navlinks a[data-lb-route][aria-current=page]{background:var(--lb-accent-soft);color:#176f73}
+.navlinks a[data-lb-route][aria-current=page]{font-weight:850}
+.navlinks .quick-jump-trigger{white-space:nowrap}
+main>.lb-view-hidden{display:none!important}
+main>.lb-view-active{display:block}
+main>.lb-view-active>.wrap,main>.lb-view-active .wrap{animation:lb-enter .24s ease both}
+@keyframes lb-enter{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+body.lb-workspace-mode{background:#f4f8f8}
+body.lb-workspace-mode main{min-height:calc(100vh - 76px)}
+body.lb-workspace-mode main>.section,body.lb-workspace-mode main>#today,body.lb-workspace-mode main>#tools,body.lb-workspace-mode main>#learn,body.lb-workspace-mode main>#organize,body.lb-workspace-mode main>#budget,body.lb-workspace-mode main>#convert,body.lb-workspace-mode main>#calendar,body.lb-workspace-mode main>#focus,body.lb-workspace-mode main>#lifebuddy,body.lb-workspace-mode main>#lifequest,body.lb-workspace-mode main>#levelup{padding-top:42px;padding-bottom:64px}
+body.lb-workspace-mode main>#today{padding-top:42px;padding-bottom:64px}
+body.lb-workspace-mode .hero-upgraded{padding:34px 0 28px;background:linear-gradient(115deg,#eaf6f5,#f4f2ff)}
+body.lb-workspace-mode .hero-upgraded .hero-grid{grid-template-columns:1.1fr .9fr;gap:28px}
+body.lb-workspace-mode .hero-upgraded h1{font-size:clamp(2.25rem,4vw,3.6rem)}
+body.lb-workspace-mode .command-center{padding:28px 0 54px}
+body.lb-workspace-mode .command-head{margin-bottom:18px}
+body.lb-workspace-mode .section-head{margin-bottom:26px}
+body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>h2{color:#173947}
+.lb-workspace-hint{display:flex;align-items:center;gap:10px;margin:0 0 22px;color:#60717a;font-size:.9rem}
+.lb-workspace-hint:before{content:"";width:24px;height:2px;border-radius:9px;background:var(--lb-accent)}
+@media(max-width:1050px){.nav{align-items:flex-start;padding:12px 0;flex-direction:column}.navlinks{width:100%;justify-content:flex-start;overflow-x:auto;padding:2px 0 7px;scrollbar-width:thin}.navlinks a[data-lb-route]{flex:0 0 auto}.navlinks .quick-jump-trigger{margin-left:auto}}
+@media(max-width:600px){.nav{gap:8px}.navlinks{gap:4px}.navlinks a[data-lb-route]{padding:8px 10px;font-size:.84rem}.navlinks .quick-jump-trigger{font-size:.8rem}.navlinks .quick-jump-trigger kbd{display:none}body.lb-workspace-mode main>.section,body.lb-workspace-mode main>#today{padding-top:28px;padding-bottom:42px}.hero-upgraded .hero-grid{grid-template-columns:1fr!important}.hero-dashboard{max-width:100%}}
+@media(prefers-reduced-motion:reduce){main>.lb-view-active>.wrap,main>.lb-view-active .wrap{animation:none}}
+</style>
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
@@ -768,7 +800,7 @@ body{background:#f5f8fa;color:var(--ink);line-height:1.62}
 <div class="panel"><div class="ai-chat"><div class="ai-messages" id="aiMessages" aria-live="polite"><div class="ai-msg bot">Hello. I'm LifeBuddy. Tell me what you're working on and we'll break it into manageable steps.
 
 Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</div></div>
-<div class="tutor-mode-bar" aria-label="Choose how LifeBuddy teaches"><span>TEACHING MODE</span><div class="tutor-mode-options"><button type="button" class="tutor-mode active" data-tutor-mode="tutor" aria-pressed="true">Tutor</button><button type="button" class="tutor-mode" data-tutor-mode="socratic" aria-pressed="false">Guide me</button><button type="button" class="tutor-mode" data-tutor-mode="explain" aria-pressed="false">Explain</button><button type="button" class="tutor-mode" data-tutor-mode="quiz" aria-pressed="false">Quiz me</button><button type="button" class="tutor-mode" data-tutor-mode="study" aria-pressed="false">Study plan</button></div></div><div class="prompt-chips" aria-label="Try asking LifeBuddy"><button type="button" class="prompt-chip" data-prompt="Help me make a homework plan"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5zM4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h6"/></svg> Homework plan</button><button type="button" class="prompt-chip" data-prompt="Help me make a simple budget"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M7 4h10M15 14h2"/></svg> Simple budget</button><button type="button" class="prompt-chip" data-prompt="Help me break a big task into small steps"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4L19 6"/><path d="M20 12v7H4V5h11"/></svg> Break down a task</button><button type="button" class="prompt-chip" data-prompt="Give me ideas for a fun weekend"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> Weekend ideas</button></div><form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="What do you need help with?" required><button class="btn primary" type="submit" id="aiSend">Ask LifeBuddy ↗</button></form><p class="notice" id="aiNotice">AI connection needs a secure server setup before it can answer with a live AI model. Never put an API key in this page.</p></div></div></div></section>
+<div class="tutor-mode-bar" aria-label="Choose how LifeBuddy teaches"><span>TEACHING MODE</span><div class="tutor-mode-options"><button type="button" class="tutor-mode active" data-tutor-mode="tutor" aria-pressed="true">Tutor</button><button type="button" class="tutor-mode" data-tutor-mode="socratic" aria-pressed="false">Guide me</button><button type="button" class="tutor-mode" data-tutor-mode="explain" aria-pressed="false">Explain</button><button type="button" class="tutor-mode" data-tutor-mode="quiz" aria-pressed="false">Quiz me</button><button type="button" class="tutor-mode" data-tutor-mode="study" aria-pressed="false">Study plan</button></div></div><div class="prompt-chips" aria-label="Try asking LifeBuddy"><button type="button" class="prompt-chip" data-prompt="Help me make a homework plan"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5zM4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h6"/></svg> Homework plan</button><button type="button" class="prompt-chip" data-prompt="Help me make a simple budget"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M7 4h10M15 14h2"/></svg> Simple budget</button><button type="button" class="prompt-chip" data-prompt="Help me break a big task into small steps"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4L19 6"/><path d="M20 12v7H4V5h11"/></svg> Break down a task</button><button type="button" class="prompt-chip" data-prompt="Give me ideas for a fun weekend"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> Weekend ideas</button></div><form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="What do you need help with?" required><button class="btn primary" type="submit" id="aiSend">Ask LifeBuddy ↗</button></form><p class="notice" id="aiNotice">LifeBuddy uses a secure server connection. Your private AI key stays on the server, never in this page.</p></div></div></div></section>
 
 <section class="section hidden" id="accessPanel"><div class="wrap panel"><h2>Make LifeBridge comfortable for you</h2><p class="notice">These display settings stay on this device.</p><div class="access"><button class="btn" id="textToggle">Increase text size</button><button class="btn" id="contrastToggle">High contrast</button><button class="btn" id="resetDisplay">Reset display</button></div></div></section>
 <section class="section" id="tools"><div class="wrap"><div class="section-head"><div><h2>Pick your next win</h2><p>Little tools for the stuff life throws at you. What are we tackling today?</p></div><input class="search" id="toolSearch" type="search" placeholder="Search tools, e.g. budget…" aria-label="Search helpful tools"></div><div class="cards" id="toolCards">
@@ -1412,6 +1444,66 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
 
 renderXp();initChallenge();
 
+</script>
+
+<script id="lifebridge-workspace-router">
+(()=> {
+ const routes = [
+  ["today","Home"],["lifebuddy","LifeBuddy"],["learn","Learning"],["tools","Explore"],["organize","Organizer"],["budget","Budget"],["calendar","Calendar"],["focus","Focus & goals"],["lifequest","Skill Quest"]
+ ];
+ const routeIds = new Set(routes.map(([id])=>id).concat(["convert","levelup"]));
+ const main = document.querySelector("main");
+ const nav = document.querySelector(".navlinks");
+ if(!main||!nav)return;
+ document.body.classList.add("lb-workspace-mode");
+ // Keep the existing quick-jump, accessibility, and account controls intact.
+ const quick=nav.querySelector("#quickJump"), access=nav.querySelector("#accessToggle"), account=nav.querySelector("#accountOpen");
+ nav.querySelectorAll("a").forEach(a=>a.remove());
+ const homeLink=document.createElement("a");
+ routes.forEach(([id,label])=>{
+  const a=document.createElement("a");a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
+  nav.insertBefore(a,quick||access||account||null);
+ });
+ function routeFromHash(){
+  const id=(location.hash||"#today").slice(1);
+  return routeIds.has(id)?id:"today";
+ }
+ function activate(id,update=true){
+  if(!routeIds.has(id))id="today";
+  const hero=main.querySelector(".hero-upgraded");
+  const panels=[...main.querySelectorAll(":scope > section, :scope > .feature-band")];
+  panels.forEach(panel=>{
+   const isHome=(id==="today"&&(panel===hero||panel.id==="today"));
+   const active=isHome||panel.id===id;
+   panel.classList.toggle("lb-view-hidden",!active);
+   panel.classList.toggle("lb-view-active",active);
+   panel.setAttribute("aria-hidden",String(!active));
+  });
+  nav.querySelectorAll("[data-lb-route]").forEach(a=>{
+   const active=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools")||(id==="levelup"&&a.dataset.lbRoute==="lifequest");
+   if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+  });
+  if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
+  window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  document.title=(routes.find(x=>x[0]===id)?.[1]||"LifeBridge")+" | LifeBridge";
+ }
+ // Intercept in-app links so navigation changes workspaces instead of scrolling through one long page.
+ document.addEventListener("click",event=>{
+  const jump=event.target.closest("[data-jump]");
+  if(jump){event.preventDefault();activate(jump.dataset.jump);return;}
+  const targetButton=event.target.closest("[data-target]");
+  if(targetButton){event.preventDefault();activate(targetButton.dataset.target);return;}
+  const link=event.target.closest('a[href^="#"]');
+  if(!link)return;
+  const raw=link.getAttribute("href");
+  if(raw==="#"||raw==="#home"){event.preventDefault();activate("today");return;}
+  const id=raw.slice(1);
+  if(routeIds.has(id)){event.preventDefault();activate(id);return;}
+ });
+ window.addEventListener("popstate",()=>activate(routeFromHash(),false));
+ window.addEventListener("hashchange",()=>activate(routeFromHash(),false));
+ activate(routeFromHash(),false);
+})();
 </script>
 </body>
 </html>
