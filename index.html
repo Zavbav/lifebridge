@@ -350,6 +350,54 @@ footer,.footer{border-color:#1b3249!important}
 @media(max-width:700px){body:before{background-size:32px 32px}.tool-card,.card,.panel{border-radius:15px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
+
+/* LifeBridge visual refinement: calm blue + teal palette */
+:root{
+ --bg:#f4f8fb;--surface:#ffffff;--ink:#172b3a;--muted:#607486;
+ --brand:#167c91;--brand2:#e5f4f5;--line:#dce8ed;
+ --shadow:0 14px 34px rgba(28,67,83,.09);
+}
+body{
+ background:
+  radial-gradient(ellipse at 8% 8%,rgba(210,235,244,.72),transparent 32%),
+  radial-gradient(ellipse at 94% 48%,rgba(216,244,234,.68),transparent 28%),
+  #f4f8fb;
+ color:var(--ink);
+}
+.topbar{background:rgba(255,255,255,.92);border-bottom-color:#dce8ed}
+.logo-mark{background:linear-gradient(135deg,#176f91,#32a995);box-shadow:0 7px 18px rgba(23,111,145,.2)}
+.navlinks a:hover,.tool-card button{color:#167c91}
+.btn.primary{background:linear-gradient(110deg,#176f91,#27a18f);box-shadow:0 8px 20px rgba(23,111,145,.2)}
+.hero{
+ background:
+  radial-gradient(ellipse at 86% 12%,rgba(192,226,239,.8),transparent 38%),
+  radial-gradient(ellipse at 8% 86%,rgba(194,235,222,.72),transparent 34%),
+  linear-gradient(140deg,#fbfdfe,#edf6f8);
+}
+.eyebrow{color:#176f91;border-color:#cfe5eb;box-shadow:0 5px 18px rgba(23,111,145,.08)}
+.hero h1 .pop{background:linear-gradient(100deg,#176f91 10%,#258f9c 55%,#239b7e);background-clip:text;-webkit-background-clip:text;color:transparent}
+.art-circle{background:linear-gradient(145deg,#176f91,#299e9a 58%,#78c9aa);box-shadow:inset 0 0 50px #ffffff24}
+.tool-card{background:linear-gradient(155deg,#fff,#f7fbfc);border-color:#dce8ed}
+.tool-card:hover{border-color:#a9d1d8;box-shadow:0 20px 42px rgba(28,67,83,.13)}
+.tool-icon{background:linear-gradient(145deg,#e4f1f7,#def4eb);box-shadow:0 5px 13px rgba(23,111,145,.08)}
+.panel{border-color:#dce8ed}
+.result{background:#e5f4f5}
+.feature-band{background:linear-gradient(130deg,#17394c,#176f91 55%,#167d70)}
+.xp-fill{background:linear-gradient(90deg,#8be0c0,#f2d98a)}
+.ai-msg.bot{background:#edf5f7;color:#19394a}
+.ai-msg.user{background:linear-gradient(120deg,#176f91,#279b91)}
+#lifebuddy .panel{background:linear-gradient(140deg,#fff 55%,#edf7f8);border-color:#cfe3e8;box-shadow:0 22px 55px rgba(28,67,83,.1)}
+#lifebuddy .ai-messages{background:linear-gradient(140deg,#f5fafc,#effaf5);border-color:#dce9e9}
+#lifebuddy .ai-msg.bot{background:#fff;border-color:#dce8ed}
+#lifebuddy .ai-msg.user{background:linear-gradient(120deg,#176f91,#279b91);box-shadow:0 6px 14px rgba(23,111,145,.2)}
+.lifebuddy-float{background:linear-gradient(115deg,#176f91,#279b91);box-shadow:0 10px 30px rgba(23,111,145,.3)}
+.prompt-chip{border-color:#cfe3e8;color:#176f91}
+.prompt-chip:hover{background:#e5f4f5}
+.challenge{background:linear-gradient(120deg,#f1f8e8,#e4f4f2);color:#19394a}
+.challenge button{background:#176f91}
+tag{background:#e5f4f5;color:#176f91}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
