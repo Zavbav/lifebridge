@@ -933,12 +933,137 @@ Try: “Help me plan my homework” or “Give me ideas for a fun weekend.”</d
 <script>
 const $=id=>document.getElementById(id);
 // Public Supabase project settings. Replace these with the values from your own Supabase project.
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
 let supabaseClient = null;
-if (window.supabase && SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && SUPABASE_ANON_KEY && !SUPABASE_ANON_KEY.includes("YOUR_")) {
-  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let supabaseConfigStatus = "loading";
+let activeCloudUserId = null;
+let cloudSyncMuted = false;
+let cloudSyncTimer = null;
+
+function collectLifeBridgeSnapshot() {
+  const snapshot = {};
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith("lifebridge")) snapshot[key] = localStorage.getItem(key);
+    }
+  } catch (error) {
+    console.warn("LifeBridge could not read local progress for cloud sync.", error);
+  }
+  return snapshot;
 }
+
+async function syncLifeBridgeProgress() {
+  if (!supabaseClient || !activeCloudUserId || cloudSyncMuted) return;
+  const snapshot = collectLifeBridgeSnapshot();
+  let xpData = {};
+  try { xpData = JSON.parse(snapshot["lifebridge-xp-v1"] || "{}") || {}; } catch {}
+  const completed = Object.keys(snapshot).filter(key => /progress|completed|quest-total/i.test(key));
+  const payload = {
+    user_id: activeCloudUserId,
+    xp: Math.max(0, Math.floor(Number(xpData.points) || 0)),
+    completed,
+    badges: Array.isArray(xpData.badges) ? xpData.badges : [],
+    stats: snapshot,
+    updated_at: new Date().toISOString()
+  };
+  const { error } = await supabaseClient.from("user_progress").upsert(payload, { onConflict: "user_id" });
+  if (error) {
+    console.error("LifeBridge cloud progress sync failed:", error.message);
+    showCloudSyncStatus("Your changes are saved on this device. Cloud sync will retry when you are online.");
+  } else {
+    showCloudSyncStatus("Progress synced to your account.");
+  }
+}
+
+function showCloudSyncStatus(message) {
+  const node = document.getElementById("accountMessage");
+  if (node && !document.getElementById("accountModal")?.classList.contains("hidden")) node.textContent = message;
+}
+
+function scheduleLifeBridgeSync() {
+  if (!supabaseClient || !activeCloudUserId || cloudSyncMuted) return;
+  clearTimeout(cloudSyncTimer);
+  cloudSyncTimer = setTimeout(() => { syncLifeBridgeProgress(); }, 900);
+}
+
+function installLifeBridgeStorageSync() {
+  if (window.__lifeBridgeStorageSyncInstalled) return;
+  window.__lifeBridgeStorageSyncInstalled = true;
+  const originalSetItem = Storage.prototype.setItem;
+  Storage.prototype.setItem = function(key, value) {
+    originalSetItem.call(this, key, value);
+    if (this === window.localStorage && typeof key === "string" && key.startsWith("lifebridge")) scheduleLifeBridgeSync();
+  };
+}
+installLifeBridgeStorageSync();
+
+async function initializeSupabase() {
+  try {
+    const response = await fetch("/api/config", { cache: "no-store", headers: { "Accept": "application/json" } });
+    const config = await response.json().catch(() => ({}));
+    if (!response.ok || !config.url || !config.anonKey || !window.supabase) {
+      supabaseConfigStatus = "missing";
+      paintAccountButton(null);
+      setAccountMode("signin");
+      show("accountMessage", "LifeBridge accounts are not configured yet. Add SUPABASE_URL and SUPABASE_ANON_KEY to your Vercel environment variables, then redeploy.");
+      return;
+    }
+    supabaseClient = window.supabase.createClient(config.url, config.anonKey, {
+      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+    });
+    supabaseConfigStatus = "ready";
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
+      setTimeout(() => handleLifeBridgeSession(session), 0);
+    });
+    await refreshAccountSession();
+    setAccountMode("signin");
+  } catch (error) {
+    supabaseConfigStatus = "error";
+    paintAccountButton(null);
+    setAccountMode("signin");
+    show("accountMessage", "LifeBridge could not reach its account service. Please refresh and try again.");
+    console.error("LifeBridge Supabase initialization failed:", error);
+  }
+}
+
+async function handleLifeBridgeSession(session) {
+  const user = session?.user;
+  if (!user) {
+    activeCloudUserId = null;
+    paintAccountButton(null);
+    return;
+  }
+  activeCloudUserId = user.id;
+  paintAccountButton(session);
+  const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "LifeBridge learner";
+  const { error: profileError } = await supabaseClient.from("profiles").upsert(
+    { id: user.id, display_name: displayName },
+    { onConflict: "id" }
+  );
+  if (profileError) console.warn("LifeBridge profile could not be refreshed:", profileError.message);
+
+  const { data, error } = await supabaseClient.from("user_progress")
+    .select("xp, completed, badges, stats")
+    .eq("user_id", user.id)
+    .maybeSingle();
+  if (error) {
+    console.error("LifeBridge could not load cloud progress:", error.message);
+    showCloudSyncStatus("Signed in. Your device progress is available; cloud sync needs attention.");
+    return;
+  }
+  cloudSyncMuted = true;
+  try {
+    const cloudStats = data?.stats && typeof data.stats === "object" ? data.stats : {};
+    for (const [key, value] of Object.entries(cloudStats)) {
+      if (localStorage.getItem(key) === null && typeof value === "string") localStorage.setItem(key, value);
+    }
+  } finally {
+    cloudSyncMuted = false;
+  }
+  await syncLifeBridgeProgress();
+}
+
+
 const num=id=>{const v=$(id).value.trim();return v===''?NaN:Number(v)};
 function show(id,msg){$(id).textContent=msg}
 $('gradeBtn').addEventListener('click',()=>{const e=num('earned'),p=num('possible');if(!Number.isFinite(e)||!Number.isFinite(p)||p<=0||e<0||e>p){show('gradeResult','Please enter valid points. Earned points must be between 0 and total points.');return}const pct=e/p*100;show('gradeResult',`${pct.toFixed(2)}% — ${e} out of ${p} points.`)});
@@ -1031,10 +1156,9 @@ $('accountForm').addEventListener('submit',async e=>{
  }catch(err){show('accountMessage',err.message||'Could not complete account request. Please try again.');}
  finally{submit.disabled=!supabaseClient;submit.textContent=accountMode==='signin'?'Sign in':'Create account';}
 });
-if(supabaseClient){
- supabaseClient.auth.onAuthStateChange((_event,session)=>paintAccountButton(session));
- refreshAccountSession();
-} else paintAccountButton(null);
+paintAccountButton(null);
+$('accountSubmit').disabled = true;
+initializeSupabase();
 
 
 
