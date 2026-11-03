@@ -12,8 +12,9 @@ GitHub Pages can host the static front end, but it cannot run the `/api/chat` se
 2. In the Vercel project, open **Settings → Environment Variables**.
 3. Add `OPENAI_API_KEY` and paste your own OpenAI API key as its value. Keep it private; never add the key to `index.html`, GitHub, or any public file.
 4. Optionally add `OPENAI_MODEL` with a model available to your API project. If omitted, the endpoint defaults to `gpt-5.5`.
-5. Redeploy the project after saving the environment variable.
-6. Open the Vercel deployment URL and test LifeBuddy. The chat API runs at `/api/chat` on that deployment.
+5. Add `SUPABASE_URL` (your Supabase Project URL) and `SUPABASE_ANON_KEY` (the publishable key, or legacy anon/public key). These two values are designed for browser use; never use a Supabase secret/service-role key here.
+6. Redeploy the project after saving the environment variables.
+7. Open the Vercel deployment URL and test LifeBuddy and account sign-in. The chat API runs at `/api/chat`; public Supabase configuration is served by `/api/config` on that deployment.
 
 **Important:** The existing GitHub Pages address will not execute the serverless API. For live AI chat, use the Vercel-hosted site (you can later connect a custom domain). OpenAI API usage may incur charges and requires API access/billing. Keep an eye on usage limits.
 
@@ -83,3 +84,13 @@ The home page now uses a futuristic dark interface with neon mint/purple accents
 - Reduced-motion support remains enabled for users who prefer less animation.
 
 The existing LifeBuddy, calendar, learning tools, goals, habits, focus timer, budget helper, and Skill Quest remain part of the site. The interface redesign does not by itself activate Supabase account syncing; authentication still needs the configuration described above.
+
+
+## Cloud accounts and cross-device progress
+
+LifeBridge now loads its public Supabase connection settings from the server route `/api/config`, rather than keeping project settings as placeholders in the HTML. Configure these Vercel environment variables:
+
+- `SUPABASE_URL`: Supabase Project URL.
+- `SUPABASE_ANON_KEY`: Supabase publishable key (or legacy anon/public key).
+
+Never put a Supabase secret/service-role key in browser code or these public settings. The existing row-level security policies restrict profiles and progress to the signed-in user. After sign-in, LifeBridge creates/updates the user's profile and syncs browser-local keys beginning with `lifebridge` into that user's `user_progress.stats` record. On a new device, cloud-saved values are restored when no local value exists. If both local and cloud values exist, local values are preserved and then synced. This is a simple account-level backup/sync foundation; it is not a conflict-resolution system for simultaneous edits on multiple devices.
