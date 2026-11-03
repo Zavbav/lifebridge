@@ -1344,7 +1344,7 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
   const open=Number($('todayOpenCount')?.textContent||0),done=Number($('todayDoneCount')?.textContent||0),pct=parseInt($('todayPercent')?.textContent||'0',10)||0;
   $('heroOpen').textContent=open;$('heroDone').textContent=done;$('heroPercent').textContent=pct+'%';
   $('heroProgressRing').style.strokeDashoffset=264-(264*pct/100);
-  $('heroProgressTitle').textContent=done?'You're building momentum.':open?'Your next win is waiting.':'Start with one win.';
+  $('heroProgressTitle').textContent=done?"You’re building momentum.":open?"Your next win is waiting.":"Start with one win.";
   $('heroProgressText').textContent=done?done+' mission'+(done===1?'':'s')+' completed. Keep your streak going.':open?open+' mission'+(open===1?'':'s')+' ready when you are.':'Add a mission to your dashboard and watch your progress grow.';
  }
  const board=$('todayTaskList');if(board&&window.MutationObserver)new MutationObserver(sync).observe(board,{childList:true,subtree:true,characterData:true});
