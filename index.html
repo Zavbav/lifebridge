@@ -384,12 +384,51 @@ input:focus,select:focus,textarea:focus{outline:2px solid #72b8c2!important;outl
 @media(max-width:850px){.hero-upgraded{padding:45px 0 38px!important}.hero-upgraded .hero-grid{grid-template-columns:1fr}.hero-dashboard{max-width:590px}.hero-upgraded h1{max-width:680px}}
 @media(max-width:480px){.hero-dashboard{padding:19px 16px 14px;border-radius:19px}.hero-focus{gap:12px}.focus-orbit{width:100px;height:100px}.hero-mini-stats div{padding-left:9px}.hero-mini-stats strong{font-size:1.2rem}.hero-upgraded h1{font-size:clamp(2.65rem,13vw,4rem)}.hero-trust{gap:10px;flex-direction:column}}
 
+
+/* Searchable command palette */
+.quick-jump-trigger{display:flex;align-items:center;gap:9px;background:#f4f8fa!important;color:#426477!important;border-color:#dce8ed!important;font-size:.82rem}
+kbd{font:700 .68rem/1 system-ui,sans-serif;padding:5px 7px;border-radius:6px;background:#edf3f5;border:1px solid #d9e5e9;color:#617d8a;white-space:nowrap}
+.quick-palette{position:fixed;inset:0;z-index:30;display:grid;place-items:start center;padding: min(14vh,110px) 18px 24px}
+.quick-palette.hidden{display:none!important}
+.quick-palette-backdrop{position:absolute;inset:0;background:rgba(15,39,53,.48);backdrop-filter:blur(7px)}
+.quick-palette-box{position:relative;width:min(560px,100%);background:#fff;border:1px solid #d5e4e9;border-radius:20px;box-shadow:0 30px 90px #0e2e3d45;padding:22px;animation:paletteIn .16s ease-out}
+@keyframes paletteIn{from{opacity:0;transform:translateY(-9px) scale(.985)}to{opacity:1;transform:none}}
+.quick-palette-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:17px}
+.quick-palette-head h2{font-size:1.28rem;letter-spacing:-.04em;color:#183c50;margin:5px 0 0}
+.quick-palette-close{width:32px;height:32px;border:0;border-radius:9px;background:#eff5f6;color:#496777;font-size:1.35rem;line-height:1}
+.quick-palette-search{height:48px;display:flex;align-items:center;gap:11px;padding:0 13px;border:1px solid #cbdfe5;border-radius:12px;background:#f8fbfc}
+.quick-palette-search svg{width:19px;height:19px;fill:none;stroke:#72909d;stroke-width:1.8;flex:none}
+.quick-palette-search input{border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;padding:0!important;width:100%;color:#183c50!important}
+.quick-palette-list{display:grid;gap:4px;margin-top:13px;max-height:min(48vh,390px);overflow:auto}
+.quick-palette-list button{display:flex;align-items:center;gap:12px;text-align:left;width:100%;padding:10px;border:0;border-radius:11px;background:transparent;color:#24495d}
+.quick-palette-list button:hover,.quick-palette-list button:focus-visible{background:#edf6f7;outline:0}
+.quick-command-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#e9f3f6;color:#247b8b;font-size:.68rem;font-weight:900;flex:none}
+.quick-palette-list button>span:nth-child(2){display:grid;gap:1px;flex:1}
+.quick-palette-list strong{font-size:.88rem}.quick-palette-list small{font-size:.75rem;color:#78909b}
+.quick-palette-list button[hidden]{display:none}
+.quick-palette-foot{display:flex;justify-content:space-between;border-top:1px solid #e8eff1;padding-top:13px;margin-top:12px;color:#8398a2;font-size:.7rem;font-weight:700}
+@media(max-width:850px){.quick-jump-trigger kbd{display:none}}
+@media(prefers-reduced-motion:reduce){.quick-palette-box{animation:none}}
+
 </style>
 </head>
 <body>
-<button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
+<div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
+ <div class="quick-palette-backdrop" data-close-palette></div>
+ <div class="quick-palette-box"><div class="quick-palette-head"><div><span class="dash-overline">LIFEBRIDGE SHORTCUTS</span><h2 id="quickPaletteTitle">Where do you want to go?</h2></div><button type="button" class="quick-palette-close" id="quickPaletteClose" aria-label="Close quick jump">×</button></div>
+ <label class="quick-palette-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="quickPaletteInput" type="search" placeholder="Search tools or actions…" autocomplete="off"></label>
+ <div class="quick-palette-list" id="quickPaletteList">
+  <button type="button" data-jump="today"><span class="quick-command-icon">01</span><span><strong>Personal dashboard</strong><small>Today's missions and progress</small></span><kbd>↵</kbd></button>
+  <button type="button" data-jump="lifebuddy"><span class="quick-command-icon">02</span><span><strong>Ask LifeBuddy</strong><small>Get help with a task or question</small></span><kbd>↵</kbd></button>
+  <button type="button" data-jump="learn"><span class="quick-command-icon">03</span><span><strong>Learning center</strong><small>Math and homework tools</small></span><kbd>↵</kbd></button>
+  <button type="button" data-jump="budget"><span class="quick-command-icon">04</span><span><strong>Budget helper</strong><small>Plan spending and savings</small></span><kbd>↵</kbd></button>
+  <button type="button" data-jump="organize"><span class="quick-command-icon">05</span><span><strong>To-do organizer</strong><small>Keep your tasks in order</small></span><kbd>↵</kbd></button>
+  <button type="button" data-jump="calendar"><span class="quick-command-icon">06</span><span><strong>Calendar</strong><small>See dates and plan ahead</small></span><kbd>↵</kbd></button>
+  <button type="button" data-jump="focus"><span class="quick-command-icon">07</span><span><strong>Focus timer</strong><small>Start a 25-minute sprint</small></span><kbd>↵</kbd></button>
+ </div><div class="quick-palette-foot"><span>Navigate faster</span><span><kbd>ESC</kbd> to close</span></div></div>
+</div><button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true">↗</span></a>
-<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#calendar">Calendar</a><a href="#focus">Focus & goals</a><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
+<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#calendar">Calendar</a><a href="#focus">Focus & goals</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">Quick jump <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
 <section class="hero hero-upgraded"><div class="wrap hero-grid">
  <div class="hero-copy">
@@ -792,6 +831,22 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  render();
 })();
 
+
+
+/* Quick jump: keyboard-first navigation across LifeBridge. */
+(function(){
+ const palette=document.getElementById('quickPalette'),input=document.getElementById('quickPaletteInput'),trigger=document.getElementById('quickJump'),close=document.getElementById('quickPaletteClose'),items=[...document.querySelectorAll('#quickPaletteList [data-jump]')];
+ if(!palette||!input)return;
+ function open(){palette.classList.remove('hidden');input.value='';filter();document.body.style.overflow='hidden';setTimeout(()=>input.focus(),30);}
+ function shut(){palette.classList.add('hidden');document.body.style.overflow='';trigger?.focus();}
+ function filter(){const q=input.value.trim().toLowerCase();items.forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
+ function go(id){shut();const target=document.getElementById(id);if(target){target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});if(id==='lifebuddy')setTimeout(()=>document.getElementById('aiInput')?.focus({preventScroll:true}),350);if(id==='today')setTimeout(()=>document.getElementById('todayTaskInput')?.focus({preventScroll:true}),350);}}
+ trigger?.addEventListener('click',open);close?.addEventListener('click',shut);input.addEventListener('input',filter);
+ palette.addEventListener('click',e=>{if(e.target.closest('[data-close-palette]'))shut();});
+ items.forEach(b=>b.addEventListener('click',()=>go(b.dataset.jump)));
+ input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const first=items.find(b=>!b.hidden);if(first)go(first.dataset.jump);}if(e.key==='Escape')shut();});
+ document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();open();}else if(e.key==='Escape'&&!palette.classList.contains('hidden'))shut();});
+})();
 
 /* Live homepage briefing mirrors the actual mission board. */
 (function(){
