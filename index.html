@@ -16,13 +16,13 @@
 <meta name="twitter:description" content="Study, plan, focus, manage money, build habits, and keep life moving with LifeBridge.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <script type="application/ld+json">{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"LifeBridge",
-  "description":"A life dashboard with study tools, budgeting, planning, habits, goals, focus sessions, and everyday utilities.",
-  "applicationCategory":"ProductivityApplication",
-  "operatingSystem":"Any",
-  "url":"https://lifebridge-alpha.vercel.app/"
+ "@context":"https://schema.org",
+ "@type":"WebApplication",
+ "name":"LifeBridge",
+ "description":"A life dashboard with study tools, budgeting, planning, habits, goals, focus sessions, and everyday utilities.",
+ "applicationCategory":"ProductivityApplication",
+ "operatingSystem":"Any",
+ "url":"https://lifebridge-alpha.vercel.app/"
 }
 </script>
 <script>
@@ -59,10 +59,10 @@ function saveProgress(){try{localStorage.setItem(progressKey,JSON.stringify(prog
 function renderList(){
  const root=el('courseLessonList');root.replaceChildren();
  curriculum[currentSubject].lessons.forEach((lesson,i)=>{
-  const b=document.createElement('button');b.type='button';b.className='course-outline-item'+(i===currentIndex?' active':'')+(done(currentSubject+':'+i)?' done':'');
-  const dot=document.createElement('span');dot.className='course-dot';dot.textContent=done(currentSubject+':'+i)?'✓':String(i+1);
-  const name=document.createElement('span');name.textContent=lesson.title;b.append(dot,name);
-  b.addEventListener('click',()=>{currentIndex=i;render();});root.append(b);
+ const b=document.createElement('button');b.type='button';b.className='course-outline-item'+(i===currentIndex?' active':'')+(done(currentSubject+':'+i)?' done':'');
+ const dot=document.createElement('span');dot.className='course-dot';dot.textContent=done(currentSubject+':'+i)?'✓':String(i+1);
+ const name=document.createElement('span');name.textContent=lesson.title;b.append(dot,name);
+ b.addEventListener('click',()=>{currentIndex=i;render();});root.append(b);
  });
 }
 function render(){
@@ -109,7 +109,6 @@ populateLessons();render();
 
 </script>
 <meta name="color-scheme" content="light">
-
 <style>
 :root{--bg:#f7f5ff;--surface:#fff;--ink:#201744;--muted:#6f6888;--brand:#7047ff;--brand2:#eee8ff;--line:#e6defb;--shadow:0 14px 34px #4932a315}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 8% 15%,#f0eaff 0,transparent 30%),radial-gradient(ellipse at 92% 55%,#e5fff6 0,transparent 25%),var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body.large-text{font-size:20px}body.high-contrast{--bg:#fff;--surface:#fff;--ink:#000;--muted:#222;--brand:#00534d;--brand2:#e5fff9;--line:#555}
@@ -719,7 +718,6 @@ body{background:#f5f8fa;color:var(--ink);line-height:1.62}
 @media(max-width:480px){.course-controls{grid-template-columns:1fr}.course-outline{grid-template-columns:1fr 1fr}.course-answer-row{flex-direction:column}.course-footer{align-items:flex-start;flex-direction:column}.course-footer button{width:100%}}
 
 </style>
-
 <style id="lifebridge-workspace-system">
 /* Workspace navigation: one focused destination at a time. */
 :root{--lb-rail:#142d3b;--lb-rail-soft:#1c3b4b;--lb-accent:#238e91;--lb-accent-soft:#e5f5f3}
@@ -757,60 +755,58 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
- <div class="quick-palette-backdrop" data-close-palette></div>
- <div class="quick-palette-box"><div class="quick-palette-head"><div><span class="dash-overline">LIFEBRIDGE SHORTCUTS</span><h2 id="quickPaletteTitle">Where do you want to go?</h2></div><button type="button" class="quick-palette-close" id="quickPaletteClose" aria-label="Close quick jump">×</button></div>
- <label class="quick-palette-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="quickPaletteInput" type="search" placeholder="Search tools or actions…" autocomplete="off"></label>
- <div class="quick-palette-list" id="quickPaletteList">
-  <button type="button" data-jump="today"><span class="quick-command-icon">01</span><span><strong>Personal dashboard</strong><small>Today's missions and progress</small></span><kbd>↵</kbd></button>
-  <button type="button" data-jump="lifebuddy"><span class="quick-command-icon">02</span><span><strong>Ask LifeBuddy</strong><small>Get help with a task or question</small></span><kbd>↵</kbd></button>
-  <button type="button" data-jump="learn"><span class="quick-command-icon">03</span><span><strong>Learning center</strong><small>Math and homework tools</small></span><kbd>↵</kbd></button>
-  <button type="button" data-jump="budget"><span class="quick-command-icon">04</span><span><strong>Budget helper</strong><small>Plan spending and savings</small></span><kbd>↵</kbd></button>
-  <button type="button" data-jump="organize"><span class="quick-command-icon">05</span><span><strong>To-do organizer</strong><small>Keep your tasks in order</small></span><kbd>↵</kbd></button>
-  <button type="button" data-jump="calendar"><span class="quick-command-icon">06</span><span><strong>Calendar</strong><small>See dates and plan ahead</small></span><kbd>↵</kbd></button>
-  <button type="button" data-jump="focus"><span class="quick-command-icon">07</span><span><strong>Focus timer</strong><small>Start a 25-minute sprint</small></span><kbd>↵</kbd></button>
- </div><div class="quick-palette-foot"><span>Navigate faster</span><span><kbd>ESC</kbd> to close</span></div></div>
+<div class="quick-palette-backdrop" data-close-palette></div>
+<div class="quick-palette-box"><div class="quick-palette-head"><div><span class="dash-overline">LIFEBRIDGE SHORTCUTS</span><h2 id="quickPaletteTitle">Where do you want to go?</h2></div><button type="button" class="quick-palette-close" id="quickPaletteClose" aria-label="Close quick jump">×</button></div>
+<label class="quick-palette-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="quickPaletteInput" type="search" placeholder="Search tools or actions…" autocomplete="off"></label>
+<div class="quick-palette-list" id="quickPaletteList">
+<button type="button" data-jump="today"><span class="quick-command-icon">01</span><span><strong>Personal dashboard</strong><small>Today's missions and progress</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="lifebuddy"><span class="quick-command-icon">02</span><span><strong>Ask LifeBuddy</strong><small>Get help with a task or question</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="learn"><span class="quick-command-icon">03</span><span><strong>Learning center</strong><small>Math and homework tools</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="budget"><span class="quick-command-icon">04</span><span><strong>Budget helper</strong><small>Plan spending and savings</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="organize"><span class="quick-command-icon">05</span><span><strong>To-do organizer</strong><small>Keep your tasks in order</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="calendar"><span class="quick-command-icon">06</span><span><strong>Calendar</strong><small>See dates and plan ahead</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="focus"><span class="quick-command-icon">07</span><span><strong>Focus timer</strong><small>Start a 25-minute sprint</small></span><kbd>↵</kbd></button>
+</div><div class="quick-palette-foot"><span>Navigate faster</span><span><kbd>ESC</kbd> to close</span></div></div>
 </div><button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
-<a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true">↗</span></a>
+<a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true"></span></a>
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#calendar">Calendar</a><a href="#focus">Focus & goals</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">Quick jump <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
 <section class="hero hero-upgraded"><div class="wrap hero-grid">
- <div class="hero-copy">
-  <div class="eyebrow"><span class="brand-mark" aria-hidden="true">LB</span> YOUR PERSONAL LIFE DASHBOARD</div>
-  <div class="hero-date" id="heroDate">YOUR DAY, AT A GLANCE</div>
-  <h1>Make room for <span class="pop">what matters.</span></h1>
-  <p>One place to learn, plan, stay on top of things, and make progress. Start with one small win — LifeBridge will help you build from there.</p>
-  <div class="hero-actions"><a class="btn primary" href="#today" style="text-decoration:none">Open my dashboard <span aria-hidden="true">↗</span></a><a class="btn hero-secondary" href="#lifebuddy" style="text-decoration:none">Talk to LifeBuddy</a></div>
-  <div class="hero-trust"><span><i></i> Your tools, all together</span><span><i></i> Progress saved on this device</span></div>
- </div>
- <aside class="hero-dashboard" aria-label="Daily overview">
-  <div class="hero-dash-top"><div><span class="dash-overline">LIFEBRIDGE / DAILY BRIEFING</span><h2 id="heroGreeting">A fresh start.</h2></div><div class="dash-status"><span></span> READY</div></div>
-  <div class="hero-focus"><div class="focus-orbit"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#d9e9ed" stroke-width="7"/><circle cx="50" cy="50" r="42" fill="none" stroke="#238e91" stroke-width="7" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)" id="heroProgressRing"/><path d="M50 29v22l14 9" fill="none" stroke="#176f91" stroke-width="4" stroke-linecap="round"/></svg><div class="orbit-center"><strong id="heroPercent">0%</strong><span>DONE</span></div></div><div class="hero-focus-copy"><span class="dash-overline">YOUR MOMENTUM</span><strong id="heroProgressTitle">Start with one win.</strong><p id="heroProgressText">Add a mission to your dashboard and watch your progress grow.</p><a href="#today">View today's missions <span aria-hidden="true">→</span></a></div></div>
-  <div class="hero-mini-stats"><div><strong id="heroOpen">0</strong><span>TO DO</span></div><div><strong id="heroDone">0</strong><span>COMPLETED</span></div><div><strong id="heroTools">12</strong><span>WAYS TO LEVEL UP</span></div></div>
-  <div class="hero-dash-bottom"><span class="dash-spark">✦</span><p id="heroDailyLine">Small steps count. Pick one thing and begin.</p><button type="button" id="heroQuickAdd" aria-label="Add a mission">+</button></div>
- </aside>
+<div class="hero-copy">
+<div class="eyebrow"><span class="brand-mark" aria-hidden="true">LB</span> YOUR PERSONAL LIFE DASHBOARD</div>
+<div class="hero-date" id="heroDate">YOUR DAY, AT A GLANCE</div>
+<h1>Make room for <span class="pop">what matters.</span></h1>
+<p>One place to learn, plan, stay on top of things, and make progress. Start with one small win — LifeBridge will help you build from there.</p>
+<div class="hero-actions"><a class="btn primary" href="#today" style="text-decoration:none">Open my dashboard <span aria-hidden="true"></span></a><a class="btn hero-secondary" href="#lifebuddy" style="text-decoration:none">Talk to LifeBuddy</a></div>
+<div class="hero-trust"><span><i></i> Your tools, all together</span><span><i></i> Progress saved on this device</span></div>
+</div>
+<aside class="hero-dashboard" aria-label="Daily overview">
+<div class="hero-dash-top"><div><span class="dash-overline">LIFEBRIDGE / DAILY BRIEFING</span><h2 id="heroGreeting">A fresh start.</h2></div><div class="dash-status"><span></span> READY</div></div>
+<div class="hero-focus"><div class="focus-orbit"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#d9e9ed" stroke-width="7"/><circle cx="50" cy="50" r="42" fill="none" stroke="#238e91" stroke-width="7" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)" id="heroProgressRing"/><path d="M50 29v22l14 9" fill="none" stroke="#176f91" stroke-width="4" stroke-linecap="round"/></svg><div class="orbit-center"><strong id="heroPercent">0%</strong><span>DONE</span></div></div><div class="hero-focus-copy"><span class="dash-overline">YOUR MOMENTUM</span><strong id="heroProgressTitle">Start with one win.</strong><p id="heroProgressText">Add a mission to your dashboard and watch your progress grow.</p><a href="#today">View today's missions <span aria-hidden="true">→</span></a></div></div>
+<div class="hero-mini-stats"><div><strong id="heroOpen">0</strong><span>TO DO</span></div><div><strong id="heroDone">0</strong><span>COMPLETED</span></div><div><strong id="heroTools">12</strong><span>WAYS TO LEVEL UP</span></div></div>
+<div class="hero-dash-bottom"><span class="dash-spark">✦</span><p id="heroDailyLine">Small steps count. Pick one thing and begin.</p><button type="button" id="heroQuickAdd" aria-label="Add a mission">+</button></div>
+</aside>
 </div></section>
-
 <section class="command-center" id="today">
- <div class="wrap">
-  <div class="command-head"><div><div class="command-kicker">LIFEBRIDGE // PERSONAL COMMAND CENTER</div><h2 class="command-title">Make today count.</h2><p class="command-sub">One clear next step. Your goals, right here. Your progress, building every day.</p></div><a class="btn primary" href="#focus" style="text-decoration:none">Start a focus sprint ↗</a></div>
-  <div class="command-grid">
-   <div class="command-card"><h3>◈ Today's mission</h3><form id="todayTaskForm" class="command-inputrow"><input id="todayTaskInput" maxlength="140" placeholder="Add a task, assignment, or tiny win…" aria-label="New task" required><button class="btn primary" type="submit">+ Add mission</button></form><div id="todayTaskList" aria-live="polite"></div><div class="command-stats"><div class="command-stat"><strong id="todayOpenCount">0</strong><span>OPEN MISSIONS</span></div><div class="command-stat"><strong id="todayDoneCount">0</strong><span>COMPLETED</span></div><div class="command-stat"><strong id="todayPercent">0%</strong><span>PROGRESS</span></div></div></div>
-   <div class="command-card"><h3>✦ Your launch sequence</h3><p class="command-sub">A simple path from overwhelmed to in motion.</p><div class="command-tip"><strong>01 / Choose one thing</strong><br>Pick the task that matters most today. Smaller is okay.</div><div class="command-tip"><strong>02 / Focus for 25 minutes</strong><br>Use a sprint to protect your attention and make a start.</div><div class="command-tip"><strong>03 / Record the win</strong><br>Check off the task and build momentum, one step at a time.</div><div class="command-actions"><a class="btn" href="#calendar">Open calendar</a><a class="btn" href="#organize">Organize tasks</a><a class="btn" href="#lifequest">Play Skill Quest</a></div></div>
-  </div>
- </div>
+<div class="wrap">
+<div class="command-head"><div><div class="command-kicker">LIFEBRIDGE // PERSONAL COMMAND CENTER</div><h2 class="command-title">Make today count.</h2><p class="command-sub">One clear next step. Your goals, right here. Your progress, building every day.</p></div><a class="btn primary" href="#focus" style="text-decoration:none">Start a focus sprint </a></div>
+<div class="command-grid">
+<div class="command-card"><h3>◈ Today's mission</h3><form id="todayTaskForm" class="command-inputrow"><input id="todayTaskInput" maxlength="140" placeholder="Add a task, assignment, or tiny win…" aria-label="New task" required><button class="btn primary" type="submit">+ Add mission</button></form><div id="todayTaskList" aria-live="polite"></div><div class="command-stats"><div class="command-stat"><strong id="todayOpenCount">0</strong><span>OPEN MISSIONS</span></div><div class="command-stat"><strong id="todayDoneCount">0</strong><span>COMPLETED</span></div><div class="command-stat"><strong id="todayPercent">0%</strong><span>PROGRESS</span></div></div></div>
+<div class="command-card"><h3>✦ Your launch sequence</h3><p class="command-sub">A simple path from overwhelmed to in motion.</p><div class="command-tip"><strong>01 / Choose one thing</strong><br>Pick the task that matters most today. Smaller is okay.</div><div class="command-tip"><strong>02 / Focus for 25 minutes</strong><br>Use a sprint to protect your attention and make a start.</div><div class="command-tip"><strong>03 / Record the win</strong><br>Check off the task and build momentum, one step at a time.</div><div class="command-actions"><a class="btn" href="#calendar">Open calendar</a><a class="btn" href="#organize">Organize tasks</a><a class="btn" href="#lifequest">Play Skill Quest</a></div></div>
+</div>
+</div>
 </section>
 <section class="section" id="lifebuddy"><div class="wrap"><div class="section-head"><div><span class="tag">YOUR HELPER</span><h2 style="margin-top:10px"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span> Meet LifeBuddy</h2><p>Get help breaking down a task, brainstorming, studying, or planning your next step.</p></div></div>
 <div class="panel lifebuddy-panel"><div class="ai-chat">
- <div class="ai-chat-heading"><div><span class="ai-online-dot"></span><strong>LifeBuddy is ready</strong><span class="ai-heading-sub">A learning partner for your next step</span></div><button type="button" class="ai-new-chat" id="aiNewChat">New chat ↺</button></div>
- <div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-relevant="additions text"><div class="ai-msg bot">Hey! I'm LifeBuddy. Tell me what you're working on and we'll figure it out together.
+<div class="ai-chat-heading"><div><span class="ai-online-dot"></span><strong>LifeBuddy is ready</strong><span class="ai-heading-sub">A learning partner for your next step</span></div><button type="button" class="ai-new-chat" id="aiNewChat">New chat ↺</button></div>
+<div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-relevant="additions text"><div class="ai-msg bot">Hey! I'm LifeBuddy. Tell me what you're working on and we'll figure it out together.
 
 I can help you understand a lesson, check your thinking, make a study plan, or break a big task into smaller steps.</div></div>
- <div class="tutor-mode-bar" aria-label="Choose how LifeBuddy teaches"><span>HOW SHOULD I HELP?</span><div class="tutor-mode-options"><button type="button" class="tutor-mode active" data-tutor-mode="tutor" aria-pressed="true">Tutor</button><button type="button" class="tutor-mode" data-tutor-mode="socratic" aria-pressed="false">Guide me</button><button type="button" class="tutor-mode" data-tutor-mode="explain" aria-pressed="false">Explain</button><button type="button" class="tutor-mode" data-tutor-mode="quiz" aria-pressed="false">Quiz me</button><button type="button" class="tutor-mode" data-tutor-mode="study" aria-pressed="false">Study plan</button></div></div>
- <div class="prompt-chips" aria-label="Try asking LifeBuddy"><button type="button" class="prompt-chip" data-prompt="Help me make a homework plan">Homework plan</button><button type="button" class="prompt-chip" data-prompt="Explain this topic in simple words and give me an example">Explain a topic</button><button type="button" class="prompt-chip" data-prompt="Quiz me on what I am studying, one question at a time">Quiz me</button><button type="button" class="prompt-chip" data-prompt="Help me break a big task into small steps">Break down a task</button></div>
- <form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="Ask anything you're working on…" autocomplete="off" required><button class="btn primary" type="submit" id="aiSend">Send <span aria-hidden="true">↗</span></button></form>
- <div class="ai-footer"><p class="notice" id="aiNotice">LifeBuddy is here to help you learn. Check important information with a trusted source.</p><span id="aiCharCount">0 / 1,200</span></div>
- </div></div></div></section>
-
+<div class="tutor-mode-bar" aria-label="Choose how LifeBuddy teaches"><span>HOW SHOULD I HELP?</span><div class="tutor-mode-options"><button type="button" class="tutor-mode active" data-tutor-mode="tutor" aria-pressed="true">Tutor</button><button type="button" class="tutor-mode" data-tutor-mode="socratic" aria-pressed="false">Guide me</button><button type="button" class="tutor-mode" data-tutor-mode="explain" aria-pressed="false">Explain</button><button type="button" class="tutor-mode" data-tutor-mode="quiz" aria-pressed="false">Quiz me</button><button type="button" class="tutor-mode" data-tutor-mode="study" aria-pressed="false">Study plan</button></div></div>
+<div class="prompt-chips" aria-label="Try asking LifeBuddy"><button type="button" class="prompt-chip" data-prompt="Help me make a homework plan">Homework plan</button><button type="button" class="prompt-chip" data-prompt="Explain this topic in simple words and give me an example">Explain a topic</button><button type="button" class="prompt-chip" data-prompt="Quiz me on what I am studying, one question at a time">Quiz me</button><button type="button" class="prompt-chip" data-prompt="Help me break a big task into small steps">Break down a task</button></div>
+<form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="Ask anything you're working on…" autocomplete="off" required><button class="btn primary" type="submit" id="aiSend">Send <span aria-hidden="true"></span></button></form>
+<div class="ai-footer"><p class="notice" id="aiNotice">LifeBuddy is here to help you learn. Check important information with a trusted source.</p><span id="aiCharCount">0 / 1,200</span></div>
+</div></div></div></section>
 <section class="section hidden" id="accessPanel"><div class="wrap panel"><h2>Make LifeBridge comfortable for you</h2><p class="notice">These display settings stay on this device.</p><div class="access"><button class="btn" id="textToggle">Increase text size</button><button class="btn" id="contrastToggle">High contrast</button><button class="btn" id="resetDisplay">Reset display</button></div></div></section>
 <section class="section" id="tools"><div class="wrap"><div class="section-head"><div><h2>Pick your next win</h2><p>Little tools for the stuff life throws at you. What are we tackling today?</p></div><input class="search" id="toolSearch" type="search" placeholder="Search tools, e.g. budget…" aria-label="Search helpful tools"></div><div class="cards" id="toolCards">
 <article class="tool-card" data-search="school homework learning grade percentage calculator"><div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5zM4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h6"/></svg></div><h3>Learning Center</h3><p>Work through grades, percentages, and school tasks step by step.</p><button data-target="learn">Explore learning →</button></article>
@@ -818,37 +814,35 @@ I can help you understand a lesson, check your thinking, make a study plan, or b
 <article class="tool-card" data-search="tasks to do list organizer reminders planning"><div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 12 4 4L19 6"/><path d="M20 12v7H4V5h11"/></svg></div><h3>To-Do List</h3><p>Keep track of tasks and check them off as you go.</p><button data-target="organize">Organize my day →</button></article>
 <article class="tool-card" data-search="unit converter measurement temperature length"><div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 9A7 7 0 0 1 17 5l3 2M4 17l3 2a7 7 0 0 0 11.5-4"/></svg></div><h3>Unit Converter</h3><p>Convert common measurements with a quick calculation.</p><button data-target="convert">Convert units →</button></article>
 </div><p id="noResults" class="empty hidden">No matching tools yet. Try another word.</p></div></section>
-<section class="section" id="learn" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2>📚 Learning Center</h2><p>Simple calculators to help you understand your work.</p></div></div>
+<section class="section" id="learn" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2> Learning Center</h2><p>Simple calculators to help you understand your work.</p></div></div>
 <div class="learning-studio">
- <div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>Turn notes into a study session</h3><p>Build your own flashcards from class notes, review them, and track what you know. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div></div>
- <div class="study-grid">
-  <div class="study-builder">
-   <h4>01 / Create a flashcard deck</h4><p class="notice">Put one card on each line using <strong>term: definition</strong>. You can paste notes directly from class.</p>
-   <div class="field"><label for="deckName">Deck name</label><input id="deckName" maxlength="60" placeholder="e.g. Cell biology — chapter 3"></div>
-   <div class="field"><label for="deckNotes">Your notes</label><textarea id="deckNotes" rows="7" placeholder="Mitochondria: The part of a cell that releases usable energy.&#10;Photosynthesis: The process plants use to turn light into chemical energy.&#10;Chlorophyll: The green pigment that absorbs light."></textarea></div>
-   <div class="study-actions"><button type="button" class="btn primary" id="createDeck">Create deck</button><button type="button" class="btn" id="sampleDeck">Load sample notes</button></div>
-   <p id="deckMessage" class="math-feedback" aria-live="polite"></p>
-  </div>
-  <div class="study-review">
-   <div class="study-review-head"><div><h4>02 / Active recall</h4><p class="notice">Try to remember the answer before you reveal it.</p></div><select id="deckSelect" aria-label="Choose a flashcard deck"><option value="">No decks yet</option></select></div>
-   <div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Flashcard. Select to reveal the answer"><span class="flashcard-label" id="flashcardLabel">QUESTION</span><strong id="flashcardText">Create a deck to begin.</strong><span class="flashcard-hint" id="flashcardHint">Your first card will appear here.</span></div>
-   <div class="study-actions"><button type="button" class="btn" id="prevCard">← Previous</button><button type="button" class="btn primary" id="flipCard">Reveal answer</button><button type="button" class="btn" id="nextCard">Next →</button></div>
-   <div class="study-actions study-rating"><button type="button" class="btn" id="needPractice">Need practice</button><button type="button" class="btn primary" id="knowCard">I knew it ✓</button></div>
-   <div class="study-progress"><div class="progress-track"><span id="deckProgress"></span></div><p class="notice" id="deckPosition">0 of 0 cards</p></div>
-   <div class="study-deck-footer"><button type="button" class="text-action" id="shuffleDeck">Shuffle cards</button><button type="button" class="text-action" id="deleteDeck">Delete deck</button></div>
-  </div>
- </div>
- <div class="learning-path"><div><span class="pill">YOUR NEXT STEP</span><h4>Choose a learning goal</h4><p class="notice">A useful next step beats randomly jumping between topics.</p></div><div class="path-controls"><label class="hidden" for="learningGoal">Learning goal</label><select id="learningGoal"><option value="math">Get stronger at math</option><option value="science">Understand science</option><option value="reading">Improve reading & writing</option><option value="study">Build better study habits</option></select><label class="hidden" for="learningLevel">Current level</label><select id="learningLevel"><option value="starter">I'm just starting</option><option value="building" selected>I know some of this</option><option value="confident">I want a challenge</option></select><button type="button" class="btn primary" id="makeLearningPath">Build my next steps</button></div><div class="path-result" id="learningPathResult" aria-live="polite">Choose a goal and level to get a focused three-step learning plan.</div></div>
+<div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>Turn notes into a study session</h3><p>Build your own flashcards from class notes, review them, and track what you know. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div></div>
+<div class="study-grid">
+<div class="study-builder">
+<h4>01 / Create a flashcard deck</h4><p class="notice">Put one card on each line using <strong>term: definition</strong>. You can paste notes directly from class.</p>
+<div class="field"><label for="deckName">Deck name</label><input id="deckName" maxlength="60" placeholder="e.g. Cell biology — chapter 3"></div>
+<div class="field"><label for="deckNotes">Your notes</label><textarea id="deckNotes" rows="7" placeholder="Mitochondria: The part of a cell that releases usable energy.&#10;Photosynthesis: The process plants use to turn light into chemical energy.&#10;Chlorophyll: The green pigment that absorbs light."></textarea></div>
+<div class="study-actions"><button type="button" class="btn primary" id="createDeck">Create deck</button><button type="button" class="btn" id="sampleDeck">Load sample notes</button></div>
+<p id="deckMessage" class="math-feedback" aria-live="polite"></p>
 </div>
-
+<div class="study-review">
+<div class="study-review-head"><div><h4>02 / Active recall</h4><p class="notice">Try to remember the answer before you reveal it.</p></div><select id="deckSelect" aria-label="Choose a flashcard deck"><option value="">No decks yet</option></select></div>
+<div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Flashcard. Select to reveal the answer"><span class="flashcard-label" id="flashcardLabel">QUESTION</span><strong id="flashcardText">Create a deck to begin.</strong><span class="flashcard-hint" id="flashcardHint">Your first card will appear here.</span></div>
+<div class="study-actions"><button type="button" class="btn" id="prevCard">← Previous</button><button type="button" class="btn primary" id="flipCard">Reveal answer</button><button type="button" class="btn" id="nextCard">Next →</button></div>
+<div class="study-actions study-rating"><button type="button" class="btn" id="needPractice">Need practice</button><button type="button" class="btn primary" id="knowCard">I knew it ✓</button></div>
+<div class="study-progress"><div class="progress-track"><span id="deckProgress"></span></div><p class="notice" id="deckPosition">0 of 0 cards</p></div>
+<div class="study-deck-footer"><button type="button" class="text-action" id="shuffleDeck">Shuffle cards</button><button type="button" class="text-action" id="deleteDeck">Delete deck</button></div>
+</div>
+</div>
+<div class="learning-path"><div><span class="pill">YOUR NEXT STEP</span><h4>Choose a learning goal</h4><p class="notice">A useful next step beats randomly jumping between topics.</p></div><div class="path-controls"><label class="hidden" for="learningGoal">Learning goal</label><select id="learningGoal"><option value="math">Get stronger at math</option><option value="science">Understand science</option><option value="reading">Improve reading & writing</option><option value="study">Build better study habits</option></select><label class="hidden" for="learningLevel">Current level</label><select id="learningLevel"><option value="starter">I'm just starting</option><option value="building" selected>I know some of this</option><option value="confident">I want a challenge</option></select><button type="button" class="btn primary" id="makeLearningPath">Build my next steps</button></div><div class="path-result" id="learningPathResult" aria-live="polite">Choose a goal and level to get a focused three-step learning plan.</div></div>
+</div>
 <div class="course-library" id="courseLibrary">
- <div class="course-library-head"><div><span class="pill">GUIDED COURSES</span><h3>Learn something, one lesson at a time</h3><p>Short lessons, worked examples, and a check-your-understanding question. Your completed lessons are saved on this device.</p></div><div class="course-progress-summary"><strong id="courseCompleted">0</strong><span>LESSONS COMPLETED</span></div></div>
- <div class="course-controls"><label>Subject<select id="courseSubject"><option value="math">Mathematics</option><option value="science">Science</option><option value="reading">Reading & writing</option><option value="history">History & civics</option></select></label><label>Lesson<select id="courseLesson"></select></label></div>
- <div class="course-body"><div class="course-outline"><div class="course-outline-title">YOUR LEARNING PATH</div><div id="courseLessonList"></div></div><article class="course-lesson"><div class="course-lesson-meta"><span id="courseUnit">MATHEMATICS</span><span id="courseDuration">5 MIN LESSON</span></div><h4 id="courseTitle">Fractions are parts of a whole</h4><p id="courseIntro" class="course-intro"></p><div id="courseContent" class="course-content"></div><div class="course-example" id="courseExample"></div><div class="course-check"><strong>CHECK YOUR UNDERSTANDING</strong><p id="courseQuestion"></p><div class="course-answer-row"><input id="courseAnswer" type="text" maxlength="100" placeholder="Type your answer" aria-label="Your lesson answer"><button type="button" class="btn primary" id="courseCheck">Check answer</button></div><p id="courseFeedback" class="course-feedback" aria-live="polite">Try it before looking back at the lesson.</p></div><div class="course-footer"><span id="courseLessonProgress">Lesson 1 of 3</span><button type="button" class="btn primary" id="courseComplete">Mark lesson complete →</button></div></article></div>
+<div class="course-library-head"><div><span class="pill">GUIDED COURSES</span><h3>Learn something, one lesson at a time</h3><p>Short lessons, worked examples, and a check-your-understanding question. Your completed lessons are saved on this device.</p></div><div class="course-progress-summary"><strong id="courseCompleted">0</strong><span>LESSONS COMPLETED</span></div></div>
+<div class="course-controls"><label>Subject<select id="courseSubject"><option value="math">Mathematics</option><option value="science">Science</option><option value="reading">Reading & writing</option><option value="history">History & civics</option></select></label><label>Lesson<select id="courseLesson"></select></label></div>
+<div class="course-body"><div class="course-outline"><div class="course-outline-title">YOUR LEARNING PATH</div><div id="courseLessonList"></div></div><article class="course-lesson"><div class="course-lesson-meta"><span id="courseUnit">MATHEMATICS</span><span id="courseDuration">5 MIN LESSON</span></div><h4 id="courseTitle">Fractions are parts of a whole</h4><p id="courseIntro" class="course-intro"></p><div id="courseContent" class="course-content"></div><div class="course-example" id="courseExample"></div><div class="course-check"><strong>CHECK YOUR UNDERSTANDING</strong><p id="courseQuestion"></p><div class="course-answer-row"><input id="courseAnswer" type="text" maxlength="100" placeholder="Type your answer" aria-label="Your lesson answer"><button type="button" class="btn primary" id="courseCheck">Check answer</button></div><p id="courseFeedback" class="course-feedback" aria-live="polite">Try it before looking back at the lesson.</p></div><div class="course-footer"><span id="courseLessonProgress">Lesson 1 of 3</span><button type="button" class="btn primary" id="courseComplete">Mark lesson complete →</button></div></article></div>
 </div>
-
 <div class="panel math-feature">
-<h3>🧠 Math Lab — learn it, practice it, understand it</h3>
+<h3> Math Lab — learn it, practice it, understand it</h3>
 <p class="notice">Choose a topic. Get worked examples, practice questions, and feedback—not just an answer.</p>
 <div class="math-tabs" role="tablist" aria-label="Math topics">
 <button type="button" class="active" data-math-tab="fractions">Fractions</button><button type="button" data-math-tab="percentages">Percentages</button><button type="button" data-math-tab="equations">Equations</button><button type="button" data-math-tab="practice">Practice quiz</button>
@@ -881,35 +875,34 @@ I can help you understand a lesson, check your thinking, make a study plan, or b
 </div>
 </div>
 <div class="equation-coach">
- <div class="coach-heading"><span class="pill">MATH COACH</span><h3>Two-step equations, one move at a time</h3><p>Keep the equation balanced: whatever you do to one side, do to the other. Practice a new problem, ask for a hint, then check your work.</p></div>
- <div class="coach-problem"><div><span class="flashcard-label">YOUR PRACTICE PROBLEM</span><div class="coach-equation" id="coachEquation">3x + 5 = 20</div><p class="notice" id="coachPrompt">What value of x makes this equation true?</p></div><button type="button" class="btn" id="newCoachProblem">New problem ↻</button></div>
- <div class="coach-answer"><label for="coachAnswer">Your answer for x</label><div class="coach-answer-row"><input id="coachAnswer" type="number" step="any" placeholder="Enter x"><button type="button" class="btn primary" id="checkCoachAnswer">Check my answer</button></div><p id="coachFeedback" class="math-feedback" aria-live="polite">Try solving it before opening a hint.</p></div>
- <div class="coach-actions"><button type="button" class="btn" id="coachHint">Give me a hint</button><button type="button" class="btn" id="coachSolution">Show every step</button></div>
- <div class="coach-steps hidden" id="coachSteps" aria-live="polite"></div>
+<div class="coach-heading"><span class="pill">MATH COACH</span><h3>Two-step equations, one move at a time</h3><p>Keep the equation balanced: whatever you do to one side, do to the other. Practice a new problem, ask for a hint, then check your work.</p></div>
+<div class="coach-problem"><div><span class="flashcard-label">YOUR PRACTICE PROBLEM</span><div class="coach-equation" id="coachEquation">3x + 5 = 20</div><p class="notice" id="coachPrompt">What value of x makes this equation true?</p></div><button type="button" class="btn" id="newCoachProblem">New problem ↻</button></div>
+<div class="coach-answer"><label for="coachAnswer">Your answer for x</label><div class="coach-answer-row"><input id="coachAnswer" type="number" step="any" placeholder="Enter x"><button type="button" class="btn primary" id="checkCoachAnswer">Check my answer</button></div><p id="coachFeedback" class="math-feedback" aria-live="polite">Try solving it before opening a hint.</p></div>
+<div class="coach-actions"><button type="button" class="btn" id="coachHint">Give me a hint</button><button type="button" class="btn" id="coachSolution">Show every step</button></div>
+<div class="coach-steps hidden" id="coachSteps" aria-live="polite"></div>
 </div>
-
 <div class="tool-layout"><div class="panel toolbox"><h3>Grade percentage</h3><p class="notice">Enter the points you earned and the total points possible.</p><div class="field"><label for="earned">Points earned</label><input id="earned" type="number" min="0" step="any" placeholder="e.g. 42"></div><div class="field"><label for="possible">Total points possible</label><input id="possible" type="number" min="0.01" step="any" placeholder="e.g. 50"></div><button class="btn primary" id="gradeBtn">Calculate grade</button><div class="result" id="gradeResult" aria-live="polite">Your result will appear here.</div></div><div class="panel toolbox"><h3>Percentage of a number</h3><p class="notice">Find a percentage of any number.</p><div class="field"><label for="percent">Percentage (%)</label><input id="percent" type="number" step="any" placeholder="e.g. 15"></div><div class="field"><label for="baseNumber">Number</label><input id="baseNumber" type="number" step="any" placeholder="e.g. 80"></div><button class="btn primary" id="percentBtn">Calculate amount</button><div class="result" id="percentResult" aria-live="polite">Your result will appear here.</div></div></div></div></section>
-<section class="section" id="organize"><div class="wrap"><div class="section-head"><div><h2>✅ Life Organizer</h2><p>Add tasks and keep them on this device.</p></div></div><div class="panel toolbox"><form id="taskForm" style="display:flex;gap:10px;flex-wrap:wrap"><label for="taskInput" class="hidden">New task</label><input id="taskInput" required maxlength="180" placeholder="What would you like to remember?" style="flex:1;min-width:200px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)"><button class="btn primary" type="submit">Add task +</button></form><div id="taskList" aria-live="polite" style="margin-top:14px"><p class="empty">No tasks yet. Add one small step to get started.</p></div><p class="notice">Your task list is saved only in this browser on this device. Avoid adding passwords or sensitive personal information.</p></div></div></section>
-<section class="section" id="budget" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2>💰 Budget Helper</h2><p>A simple snapshot of money coming in and going out.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="income">Money coming in ($)</label><input id="income" type="number" min="0" step=".01" placeholder="e.g. 1200"></div><div class="field"><label for="expenses">Total expenses ($)</label><input id="expenses" type="number" min="0" step=".01" placeholder="e.g. 850"></div></div><button class="btn primary" id="budgetBtn">See my balance</button><div class="result" id="budgetResult" aria-live="polite">Enter amounts to see the difference.</div><p class="notice">This is a basic planning tool, not financial advice.</p></div></div></section>
-<section class="section" id="convert"><div class="wrap"><div class="section-head"><div><h2>🔄 Unit Converter</h2><p>Convert common measurements quickly.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="unitValue">Value</label><input id="unitValue" type="number" step="any" placeholder="Enter a number"></div><div class="field"><label for="unitType">Conversion</label><select id="unitType"><option value="mi-km">Miles → kilometers</option><option value="km-mi">Kilometers → miles</option><option value="lb-kg">Pounds → kilograms</option><option value="kg-lb">Kilograms → pounds</option><option value="f-c">Fahrenheit → Celsius</option><option value="c-f">Celsius → Fahrenheit</option><option value="in-cm">Inches → centimeters</option><option value="cm-in">Centimeters → inches</option></select></div></div><button class="btn primary" id="convertBtn">Convert</button><div class="result" id="convertResult" aria-live="polite">Your conversion will appear here.</div></div></div></section>
-<section class="section"><div class="wrap panel"><h2>Built for real life. Made for everyone. 💜</h2><p>Whether you’re figuring out school, managing your first budget, helping your family, or just trying to stay on top of things, LifeBridge meets you where you are. Use accessibility settings to make it feel right for you.</p><p class="notice">LifeBridge provides general educational and organizational support. It is not a substitute for professional medical, legal, or financial advice. No account is needed for these tools.</p></div></section>
+<section class="section" id="organize"><div class="wrap"><div class="section-head"><div><h2> Life Organizer</h2><p>Add tasks and keep them on this device.</p></div></div><div class="panel toolbox"><form id="taskForm" style="display:flex;gap:10px;flex-wrap:wrap"><label for="taskInput" class="hidden">New task</label><input id="taskInput" required maxlength="180" placeholder="What would you like to remember?" style="flex:1;min-width:200px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)"><button class="btn primary" type="submit">Add task +</button></form><div id="taskList" aria-live="polite" style="margin-top:14px"><p class="empty">No tasks yet. Add one small step to get started.</p></div><p class="notice">Your task list is saved only in this browser on this device. Avoid adding passwords or sensitive personal information.</p></div></div></section>
+<section class="section" id="budget" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2> Budget Helper</h2><p>A simple snapshot of money coming in and going out.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="income">Money coming in ($)</label><input id="income" type="number" min="0" step=".01" placeholder="e.g. 1200"></div><div class="field"><label for="expenses">Total expenses ($)</label><input id="expenses" type="number" min="0" step=".01" placeholder="e.g. 850"></div></div><button class="btn primary" id="budgetBtn">See my balance</button><div class="result" id="budgetResult" aria-live="polite">Enter amounts to see the difference.</div><p class="notice">This is a basic planning tool, not financial advice.</p></div></div></section>
+<section class="section" id="convert"><div class="wrap"><div class="section-head"><div><h2> Unit Converter</h2><p>Convert common measurements quickly.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="unitValue">Value</label><input id="unitValue" type="number" step="any" placeholder="Enter a number"></div><div class="field"><label for="unitType">Conversion</label><select id="unitType"><option value="mi-km">Miles → kilometers</option><option value="km-mi">Kilometers → miles</option><option value="lb-kg">Pounds → kilograms</option><option value="kg-lb">Kilograms → pounds</option><option value="f-c">Fahrenheit → Celsius</option><option value="c-f">Celsius → Fahrenheit</option><option value="in-cm">Inches → centimeters</option><option value="cm-in">Centimeters → inches</option></select></div></div><button class="btn primary" id="convertBtn">Convert</button><div class="result" id="convertResult" aria-live="polite">Your conversion will appear here.</div></div></div></section>
+<section class="section"><div class="wrap panel"><h2>Built for real life. Made for everyone. </h2><p>Whether you’re figuring out school, managing your first budget, helping your family, or just trying to stay on top of things, LifeBridge meets you where you are. Use accessibility settings to make it feel right for you.</p><p class="notice">LifeBridge provides general educational and organizational support. It is not a substitute for professional medical, legal, or financial advice. No account is needed for these tools.</p></div></section>
 </main>
-
-<section class="feature-band" id="levelup"><div class="wrap"><div class="eyebrow" style="color:#e6dcff">✨ THE FUN SIDE OF GETTING STUFF DONE</div><h2 style="margin-top:12px">Your life. Your quests. Your level-up.</h2><p>Turn little wins into progress. Your stats stay in this browser.</p>
+<section class="feature-band" id="levelup"><div class="wrap"><div class="eyebrow" style="color:#e6dcff"> THE FUN SIDE OF GETTING STUFF DONE</div><h2 style="margin-top:12px">Your life. Your quests. Your level-up.</h2><p>Turn little wins into progress. Your stats stay in this browser.</p>
 <div class="feature-grid">
-<div class="fun-panel"><h3>⚡ Your LifeBridge Level</h3><div class="stat-row"><span class="stat-pill">⭐ Level <span id="xpLevel">1</span></span><span class="stat-pill">⚡ <span id="xpTotal">0</span> XP</span><span class="stat-pill">🏅 <span id="badgeTotal">0</span> badges</span></div><div class="xp-track"><div class="xp-fill" id="xpFill"></div></div><p id="xpNext">Complete a task to earn your first XP!</p><p class="notice" style="color:#e6e0ff">XP is for encouragement, not pressure. Take breaks whenever you need.</p></div>
-<div class="fun-panel"><h3>🎯 Daily mini-challenge</h3><div class="challenge"><strong id="challengeTitle">One small win</strong><p id="challengeDesc">Write down one thing you want to get done today.</p><button id="challengeDone">I did it! +10 XP</button></div><p id="challengeStatus" aria-live="polite" style="color:#e6e0ff"></p></div>
+<div class="fun-panel"><h3> Your LifeBridge Level</h3><div class="stat-row"><span class="stat-pill"> Level <span id="xpLevel">1</span></span><span class="stat-pill">
+<span id="xpTotal">0</span> XP</span><span class="stat-pill">
+<span id="badgeTotal">0</span> badges</span></div><div class="xp-track"><div class="xp-fill" id="xpFill"></div></div><p id="xpNext">Complete a task to earn your first XP!</p><p class="notice" style="color:#e6e0ff">XP is for encouragement, not pressure. Take breaks whenever you need.</p></div>
+<div class="fun-panel"><h3> Daily mini-challenge</h3><div class="challenge"><strong id="challengeTitle">One small win</strong><p id="challengeDesc">Write down one thing you want to get done today.</p><button id="challengeDone">I did it! +10 XP</button></div><p id="challengeStatus" aria-live="polite" style="color:#e6e0ff"></p></div>
 </div></div></section>
-
-<section class="section" id="lifequest" style="background:linear-gradient(135deg,#f0ebff,#e7fff7)"><div class="wrap"><div class="section-head"><div><span class="tag">PLAY • LEARN • LEVEL UP</span><h2 style="margin-top:10px">🎮 LifeBridge Skill Quest</h2><p>Quick interactive mini-games to build real-life skills. Make a choice, see what happens, and earn points for learning.</p></div></div>
+<section class="section" id="lifequest" style="background:linear-gradient(135deg,#f0ebff,#e7fff7)"><div class="wrap"><div class="section-head"><div><span class="tag">PLAY • LEARN • LEVEL UP</span><h2 style="margin-top:10px"> LifeBridge Skill Quest</h2><p>Quick interactive mini-games to build real-life skills. Make a choice, see what happens, and earn points for learning.</p></div></div>
 <div class="tool-layout">
-<div class="panel"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><span class="tag" id="questCategory">LIFE SKILLS</span><strong>⭐ <span id="questScore">0</span> points</strong></div><h3 id="questTitle" style="margin-top:16px">The surprise assignment</h3><p id="questPrompt">You have a project due tomorrow and haven't started. What's the smartest first move?</p><div id="questChoices" style="display:grid;gap:9px;margin:18px 0"><button class="btn" type="button" data-quest-choice="0">Break it into small steps and start with one</button><button class="btn" type="button" data-quest-choice="1">Ignore it and hope it works out</button><button class="btn" type="button" data-quest-choice="2">Try to do everything at once at midnight</button></div><div id="questFeedback" class="result" aria-live="polite">Choose an answer to reveal the result.</div><button class="btn primary" type="button" id="questNext" style="margin-top:12px">Next challenge →</button></div>
-<div class="panel"><div class="tool-icon">🧠</div><h3>Build your real-life superpowers</h3><p>Every challenge practices a useful skill: planning, money choices, digital safety, studying, or handling stress.</p><div class="stat-row" style="margin:14px 0"><span class="stat-pill">🏆 Best: <span id="questBest">0</span></span><span class="stat-pill">✅ Answered: <span id="questAnswered">0</span></span></div><div class="result" id="questTip">Today's reminder: progress beats perfection. One good next step counts.</div><p class="notice" style="margin-top:14px">Your score is saved on this device in this browser. These are learning activities, not professional financial, medical, or legal advice.</p></div>
+<div class="panel"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><span class="tag" id="questCategory">LIFE SKILLS</span><strong>
+<span id="questScore">0</span> points</strong></div><h3 id="questTitle" style="margin-top:16px">The surprise assignment</h3><p id="questPrompt">You have a project due tomorrow and haven't started. What's the smartest first move?</p><div id="questChoices" style="display:grid;gap:9px;margin:18px 0"><button class="btn" type="button" data-quest-choice="0">Break it into small steps and start with one</button><button class="btn" type="button" data-quest-choice="1">Ignore it and hope it works out</button><button class="btn" type="button" data-quest-choice="2">Try to do everything at once at midnight</button></div><div id="questFeedback" class="result" aria-live="polite">Choose an answer to reveal the result.</div><button class="btn primary" type="button" id="questNext" style="margin-top:12px">Next challenge →</button></div>
+<div class="panel"><div class="tool-icon"></div><h3>Build your real-life superpowers</h3><p>Every challenge practices a useful skill: planning, money choices, digital safety, studying, or handling stress.</p><div class="stat-row" style="margin:14px 0"><span class="stat-pill"> Best: <span id="questBest">0</span></span><span class="stat-pill"> Answered: <span id="questAnswered">0</span></span></div><div class="result" id="questTip">Today's reminder: progress beats perfection. One good next step counts.</div><p class="notice" style="margin-top:14px">Your score is saved on this device in this browser. These are learning activities, not professional financial, medical, or legal advice.</p></div>
 </div></div></section>
-
 <div id="accountModal" class="account-modal hidden" role="dialog" aria-modal="true" aria-labelledby="accountTitle">
 <div class="account-card"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span class="tag">YOUR LIFEBRIDGE ACCOUNT</span><button type="button" class="smallbtn" id="accountClose" aria-label="Close account window">✕</button></div>
-<h2 id="accountTitle">Welcome back 👋</h2><p class="notice">Sign in or create an account to get started. Secure account access must be connected to an authentication provider before accounts can be created.</p>
+<h2 id="accountTitle">Welcome back </h2><p class="notice">Sign in or create an account to get started. Secure account access must be connected to an authentication provider before accounts can be created.</p>
 <div class="account-tabs"><button type="button" id="signInTab" class="active">Sign in</button><button type="button" id="signUpTab">Sign up</button></div>
 <form id="accountForm"><div class="field" id="accountNameField" hidden><label for="accountName">Your name</label><input id="accountName" autocomplete="name" maxlength="80" placeholder="What should we call you?"></div>
 <div class="field"><label for="accountEmail">Email address</label><input id="accountEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
@@ -917,11 +910,8 @@ I can help you understand a lesson, check your thinking, make a study plan, or b
 <button class="btn primary" id="accountSubmit" type="submit" style="width:100%">Sign in</button></form>
 <div id="accountMessage" class="result" aria-live="polite">Accounts are not connected yet. Your existing tools still work without signing in.</div>
 <p class="notice">Never reuse a sensitive password here while account setup is incomplete. No password is stored by this page.</p></div></div>
-
-
-
 <section class="section" id="calendar"><div class="wrap">
-<div class="eyebrow">🗓️ YOUR MONTH, AT A GLANCE</div><h2>Calendar & important dates.</h2><p class="section-intro">Plan your month, add your own events, mark important days, and see major U.S. federal holidays. Select a date to manage what happens that day.</p>
+<div class="eyebrow"> YOUR MONTH, AT A GLANCE</div><h2>Calendar & important dates.</h2><p class="section-intro">Plan your month, add your own events, mark important days, and see major U.S. federal holidays. Select a date to manage what happens that day.</p>
 <div class="calendar-layout">
 <div class="calendar-panel">
 <div class="calendar-head"><button class="smallbtn" id="calPrev" type="button" aria-label="Previous month">←</button><h3 id="calMonth" aria-live="polite">Calendar</h3><div class="calendar-nav"><button class="smallbtn" id="calToday" type="button">Today</button><button class="smallbtn" id="calNext" type="button" aria-label="Next month">→</button></div></div>
@@ -945,31 +935,29 @@ I can help you understand a lesson, check your thinking, make a study plan, or b
 </div>
 </div>
 </div></section>
-
 <section class="section" id="focus"><div class="wrap">
-<div class="eyebrow">🧭 YOUR PERSONAL SPACE</div><h2>Make room for your next win.</h2><p class="section-intro">Small, practical tools to help you focus, build routines, and keep goals moving. Your data stays in this browser on this device.</p>
+<div class="eyebrow"> YOUR PERSONAL SPACE</div><h2>Make room for your next win.</h2><p class="section-intro">Small, practical tools to help you focus, build routines, and keep goals moving. Your data stays in this browser on this device.</p>
 <div class="quickstats" aria-label="Your LifeBridge snapshot">
 <div class="stat-card"><span>Today's habits</span><strong id="habitStat">0 / 3</strong><span>tiny steps count</span></div>
 <div class="stat-card"><span>Goals in progress</span><strong id="goalStat">0</strong><span>one step at a time</span></div>
 <div class="stat-card"><span>Focus sessions</span><strong id="focusStat">0</strong><span>sessions completed here</span></div>
 </div>
 <div class="upgrade-grid">
-<div class="upgrade-card"><span class="pill">⏳ FOCUS TIMER</span><h3>One thing at a time</h3><p>Try a short focus sprint. Pick a task, start the timer, and take a breath afterward.</p>
+<div class="upgrade-card"><span class="pill"> FOCUS TIMER</span><h3>One thing at a time</h3><p>Try a short focus sprint. Pick a task, start the timer, and take a breath afterward.</p>
 <label for="focusTask">What are you working on?</label><input id="focusTask" maxlength="100" placeholder="e.g. Finish science homework" style="margin:6px 0">
 <div class="focus-clock" id="focusClock" aria-live="off">25:00</div><div class="focus-actions"><button class="btn primary" id="focusStart" type="button">Start focus</button><button class="btn" id="focusPause" type="button">Pause</button><button class="btn" id="focusReset" type="button">Reset</button></div><p id="focusMessage" role="status">Ready when you are.</p></div>
-<div class="upgrade-card"><span class="pill">🌱 DAILY HABITS</span><h3>Three small promises</h3><p>Check off habits as you finish them. They reset each day, without judgment.</p>
+<div class="upgrade-card"><span class="pill"> DAILY HABITS</span><h3>Three small promises</h3><p>Check off habits as you finish them. They reset each day, without judgment.</p>
 <div id="habitList">
 <div class="habit-row"><input type="checkbox" id="habit1"><label for="habit1">Drink some water</label></div>
 <div class="habit-row"><input type="checkbox" id="habit2"><label for="habit2">Move or stretch for 5 minutes</label></div>
 <div class="habit-row"><input type="checkbox" id="habit3"><label for="habit3">Spend 10 minutes learning</label></div>
 </div><div class="progress-track"><span id="habitProgress"></span></div><p id="habitMessage" role="status">Every little bit counts.</p></div>
-<div class="upgrade-card"><span class="pill">🎯 GOAL BOARD</span><h3>Turn a goal into a step</h3><p>Write a goal and one small action you can take next.</p>
+<div class="upgrade-card"><span class="pill"> GOAL BOARD</span><h3>Turn a goal into a step</h3><p>Write a goal and one small action you can take next.</p>
 <form id="goalForm"><label for="goalInput">My goal</label><input id="goalInput" maxlength="90" required placeholder="e.g. Save for a new bike" style="margin:6px 0 10px"><label for="goalStep">My next step</label><input id="goalStep" maxlength="120" required placeholder="e.g. Save $5 this week" style="margin:6px 0 10px"><button class="btn primary" type="submit">Add goal</button></form>
 <div id="goalList" style="margin-top:10px"></div></div>
 </div>
 </div></section>
-<section class="section"><div class="wrap"><div class="panel"><div class="eyebrow">💜 THE LIFEBridge PROMISE</div><h2>Helpful, not overwhelming.</h2><p>LifeBridge brings school support, everyday calculators, planning tools, and encouragement into one friendly place. Use what helps, skip what doesn't, and take progress at your own pace. You don't need to have everything figured out to take one useful next step.</p><p class="site-description">LifeBridge is an independent everyday-support website. Its learning and planning tools are designed for general guidance and practice, not professional financial, medical, or mental-health advice. Your local habits, goals, and focus-session counts are saved in your browser on this device; they do not automatically sync across devices or create a cloud account.</p><p><strong>LifeBridge — bridge the gap between where you are and where you want to be.</strong></p></div></div></section>
-
+<section class="section"><div class="wrap"><div class="panel"><div class="eyebrow"> THE LIFEBridge PROMISE</div><h2>Helpful, not overwhelming.</h2><p>LifeBridge brings school support, everyday calculators, planning tools, and encouragement into one friendly place. Use what helps, skip what doesn't, and take progress at your own pace. You don't need to have everything figured out to take one useful next step.</p><p class="site-description">LifeBridge is an independent everyday-support website. Its learning and planning tools are designed for general guidance and practice, not professional financial, medical, or mental-health advice. Your local habits, goals, and focus-session counts are saved in your browser on this device; they do not automatically sync across devices or create a cloud account.</p><p><strong>LifeBridge — bridge the gap between where you are and where you want to be.</strong></p></div></div></section>
 <div id="toast" role="status" aria-live="polite"></div>
 <footer class="footer"><div class="wrap footer-inner"><span><strong>LifeBridge</strong> — bridge the gap to your next win.</span><span>Learn • Plan • Grow • Repeat</span></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -983,146 +971,146 @@ let cloudSyncMuted = false;
 let cloudSyncTimer = null;
 
 function collectLifeBridgeSnapshot() {
-  const snapshot = {};
-  try {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith("lifebridge")) snapshot[key] = localStorage.getItem(key);
-    }
-  } catch (error) {
-    console.warn("LifeBridge could not read local progress for cloud sync.", error);
-  }
-  return snapshot;
+ const snapshot = {};
+ try {
+ for (let i = 0; i < localStorage.length; i++) {
+ const key = localStorage.key(i);
+ if (key && key.startsWith("lifebridge")) snapshot[key] = localStorage.getItem(key);
+ }
+ } catch (error) {
+ console.warn("LifeBridge could not read local progress for cloud sync.", error);
+ }
+ return snapshot;
 }
 
 async function syncLifeBridgeProgress() {
-  if (!supabaseClient || !activeCloudUserId || cloudSyncMuted) return;
-  const snapshot = collectLifeBridgeSnapshot();
-  let xpData = {};
-  try { xpData = JSON.parse(snapshot["lifebridge-xp-v1"] || "{}") || {}; } catch {}
-  const completed = Object.keys(snapshot).filter(key => /progress|completed|quest-total/i.test(key));
-  const payload = {
-    user_id: activeCloudUserId,
-    xp: Math.max(0, Math.floor(Number(xpData.points) || 0)),
-    completed,
-    badges: Array.isArray(xpData.badges) ? xpData.badges : [],
-    stats: snapshot,
-    updated_at: new Date().toISOString()
-  };
-  const { error } = await supabaseClient.from("user_progress").upsert(payload, { onConflict: "user_id" });
-  if (error) {
-    console.error("LifeBridge cloud progress sync failed:", error.message);
-    showCloudSyncStatus("Your changes are saved on this device. Cloud sync will retry when you are online.");
-  } else {
-    showCloudSyncStatus("Progress synced to your account.");
-  }
+ if (!supabaseClient || !activeCloudUserId || cloudSyncMuted) return;
+ const snapshot = collectLifeBridgeSnapshot();
+ let xpData = {};
+ try { xpData = JSON.parse(snapshot["lifebridge-xp-v1"] || "{}") || {}; } catch {}
+ const completed = Object.keys(snapshot).filter(key => /progress|completed|quest-total/i.test(key));
+ const payload = {
+ user_id: activeCloudUserId,
+ xp: Math.max(0, Math.floor(Number(xpData.points) || 0)),
+ completed,
+ badges: Array.isArray(xpData.badges) ? xpData.badges : [],
+ stats: snapshot,
+ updated_at: new Date().toISOString()
+ };
+ const { error } = await supabaseClient.from("user_progress").upsert(payload, { onConflict: "user_id" });
+ if (error) {
+ console.error("LifeBridge cloud progress sync failed:", error.message);
+ showCloudSyncStatus("Your changes are saved on this device. Cloud sync will retry when you are online.");
+ } else {
+ showCloudSyncStatus("Progress synced to your account.");
+ }
 }
 
 function showCloudSyncStatus(message) {
-  const node = document.getElementById("accountMessage");
-  if (node && !document.getElementById("accountModal")?.classList.contains("hidden")) node.textContent = message;
+ const node = document.getElementById("accountMessage");
+ if (node && !document.getElementById("accountModal")?.classList.contains("hidden")) node.textContent = message;
 }
 
 function scheduleLifeBridgeSync() {
-  if (!supabaseClient || !activeCloudUserId || cloudSyncMuted) return;
-  clearTimeout(cloudSyncTimer);
-  cloudSyncTimer = setTimeout(() => { syncLifeBridgeProgress(); }, 900);
+ if (!supabaseClient || !activeCloudUserId || cloudSyncMuted) return;
+ clearTimeout(cloudSyncTimer);
+ cloudSyncTimer = setTimeout(() => { syncLifeBridgeProgress(); }, 900);
 }
 
 function installLifeBridgeStorageSync() {
-  if (window.__lifeBridgeStorageSyncInstalled) return;
-  window.__lifeBridgeStorageSyncInstalled = true;
-  const originalSetItem = Storage.prototype.setItem;
-  Storage.prototype.setItem = function(key, value) {
-    originalSetItem.call(this, key, value);
-    if (this === window.localStorage && typeof key === "string" && key.startsWith("lifebridge")) scheduleLifeBridgeSync();
-  };
+ if (window.__lifeBridgeStorageSyncInstalled) return;
+ window.__lifeBridgeStorageSyncInstalled = true;
+ const originalSetItem = Storage.prototype.setItem;
+ Storage.prototype.setItem = function(key, value) {
+ originalSetItem.call(this, key, value);
+ if (this === window.localStorage && typeof key === "string" && key.startsWith("lifebridge")) scheduleLifeBridgeSync();
+ };
 }
 installLifeBridgeStorageSync();
 
 async function initializeSupabase() {
-  try {
-    const response = await fetch("/api/config", { cache: "no-store", headers: { "Accept": "application/json" } });
-    const config = await response.json().catch(() => ({}));
-    if (!response.ok || !config.url || !config.anonKey || !window.supabase) {
-      supabaseConfigStatus = "missing";
-      paintAccountButton(null);
-      setAccountMode("signin");
-      show("accountMessage", "LifeBridge accounts are not configured yet. Add SUPABASE_URL and SUPABASE_ANON_KEY to your Vercel environment variables, then redeploy.");
-      return;
-    }
-    supabaseClient = window.supabase.createClient(config.url, config.anonKey, {
-      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
-    });
-    supabaseConfigStatus = "ready";
-    supabaseClient.auth.onAuthStateChange((_event, session) => {
-      setTimeout(() => handleLifeBridgeSession(session), 0);
-    });
-    await refreshAccountSession();
-    setAccountMode("signin");
-  } catch (error) {
-    supabaseConfigStatus = "error";
-    paintAccountButton(null);
-    setAccountMode("signin");
-    show("accountMessage", "LifeBridge could not reach its account service. Please refresh and try again.");
-    console.error("LifeBridge Supabase initialization failed:", error);
-  }
+ try {
+ const response = await fetch("/api/config", { cache: "no-store", headers: { "Accept": "application/json" } });
+ const config = await response.json().catch(() => ({}));
+ if (!response.ok || !config.url || !config.anonKey || !window.supabase) {
+ supabaseConfigStatus = "missing";
+ paintAccountButton(null);
+ setAccountMode("signin");
+ show("accountMessage", "LifeBridge accounts are not configured yet. Add SUPABASE_URL and SUPABASE_ANON_KEY to your Vercel environment variables, then redeploy.");
+ return;
+ }
+ supabaseClient = window.supabase.createClient(config.url, config.anonKey, {
+ auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+ });
+ supabaseConfigStatus = "ready";
+ supabaseClient.auth.onAuthStateChange((_event, session) => {
+ setTimeout(() => handleLifeBridgeSession(session), 0);
+ });
+ await refreshAccountSession();
+ setAccountMode("signin");
+ } catch (error) {
+ supabaseConfigStatus = "error";
+ paintAccountButton(null);
+ setAccountMode("signin");
+ show("accountMessage", "LifeBridge could not reach its account service. Please refresh and try again.");
+ console.error("LifeBridge Supabase initialization failed:", error);
+ }
 }
 
 async function handleLifeBridgeSession(session) {
-  const user = session?.user;
-  if (!user) {
-    activeCloudUserId = null;
-    paintAccountButton(null);
-    return;
-  }
-  const ownerKey = "lb-cloud-owner";
-  const previousOwner = localStorage.getItem(ownerKey);
-  if (previousOwner && previousOwner !== user.id) {
-    const previousSnapshot = collectLifeBridgeSnapshot();
-    try { localStorage.setItem("lb-local-backup:" + previousOwner, JSON.stringify(previousSnapshot)); } catch {}
-    const keysToClear = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith("lifebridge-") && key !== "lifebridge-display-settings") keysToClear.push(key);
-    }
-    keysToClear.forEach(key => localStorage.removeItem(key));
-    try {
-      const saved = JSON.parse(localStorage.getItem("lb-local-backup:" + user.id) || "{}");
-      for (const [key, value] of Object.entries(saved)) {
-        if (key.startsWith("lifebridge-") && localStorage.getItem(key) === null && typeof value === "string") localStorage.setItem(key, value);
-      }
-    } catch {}
-  }
-  localStorage.setItem(ownerKey, user.id);
-  activeCloudUserId = user.id;
-  paintAccountButton(session);
-  const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "LifeBridge learner";
-  const { error: profileError } = await supabaseClient.from("profiles").upsert(
-    { id: user.id, display_name: displayName },
-    { onConflict: "id" }
-  );
-  if (profileError) console.warn("LifeBridge profile could not be refreshed:", profileError.message);
+ const user = session?.user;
+ if (!user) {
+ activeCloudUserId = null;
+ paintAccountButton(null);
+ return;
+ }
+ const ownerKey = "lb-cloud-owner";
+ const previousOwner = localStorage.getItem(ownerKey);
+ if (previousOwner && previousOwner !== user.id) {
+ const previousSnapshot = collectLifeBridgeSnapshot();
+ try { localStorage.setItem("lb-local-backup:" + previousOwner, JSON.stringify(previousSnapshot)); } catch {}
+ const keysToClear = [];
+ for (let i = 0; i < localStorage.length; i++) {
+ const key = localStorage.key(i);
+ if (key && key.startsWith("lifebridge-") && key !== "lifebridge-display-settings") keysToClear.push(key);
+ }
+ keysToClear.forEach(key => localStorage.removeItem(key));
+ try {
+ const saved = JSON.parse(localStorage.getItem("lb-local-backup:" + user.id) || "{}");
+ for (const [key, value] of Object.entries(saved)) {
+ if (key.startsWith("lifebridge-") && localStorage.getItem(key) === null && typeof value === "string") localStorage.setItem(key, value);
+ }
+ } catch {}
+ }
+ localStorage.setItem(ownerKey, user.id);
+ activeCloudUserId = user.id;
+ paintAccountButton(session);
+ const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "LifeBridge learner";
+ const { error: profileError } = await supabaseClient.from("profiles").upsert(
+ { id: user.id, display_name: displayName },
+ { onConflict: "id" }
+ );
+ if (profileError) console.warn("LifeBridge profile could not be refreshed:", profileError.message);
 
-  const { data, error } = await supabaseClient.from("user_progress")
-    .select("xp, completed, badges, stats")
-    .eq("user_id", user.id)
-    .maybeSingle();
-  if (error) {
-    console.error("LifeBridge could not load cloud progress:", error.message);
-    showCloudSyncStatus("Signed in. Your device progress is available; cloud sync needs attention.");
-    return;
-  }
-  cloudSyncMuted = true;
-  try {
-    const cloudStats = data?.stats && typeof data.stats === "object" ? data.stats : {};
-    for (const [key, value] of Object.entries(cloudStats)) {
-      if (localStorage.getItem(key) === null && typeof value === "string") localStorage.setItem(key, value);
-    }
-  } finally {
-    cloudSyncMuted = false;
-  }
-  await syncLifeBridgeProgress();
+ const { data, error } = await supabaseClient.from("user_progress")
+ .select("xp, completed, badges, stats")
+ .eq("user_id", user.id)
+ .maybeSingle();
+ if (error) {
+ console.error("LifeBridge could not load cloud progress:", error.message);
+ showCloudSyncStatus("Signed in. Your device progress is available; cloud sync needs attention.");
+ return;
+ }
+ cloudSyncMuted = true;
+ try {
+ const cloudStats = data?.stats && typeof data.stats === "object" ? data.stats : {};
+ for (const [key, value] of Object.entries(cloudStats)) {
+ if (localStorage.getItem(key) === null && typeof value === "string") localStorage.setItem(key, value);
+ }
+ } finally {
+ cloudSyncMuted = false;
+ }
+ await syncLifeBridgeProgress();
 }
 
 
@@ -1147,12 +1135,12 @@ const xpKey='lifebridge-xp-v1';let xpData={points:0,challengeDate:'',badges:[]};
 function saveXp(){try{localStorage.setItem(xpKey,JSON.stringify(xpData))}catch{}renderXp()}
 function addXp(n,reason){xpData.points=(Number(xpData.points)||0)+n;const level=Math.floor(xpData.points/100)+1;const b='level-'+level;if(level>1&&!xpData.badges.includes(b))xpData.badges.push(b);saveXp();if(reason)show('challengeStatus',reason)}
 function renderXp(){const p=Math.max(0,Number(xpData.points)||0),level=Math.floor(p/100)+1,within=p%100;$('xpLevel').textContent=level;$('xpTotal').textContent=p;$('badgeTotal').textContent=xpData.badges.length;$('xpFill').style.width=within+'%';$('xpNext').textContent=level===1?'Earn '+(100-within)+' more XP to reach level 2!':'You are '+within+' / 100 XP into level '+level+'. Keep going at your own pace.'}
-const challenges=[['🧠 Brain boost','Learn one new thing for five minutes.'],['🧹 Tiny reset','Tidy one small space for five minutes.'],['💜 Kindness quest','Send someone a kind message or offer a hand.'],['📚 Study sprint','Focus on one school or learning task for ten minutes.'],['💰 Money moment','Think of one small way to save or avoid an unnecessary purchase.'],['🌿 Recharge quest','Take a short screen break, stretch, or get some fresh air.'],['📝 Plan your win','Write down the one thing you most want to finish today.']];
+const challenges=[[' Brain boost','Learn one new thing for five minutes.'],[' Tiny reset','Tidy one small space for five minutes.'],[' Kindness quest','Send someone a kind message or offer a hand.'],[' Study sprint','Focus on one school or learning task for ten minutes.'],[' Money moment','Think of one small way to save or avoid an unnecessary purchase.'],[' Recharge quest','Take a short screen break, stretch, or get some fresh air.'],[' Plan your win','Write down the one thing you most want to finish today.']];
 function challengeIndex(){const d=new Date();return (d.getFullYear()*372+(d.getMonth()+1)*31+d.getDate())%challenges.length}
 function initChallenge(){const [title,desc]=challenges[challengeIndex()];$('challengeTitle').textContent=title;$('challengeDesc').textContent=desc;const today=new Date().toDateString();const done=xpData.challengeDate===today;$('challengeDone').disabled=done;$('challengeDone').textContent=done?'Completed today ✓':'I did it! +10 XP';if(done)$('challengeStatus').textContent='Nice work! Come back tomorrow for another challenge.'}
-$('challengeDone').addEventListener('click',()=>{const today=new Date().toDateString();if(xpData.challengeDate===today)return;xpData.challengeDate=today;addXp(10,'Daily challenge complete! +10 XP 🎉');initChallenge()});
-const oldSaveTasks=saveTasks;saveTasks=function(){try{localStorage.setItem(taskKey,JSON.stringify(tasks))}catch{}renderTasks();const current=tasks.filter(t=>t.done).length;const previous=Number(localStorage.getItem('lifebridge-last-done-count')||0);if(current>previous){addXp((current-previous)*5,'Task completed! +5 XP ⚡')}try{localStorage.setItem('lifebridge-last-done-count',String(current))}catch{}};
-const aiForm=$('aiForm'),aiInput=$('aiInput'),aiMessages=$('aiMessages'),aiSend=$('aiSend');let aiHistory=[],aiTutorMode='tutor',aiBusy=false;const aiModes=['tutor','socratic','explain','quiz','study'];function setAiMode(mode){if(!aiModes.includes(mode))mode='tutor';aiTutorMode=mode;try{localStorage.setItem('lifebridge-ai-mode',mode)}catch{}document.querySelectorAll('[data-tutor-mode]').forEach(button=>{const active=button.dataset.tutorMode===mode;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});const labels={tutor:'Tutor',socratic:'Guide me',explain:'Explain',quiz:'Quiz me',study:'Study plan'};$('aiNotice').textContent='Teaching style: '+labels[mode]+'. You can change it whenever you like.'}try{const savedMode=localStorage.getItem('lifebridge-ai-mode');if(savedMode&&aiModes.includes(savedMode))aiTutorMode=savedMode}catch{}setAiMode(aiTutorMode);document.querySelectorAll('[data-tutor-mode]').forEach(button=>button.addEventListener('click',()=>setAiMode(button.dataset.tutorMode)));function lifeBuddyErrorMessage(code,message,status){const known={AI_NOT_CONFIGURED:'LifeBuddy is not connected yet. The site owner needs to finish the private AI setup.',OPENAI_INVALID_API_KEY:'LifeBuddy could not verify its AI connection. The site owner needs to update the private API key.',OPENAI_BILLING_LIMIT:'The AI service has reached its usage limit. Please try again later.',OPENAI_MODEL_UNAVAILABLE:'The selected AI model is unavailable. The site owner needs to check the model setting.',OPENAI_RATE_LIMIT:'LifeBuddy is busy right now. Wait a moment and try again.',OPENAI_TIMEOUT:'That took too long. Please try sending your message again.',OPENAI_UPSTREAM_ERROR:'LifeBuddy reached the AI service, but it returned an error. Please try again shortly.',LIFEBUDDY_SERVER_ERROR:'LifeBuddy ran into a server problem. Please try again shortly.'};return known[code]||message||('LifeBuddy could not reply (error '+status+'). Please try again.')}function appendAi(text,who,extraClass=''){const node=document.createElement('div');node.className='ai-msg '+who+(extraClass?' '+extraClass:'');node.textContent=text;node.setAttribute('data-message-role',who);aiMessages.append(node);aiMessages.scrollTop=aiMessages.scrollHeight;return node}function updateAiCount(){$('aiCharCount').textContent=aiInput.value.length.toLocaleString()+' / 1,200'}aiInput.addEventListener('input',updateAiCount);updateAiCount();async function sendAiMessage(rawMessage){const message=String(rawMessage||'').trim();if(!message||aiBusy)return;aiBusy=true;aiHistory.push({role:'user',content:message});appendAi(message,'user');aiInput.value='';updateAiCount();const loading=appendAi('LifeBuddy is thinking','bot','thinking');aiSend.disabled=true;aiInput.disabled=true;aiSend.textContent='Thinking…';$('aiNotice').textContent='Working on your question…';try{const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);let response;try{response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({message,history:aiHistory.slice(0,-1).slice(-8),mode:aiTutorMode}),signal:controller.signal})}finally{clearTimeout(timeout)}const data=await response.json().catch(()=>({}));if(!response.ok){const error=new Error(lifeBuddyErrorMessage(data.error,data.message,response.status));error.code=data.error;throw error}const reply=typeof data.reply==='string'&&data.reply.trim()?data.reply.trim():'I did not get a complete reply. Please try again.';loading.classList.remove('thinking');loading.textContent=reply;aiHistory.push({role:'assistant',content:reply});$('aiNotice').textContent='Reply received. Keep going whenever you are ready.'}catch(err){loading.classList.remove('thinking');loading.classList.add('error');loading.textContent=err.name==='AbortError'?'The connection timed out. Check your connection and try again.':(err.message||'LifeBuddy could not connect. Please try again.');$('aiNotice').textContent='Your message was not answered. You can try again.'}finally{aiBusy=false;aiSend.disabled=false;aiInput.disabled=false;aiSend.innerHTML='Send <span aria-hidden="true">↗</span>';aiInput.focus();aiMessages.scrollTop=aiMessages.scrollHeight}}aiForm.addEventListener('submit',e=>{e.preventDefault();sendAiMessage(aiInput.value)});$('aiNewChat').addEventListener('click',()=>{if(aiBusy)return;aiHistory=[];aiMessages.replaceChildren();appendAi("Hey! I'm LifeBuddy. What are you working on today? We can take it one step at a time.",'bot');$('aiNotice').textContent='Fresh chat started. Choose a teaching style or ask a question.';aiInput.value='';updateAiCount();aiInput.focus()});document.querySelectorAll('[data-prompt]').forEach(button=>button.addEventListener('click',()=>{if(aiBusy)return;aiInput.value=button.dataset.prompt;updateAiCount();aiInput.focus()}));
+$('challengeDone').addEventListener('click',()=>{const today=new Date().toDateString();if(xpData.challengeDate===today)return;xpData.challengeDate=today;addXp(10,'Daily challenge complete! +10 XP ');initChallenge()});
+const oldSaveTasks=saveTasks;saveTasks=function(){try{localStorage.setItem(taskKey,JSON.stringify(tasks))}catch{}renderTasks();const current=tasks.filter(t=>t.done).length;const previous=Number(localStorage.getItem('lifebridge-last-done-count')||0);if(current>previous){addXp((current-previous)*5,'Task completed! +5 XP ')}try{localStorage.setItem('lifebridge-last-done-count',String(current))}catch{}};
+const aiForm=$('aiForm'),aiInput=$('aiInput'),aiMessages=$('aiMessages'),aiSend=$('aiSend');let aiHistory=[],aiTutorMode='tutor',aiBusy=false;const aiModes=['tutor','socratic','explain','quiz','study'];function setAiMode(mode){if(!aiModes.includes(mode))mode='tutor';aiTutorMode=mode;try{localStorage.setItem('lifebridge-ai-mode',mode)}catch{}document.querySelectorAll('[data-tutor-mode]').forEach(button=>{const active=button.dataset.tutorMode===mode;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});const labels={tutor:'Tutor',socratic:'Guide me',explain:'Explain',quiz:'Quiz me',study:'Study plan'};$('aiNotice').textContent='Teaching style: '+labels[mode]+'. You can change it whenever you like.'}try{const savedMode=localStorage.getItem('lifebridge-ai-mode');if(savedMode&&aiModes.includes(savedMode))aiTutorMode=savedMode}catch{}setAiMode(aiTutorMode);document.querySelectorAll('[data-tutor-mode]').forEach(button=>button.addEventListener('click',()=>setAiMode(button.dataset.tutorMode)));function lifeBuddyErrorMessage(code,message,status){const known={AI_NOT_CONFIGURED:'LifeBuddy is not connected yet. The site owner needs to finish the private AI setup.',OPENAI_INVALID_API_KEY:'LifeBuddy could not verify its AI connection. The site owner needs to update the private API key.',OPENAI_BILLING_LIMIT:'The AI service has reached its usage limit. Please try again later.',OPENAI_MODEL_UNAVAILABLE:'The selected AI model is unavailable. The site owner needs to check the model setting.',OPENAI_RATE_LIMIT:'LifeBuddy is busy right now. Wait a moment and try again.',OPENAI_TIMEOUT:'That took too long. Please try sending your message again.',OPENAI_UPSTREAM_ERROR:'LifeBuddy reached the AI service, but it returned an error. Please try again shortly.',LIFEBUDDY_SERVER_ERROR:'LifeBuddy ran into a server problem. Please try again shortly.'};return known[code]||message||('LifeBuddy could not reply (error '+status+'). Please try again.')}function appendAi(text,who,extraClass=''){const node=document.createElement('div');node.className='ai-msg '+who+(extraClass?' '+extraClass:'');node.textContent=text;node.setAttribute('data-message-role',who);aiMessages.append(node);aiMessages.scrollTop=aiMessages.scrollHeight;return node}function updateAiCount(){$('aiCharCount').textContent=aiInput.value.length.toLocaleString()+' / 1,200'}aiInput.addEventListener('input',updateAiCount);updateAiCount();async function sendAiMessage(rawMessage){const message=String(rawMessage||'').trim();if(!message||aiBusy)return;aiBusy=true;aiHistory.push({role:'user',content:message});appendAi(message,'user');aiInput.value='';updateAiCount();const loading=appendAi('LifeBuddy is thinking','bot','thinking');aiSend.disabled=true;aiInput.disabled=true;aiSend.textContent='Thinking…';$('aiNotice').textContent='Working on your question…';try{const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);let response;try{response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({message,history:aiHistory.slice(0,-1).slice(-8),mode:aiTutorMode}),signal:controller.signal})}finally{clearTimeout(timeout)}const data=await response.json().catch(()=>({}));if(!response.ok){const error=new Error(lifeBuddyErrorMessage(data.error,data.message,response.status));error.code=data.error;throw error}const reply=typeof data.reply==='string'&&data.reply.trim()?data.reply.trim():'I did not get a complete reply. Please try again.';loading.classList.remove('thinking');loading.textContent=reply;aiHistory.push({role:'assistant',content:reply});$('aiNotice').textContent='Reply received. Keep going whenever you are ready.'}catch(err){loading.classList.remove('thinking');loading.classList.add('error');loading.textContent=err.name==='AbortError'?'The connection timed out. Check your connection and try again.':(err.message||'LifeBuddy could not connect. Please try again.');$('aiNotice').textContent='Your message was not answered. You can try again.'}finally{aiBusy=false;aiSend.disabled=false;aiInput.disabled=false;aiSend.innerHTML='Send <span aria-hidden="true"></span>';aiInput.focus();aiMessages.scrollTop=aiMessages.scrollHeight}}aiForm.addEventListener('submit',e=>{e.preventDefault();sendAiMessage(aiInput.value)});$('aiNewChat').addEventListener('click',()=>{if(aiBusy)return;aiHistory=[];aiMessages.replaceChildren();appendAi("Hey! I'm LifeBuddy. What are you working on today? We can take it one step at a time.",'bot');$('aiNotice').textContent='Fresh chat started. Choose a teaching style or ask a question.';aiInput.value='';updateAiCount();aiInput.focus()});document.querySelectorAll('[data-prompt]').forEach(button=>button.addEventListener('click',()=>{if(aiBusy)return;aiInput.value=button.dataset.prompt;updateAiCount();aiInput.focus()}));
 
 /* Math Lab interactive lessons */
 document.querySelectorAll('[data-math-tab]').forEach(button=>button.addEventListener('click',()=>{
@@ -1163,7 +1151,7 @@ $('mathPercentBtn').addEventListener('click',()=>{const p=num('mathPercent'),n=n
 $('equationBtn').addEventListener('click',()=>{const a=num('eqA'),b=num('eqB'),c=num('eqC');if(![a,b,c].every(Number.isFinite)||a===0){show('equationResult','Enter numbers; a cannot be zero.');return}show('equationResult','ax + b = c → '+a+'x + ('+b+') = '+c+' → '+a+'x = '+(c-b)+' → x = '+((c-b)/a).toLocaleString(undefined,{maximumFractionDigits:6}))});
 const quizBank=[{q:'What is 25% of 80?',a:20,explain:'25% is one quarter. 80 ÷ 4 = 20.'},{q:'Solve: 4x = 28. What is x?',a:7,explain:'Divide both sides by 4: x = 28 ÷ 4 = 7.'},{q:'What is 3/4 written as a decimal?',a:0.75,explain:'Divide the numerator by the denominator: 3 ÷ 4 = 0.75.'},{q:'What is 12 × 8?',a:96,explain:'12 groups of 8 equals 96.'},{q:'A $50 item is 10% off. How many dollars do you save?',a:5,explain:'10% of 50 = 0.10 × 50 = 5.'},{q:'Solve: x + 9 = 17. What is x?',a:8,explain:'Subtract 9 from both sides: x = 17 − 9 = 8.'}];
 let currentQuiz=0;function newQuiz(){currentQuiz=Math.floor(Math.random()*quizBank.length);$('quizQuestion').textContent=quizBank[currentQuiz].q;$('quizAnswer').value='';$('quizFeedback').textContent='';$('quizAnswer').focus()}
-$('quizCheck').addEventListener('click',()=>{const value=num('quizAnswer');if(!Number.isFinite(value)){show('quizFeedback','Type an answer first.');return}const item=quizBank[currentQuiz];show('quizFeedback',Math.abs(value-item.a)<0.000001?'Correct! 🎉 '+item.explain:'Not quite yet. '+item.explain)});
+$('quizCheck').addEventListener('click',()=>{const value=num('quizAnswer');if(!Number.isFinite(value)){show('quizFeedback','Type an answer first.');return}const item=quizBank[currentQuiz];show('quizFeedback',Math.abs(value-item.a)<0.000001?'Correct! '+item.explain:'Not quite yet. '+item.explain)});
 $('quizNew').addEventListener('click',newQuiz);newQuiz();
 
 /* Supabase-backed account flow. Passwords are handled by Supabase, never stored in this page. */
@@ -1173,7 +1161,7 @@ function setAccountMode(mode){
  $('signInTab').classList.toggle('active',mode==='signin');
  $('signUpTab').classList.toggle('active',mode==='signup');
  $('accountNameField').hidden=mode!=='signup';
- $('accountTitle').textContent=mode==='signin'?'Welcome back 👋':'Create your LifeBridge account';
+ $('accountTitle').textContent=mode==='signin'?'Welcome back ':'Create your LifeBridge account';
  $('accountSubmit').textContent=mode==='signin'?'Sign in':'Create account';
  $('accountPassword').setAttribute('autocomplete',mode==='signin'?'current-password':'new-password');
  show('accountMessage',supabaseClient?'Enter your details to '+(mode==='signin'?'sign in.':'create your account.'):'Account setup needs one final connection: add your Supabase project URL and publishable/anon key in index.html. See README.md for the steps.');
@@ -1203,17 +1191,17 @@ $('accountForm').addEventListener('submit',async e=>{
  const email=$('accountEmail').value.trim(),password=$('accountPassword').value,name=$('accountName').value.trim();
  const submit=$('accountSubmit');submit.disabled=true;submit.textContent=accountMode==='signin'?'Signing in…':'Creating account…';show('accountMessage','Please wait…');
  try{
-  let result;
-  if(accountMode==='signup') result=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name},emailRedirectTo:window.location.origin}});
-  else result=await supabaseClient.auth.signInWithPassword({email,password});
-  if(result.error) throw result.error;
-  if(accountMode==='signup'&&!result.data.session){
-   show('accountMessage','Account created! Check your email for a confirmation link, then return here and sign in.');
-  } else {
-   show('accountMessage',accountMode==='signin'?'You are signed in! Welcome back.':'Your account is ready! Welcome to LifeBridge.');
-   paintAccountButton(result.data.session);
-   if(accountMode==='signin')setTimeout(()=>$('accountModal').classList.add('hidden'),900);
-  }
+ let result;
+ if(accountMode==='signup') result=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name},emailRedirectTo:window.location.origin}});
+ else result=await supabaseClient.auth.signInWithPassword({email,password});
+ if(result.error) throw result.error;
+ if(accountMode==='signup'&&!result.data.session){
+ show('accountMessage','Account created! Check your email for a confirmation link, then return here and sign in.');
+ } else {
+ show('accountMessage',accountMode==='signin'?'You are signed in! Welcome back.':'Your account is ready! Welcome to LifeBridge.');
+ paintAccountButton(result.data.session);
+ if(accountMode==='signin')setTimeout(()=>$('accountModal').classList.add('hidden'),900);
+ }
  }catch(err){show('accountMessage',err.message||'Could not complete account request. Please try again.');}
  finally{submit.disabled=!supabaseClient;submit.textContent=accountMode==='signin'?'Sign in':'Create account';}
 });
@@ -1255,7 +1243,7 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  function allFor(date){const y=Number(date.slice(0,4));return [...holidayEvents(y),...holidayEvents(y-1),...events].filter(e=>e.date===date).sort((a,b)=>(a.holiday?0:1)-(b.holiday?0:1)||String(a.time||'').localeCompare(String(b.time||'')));}
  function fmt(date,opts){return parseDate(date).toLocaleDateString(undefined,opts);}
  function renderGrid(){const grid=$c('calendarGrid');grid.replaceChildren();$c('calMonth').textContent=new Date(viewYear,viewMonth,1,12).toLocaleDateString(undefined,{month:'long',year:'numeric'});const first=new Date(viewYear,viewMonth,1,12);const start=new Date(viewYear,viewMonth,1-first.getDay(),12);for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);const ds=keyDate(d),list=allFor(ds);const b=document.createElement('button');b.type='button';b.className='cal-day'+(d.getMonth()!==viewMonth?' outside':'')+(ds===keyDate(today)?' today':'')+(ds===selected?' selected':'');b.setAttribute('aria-label',fmt(ds,{weekday:'long',month:'long',day:'numeric',year:'numeric'})+(list.length?', '+list.length+' items':''));b.setAttribute('aria-pressed',String(ds===selected));const n=document.createElement('span');n.className='cal-num';n.textContent=d.getDate();b.append(n);list.slice(0,2).forEach(e=>{const dot=document.createElement('span');dot.className='cal-dot '+(e.catholic?'catholic':e.holiday?'holiday':'event');dot.textContent=e.title;dot.title=e.title;b.append(dot);});if(list.length>2){const more=document.createElement('span');more.className='calendar-help';more.textContent='+'+(list.length-2)+' more';b.append(more);}b.addEventListener('click',()=>{selected=ds;viewYear=d.getFullYear();viewMonth=d.getMonth();renderGrid();renderEvents();});grid.append(b);}}
- function renderEvents(){const list=$c('calendarEvents');list.replaceChildren();$c('selectedDateTitle').textContent=fmt(selected,{weekday:'long',month:'long',day:'numeric',year:'numeric'});const items=allFor(selected);if(!items.length){const p=document.createElement('p');p.className='calendar-empty';p.textContent='Nothing scheduled yet. Add an event below, or enjoy the open space.';list.append(p);return;}items.forEach(e=>{const card=document.createElement('div');card.className='calendar-event'+(e.holiday?' holiday-event':'');const icon=document.createElement('span');icon.textContent=e.catholic?'✝️':e.holiday?'🇺🇸':'📌';const copy=document.createElement('div');copy.className='event-copy';const title=document.createElement('strong');title.textContent=e.title;copy.append(title);const meta=document.createElement('small');meta.textContent=(e.catholic?'Catholic feast / liturgical day':e.holiday?'U.S. federal holiday':(e.category||'event').replace(/^./,x=>x.toUpperCase()))+(e.time?' · '+fmtTime(e.time):'');copy.append(meta);if(e.notes){const note=document.createElement('small');note.textContent=e.notes;copy.append(note);}card.append(icon,copy);if(!e.holiday){const actions=document.createElement('div');actions.className='event-actions';const del=document.createElement('button');del.type='button';del.className='smallbtn';del.textContent='Delete';del.setAttribute('aria-label','Delete '+e.title);del.addEventListener('click',()=>{events=events.filter(x=>x.id!==e.id);save();renderGrid();renderEvents();toastCal('Event deleted.');});actions.append(del);card.append(actions);}list.append(card);});}
+ function renderEvents(){const list=$c('calendarEvents');list.replaceChildren();$c('selectedDateTitle').textContent=fmt(selected,{weekday:'long',month:'long',day:'numeric',year:'numeric'});const items=allFor(selected);if(!items.length){const p=document.createElement('p');p.className='calendar-empty';p.textContent='Nothing scheduled yet. Add an event below, or enjoy the open space.';list.append(p);return;}items.forEach(e=>{const card=document.createElement('div');card.className='calendar-event'+(e.holiday?' holiday-event':'');const icon=document.createElement('span');icon.textContent=e.catholic?'':e.holiday?'🇺🇸':'';const copy=document.createElement('div');copy.className='event-copy';const title=document.createElement('strong');title.textContent=e.title;copy.append(title);const meta=document.createElement('small');meta.textContent=(e.catholic?'Catholic feast / liturgical day':e.holiday?'U.S. federal holiday':(e.category||'event').replace(/^./,x=>x.toUpperCase()))+(e.time?' · '+fmtTime(e.time):'');copy.append(meta);if(e.notes){const note=document.createElement('small');note.textContent=e.notes;copy.append(note);}card.append(icon,copy);if(!e.holiday){const actions=document.createElement('div');actions.className='event-actions';const del=document.createElement('button');del.type='button';del.className='smallbtn';del.textContent='Delete';del.setAttribute('aria-label','Delete '+e.title);del.addEventListener('click',()=>{events=events.filter(x=>x.id!==e.id);save();renderGrid();renderEvents();toastCal('Event deleted.');});actions.append(del);card.append(actions);}list.append(card);});}
  function fmtTime(t){const [h,m]=t.split(':').map(Number);return new Date(2000,0,1,h,m).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});}
  $c('calPrev').addEventListener('click',()=>{viewMonth--;if(viewMonth<0){viewMonth=11;viewYear--;}renderGrid();});
  $c('calNext').addEventListener('click',()=>{viewMonth++;if(viewMonth>11){viewMonth=0;viewYear++;}renderGrid();});
@@ -1293,14 +1281,14 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){toast('Browser storage is unavailable; changes may not persist.');}}
  let toastTimer;
  function toast(msg){const el=$('toast');if(!el)return;el.textContent=msg;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),2400);}
- function renderHabits(){data.habits.forEach((v,i)=>{const el=$('habit'+(i+1));if(el)el.checked=!!v;});const count=data.habits.filter(Boolean).length;$('habitStat').textContent=count+' / 3';$('habitProgress').style.width=(count/3*100)+'%';$('habitMessage').textContent=count===3?'All three done — amazing! 🎉':count?'Nice start. Keep going at your pace.':'Every little bit counts.';}
+ function renderHabits(){data.habits.forEach((v,i)=>{const el=$('habit'+(i+1));if(el)el.checked=!!v;});const count=data.habits.filter(Boolean).length;$('habitStat').textContent=count+' / 3';$('habitProgress').style.width=(count/3*100)+'%';$('habitMessage').textContent=count===3?'All three done — amazing! ':count?'Nice start. Keep going at your pace.':'Every little bit counts.';}
  function renderGoals(){const list=$('goalList');list.replaceChildren();data.goals.forEach((g,i)=>{const row=document.createElement('div');row.className='goal-row';const copy=document.createElement('div');const title=document.createElement('strong');title.textContent=g.title;const step=document.createElement('div');step.textContent='Next: '+g.step;step.style.color='var(--muted)';step.style.fontSize='.9rem';copy.append(title,step);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const done=document.createElement('button');done.type='button';done.className='smallbtn';done.textContent=g.done?'Done ✓':'Complete';done.setAttribute('aria-label',(g.done?'Reopen ':'Complete ')+g.title);done.addEventListener('click',()=>{data.goals[i].done=!data.goals[i].done;save();renderGoals();});const remove=document.createElement('button');remove.type='button';remove.className='smallbtn';remove.textContent='×';remove.setAttribute('aria-label','Delete '+g.title);remove.addEventListener('click',()=>{data.goals.splice(i,1);save();renderGoals();});actions.append(done,remove);row.append(copy,actions);if(g.done){title.style.textDecoration='line-through';row.style.opacity='.7';}list.append(row);});$('goalStat').textContent=data.goals.filter(g=>!g.done).length;}
  data.habits.forEach((v,i)=>{const el=$('habit'+(i+1));el.addEventListener('change',()=>{data.habits[i]=el.checked;save();renderHabits();});});renderHabits();renderGoals();$('focusStat').textContent=data.focusSessions;
  $('goalForm').addEventListener('submit',e=>{e.preventDefault();const title=$('goalInput').value.trim(),step=$('goalStep').value.trim();if(!title||!step)return;data.goals.unshift({title,step,done:false});data.goals=data.goals.slice(0,30);save();renderGoals();e.target.reset();toast('Goal added — you’ve got this!');});
  let remaining=25*60, interval=null, running=false;
  const clock=()=>{const m=Math.floor(remaining/60),s=remaining%60;$('focusClock').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');};
  function stop(){if(interval!==null)clearInterval(interval);interval=null;running=false;}
- $('focusStart').addEventListener('click',()=>{if(running)return;running=true;$('focusMessage').textContent='Focus on: '+($('focusTask').value.trim()||'your next task');interval=setInterval(()=>{remaining--;clock();if(remaining<=0){stop();remaining=0;clock();data.focusSessions++;save();$('focusStat').textContent=data.focusSessions;$('focusMessage').textContent='Focus sprint complete! Take a short break. 🎉';toast('Focus session complete!');}},1000);});
+ $('focusStart').addEventListener('click',()=>{if(running)return;running=true;$('focusMessage').textContent='Focus on: '+($('focusTask').value.trim()||'your next task');interval=setInterval(()=>{remaining--;clock();if(remaining<=0){stop();remaining=0;clock();data.focusSessions++;save();$('focusStat').textContent=data.focusSessions;$('focusMessage').textContent='Focus sprint complete! Take a short break. ';toast('Focus session complete!');}},1000);});
  $('focusPause').addEventListener('click',()=>{stop();$('focusMessage').textContent='Paused. Take your time.';});
  $('focusReset').addEventListener('click',()=>{stop();remaining=25*60;clock();$('focusMessage').textContent='Timer reset. Ready when you are.';});clock();
  window.addEventListener('beforeunload',stop);
@@ -1313,22 +1301,22 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  sections.forEach((el,i)=>{if(!el.classList.contains('reveal'))el.classList.add('reveal');if(i%4===1)el.dataset.reveal='left';else if(i%4===3)el.dataset.reveal='right'});
  document.querySelectorAll('.tool-card').forEach((el,i)=>{el.classList.add('reveal');el.style.setProperty('--reveal-delay',(i%4)*85+'ms')});
  if(!reduceMotion && 'IntersectionObserver' in window){
-   document.documentElement.classList.add('reveal-ready');
-   const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{threshold:.12,rootMargin:'0px 0px -35px 0px'});
-   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+ document.documentElement.classList.add('reveal-ready');
+ const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
  }else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible'))}
  const back=$('backTop');
  function updateScroll(){
-   const max=document.documentElement.scrollHeight-window.innerHeight;
-   const progress=max>0?(window.scrollY/max)*100:0;
-   document.body.style.setProperty('--scroll-progress',progress+'%');
-   back.classList.toggle('visible',window.scrollY>500);
+ const max=document.documentElement.scrollHeight-window.innerHeight;
+ const progress=max>0?(window.scrollY/max)*100:0;
+ document.body.style.setProperty('--scroll-progress',progress+'%');
+ back.classList.toggle('visible',window.scrollY>500);
  }
  window.addEventListener('scroll',updateScroll,{passive:true});updateScroll();
  back.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'}));
  document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',e=>{
-   const id=link.getAttribute('href').slice(1);const target=id?document.getElementById(id):null;
-   if(target){e.preventDefault();target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});if(target.id==='lifebuddy')setTimeout(()=>$('aiInput')?.focus({preventScroll:true}),350)}
+ const id=link.getAttribute('href').slice(1);const target=id?document.getElementById(id):null;
+ if(target){e.preventDefault();target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});if(target.id==='lifebuddy')setTimeout(()=>$('aiInput')?.focus({preventScroll:true}),350)}
  }));
 })();
 
@@ -1341,17 +1329,17 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  try{const parsed=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(parsed))tasks=parsed.filter(t=>t&&typeof t.text==='string').slice(0,100);}catch(e){}
  const save=()=>{try{localStorage.setItem(key,JSON.stringify(tasks));}catch(e){}};
  function render(){
-  const list=$('todayTaskList');list.replaceChildren();
-  if(!tasks.length){const empty=document.createElement('p');empty.className='command-empty';empty.textContent='No missions yet. Add one small thing you want to finish today.';list.append(empty);}
-  tasks.forEach(task=>{
-   const row=document.createElement('div');row.className='command-task'+(task.done?' done':'');
-   const check=document.createElement('input');check.type='checkbox';check.checked=!!task.done;check.setAttribute('aria-label','Mark '+task.text+' complete');check.addEventListener('change',()=>{task.done=check.checked;save();render();});
-   const label=document.createElement('label');label.textContent=task.text;
-   const del=document.createElement('button');del.type='button';del.className='smallbtn';del.textContent='×';del.setAttribute('aria-label','Delete '+task.text);del.addEventListener('click',()=>{tasks=tasks.filter(t=>t.id!==task.id);save();render();});
-   row.append(check,label,del);list.append(row);
-  });
-  const done=tasks.filter(t=>t.done).length,open=tasks.length-done;
-  $('todayOpenCount').textContent=open;$('todayDoneCount').textContent=done;$('todayPercent').textContent=(tasks.length?Math.round(done/tasks.length*100):0)+'%';
+ const list=$('todayTaskList');list.replaceChildren();
+ if(!tasks.length){const empty=document.createElement('p');empty.className='command-empty';empty.textContent='No missions yet. Add one small thing you want to finish today.';list.append(empty);}
+ tasks.forEach(task=>{
+ const row=document.createElement('div');row.className='command-task'+(task.done?' done':'');
+ const check=document.createElement('input');check.type='checkbox';check.checked=!!task.done;check.setAttribute('aria-label','Mark '+task.text+' complete');check.addEventListener('change',()=>{task.done=check.checked;save();render();});
+ const label=document.createElement('label');label.textContent=task.text;
+ const del=document.createElement('button');del.type='button';del.className='smallbtn';del.textContent='×';del.setAttribute('aria-label','Delete '+task.text);del.addEventListener('click',()=>{tasks=tasks.filter(t=>t.id!==task.id);save();render();});
+ row.append(check,label,del);list.append(row);
+ });
+ const done=tasks.filter(t=>t.done).length,open=tasks.length-done;
+ $('todayOpenCount').textContent=open;$('todayDoneCount').textContent=done;$('todayPercent').textContent=(tasks.length?Math.round(done/tasks.length*100):0)+'%';
  }
  $('todayTaskForm').addEventListener('submit',e=>{e.preventDefault();const input=$('todayTaskInput'),text=input.value.trim();if(!text)return;tasks.unshift({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),text,done:false});tasks=tasks.slice(0,100);save();render();input.value='';input.focus();});
  render();
@@ -1383,11 +1371,11 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  const lines=['Small steps count. Pick one thing and begin.','Progress beats perfect. Keep it moving.','You do not have to do everything — just the next thing.','Make today a little easier for your future self.','A focused 10 minutes is a real start.'];
  const day=Math.floor(Date.now()/86400000);$('heroDailyLine').textContent=lines[day%lines.length];
  function sync(){
-  const open=Number($('todayOpenCount')?.textContent||0),done=Number($('todayDoneCount')?.textContent||0),pct=parseInt($('todayPercent')?.textContent||'0',10)||0;
-  $('heroOpen').textContent=open;$('heroDone').textContent=done;$('heroPercent').textContent=pct+'%';
-  $('heroProgressRing').style.strokeDashoffset=264-(264*pct/100);
-  $('heroProgressTitle').textContent=done?"You’re building momentum.":open?"Your next win is waiting.":"Start with one win.";
-  $('heroProgressText').textContent=done?done+' mission'+(done===1?'':'s')+' completed. Keep your streak going.':open?open+' mission'+(open===1?'':'s')+' ready when you are.':'Add a mission to your dashboard and watch your progress grow.';
+ const open=Number($('todayOpenCount')?.textContent||0),done=Number($('todayDoneCount')?.textContent||0),pct=parseInt($('todayPercent')?.textContent||'0',10)||0;
+ $('heroOpen').textContent=open;$('heroDone').textContent=done;$('heroPercent').textContent=pct+'%';
+ $('heroProgressRing').style.strokeDashoffset=264-(264*pct/100);
+ $('heroProgressTitle').textContent=done?"You’re building momentum.":open?"Your next win is waiting.":"Start with one win.";
+ $('heroProgressText').textContent=done?done+' mission'+(done===1?'':'s')+' completed. Keep your streak going.':open?open+' mission'+(open===1?'':'s')+' ready when you are.':'Add a mission to your dashboard and watch your progress grow.';
  }
  const board=$('todayTaskList');if(board&&window.MutationObserver)new MutationObserver(sync).observe(board,{childList:true,subtree:true,characterData:true});
  const stats=$('todayPercent');if(stats&&window.MutationObserver)new MutationObserver(sync).observe(stats,{childList:true,characterData:true,subtree:true});
@@ -1453,7 +1441,6 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
 renderXp();initChallenge();
 
 </script>
-
 <style id="lifebridge-section-navigation-fix">
 /* Each LifeBridge destination is a separate workspace, not a long scrolling page. */
 body.lb-workspace-mode main>section:not(.hero-upgraded):not(#today):not(#lifebuddy):not(#accessPanel):not(#tools):not(#learn):not(#organize):not(#budget):not(#convert){display:none!important}
@@ -1476,7 +1463,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
 <script id="lifebridge-workspace-router">
 (()=> {
  const routes = [
-  ["today","Home"],["lifebuddy","LifeBuddy"],["learn","Learning"],["tools","Explore"],["organize","Organizer"],["budget","Budget"],["calendar","Calendar"],["focus","Focus & goals"],["lifequest","Skill Quest"]
+ ["today","Home"],["lifebuddy","LifeBuddy"],["learn","Learning"],["tools","Explore"],["organize","Organizer"],["budget","Budget"],["calendar","Calendar"],["focus","Focus & goals"],["lifequest","Skill Quest"]
  ];
  const routeIds = new Set(routes.map(([id])=>id).concat(["convert","levelup"]));
  const nav = document.querySelector(".navlinks");
@@ -1485,50 +1472,111 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  const quick=nav.querySelector("#quickJump"), access=nav.querySelector("#accessToggle"), account=nav.querySelector("#accountOpen");
  nav.querySelectorAll("a").forEach(a=>a.remove());
  routes.forEach(([id,label])=>{
-  const a=document.createElement("a");
-  a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
-  nav.insertBefore(a,quick||access||account||null);
+ const a=document.createElement("a");
+ a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
+ nav.insertBefore(a,quick||access||account||null);
  });
  const panels=[...document.querySelectorAll(".hero-upgraded, #today, #lifebuddy, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
  function routeFromHash(){
-  const id=(location.hash||"#today").slice(1);
-  return routeIds.has(id)?id:"today";
+ const id=(location.hash||"#today").slice(1);
+ return routeIds.has(id)?id:"today";
  }
  function activate(id,update=true){
-  if(!routeIds.has(id))id="today";
-  panels.forEach(panel=>{
-   const isHome=id==="today"&&(panel.classList.contains("hero-upgraded")||panel.id==="today");
-   const active=isHome||panel.id===id;
-   panel.classList.toggle("lb-view-hidden",!active);
-   panel.classList.toggle("lb-view-active",active);
-   panel.setAttribute("aria-hidden",String(!active));
-   if(!active)panel.setAttribute("inert","");
-   else panel.removeAttribute("inert");
-  });
-  nav.querySelectorAll("[data-lb-route]").forEach(a=>{
-   const active=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools")||(id==="levelup"&&a.dataset.lbRoute==="lifequest");
-   if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
-  });
-  if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
-  window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
-  document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":id==="levelup"?"Your Level":"LifeBridge"))+" | LifeBridge";
+ if(!routeIds.has(id))id="today";
+ panels.forEach(panel=>{
+ const isHome=id==="today"&&(panel.classList.contains("hero-upgraded")||panel.id==="today");
+ const active=isHome||panel.id===id;
+ panel.classList.toggle("lb-view-hidden",!active);
+ panel.classList.toggle("lb-view-active",active);
+ panel.setAttribute("aria-hidden",String(!active));
+ if(!active)panel.setAttribute("inert","");
+ else panel.removeAttribute("inert");
+ });
+ nav.querySelectorAll("[data-lb-route]").forEach(a=>{
+ const active=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools")||(id==="levelup"&&a.dataset.lbRoute==="lifequest");
+ if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+ });
+ if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
+ window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+ document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":id==="levelup"?"Your Level":"LifeBridge"))+" | LifeBridge";
  }
  document.addEventListener("click",event=>{
-  const jump=event.target.closest("[data-jump]");
-  if(jump){event.preventDefault();activate(jump.dataset.jump);return;}
-  const targetButton=event.target.closest("[data-target]");
-  if(targetButton){event.preventDefault();activate(targetButton.dataset.target);return;}
-  const link=event.target.closest('a[href^="#"]');
-  if(!link)return;
-  const raw=link.getAttribute("href");
-  if(raw==="#"||raw==="#home"){event.preventDefault();activate("today");return;}
-  const id=raw.slice(1);
-  if(routeIds.has(id)){event.preventDefault();activate(id);return;}
+ const jump=event.target.closest("[data-jump]");
+ if(jump){event.preventDefault();activate(jump.dataset.jump);return;}
+ const targetButton=event.target.closest("[data-target]");
+ if(targetButton){event.preventDefault();activate(targetButton.dataset.target);return;}
+ const link=event.target.closest('a[href^="#"]');
+ if(!link)return;
+ const raw=link.getAttribute("href");
+ if(raw==="#"||raw==="#home"){event.preventDefault();activate("today");return;}
+ const id=raw.slice(1);
+ if(routeIds.has(id)){event.preventDefault();activate(id);return;}
  });
  window.addEventListener("popstate",()=>activate(routeFromHash(),false));
  window.addEventListener("hashchange",()=>activate(routeFromHash(),false));
  activate(routeFromHash(),false);
 })();
 </script>
-</body>
+
+<style id="lifebridge-professional-polish">
+/* LifeBridge visual system: calm, confident, consistent, and accessible. */
+:root{
+ --bg:#f4f7f8!important;--surface:#ffffff!important;--ink:#172b3a!important;
+ --muted:#627481!important;--brand:#176f78!important;--brand2:#e7f2f1!important;
+ --line:#dce6e8!important;--shadow:0 12px 32px rgba(23,43,58,.07)!important;
+ --lb-radius:18px;
+}
+html{scroll-behavior:smooth}
+body{background:#f4f7f8!important;color:#172b3a!important;letter-spacing:-.008em}
+.topbar{background:rgba(255,255,255,.96)!important;border-bottom:1px solid #dce6e8!important;box-shadow:0 3px 18px rgba(23,43,58,.035)!important;backdrop-filter:blur(14px)}
+.nav{min-height:78px!important}
+.logo{font-size:1.3rem!important;letter-spacing:-.045em!important;color:#173247!important}
+.logo-mark{border-radius:12px!important}
+.navlinks{gap:7px!important}
+.navlinks a{font-size:.91rem!important;color:#536875!important;padding:9px 11px;border-radius:10px;transition:background .18s,color .18s}
+.navlinks a:hover{background:#edf4f4;color:#176f78!important}
+.navlinks a[aria-current=page]{background:#e7f2f1!important;color:#176f78!important}
+.smallbtn,.btn,.account-btn{border-radius:11px!important;font-weight:700!important;transition:transform .18s,box-shadow .18s,background .18s!important}
+.btn.primary{background:#176f78!important;border-color:#176f78!important;box-shadow:0 5px 13px rgba(23,111,120,.16)!important}
+.btn.primary:hover{background:#125c64!important;transform:translateY(-1px)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(23,111,120,.28)!important;outline-offset:3px}
+.hero-upgraded,.hero{background:linear-gradient(135deg,#f8fbfb 0%,#edf5f4 100%)!important}
+.hero h1,.hero-upgraded h1{color:#172f40!important;letter-spacing:-.055em!important}
+.hero h1 .pop{background:none!important;color:#176f78!important}
+.eyebrow,.tag{background:#e8f2f1!important;color:#176f78!important;border:1px solid #d6e7e5!important;box-shadow:none!important}
+.section{padding-top:58px!important;padding-bottom:58px!important}
+.section-head{margin-bottom:26px!important}
+.section h2,.section-head h2,.feature-band h2{color:#183346!important;letter-spacing:-.04em!important;font-size:clamp(1.65rem,3vw,2.25rem)!important}
+.section p,.section-intro{color:#627481}
+.panel,.toolbox,.upgrade-card,.fun-panel,.hero-art,.course-card,.learning-card,.feature-card{
+ background:#fff!important;border:1px solid #dce6e8!important;border-radius:18px!important;
+ box-shadow:0 8px 24px rgba(23,43,58,.055)!important;
+}
+.panel{padding:24px!important}
+.field label,label{color:#304b5a;font-weight:700}
+input,select,textarea{border:1px solid #d3e0e3!important;border-radius:10px!important;background:#fff!important;color:#172b3a!important}
+input:focus,select:focus,textarea:focus{border-color:#4a9698!important;box-shadow:0 0 0 3px rgba(23,111,120,.1)!important}
+.result,.notice,.course-feedback{border-radius:12px!important}
+.feature-band{background:linear-gradient(135deg,#173b4a,#205c61)!important}
+.feature-band h2,.feature-band h3,.feature-band p{color:#fff}
+.feature-band .fun-panel{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.18)!important;box-shadow:none!important}
+.stat-pill{border:1px solid #d8e5e6!important;border-radius:999px!important;background:#f5f9f9!important;color:#34515e!important}
+.course-outline-item{border-radius:10px!important}
+.course-outline-item.active{background:#e8f2f1!important;border-color:#b8d6d3!important;color:#176f78!important}
+.course-dot{background:#e4efef!important;color:#176f78!important}
+#learn{background:#f4f7f8!important}
+#budget{background:#f4f7f8!important}
+#calendar,#focus,#lifequest{background:#f4f7f8!important}
+#today{background:transparent!important}
+.lb-view-active{animation:lb-fade-in .2s ease both}
+@keyframes lb-fade-in{from{opacity:.65;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media(max-width:700px){
+ .section{padding-top:38px!important;padding-bottom:38px!important}
+ .panel{padding:18px!important}
+ .navlinks{gap:3px!important}
+ .navlinks a{font-size:.85rem!important;padding:8px 9px!important}
+}
+</style>
+\n</body>
 </html>
