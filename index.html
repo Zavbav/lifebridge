@@ -765,7 +765,7 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 <button type="button" data-jump="budget"><span class="quick-command-icon">04</span><span><strong>Budget helper</strong><small>Plan spending and savings</small></span><kbd>↵</kbd></button>
 <button type="button" data-jump="organize"><span class="quick-command-icon">05</span><span><strong>To-do organizer</strong><small>Keep your tasks in order</small></span><kbd>↵</kbd></button>
 <button type="button" data-jump="calendar"><span class="quick-command-icon">06</span><span><strong>Calendar</strong><small>See dates and plan ahead</small></span><kbd>↵</kbd></button>
-<button type="button" data-jump="focus"><span class="quick-command-icon">07</span><span><strong>Focus timer</strong><small>Start a 25-minute sprint</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="focus"><span class="quick-command-icon">07</span><span><strong>Focus timer</strong><small>Start a 25-minute sprint</small></span><kbd>↵</kbd></button><button type="button" data-jump="tools"><span class="quick-command-icon">08</span><span><strong>Explore tools</strong><small>Open calculators and everyday helpers</small></span><kbd>↵</kbd></button><button type="button" data-jump="lifequest"><span class="quick-command-icon">09</span><span><strong>Skill Quest</strong><small>Practice useful real-life decisions</small></span><kbd>↵</kbd></button><button type="button" data-jump="convert"><span class="quick-command-icon">10</span><span><strong>Unit converter</strong><small>Convert common measurements</small></span><kbd>↵</kbd></button>
 </div><div class="quick-palette-foot"><span>Navigate faster</span><span><kbd>ESC</kbd> to close</span></div></div>
 </div><button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true"></span></a>
@@ -2063,6 +2063,9 @@ footer{color:#77718b!important}
 @media(prefers-reduced-motion:reduce){
  button,.btn,.smallbtn,.account-btn,:where(.panel,.tool-card,.toolbox){transition:none!important}
 }
+/* Keep the main navigation calm; every secondary workspace remains one click away in Quick jump. */
+.navlinks a[data-lb-route="organize"],.navlinks a[data-lb-route="budget"],.navlinks a[data-lb-route="focus"],.navlinks a[data-lb-route="lifequest"]{display:none!important}
+.quick-palette-box [data-jump]{min-height:58px}
 </style>
 
 </body>
