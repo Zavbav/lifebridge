@@ -105,7 +105,7 @@ export default async function handler(req, res) {
         ? data.output.flatMap(item => Array.isArray(item.content) ? item.content : [])
             .filter(item => item?.type === "output_text" && typeof item.text === "string")
             .map(item => item.text)
-            .join("\\n")
+            .join("\n")
             .trim()
         : "");
     if (!reply) return res.status(502).json({ error: "LifeBuddy received an empty reply. Please try again." });
