@@ -1725,5 +1725,62 @@ body.lb-workspace-mode .lb-view-active .section-head:after{content:"";display:bl
  });
 })();
 </script>
+
+<style id="lifebridge-loop-inspired-motion">
+/* Original LifeBridge motion direction: layered light, responsive depth, and calm choreography. */
+.hero-dashboard{position:relative;isolation:isolate;overflow:hidden;transform:perspective(1100px) rotateX(var(--lb-tilt-y,0deg)) rotateY(var(--lb-tilt-x,0deg));transition:transform .55s cubic-bezier(.2,.75,.25,1),box-shadow .45s ease!important}
+.hero-dashboard:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;background:radial-gradient(360px circle at var(--lb-light-x,50%) var(--lb-light-y,50%),rgba(103,183,177,.14),transparent 68%);opacity:0;transition:opacity .4s ease}
+.hero-dashboard.lb-pointer-active:after{opacity:1}
+.hero-dashboard .hero-dash-top,.hero-dashboard .hero-focus,.hero-dashboard .hero-mini-stats,.hero-dashboard .hero-dash-bottom{animation:lb-dashboard-arrive .7s cubic-bezier(.2,.75,.25,1) both}
+.hero-dashboard .hero-focus{animation-delay:.08s}
+.hero-dashboard .hero-mini-stats{animation-delay:.16s}
+.hero-dashboard .hero-dash-bottom{animation-delay:.24s}
+@keyframes lb-dashboard-arrive{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+.hero-upgraded .hero-copy>*{animation:lb-copy-arrive .72s cubic-bezier(.2,.75,.25,1) both}
+.hero-upgraded .hero-copy>*:nth-child(2){animation-delay:.08s}
+.hero-upgraded .hero-copy>*:nth-child(3){animation-delay:.15s}
+.hero-upgraded .hero-copy>*:nth-child(4){animation-delay:.22s}
+@keyframes lb-copy-arrive{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+body.lb-workspace-mode .lb-view-active .tool-card,
+body.lb-workspace-mode .lb-view-active .upgrade-card,
+body.lb-workspace-mode .lb-view-active .panel{backface-visibility:hidden}
+@media(hover:hover) and (pointer:fine){
+ .hero-dashboard.lb-pointer-active{box-shadow:0 30px 76px rgba(30,79,99,.17),inset 0 1px #fff!important}
+ .tool-card:after,.upgrade-card:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.42) 48%,transparent 72%);transform:translateX(-130%);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+ .tool-card,.upgrade-card{position:relative;overflow:hidden}
+ .tool-card:hover:after,.upgrade-card:hover:after{transform:translateX(130%)}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-dashboard,.hero-dashboard:after,.hero-dashboard .hero-dash-top,.hero-dashboard .hero-focus,.hero-dashboard .hero-mini-stats,.hero-dashboard .hero-dash-bottom,.hero-upgraded .hero-copy>*{animation:none!important;transition:none!important;transform:none!important}
+ .tool-card:after,.upgrade-card:after{display:none!important}
+}
+</style>
+<script id="lifebridge-pointer-light">
+(()=>{
+ const card=document.querySelector(".hero-dashboard");
+ if(!card||!window.matchMedia("(hover:hover) and (pointer:fine)").matches||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ let frame=0,last=null;
+ card.addEventListener("pointermove",event=>{
+  last=event;
+  if(frame)return;
+  frame=requestAnimationFrame(()=>{
+   frame=0;
+   const r=card.getBoundingClientRect();
+   const x=(last.clientX-r.left)/r.width;
+   const y=(last.clientY-r.top)/r.height;
+   card.style.setProperty("--lb-light-x",(x*100)+"%");
+   card.style.setProperty("--lb-light-y",(y*100)+"%");
+   card.style.setProperty("--lb-tilt-x",((x-.5)*1.8)+"deg");
+   card.style.setProperty("--lb-tilt-y",((.5-y)*1.8)+"deg");
+   card.classList.add("lb-pointer-active");
+  });
+ });
+ card.addEventListener("pointerleave",()=>{
+  card.classList.remove("lb-pointer-active");
+  card.style.setProperty("--lb-tilt-x","0deg");
+  card.style.setProperty("--lb-tilt-y","0deg");
+ });
+})();
+</script>
 \n</body>
 </html>
