@@ -31,11 +31,12 @@ LifeBridge uses [Supabase Auth](https://supabase.com/auth) so passwords are hand
 
 1. Create a free project at [Supabase](https://supabase.com/dashboard).
 2. In the Supabase dashboard, open **Project Settings → API** (or **Data API / API Keys**, depending on the dashboard version). Copy the **Project URL** and the **publishable key** (or legacy **anon/public** key). Never use a secret or service-role key in the website.
-3. In Vercel, add `SUPABASE_URL` and `SUPABASE_ANON_KEY` under **Settings → Environment Variables**. Use the Supabase Project URL and publishable key (or legacy anon/public key). Do not use a secret/service-role key.
-4. In Supabase, open **Authentication → URL Configuration**. Set the Site URL to your deployed LifeBridge URL and add that URL to the allowed redirect URLs.
-5. In **Authentication → Providers → Email**, enable email/password sign-in. For safer new-account verification, leave email confirmation enabled.
-6. Redeploy the Vercel project after adding the variables.
-7. Test **Sign up** with an email you can access, click the confirmation link if requested, and then test **Sign in**.
+3. In Supabase, open **SQL Editor**, paste the contents of [`supabase/schema.sql`](./supabase/schema.sql), and run it. This creates the `profiles` and `user_progress` tables with row-level security so users can access only their own records.
+4. In Vercel, add `SUPABASE_URL` and `SUPABASE_ANON_KEY` under **Settings → Environment Variables**. Use the Supabase Project URL and publishable key (or legacy anon/public key). Do not use a secret/service-role key.
+5. In Supabase, open **Authentication → URL Configuration**. Set the Site URL to your deployed LifeBridge URL and add that URL to the allowed redirect URLs.
+6. In **Authentication → Providers → Email**, enable email/password sign-in. For safer new-account verification, leave email confirmation enabled.
+7. Redeploy the Vercel project after adding the variables.
+8. Test **Sign up** with an email you can access, click the confirmation link if requested, and then test **Sign in**.
 
 The account page disables submission until the secure configuration route returns valid Supabase settings. Supabase handles passwords; the site does not store them itself. The account feature provides email/password registration, sign-in, session persistence, sign-out, profile creation, and account-level progress backup/sync through the existing `user_progress` table.
 
