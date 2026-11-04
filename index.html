@@ -1578,5 +1578,56 @@ input:focus,select:focus,textarea:focus{border-color:#4a9698!important;box-shado
  .navlinks a{font-size:.85rem!important;padding:8px 9px!important}
 }
 </style>
+\n
+<style id="lifebridge-motion-system">
+/* Subtle motion system: purposeful feedback without distracting from learning. */
+@keyframes lb-view-enter{0%{opacity:0;transform:translateY(12px) scale(.995)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes lb-soft-rise{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes lb-fade{from{opacity:0}to{opacity:1}}
+@keyframes lb-progress-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes lb-ring-in{from{stroke-dashoffset:264}to{stroke-dashoffset:var(--lb-ring-offset,264)}}
+@keyframes lb-pulse{0%,100%{box-shadow:0 0 0 0 rgba(23,111,120,0)}50%{box-shadow:0 0 0 5px rgba(23,111,120,.09)}}
+body.lb-workspace-mode .lb-view-active{animation:lb-view-enter .34s cubic-bezier(.2,.75,.25,1) both!important}
+body.lb-workspace-mode .lb-view-active .section-head,
+body.lb-workspace-mode .lb-view-active>.wrap>h1,
+body.lb-workspace-mode .lb-view-active>.wrap>h2{animation:lb-soft-rise .42s .04s both}
+body.lb-workspace-mode .lb-view-active .panel,
+body.lb-workspace-mode .lb-view-active .upgrade-card,
+body.lb-workspace-mode .lb-view-active .toolbox,
+body.lb-workspace-mode .lb-view-active .fun-panel{animation:lb-soft-rise .42s .08s both}
+body.lb-workspace-mode .lb-view-active .panel:nth-of-type(2),
+body.lb-workspace-mode .lb-view-active .upgrade-card:nth-of-type(2){animation-delay:.13s}
+body.lb-workspace-mode .lb-view-active .panel:nth-of-type(3),
+body.lb-workspace-mode .lb-view-active .upgrade-card:nth-of-type(3){animation-delay:.18s}
+.panel,.upgrade-card,.toolbox,.fun-panel,.hero-art,.course-outline-item,.navlinks a,.btn,.smallbtn,.account-btn{
+ transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s ease,border-color .2s ease,background-color .2s ease!important;
+}
+.panel:hover,.upgrade-card:hover,.toolbox:hover,.hero-art:hover{
+ transform:translateY(-3px);
+ box-shadow:0 15px 34px rgba(23,43,58,.09)!important;
+ border-color:#c8dcdd!important;
+}
+.btn:active,.smallbtn:active,.account-btn:active{transform:translateY(1px) scale(.985)!important}
+.course-outline-item:hover{transform:translateX(3px);border-color:#b8d6d3!important}
+.navlinks a:hover{transform:translateY(-1px)}
+.result,.course-feedback{animation:lb-fade .22s ease both}
+.xp-fill,.progress-fill,.progress-bar>span{transform-origin:left center;animation:lb-progress-in .65s cubic-bezier(.2,.7,.2,1) both}
+#heroProgressRing{transition:stroke-dashoffset .8s cubic-bezier(.2,.7,.2,1)}
+#challengeDone:focus-visible,.btn.primary:focus-visible{animation:lb-pulse 1.5s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+ body.lb-workspace-mode .lb-view-active,
+ body.lb-workspace-mode .lb-view-active .section-head,
+ body.lb-workspace-mode .lb-view-active>.wrap>h1,
+ body.lb-workspace-mode .lb-view-active>.wrap>h2,
+ body.lb-workspace-mode .lb-view-active .panel,
+ body.lb-workspace-mode .lb-view-active .upgrade-card,
+ body.lb-workspace-mode .lb-view-active .toolbox,
+ body.lb-workspace-mode .lb-view-active .fun-panel,
+ .result,.course-feedback,.xp-fill,.progress-fill,.progress-bar>span{
+  animation:none!important
+ }
+ *,*::before,*::after{transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 \n</body>
 </html>
