@@ -1171,7 +1171,7 @@ function setAccountMode(mode){
  $('accountTitle').textContent=mode==='signin'?'Welcome back ':'Create your LifeBridge account';
  $('accountSubmit').textContent=mode==='signin'?'Sign in':'Create account';
  $('accountPassword').setAttribute('autocomplete',mode==='signin'?'current-password':'new-password');
- show('accountMessage',supabaseClient?'Enter your details to '+(mode==='signin'?'sign in.':'create your account.'):'Account setup needs one final connection: add your Supabase project URL and publishable/anon key in index.html. See README.md for the steps.');
+ show('accountMessage',supabaseClient?'Enter your details to '+(mode==='signin'?'sign in.':'create your account.'):'Account setup needs one final connection: add your Supabase project URL and publishable/anon key in Vercel. See README.md for the steps.');
  $('accountSubmit').disabled=!supabaseClient;
 }
 function paintAccountButton(session){
