@@ -2132,5 +2132,119 @@ main>section:not(.lb-hero-v2):not(.feature-band) .section-head p{
 }
 </style>
 
+
+<style id="lifebridge-bold-visual-redesign">
+/* New LifeBridge visual identity: ink, teal, coral and distinct workspace colors. */
+:root{
+ --bg:#f5f7f5!important;--surface:#ffffff!important;--ink:#152c35!important;
+ --muted:#5f747a!important;--brand:#087f83!important;--brand2:#dff4ef!important;
+ --line:#d9e7e3!important;--shadow:0 16px 42px rgba(14,54,59,.09)!important;
+ --lb-ink:#152c35;--lb-teal:#087f83;--lb-coral:#f0644f;--lb-deep:#102c35;
+}
+html,body{background:#f5f7f5!important;color:#152c35!important}
+body{background-image:radial-gradient(ellipse at 12% 18%,#dff4ef 0,transparent 34%),radial-gradient(ellipse at 88% 58%,#fff0e9 0,transparent 30%)!important}
+.topbar,header.topbar,.site-header{
+ background:rgba(248,251,249,.94)!important;border-bottom:1px solid #d9e7e3!important;
+ box-shadow:0 8px 26px rgba(14,54,59,.07)!important;backdrop-filter:blur(18px)!important
+}
+.logo,.logo strong{color:#152c35!important}
+.logo-mark{background:linear-gradient(140deg,#0aa4a0,#075c69)!important;box-shadow:0 8px 22px #087f8338!important}
+.navlinks a{color:#36545a!important}
+.navlinks a:hover,.navlinks a[aria-current=page]{background:#dff4ef!important;color:#075f65!important}
+.btn.primary,.account-btn.primary,button.primary,.smallbtn.primary{
+ background:linear-gradient(115deg,#f4775e,#df4f42)!important;color:#fff!important;
+ border:1px solid #df594b!important;box-shadow:0 9px 22px #e65d4d30!important
+}
+.btn.primary:hover,.account-btn.primary:hover,button.primary:hover{transform:translateY(-2px)!important;box-shadow:0 14px 28px #e65d4d45!important}
+.btn:not(.primary),.smallbtn:not(.primary),.account-btn:not(.primary){
+ background:#e5f3ef!important;color:#145b60!important;border:1px solid #c7e5dc!important
+}
+:where(input,select,textarea){background:#fff!important;color:#17343b!important;border:1px solid #cbded9!important;border-radius:12px!important}
+:where(input,select,textarea):focus{border-color:#0b9992!important;box-shadow:0 0 0 4px #0b99921c!important}
+:where(.eyebrow,.tag,.stat-pill,.course-dot,.badge,.chip,.pill){background:#dff4ef!important;color:#087477!important;border-color:#c6e9df!important}
+.section h2,.section-head h2,.panel h2,.panel h3,.tool-card h3{color:#17343b!important}
+.section p,.section-intro{color:#5f747a!important}
+:where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card,.calendar-panel,.calendar-detail,.study-builder,.study-review,.stat-card,.task-card,.dashboard-card,.quick-card,.tool-panel,.lesson-card,.flashcard,.budget-card,.focus-card,.quest-card,.level-card,.planner-card,.converter-card,.account-card,.command-card){
+ background:linear-gradient(150deg,#fff 0%,#f9fcfa 100%)!important;color:#17343b!important;
+ border:1px solid #d7e7e1!important;border-radius:20px!important;
+ box-shadow:0 14px 34px rgba(16,57,59,.075)!important
+}
+:where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card,.calendar-panel,.calendar-detail,.study-builder,.study-review,.stat-card,.task-card,.dashboard-card,.quick-card,.tool-panel,.lesson-card,.flashcard,.budget-card,.focus-card,.quest-card,.level-card,.planner-card,.converter-card,.account-card,.command-card):hover{
+ border-color:#a9d9cc!important;box-shadow:0 20px 44px rgba(16,86,82,.13)!important
+}
+:where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card,.calendar-panel,.calendar-detail,.study-builder,.study-review,.stat-card,.task-card,.dashboard-card,.quick-card,.tool-panel,.lesson-card,.flashcard,.budget-card,.focus-card,.quest-card,.level-card,.planner-card,.converter-card,.account-card,.command-card) :where(h1,h2,h3,h4,strong,label){color:#17343b!important}
+:where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card,.calendar-panel,.calendar-detail,.study-builder,.study-review,.stat-card,.task-card,.dashboard-card,.quick-card,.tool-panel,.lesson-card,.flashcard,.budget-card,.focus-card,.quest-card,.level-card,.planner-card,.converter-card,.account-card,.command-card) :where(p,small){color:#61777a!important}
+.section-icon,.tool-icon,.command-icon{background:#dff4ef!important;color:#087f83!important}
+:where(.progress,.progress-track,.meter,.track){background:#e3eeea!important}
+:where(.progress span,.progress-track span,.meter span,.track span){background:linear-gradient(90deg,#087f83,#52b9a4)!important}
+:where(.notice,.result,.course-feedback,.success-message){background:#e4f6ef!important;color:#17695d!important;border-color:#c7e9dc!important}
+:where(.error,.error-message){background:#fff0eb!important;color:#a84337!important;border-color:#f2c9bf!important}
+:where(table th){background:#dff4ef!important;color:#155f61!important}
+:where(table td){border-color:#dce9e4!important;color:#17343b!important}
+
+/* Each workspace gets its own unmistakable color atmosphere. */
+#today.command-center{background:linear-gradient(135deg,#e0f3ed 0%,#e8f0fa 100%)!important;color:#17343b!important}
+#lifebuddy{background:linear-gradient(135deg,#e7f1ff 0%,#f0eaff 100%)!important}
+#accessPanel{background:#f1eaff!important}
+#tools{background:linear-gradient(135deg,#fff0e8 0%,#fff7e7 100%)!important}
+#learn{background:linear-gradient(135deg,#e3f5ef 0%,#e6f3ff 100%)!important}
+#organize{background:linear-gradient(135deg,#fff4df 0%,#f9eddf 100%)!important}
+#budget{background:linear-gradient(135deg,#e7f5dc 0%,#f3f7df 100%)!important}
+#convert{background:linear-gradient(135deg,#fce8ef 0%,#f4eaff 100%)!important}
+#lifequest{background:linear-gradient(135deg,#e8e5ff 0%,#e0f4ff 100%)!important}
+#calendar{background:linear-gradient(135deg,#e0f2fa 0%,#e4f5f0 100%)!important}
+#focus{background:linear-gradient(135deg,#fff0e7 0%,#fbe6ed 100%)!important}
+#levelup.feature-band{background:linear-gradient(115deg,#102c35 0%,#075e68 55%,#087f83 100%)!important;color:#fff!important;border-radius:0!important}
+#levelup :where(h1,h2,h3,p,span,strong){color:#fff!important}
+#levelup .fun-panel{background:#ffffff14!important;border:1px solid #ffffff35!important}
+#levelup .stat-pill{background:#ffffff20!important;color:#e7fffa!important;border-color:#ffffff35!important}
+
+/* Hero: a bold dark stage with a moving field of tiny light particles. */
+.lb-hero-v2{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ background:linear-gradient(118deg,#102a34 0%,#123e4a 52%,#075e68 100%)!important;
+ color:#fff!important
+}
+.lb-hero-v2:before{
+ content:""!important;position:absolute!important;inset:-25%!important;z-index:-1!important;
+ background:radial-gradient(circle at 22% 35%,#18b7a455 0,transparent 28%),radial-gradient(circle at 78% 48%,#f4775e38 0,transparent 26%),radial-gradient(circle at 50% 100%,#7be0c51c 0,transparent 42%)!important;
+ animation:lb-atmosphere 18s ease-in-out infinite alternate!important;pointer-events:none!important
+}
+.lb-hero-v2:after{
+ content:""!important;position:absolute!important;inset:-20%!important;z-index:-1!important;
+ background-image:radial-gradient(circle,#d8fff0a8 1.5px,transparent 2.5px),radial-gradient(circle,#ffb39c80 1px,transparent 2px),radial-gradient(circle,#ffffff60 1px,transparent 2px)!important;
+ background-size:37px 37px,61px 61px,89px 89px!important;
+ background-position:0 0,18px 24px,44px 12px!important;
+ mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 85%,transparent 100%)!important;
+ animation:lb-particle-drift 34s linear infinite!important;pointer-events:none!important;opacity:.55!important
+}
+@keyframes lb-particle-drift{
+ 0%{transform:translate3d(0,0,0) rotate(0deg);background-position:0 0,18px 24px,44px 12px}
+ 50%{transform:translate3d(-22px,18px,0) rotate(1deg);background-position:70px 42px,-32px 74px,90px -24px}
+ 100%{transform:translate3d(0,0,0) rotate(0deg);background-position:140px 84px,-82px 124px,136px -60px}
+}
+@keyframes lb-atmosphere{0%{transform:translate3d(-2%,1%,0) scale(.96)}100%{transform:translate3d(3%,-2%,0) scale(1.08)}}
+.lb-hero-v2 :where(h1,h2,h3){color:#f7fffc!important}
+.lb-hero-v2 .hero-copy>p,.lb-hero-v2 .hero-date,.lb-hero-v2 .hero-trust{color:#c6e2dc!important}
+.lb-hero-v2 .lb-hero-kicker,.lb-hero-v2 .lb-hero-bottomline{color:#8de0c9!important}
+.lb-hero-v2 h1 .pop{background:linear-gradient(100deg,#72e0c3,#ff9a80)!important;background-clip:text!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important}
+.lb-hero-v2 .lb-main-cta{background:linear-gradient(110deg,#ff987d,#f0644f)!important;color:#18333a!important;box-shadow:0 14px 34px #f0644f45!important}
+.lb-hero-v2 .hero-secondary,.lb-hero-v2 .lb-hero-shortcuts a{background:#ffffff10!important;border-color:#ffffff3b!important;color:#f3fffb!important}
+.lb-hero-v2 .lb-hero-shortcuts a i,.lb-hero-v2 .lb-hero-shortcuts a b{color:#8de0c9!important}
+.lb-hero-v2 .hero-dashboard{border:1px solid #ffffff5c!important;box-shadow:0 28px 80px #071b285c!important}
+.lb-hero-v2 .hero-dashboard :where(h3,strong){color:#17343b!important}
+.lb-hero-v2 .hero-dashboard p{color:#62777b!important}
+.lb-hero-v2 .lb-float-note{border-color:#d7e9e1!important}
+.footer{background:#102a34!important;color:#d7e9e4!important;border-top:1px solid #244b52!important}
+.footer :where(span,strong){color:#eafff8!important}
+@media(max-width:700px){
+ #today.command-center,#lifebuddy,#tools,#learn,#organize,#budget,#convert,#lifequest,#calendar,#focus{padding-top:42px!important;padding-bottom:42px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .lb-hero-v2:before,.lb-hero-v2:after{animation:none!important}
+ .lb-live-motion{animation:none!important}
+}
+</style>
+
 </body>
 </html>
