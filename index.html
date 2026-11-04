@@ -1454,38 +1454,56 @@ renderXp();initChallenge();
 
 </script>
 
+<style id="lifebridge-section-navigation-fix">
+/* Each LifeBridge destination is a separate workspace, not a long scrolling page. */
+body.lb-workspace-mode main>section:not(.hero-upgraded):not(#today):not(#lifebuddy):not(#accessPanel):not(#tools):not(#learn):not(#organize):not(#budget):not(#convert){display:none!important}
+body.lb-workspace-mode .lb-view-hidden{display:none!important}
+body.lb-workspace-mode .lb-view-active{display:block!important}
+body.lb-workspace-mode .lb-view-active>.wrap,
+body.lb-workspace-mode .lb-view-active .wrap{animation:lb-enter .22s ease both}
+body.lb-workspace-mode #levelup.lb-view-active,
+body.lb-workspace-mode #lifequest.lb-view-active,
+body.lb-workspace-mode #calendar.lb-view-active,
+body.lb-workspace-mode #focus.lb-view-active{padding:42px 0 64px}
+body.lb-workspace-mode .navlinks a[data-lb-route]{padding:9px 11px;border-radius:10px;text-decoration:none}
+body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:#e8f3f4;color:#176f73;font-weight:850}
+@media(max-width:850px){
+ body.lb-workspace-mode .nav{align-items:flex-start;flex-direction:column;padding:12px 0}
+ body.lb-workspace-mode .navlinks{width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:4px 0 8px}
+ body.lb-workspace-mode .navlinks a[data-lb-route]{flex:none}
+}
+</style>
 <script id="lifebridge-workspace-router">
 (()=> {
  const routes = [
   ["today","Home"],["lifebuddy","LifeBuddy"],["learn","Learning"],["tools","Explore"],["organize","Organizer"],["budget","Budget"],["calendar","Calendar"],["focus","Focus & goals"],["lifequest","Skill Quest"]
  ];
  const routeIds = new Set(routes.map(([id])=>id).concat(["convert","levelup"]));
- const main = document.querySelector("main");
  const nav = document.querySelector(".navlinks");
- if(!main||!nav)return;
+ if(!nav)return;
  document.body.classList.add("lb-workspace-mode");
- // Keep the existing quick-jump, accessibility, and account controls intact.
  const quick=nav.querySelector("#quickJump"), access=nav.querySelector("#accessToggle"), account=nav.querySelector("#accountOpen");
  nav.querySelectorAll("a").forEach(a=>a.remove());
- const homeLink=document.createElement("a");
  routes.forEach(([id,label])=>{
-  const a=document.createElement("a");a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
+  const a=document.createElement("a");
+  a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
   nav.insertBefore(a,quick||access||account||null);
  });
+ const panels=[...document.querySelectorAll(".hero-upgraded, #today, #lifebuddy, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
  function routeFromHash(){
   const id=(location.hash||"#today").slice(1);
   return routeIds.has(id)?id:"today";
  }
  function activate(id,update=true){
   if(!routeIds.has(id))id="today";
-  const hero=main.querySelector(".hero-upgraded");
-  const panels=[...main.querySelectorAll(":scope > section:not(#accessPanel), :scope > .feature-band")];
   panels.forEach(panel=>{
-   const isHome=(id==="today"&&(panel===hero||panel.id==="today"));
+   const isHome=id==="today"&&(panel.classList.contains("hero-upgraded")||panel.id==="today");
    const active=isHome||panel.id===id;
    panel.classList.toggle("lb-view-hidden",!active);
    panel.classList.toggle("lb-view-active",active);
    panel.setAttribute("aria-hidden",String(!active));
+   if(!active)panel.setAttribute("inert","");
+   else panel.removeAttribute("inert");
   });
   nav.querySelectorAll("[data-lb-route]").forEach(a=>{
    const active=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools")||(id==="levelup"&&a.dataset.lbRoute==="lifequest");
@@ -1493,9 +1511,8 @@ renderXp();initChallenge();
   });
   if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
   window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
-  document.title=(routes.find(x=>x[0]===id)?.[1]||"LifeBridge")+" | LifeBridge";
+  document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":id==="levelup"?"Your Level":"LifeBridge"))+" | LifeBridge";
  }
- // Intercept in-app links so navigation changes workspaces instead of scrolling through one long page.
  document.addEventListener("click",event=>{
   const jump=event.target.closest("[data-jump]");
   if(jump){event.preventDefault();activate(jump.dataset.jump);return;}
