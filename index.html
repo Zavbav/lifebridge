@@ -771,22 +771,29 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true"></span></a>
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#learn">Learning</a><a href="#tools">Everyday tools</a><a href="#organize">Organizer</a><a href="#calendar">Calendar</a><a href="#focus">Focus & goals</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">Quick jump <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
-<section class="hero hero-upgraded"><div class="wrap hero-grid">
+<section class="hero hero-upgraded lb-hero-v2"><div class="lb-hero-gridglow" aria-hidden="true"></div><div class="wrap hero-grid">
 <div class="hero-copy">
-<div class="eyebrow"><span class="brand-mark" aria-hidden="true">LB</span> YOUR PERSONAL LIFE DASHBOARD</div>
+<div class="lb-hero-kicker"><span class="lb-kicker-dot"></span> YOUR SPACE TO MOVE FORWARD <span class="lb-kicker-line"></span></div>
 <div class="hero-date" id="heroDate">YOUR DAY, AT A GLANCE</div>
-<h1>Make room for <span class="pop">what matters.</span></h1>
-<p>One place to learn, plan, stay on top of things, and make progress. Start with one small win — LifeBridge will help you build from there.</p>
-<div class="hero-actions"><a class="btn primary" href="#today" style="text-decoration:none">Open my dashboard <span aria-hidden="true"></span></a><a class="btn hero-secondary" href="#lifebuddy" style="text-decoration:none">Talk to LifeBuddy</a></div>
-<div class="hero-trust"><span><i></i> Your tools, all together</span><span><i></i> Progress saved on this device</span></div>
+<h1>Big days start<br>with <span class="pop">small wins.</span></h1>
+<p>Learn something new. Get organized. Make a plan and follow through. LifeBridge brings the tools for everyday progress into one clear space.</p>
+<div class="hero-actions"><a class="btn primary lb-main-cta" href="#today" style="text-decoration:none">Open my dashboard <span aria-hidden="true">↗</span></a><a class="btn hero-secondary" href="#lifebuddy" style="text-decoration:none">Meet LifeBuddy</a></div>
+<div class="hero-trust"><span><i></i> A calmer way to get things done</span><span><i></i> Your progress stays on this device</span></div>
+<div class="lb-hero-bottomline"><span>LEARN</span><b></b><span>PLAN</span><b></b><span>GROW</span></div>
 </div>
+<div class="lb-hero-stage">
+<div class="lb-stage-orbit lb-orbit-one"></div><div class="lb-stage-orbit lb-orbit-two"></div>
+<div class="lb-float-note lb-note-top"><span class="lb-note-mark">01</span><span><strong>One step at a time</strong><small>Progress over pressure</small></span></div>
 <aside class="hero-dashboard" aria-label="Daily overview">
 <div class="hero-dash-top"><div><span class="dash-overline">LIFEBRIDGE / DAILY BRIEFING</span><h2 id="heroGreeting">A fresh start.</h2></div><div class="dash-status"><span></span> READY</div></div>
 <div class="hero-focus"><div class="focus-orbit"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#d9e9ed" stroke-width="7"/><circle cx="50" cy="50" r="42" fill="none" stroke="#238e91" stroke-width="7" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)" id="heroProgressRing"/><path d="M50 29v22l14 9" fill="none" stroke="#176f91" stroke-width="4" stroke-linecap="round"/></svg><div class="orbit-center"><strong id="heroPercent">0%</strong><span>DONE</span></div></div><div class="hero-focus-copy"><span class="dash-overline">YOUR MOMENTUM</span><strong id="heroProgressTitle">Start with one win.</strong><p id="heroProgressText">Add a mission to your dashboard and watch your progress grow.</p><a href="#today">View today's missions <span aria-hidden="true">→</span></a></div></div>
 <div class="hero-mini-stats"><div><strong id="heroOpen">0</strong><span>TO DO</span></div><div><strong id="heroDone">0</strong><span>COMPLETED</span></div><div><strong id="heroTools">12</strong><span>WAYS TO LEVEL UP</span></div></div>
+<div class="lb-weekly-pulse"><div><span>YOUR WEEKLY PULSE</span><strong>Keep showing up.</strong></div><svg viewBox="0 0 250 48" preserveAspectRatio="none" aria-hidden="true"><path d="M2 38 C20 34 22 14 43 23 S70 37 88 18 S119 30 137 16 S163 31 182 12 S214 22 248 3" fill="none" stroke="#3c9b91" stroke-width="3" stroke-linecap="round"/><path d="M2 38 C20 34 22 14 43 23 S70 37 88 18 S119 30 137 16 S163 31 182 12 S214 22 248 3 L248 48 L2 48Z" fill="url(#lbPulseFill)" opacity=".16"/><defs><linearGradient id="lbPulseFill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#3c9b91"/><stop offset="1" stop-color="#3c9b91" stop-opacity="0"/></linearGradient></defs></svg></div>
 <div class="hero-dash-bottom"><span class="dash-spark">✦</span><p id="heroDailyLine">Small steps count. Pick one thing and begin.</p><button type="button" id="heroQuickAdd" aria-label="Add a mission">+</button></div>
 </aside>
-</div></section>
+<div class="lb-float-note lb-note-bottom"><span class="lb-note-check">✓</span><span><strong>Your momentum, your pace</strong><small>Every little win adds up</small></span></div>
+</div>
+</div><div class="wrap lb-hero-shortcuts"><span>START SOMEWHERE</span><a href="#learn"><i>01</i> Learn a skill <b>↗</b></a><a href="#organize"><i>02</i> Clear your mind <b>↗</b></a><a href="#focus"><i>03</i> Find your focus <b>↗</b></a></div></section>
 <section class="command-center" id="today">
 <div class="wrap">
 <div class="command-head"><div><div class="command-kicker">LIFEBRIDGE // PERSONAL COMMAND CENTER</div><h2 class="command-title">Make today count.</h2><p class="command-sub">One clear next step. Your goals, right here. Your progress, building every day.</p></div><a class="btn primary" href="#focus" style="text-decoration:none">Start a focus sprint </a></div>
@@ -1782,5 +1789,61 @@ body.lb-workspace-mode .lb-view-active .panel{backface-visibility:hidden}
  });
 })();
 </script>
-\n</body>
+\n
+<style id="lifebridge-signature-home-redesign">
+.lb-hero-v2{position:relative!important;isolation:isolate;overflow:hidden;padding:clamp(58px,7vw,104px) 0 24px!important;background:#081d2b!important;color:#f4fbfb!important}
+.lb-hero-v2:before{content:"";position:absolute;z-index:-2;width:820px;height:820px;right:-190px;top:-440px;border-radius:50%;background:radial-gradient(circle,rgba(43,161,157,.32),rgba(23,102,122,.12) 42%,transparent 70%);animation:lb-hero-breathe 9s ease-in-out infinite}
+.lb-hero-v2:after{content:"";position:absolute;inset:0;z-index:-3;background-image:linear-gradient(rgba(156,207,210,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(156,207,210,.055) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,transparent,#000 45%,#000);pointer-events:none}
+.lb-hero-v2 .hero-grid{grid-template-columns:.92fr 1.08fr;align-items:center;gap:clamp(34px,5vw,78px);min-height:510px}
+.lb-hero-v2 .hero-copy{max-width:610px;position:relative;z-index:2}
+.lb-hero-kicker{display:flex;align-items:center;gap:10px;color:#9ed4d1;font-size:.68rem;font-weight:850;letter-spacing:.18em}
+.lb-kicker-dot{width:8px;height:8px;border-radius:50%;background:#69d4b8;box-shadow:0 0 0 5px #69d4b81c;animation:lb-dot-pulse 2.4s ease-in-out infinite}
+.lb-kicker-line{height:1px;width:38px;background:linear-gradient(90deg,#64c5b7,transparent)}
+.lb-hero-v2 .hero-date{margin-top:36px;color:#8aa9b5;font-size:.7rem;letter-spacing:.2em}
+.lb-hero-v2 h1{color:#f4fbfb!important;font-size:clamp(3.8rem,7vw,6.35rem)!important;line-height:.94!important;letter-spacing:-.085em!important;margin:15px 0 24px!important;max-width:700px}
+.lb-hero-v2 h1 .pop{color:#76d1bf!important;background:linear-gradient(100deg,#9ce0cf 5%,#6fc7cf 55%,#a8d8f1 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lb-hero-v2 .hero-copy>p{color:#b2c8ce!important;font-size:1.06rem!important;line-height:1.8!important;max-width:500px}
+.lb-hero-v2 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.lb-hero-v2 .lb-main-cta{background:linear-gradient(110deg,#68c9b4,#5aaec4)!important;color:#08212b!important;border:0!important;box-shadow:0 12px 32px #3cb6a32c!important;font-weight:850;transition:transform .25s,box-shadow .25s}
+.lb-hero-v2 .lb-main-cta:hover{transform:translateY(-4px);box-shadow:0 18px 38px #3cb6a34a!important}
+.lb-hero-v2 .hero-secondary{background:#ffffff0b!important;border:1px solid #ffffff2b!important;color:#e3f2f2!important;backdrop-filter:blur(10px)}
+.lb-hero-v2 .hero-trust{color:#91adb6!important;font-size:.76rem;margin-top:28px;gap:20px}
+.lb-hero-v2 .hero-trust i{background:#6ed1b6!important;box-shadow:0 0 0 4px #6ed1b61c!important}
+.lb-hero-bottomline{display:flex;align-items:center;gap:12px;margin-top:44px;color:#6f929d;font-size:.62rem;font-weight:900;letter-spacing:.2em}
+.lb-hero-bottomline b{width:30px;height:1px;background:#47727d}
+.lb-hero-stage{position:relative;min-width:0;padding:32px 14px 30px}
+.lb-hero-stage .hero-dashboard{position:relative;z-index:2;max-width:560px;margin:auto;padding:27px 27px 20px;border:1px solid #ffffff2b!important;border-radius:27px!important;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(238,248,247,.96))!important;box-shadow:0 35px 100px #020e18a8,0 0 0 8px #ffffff09!important;backdrop-filter:blur(18px)}
+.lb-hero-stage .hero-dash-top h2{font-size:1.72rem}
+.lb-weekly-pulse{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 0 17px;border-top:1px solid #e4eeee}
+.lb-weekly-pulse>div{display:grid;gap:4px;min-width:125px}
+.lb-weekly-pulse span{font-size:.55rem;letter-spacing:.12em;font-weight:900;color:#8ba0a5}
+.lb-weekly-pulse strong{font-size:.78rem;color:#244c59}
+.lb-weekly-pulse svg{width:48%;height:42px;overflow:visible}
+.lb-hero-stage .hero-dash-bottom{background:#e9f5f2}
+.lb-stage-orbit{position:absolute;border:1px solid #75cfc333;border-radius:50%;pointer-events:none}
+.lb-orbit-one{width:590px;height:590px;right:-15px;top:-5px;animation:lb-orbit-turn 38s linear infinite}
+.lb-orbit-two{width:490px;height:490px;right:35px;top:45px;border-style:dashed;animation:lb-orbit-turn 55s linear infinite reverse}
+.lb-float-note{position:absolute;z-index:3;display:flex;align-items:center;gap:11px;padding:12px 16px;border:1px solid #d5e8e5;border-radius:14px;background:#fff;box-shadow:0 15px 42px #041a2a40;color:#193e4b;animation:lb-note-float 6s ease-in-out infinite}
+.lb-float-note>span:last-child{display:grid;gap:3px}
+.lb-float-note strong{font-size:.73rem;white-space:nowrap}
+.lb-float-note small{font-size:.62rem;color:#82969a}
+.lb-note-mark,.lb-note-check{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;background:#e7f5f0;color:#218a7d;font-size:.7rem;font-weight:900}
+.lb-note-top{right:-28px;top:6px}
+.lb-note-bottom{left:-34px;bottom:0;animation-delay:-2.7s}
+.lb-hero-shortcuts{display:flex;align-items:center;gap:12px;padding:25px 0 23px;border-top:1px solid #ffffff20;margin-top:28px;position:relative}
+.lb-hero-shortcuts>span{color:#7ea1a9;font-size:.62rem;letter-spacing:.16em;font-weight:900;margin-right:auto}
+.lb-hero-shortcuts a{display:flex;align-items:center;gap:10px;padding:10px 13px;border:1px solid #ffffff20;border-radius:11px;color:#d9ecec;text-decoration:none;font-size:.75rem;transition:background .25s,border-color .25s,transform .25s}
+.lb-hero-shortcuts a:hover{background:#ffffff12;border-color:#70cbbb88;transform:translateY(-3px)}
+.lb-hero-shortcuts a i{font-style:normal;color:#70cbbb;font-size:.62rem;font-weight:900}
+.lb-hero-shortcuts a b{color:#7ed5c2;font-size:.95rem}
+@keyframes lb-hero-breathe{0%,100%{transform:scale(.92);opacity:.75}50%{transform:scale(1.08);opacity:1}}
+@keyframes lb-dot-pulse{0%,100%{box-shadow:0 0 0 4px #69d4b81c}50%{box-shadow:0 0 0 9px #69d4b812}}
+@keyframes lb-orbit-turn{to{transform:rotate(360deg)}}
+@keyframes lb-note-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(max-width:900px){.lb-hero-v2 .hero-grid{grid-template-columns:1fr;gap:16px}.lb-hero-v2 .hero-copy{max-width:760px}.lb-hero-stage{max-width:680px;width:100%;margin:0 auto}.lb-note-top{right:-8px}.lb-note-bottom{left:-8px}.lb-hero-shortcuts{flex-wrap:wrap}.lb-hero-shortcuts>span{width:100%;margin-bottom:3px}}
+@media(max-width:560px){.lb-hero-v2{padding:46px 0 16px!important}.lb-hero-v2 h1{font-size:clamp(3.35rem,15vw,4.6rem)!important}.lb-hero-stage{padding:24px 0 28px}.lb-hero-stage .hero-dashboard{padding:19px 16px 15px;border-radius:20px!important}.lb-float-note{padding:9px 11px}.lb-float-note strong{font-size:.64rem}.lb-float-note small{font-size:.56rem}.lb-note-top{right:-4px;top:0}.lb-note-bottom{left:-4px;bottom:-3px}.lb-orbit-one{width:390px;height:390px;right:-20px;top:10px}.lb-orbit-two{width:330px;height:330px;right:10px;top:40px}.lb-weekly-pulse svg{width:42%}.lb-hero-shortcuts{gap:7px}.lb-hero-shortcuts a{flex:1;min-width:100%;justify-content:space-between}.lb-hero-bottomline{margin-top:30px}}
+@media(prefers-reduced-motion:reduce){.lb-hero-v2:before,.lb-kicker-dot,.lb-orbit-one,.lb-orbit-two,.lb-float-note{animation:none!important}.lb-hero-v2 .lb-main-cta,.lb-hero-shortcuts a{transition:none!important}}
+</style>
+
+</body>
 </html>
