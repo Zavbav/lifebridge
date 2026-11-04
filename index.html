@@ -814,9 +814,9 @@ I can help you understand a lesson, check your thinking, make a study plan, or b
 <article class="tool-card" data-search="tasks to do list organizer reminders planning"><div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 12 4 4L19 6"/><path d="M20 12v7H4V5h11"/></svg></div><h3>To-Do List</h3><p>Keep track of tasks and check them off as you go.</p><button data-target="organize">Organize my day →</button></article>
 <article class="tool-card" data-search="unit converter measurement temperature length"><div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 9A7 7 0 0 1 17 5l3 2M4 17l3 2a7 7 0 0 0 11.5-4"/></svg></div><h3>Unit Converter</h3><p>Convert common measurements with a quick calculation.</p><button data-target="convert">Convert units →</button></article>
 </div><p id="noResults" class="empty hidden">No matching tools yet. Try another word.</p></div></section>
-<section class="section" id="learn" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2> Learning Center</h2><p>Simple calculators to help you understand your work.</p></div></div>
+<section class="section" id="learn" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2>Learning Center</h2><p>Build stronger skills with guided lessons, active recall, practice questions, and step-by-step math support.</p></div></div>
 <div class="learning-studio">
-<div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>Turn notes into a study session</h3><p>Build your own flashcards from class notes, review them, and track what you know. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div></div>
+<div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>A more effective way to study</h3><p>Turn class notes into flashcards, practice active recall, and track what you know. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div></div>
 <div class="study-grid">
 <div class="study-builder">
 <h4>01 / Create a flashcard deck</h4><p class="notice">Put one card on each line using <strong>term: definition</strong>. You can paste notes directly from class.</p>
@@ -1629,5 +1629,41 @@ body.lb-workspace-mode .lb-view-active .upgrade-card:nth-of-type(3){animation-de
  *,*::before,*::after{transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 </style>
+\n
+<style id="lifebridge-learning-motion">
+@keyframes lb-content-refresh{0%{opacity:.45;transform:translateY(7px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes lb-card-turn{0%{opacity:.55;transform:rotateX(-5deg) translateY(5px)}100%{opacity:1;transform:rotateX(0) translateY(0)}}
+#courseTitle.lb-refresh,#courseIntro.lb-refresh,#courseContent.lb-refresh,#courseExample.lb-refresh,
+#learningPathResult.lb-refresh,#quizFeedback.lb-refresh,#mathPercentResult.lb-refresh,
+#equationResult.lb-refresh,#flashcard.lb-refresh,#courseFeedback.lb-refresh{
+ animation:lb-content-refresh .32s cubic-bezier(.2,.7,.2,1) both;
+}
+#flashcard.lb-refresh{animation:lb-card-turn .36s cubic-bezier(.2,.7,.2,1) both}
+.learning-studio,.course-library,.math-feature,.equation-coach{scroll-margin-top:96px}
+.learning-intro{border-radius:18px}
+.learning-stat strong,.course-progress-summary strong,#studyReviewed{font-variant-numeric:tabular-nums}
+#courseComplete:not(:disabled){box-shadow:0 5px 16px rgba(23,111,120,.16)}
+#courseComplete:disabled{opacity:.62;cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){
+ #courseTitle.lb-refresh,#courseIntro.lb-refresh,#courseContent.lb-refresh,#courseExample.lb-refresh,
+ #learningPathResult.lb-refresh,#quizFeedback.lb-refresh,#mathPercentResult.lb-refresh,
+ #equationResult.lb-refresh,#flashcard.lb-refresh,#courseFeedback.lb-refresh{animation:none!important}
+}
+</style>
+<script id="lifebridge-learning-feedback-motion">
+(()=>{
+ const targets=["courseTitle","courseIntro","courseContent","courseExample","learningPathResult","quizFeedback","mathPercentResult","equationResult","flashcard","courseFeedback"];
+ targets.forEach(id=>{
+  const node=document.getElementById(id);
+  if(!node||!window.MutationObserver)return;
+  const animate=()=>{
+   node.classList.remove("lb-refresh");
+   void node.offsetWidth;
+   node.classList.add("lb-refresh");
+  };
+  new MutationObserver(animate).observe(node,{childList:true,characterData:true,subtree:true});
+ });
+})();
+</script>
 \n</body>
 </html>
