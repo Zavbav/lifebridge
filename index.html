@@ -1938,9 +1938,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
  0%,100%{box-shadow:0 0 0 0 rgba(169,154,255,0)}
  50%{box-shadow:0 0 0 8px rgba(169,154,255,.12)}
 }
-.lb-live-motion{animation:lb-live-enter .78s cubic-bezier(.16,1,.3,1) both!important;animation-delay:var(--lb-live-delay,0ms)!important}
-.lb-hero-v2 .hero-copy.lb-live-motion{animation-name:lb-live-hero!important;animation-duration:1s!important}
-.lb-hero-v2 .hero-dashboard.lb-live-motion{animation-duration:1.05s!important}
+.lb-live-motion{animation:lb-live-enter 1.35s cubic-bezier(.22,.72,.22,1) both!important;animation-delay:var(--lb-live-delay,0ms)!important}
+.lb-hero-v2 .hero-copy.lb-live-motion{animation-name:lb-live-hero!important;animation-duration:1.55s!important}
+.lb-hero-v2 .hero-dashboard.lb-live-motion{animation-duration:1.6s!important}
 .lb-main-cta:focus-visible{animation:lb-live-glow 1.8s ease-in-out infinite}
 @media(hover:hover) and (pointer:fine){
  .lb-hero-stage .hero-dashboard{transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease!important}
@@ -1967,7 +1967,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   if(active.matches(".lb-hero-v2"))nodes.unshift(...active.querySelectorAll(".hero-copy,.hero-dashboard"));
   nodes.slice(0,18).forEach((node,index)=>{
    node.classList.remove("lb-live-motion");
-   node.style.setProperty("--lb-live-delay",Math.min(index,9)*85+"ms");
+   node.style.setProperty("--lb-live-delay",Math.min(index,9)*145+"ms");
    void node.offsetWidth;
    if(id===runId)node.classList.add("lb-live-motion");
   });
@@ -2066,6 +2066,70 @@ footer{color:#77718b!important}
 /* Keep the main navigation calm; every secondary workspace remains one click away in Quick jump. */
 .navlinks a[data-lb-route="organize"],.navlinks a[data-lb-route="budget"],.navlinks a[data-lb-route="focus"],.navlinks a[data-lb-route="lifequest"]{display:none!important}
 .quick-palette-box [data-jump]{min-height:58px}
+
+</style>
+
+<style id="lifebridge-whole-site-color-correction">
+/* Apply the palette to the actual section structure, including inline-styled legacy panels. */
+:root{color-scheme:light}
+html,body{background:#f2f0fa!important}
+main{background:transparent!important}
+main>section:not(.lb-hero-v2):not(.feature-band){
+ background:transparent!important;
+ color:#211d3b!important;
+}
+main>section:not(.lb-hero-v2):not(.feature-band) .wrap{
+ color:#211d3b!important;
+}
+#today.command-center{
+ background:transparent!important;
+ color:#211d3b!important;
+}
+#today .command-card,
+.command-grid .command-card,
+.command-card{
+ background:linear-gradient(145deg,#fff 0%,#f8f6ff 100%)!important;
+ color:#211d3b!important;
+ border:1px solid #e3def1!important;
+ border-radius:20px!important;
+ box-shadow:0 12px 32px rgba(42,32,91,.075)!important;
+}
+main>section:not(.lb-hero-v2):not(.feature-band) :where(.panel,.tool-card,.toolbox,.fun-panel,.account-card,.calendar-panel,.stat-card,.upgrade-card,.flashcard,.study-review,.course-card,.learning-card,.feature-card,.command-card){
+ background:linear-gradient(145deg,#fff 0%,#f8f6ff 100%)!important;
+ color:#211d3b!important;
+ border:1px solid #e3def1!important;
+ box-shadow:0 12px 32px rgba(42,32,91,.075)!important;
+}
+main>section:not(.lb-hero-v2):not(.feature-band) :where(.panel,.tool-card,.toolbox,.fun-panel,.account-card,.calendar-panel,.stat-card,.upgrade-card,.flashcard,.study-review,.course-card,.learning-card,.feature-card,.command-card) :where(h1,h2,h3,h4,strong,label){
+ color:#211d3b!important;
+}
+main>section:not(.lb-hero-v2):not(.feature-band) :where(.panel,.tool-card,.toolbox,.fun-panel,.account-card,.calendar-panel,.stat-card,.upgrade-card,.flashcard,.study-review,.course-card,.learning-card,.feature-card,.command-card) :where(p,small,.muted){
+ color:#716d86!important;
+}
+.command-card .command-icon,.section-icon,.tool-icon{
+ background:#eeeaff!important;
+ color:#5947c3!important;
+ border-color:#ded7ff!important;
+}
+main>section:not(.lb-hero-v2):not(.feature-band) .section-head{
+ border-color:#e3def1!important;
+}
+main>section:not(.lb-hero-v2):not(.feature-band) .section-head :where(h1,h2,h3){
+ color:#211d3b!important;
+}
+main>section:not(.lb-hero-v2):not(.feature-band) .section-head p{
+ color:#716d86!important;
+}
+#learn,#budget,#calendar,#focus,#lifequest,#organize,#tools,#convert,#lifebuddy,#today{
+ background:transparent!important;
+}
+#levelup.feature-band{
+ background:linear-gradient(118deg,#211d3b 0%,#41347e 58%,#6654d8 100%)!important;
+ color:#fff!important;
+}
+@media(prefers-reduced-motion:reduce){
+ .lb-live-motion{animation:none!important}
+}
 </style>
 
 </body>
