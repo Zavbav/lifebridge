@@ -1988,5 +1988,82 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 })();
 </script>
 
+
+<style id="lifebridge-full-interface-color-system">
+/* A complete, consistent color system across every LifeBridge workspace. */
+:root{
+ --lb-bg:#f2f0fa;--lb-surface:#fff;--lb-surface-soft:#f8f6ff;
+ --lb-ink:#211d3b;--lb-muted:#716d86;--lb-line:#e3def1;
+ --lb-violet:#6654d8;--lb-violet-dark:#4d3bb8;--lb-lavender:#eeeaff;
+ --lb-coral:#f28f83;--lb-night:#201c3c;
+}
+html,body{background:var(--lb-bg)!important;color:var(--lb-ink)!important}
+body{background-image:radial-gradient(ellipse at 8% 12%,rgba(133,112,226,.09),transparent 34%),radial-gradient(ellipse at 92% 70%,rgba(242,143,131,.07),transparent 30%)!important}
+.topbar,header.topbar,.site-header{background:rgba(248,247,253,.96)!important;border-color:#e5e0f0!important;backdrop-filter:blur(18px)!important}
+main{background:transparent!important}
+main>.section,main>section.section,main>#today,main>#tools,main>#learn,main>#organize,main>#budget,main>#convert,main>#calendar,main>#focus,main>#lifebuddy,main>#lifequest,main>#levelup{
+ background:transparent!important;color:var(--lb-ink)!important
+}
+main .section h1,main .section h2,main .section h3,main .section h4,
+.section-head h2,.section-head h3,.panel h2,.panel h3,.panel h4,
+.tool-card h2,.tool-card h3,.tool-card h4,.toolbox h2,.toolbox h3,
+.course-card h2,.course-card h3,.learning-card h2,.learning-card h3,
+.upgrade-card h2,.upgrade-card h3,.feature-card h2,.feature-card h3{
+ color:var(--lb-ink)!important
+}
+main .section p,.panel p,.tool-card p,.toolbox p,.course-card p,
+.learning-card p,.upgrade-card p,.feature-card p,.section-intro{
+ color:var(--lb-muted)!important
+}
+:where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card,.calendar-panel,.calendar-detail,.study-builder,.study-review,.stat-card,.task-card,.dashboard-card,.quick-card,.tool-panel,.lesson-card,.flashcard,.budget-card,.focus-card,.quest-card,.level-card,.planner-card,.converter-card){
+ background:linear-gradient(155deg,#fff 0%,#fbfaff 100%)!important;
+ color:var(--lb-ink)!important;border:1px solid var(--lb-line)!important;
+ border-radius:20px!important;box-shadow:0 12px 32px rgba(42,32,91,.065)!important
+}
+:where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card,.calendar-panel,.calendar-detail,.study-builder,.study-review,.stat-card,.task-card,.dashboard-card,.quick-card,.tool-panel,.lesson-card,.flashcard,.budget-card,.focus-card,.quest-card,.level-card,.planner-card,.converter-card) :where(h1,h2,h3,h4,strong,label){color:var(--lb-ink)!important}
+:where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card,.calendar-panel,.calendar-detail,.study-builder,.study-review,.stat-card,.task-card,.dashboard-card,.quick-card,.tool-panel,.lesson-card,.flashcard,.budget-card,.focus-card,.quest-card,.level-card,.planner-card,.converter-card):hover{
+ border-color:#c9c0f2!important;box-shadow:0 20px 44px rgba(61,47,135,.12)!important
+}
+button,.btn,.smallbtn,.account-btn{transition:background .22s ease,border-color .22s ease,color .22s ease,box-shadow .22s ease,transform .22s ease!important}
+.btn.primary,.account-btn.primary,button.primary,.smallbtn.primary{
+ background:linear-gradient(115deg,#705ee5,#5744c4)!important;color:#fff!important;border:1px solid #6653d4!important
+}
+.btn.secondary,.btn:not(.primary),.smallbtn:not(.primary),.account-btn:not(.primary){
+ background:#f0edfb!important;color:#5144a1!important;border:1px solid #ded8f3!important
+}
+button:not(.primary):not(.lb-main-cta){color:var(--lb-ink)}
+:where(input,select,textarea){
+ background:#fff!important;color:var(--lb-ink)!important;border:1px solid #dcd6ed!important;border-radius:12px!important
+}
+:where(input,select,textarea)::placeholder{color:#9a95aa!important}
+:where(input,select,textarea):focus{border-color:#7968e5!important;box-shadow:0 0 0 4px rgba(102,84,216,.13)!important;outline:none!important}
+:where(a){text-decoration-color:rgba(102,84,216,.35)}
+.navlinks a{color:#5e5876!important}
+.navlinks a:hover,.navlinks a[aria-current=page]{background:#eae6fb!important;color:#4e3bb8!important}
+:where(.eyebrow,.tag,.stat-pill,.course-dot,.badge,.chip,.pill){
+ background:#eeeaff!important;color:#5745bf!important;border-color:#ded7ff!important
+}
+:where(.progress,.progress-track,.meter,.track){background:#e9e5f3!important}
+:where(.progress span,.progress-track span,.meter span,.track span){background:linear-gradient(90deg,#6654d8,#9b8beF)!important}
+:where(.notice,.result,.course-feedback,.success-message){background:#f0edff!important;color:#44378f!important;border-color:#ded7ff!important}
+:where(.error,.error-message){background:#fff0ed!important;color:#a34d48!important;border-color:#f3d0c9!important}
+:where(table th){background:#eeeaff!important;color:#44378f!important}
+:where(table td){border-color:#e7e2f0!important;color:var(--lb-ink)!important}
+.feature-band{background:linear-gradient(115deg,#211d3b 0%,#41347e 55%,#6654d8 100%)!important;color:#fff!important;border-radius:24px!important}
+.feature-band :where(h1,h2,h3,p,span,strong){color:#fff!important}
+.feature-band .fun-panel{background:#ffffff12!important;border-color:#ffffff2b!important}
+.lb-hero-v2{background:linear-gradient(120deg,#201c3c,#30275e 65%,#493b85)!important}
+.lb-weekly-pulse,.lb-hero-stage .hero-dash-bottom{background:#f0edff!important}
+.lb-weekly-pulse strong{color:#40367a!important}
+footer{color:#77718b!important}
+@media(max-width:700px){
+ body{background-image:radial-gradient(ellipse at 50% 0%,rgba(133,112,226,.10),transparent 42%)!important}
+ :where(.panel,.tool-card,.toolbox,.upgrade-card,.fun-panel,.course-card,.learning-card,.feature-card){border-radius:16px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ button,.btn,.smallbtn,.account-btn,:where(.panel,.tool-card,.toolbox){transition:none!important}
+}
+</style>
+
 </body>
 </html>
