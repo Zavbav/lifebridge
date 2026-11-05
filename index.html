@@ -1724,7 +1724,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
  });
  if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
- document.documentElement.style.scrollBehavior="auto";document.body.style.scrollBehavior="auto";window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;requestAnimationFrame(()=>{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;});
+ document.documentElement.style.scrollBehavior="auto";document.body.style.scrollBehavior="auto";if(id==="levelup"){requestAnimationFrame(()=>document.getElementById("levelup")?.scrollIntoView({behavior:"auto",block:"start"}));}else{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;requestAnimationFrame(()=>{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;});}
  document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":"LifeBridge"))+" | LifeBridge";
  if(id==="bibleStudy")requestAnimationFrame(()=>document.getElementById("bibleStudy")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}));
  }
@@ -1733,7 +1733,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  if(jump){event.preventDefault();event.stopImmediatePropagation();activate(jump.dataset.jump);return;}
  const targetButton=event.target.closest("[data-target]");
  if(targetButton){event.preventDefault();event.stopImmediatePropagation();activate(targetButton.dataset.target);return;}
- const link=event.target.closest('a[href^="#"]');
+ const clicked=event.target instanceof Element?event.target:event.target?.parentElement;const link=clicked?.closest('a[href^="#"]');
  if(!link)return;
  const raw=link.getAttribute("href");
  if(raw==="#"){event.preventDefault();event.stopImmediatePropagation();activate("home");return;}
