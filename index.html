@@ -800,6 +800,21 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 <div class="command-grid">
 <div class="command-card"><h3>◈ Today's mission</h3><form id="todayTaskForm" class="command-inputrow"><input id="todayTaskInput" maxlength="140" placeholder="Add a task, assignment, or tiny win…" aria-label="New task" required><button class="btn primary" type="submit">+ Add mission</button></form><div id="todayTaskList" aria-live="polite"></div><div class="command-stats"><div class="command-stat"><strong id="todayOpenCount">0</strong><span>OPEN MISSIONS</span></div><div class="command-stat"><strong id="todayDoneCount">0</strong><span>COMPLETED</span></div><div class="command-stat"><strong id="todayPercent">0%</strong><span>PROGRESS</span></div></div></div>
 <div class="command-card"><h3>✦ Your launch sequence</h3><p class="command-sub">A simple path from overwhelmed to in motion.</p><div class="command-tip"><strong>01 / Choose one thing</strong><br>Pick the task that matters most today. Smaller is okay.</div><div class="command-tip"><strong>02 / Focus for 25 minutes</strong><br>Use a sprint to protect your attention and make a start.</div><div class="command-tip"><strong>03 / Record the win</strong><br>Check off the task and build momentum, one step at a time.</div><div class="command-actions"><a class="btn" href="#calendar">Open calendar</a><a class="btn" href="#organize">Organize tasks</a><a class="btn" href="#lifequest">Play Skill Quest</a></div></div>
+
+<div class="daily-plan-wrap" id="dailyPlan">
+ <div class="daily-plan-heading"><div><span class="daily-plan-kicker">YOUR DAILY RESET</span><h3 id="dailyPlanDate">Make a plan for today</h3><p>Choose what matters, keep the little things in view, and come back whenever you need a reset.</p></div><span class="daily-plan-saved" id="dailyPlanSaved" aria-live="polite">Saved on this device</span></div>
+ <div class="daily-plan-grid">
+  <div class="daily-plan-card daily-plan-priorities"><h4>Today's top three</h4><p>Keep your list realistic. You can change it anytime.</p>
+   <label><span>01</span><input id="dailyPriority1" maxlength="120" placeholder="The most important thing"></label>
+   <label><span>02</span><input id="dailyPriority2" maxlength="120" placeholder="Something else to move forward"></label>
+   <label><span>03</span><input id="dailyPriority3" maxlength="120" placeholder="A small win"></label>
+  </div>
+  <div class="daily-plan-card daily-plan-notes"><h4>Keep in mind</h4><p>A reminder, something to bring, or a detail you don't want to forget.</p>
+   <textarea id="dailyReminder" maxlength="500" rows="4" placeholder="Add a reminder for yourself…"></textarea>
+   <div class="daily-plan-bottom"><span id="dailyPlanCount">0 / 500</span><button type="button" class="daily-plan-clear" id="dailyPlanClear">Clear today's plan</button></div>
+  </div>
+ </div>
+ <div class="daily-plan-foot"><span class="daily-plan-check" aria-hidden="true">✓</span><span>Your plan saves automatically on this device. It starts fresh each day, and today's changes stay editable.</span></div>
 </div>
 </div>
 </section>
@@ -2316,6 +2331,50 @@ body{background-image:radial-gradient(ellipse at 12% 18%,#dff4ef 0,transparent 3
  .lifebuddy-float{right:12px!important;bottom:12px!important;padding:12px 15px!important;font-size:.85rem!important}
 }
 </style>
+
+
+<style id="lifebridge-daily-use-planner">
+.daily-plan-wrap{margin:30px 0 8px;padding:clamp(20px,3vw,34px);border-radius:26px;background:linear-gradient(120deg,#102c35 0%,#14535a 58%,#087f83 100%);color:#f4fffb;box-shadow:0 22px 55px #0b43452b;position:relative;overflow:hidden}
+.daily-plan-wrap:after{content:"";position:absolute;width:340px;height:340px;border:1px solid #ffffff20;border-radius:50%;right:-120px;top:-190px;box-shadow:0 0 0 34px #ffffff08,0 0 0 70px #ffffff06;pointer-events:none}
+.daily-plan-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:relative;z-index:1}
+.daily-plan-kicker{font-size:.72rem;font-weight:900;letter-spacing:.16em;color:#8ce1ca}
+.daily-plan-heading h3{font-size:clamp(1.5rem,3vw,2.15rem);letter-spacing:-.045em;color:#fff!important;margin:8px 0 4px}
+.daily-plan-heading p{color:#c5e3dc!important;margin:0;max-width:58ch}
+.daily-plan-saved{white-space:nowrap;font-size:.76rem;font-weight:750;color:#b8f1dc;background:#ffffff13;border:1px solid #ffffff30;border-radius:999px;padding:8px 12px}
+.daily-plan-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-top:22px;position:relative;z-index:1}
+.daily-plan-card{background:#ffffff!important;color:#18353b!important;border:1px solid #dcebe5!important;border-radius:18px;padding:20px;box-shadow:0 10px 28px #06252b18}
+.daily-plan-card h4{font-size:1.06rem;color:#17343b!important;margin:0 0 3px}
+.daily-plan-card>p{font-size:.88rem;color:#6a7e80!important;margin:0 0 16px}
+.daily-plan-priorities label{display:flex;align-items:center;gap:12px;margin-top:10px}
+.daily-plan-priorities label>span{font-size:.76rem;font-weight:900;color:#0b8985;background:#e3f5ef;border-radius:10px;padding:9px 10px}
+.daily-plan-priorities input,.daily-plan-notes textarea{width:100%;min-width:0;box-sizing:border-box;background:#f7faf9!important;border:1px solid #dce8e3!important;border-radius:11px!important;padding:11px 12px!important;color:#17343b!important;font:inherit!important}
+.daily-plan-priorities input:focus,.daily-plan-notes textarea:focus{outline:3px solid #0a9b8c22;border-color:#0a9b8c!important}
+.daily-plan-notes textarea{resize:vertical;min-height:120px}
+.daily-plan-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;color:#849394;font-size:.76rem}
+.daily-plan-clear{border:0;background:transparent;color:#0b7777;font:inherit;font-weight:800;cursor:pointer;padding:6px 0}
+.daily-plan-clear:hover{text-decoration:underline}
+.daily-plan-foot{display:flex;gap:10px;align-items:center;margin-top:15px;color:#c8e4dc;font-size:.82rem;position:relative;z-index:1}
+.daily-plan-check{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#a4ead0;color:#124a48;font-weight:900;flex:0 0 auto}
+@media(max-width:720px){.daily-plan-heading{display:block}.daily-plan-saved{display:inline-block;margin-top:12px}.daily-plan-grid{grid-template-columns:1fr}.daily-plan-wrap{padding:20px}.daily-plan-card{padding:16px}}
+</style>
+<script id="lifebridge-daily-plan-controller">
+(()=>{
+ const root=document.getElementById("dailyPlan");if(!root||root.dataset.ready)return;root.dataset.ready="1";
+ const fields=["dailyPriority1","dailyPriority2","dailyPriority3","dailyReminder"];
+ const dateKey=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")};
+ const today=dateKey(),storageKey="lifebridge_daily_plans_v1";
+ const dateEl=document.getElementById("dailyPlanDate"),status=document.getElementById("dailyPlanSaved"),count=document.getElementById("dailyPlanCount");
+ dateEl.textContent=new Intl.DateTimeFormat(undefined,{weekday:"long",month:"long",day:"numeric"}).format(new Date());
+ let plans={};try{plans=JSON.parse(localStorage.getItem(storageKey)||"{}");if(!plans||typeof plans!=="object"||Array.isArray(plans))plans={}}catch(_){plans={}}
+ const saved=plans[today]||{};
+ fields.forEach(id=>{const el=document.getElementById(id);if(el)el.value=typeof saved[id]==="string"?saved[id]:""});
+ const updateCount=()=>{count.textContent=(document.getElementById("dailyReminder").value.length)+" / 500"};
+ const save=()=>{const entry={};fields.forEach(id=>entry[id]=document.getElementById(id).value);plans[today]=entry;const keys=Object.keys(plans).sort().slice(-45);const trimmed={};keys.forEach(k=>trimmed[k]=plans[k]);plans=trimmed;try{localStorage.setItem(storageKey,JSON.stringify(plans));status.textContent="Saved just now";}catch(_){status.textContent="Unable to save — check browser storage";}};
+ fields.forEach(id=>{const el=document.getElementById(id);el.addEventListener("input",()=>{if(id==="dailyReminder")updateCount();save()})});
+ document.getElementById("dailyPlanClear").addEventListener("click",()=>{fields.forEach(id=>document.getElementById(id).value="");updateCount();save();status.textContent="Today's plan cleared"});
+ updateCount();
+})();
+</script>
 
 </body>
 </html>
