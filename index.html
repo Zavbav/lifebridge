@@ -1690,9 +1690,9 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
 <script id="lifebridge-workspace-router">
 (()=> {
  const routes = [
- ["today","Home"],["learn","Study Center"],["tools","Explore"],["organize","Organizer"],["budget","Budget"],["calendar","Calendar"],["focus","Focus & goals"],["lifequest","Skill Quest"]
+ ["home","Home"],["today","Dashboard"],["learn","Study Center"],["bibleStudy","Bible Study"],["tools","Explore"],["lifequest","Life Skills"],["organize","Organizer"],["budget","Budget"],["focus","Focus Timer"],["calendar","Calendar"],["levelup","Progress"]
  ];
- const routeIds = new Set(routes.map(([id])=>id).concat(["convert","levelup"]));
+ const routeIds = new Set(routes.map(([id])=>id).concat(["convert"]));
  const nav = document.querySelector(".navlinks");
  if(!nav)return;
  document.body.classList.add("lb-workspace-mode");
@@ -1705,14 +1705,14 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  });
  const panels=[...document.querySelectorAll(".hero-upgraded, #today, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
  function routeFromHash(){
- const id=(location.hash||"#today").slice(1);
- return routeIds.has(id)?id:"today";
+ const id=(location.hash||"#home").slice(1);
+ return routeIds.has(id)?id:"home";
  }
  function activate(id,update=true){
- if(!routeIds.has(id))id="today";
+ if(!routeIds.has(id))id="home";
  panels.forEach(panel=>{
- const isHome=id==="today"&&(panel.classList.contains("hero-upgraded")||panel.id==="today");
- const active=isHome||panel.id===id;
+ const active=(id==="home"&&panel.classList.contains("hero-upgraded"))||
+  (id==="bibleStudy"&&panel.id==="learn")||panel.id===id;
  panel.classList.toggle("lb-view-hidden",!active);
  panel.classList.toggle("lb-view-active",active);
  panel.setAttribute("aria-hidden",String(!active));
@@ -1720,12 +1720,13 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  else panel.removeAttribute("inert");
  });
  nav.querySelectorAll("[data-lb-route]").forEach(a=>{
- const active=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools")||(id==="levelup"&&a.dataset.lbRoute==="lifequest");
+ const active=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools");
  if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
  });
  if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
  window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
- document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":id==="levelup"?"Your Level":"LifeBridge"))+" | LifeBridge";
+ document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":"LifeBridge"))+" | LifeBridge";
+ if(id==="bibleStudy")requestAnimationFrame(()=>document.getElementById("bibleStudy")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}));
  }
  document.addEventListener("click",event=>{
  const jump=event.target.closest("[data-jump]");
@@ -1735,7 +1736,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  const link=event.target.closest('a[href^="#"]');
  if(!link)return;
  const raw=link.getAttribute("href");
- if(raw==="#"||raw==="#home"){event.preventDefault();activate("today");return;}
+ if(raw==="#"){event.preventDefault();activate("home");return;}
  const id=raw.slice(1);
  if(routeIds.has(id)){event.preventDefault();activate(id);return;}
  });
@@ -2283,8 +2284,8 @@ footer{color:#77718b!important}
 @media(prefers-reduced-motion:reduce){
  button,.btn,.smallbtn,.account-btn,:where(.panel,.tool-card,.toolbox){transition:none!important}
 }
-/* Keep the main navigation calm; every secondary workspace remains one click away in Quick jump. */
-.navlinks a[data-lb-route="organize"],.navlinks a[data-lb-route="budget"],.navlinks a[data-lb-route="focus"],.navlinks a[data-lb-route="lifequest"]{display:none!important}
+/* Keep every main destination visible and reachable without opening a secondary menu. */
+.navlinks a[data-lb-route]{display:inline-flex!important;flex:none!important}
 .quick-palette-box [data-jump]{min-height:58px}
 
 </style>
