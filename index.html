@@ -842,10 +842,11 @@ I can help you understand a lesson, check your thinking, make a study plan, or b
 <div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>Turn your class notes into real practice</h3><p>Create flashcards from your notes, test yourself before checking answers, and keep track of what you have reviewed. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div></div>
 <div class="study-grid">
 <div class="study-builder">
-<h4>01 / Create a flashcard deck</h4><p class="notice">Add one item per line using <strong>term: definition</strong>. Paste your class notes, then build a deck you can use to test yourself.</p>
-<div class="field"><label for="deckName">Deck name</label><input id="deckName" maxlength="60" placeholder="e.g. Cell biology — chapter 3"></div>
-<div class="field"><label for="deckNotes">Your notes</label><textarea id="deckNotes" rows="7" placeholder="Mitochondria: The part of a cell that releases usable energy.&#10;Photosynthesis: The process plants use to turn light into chemical energy.&#10;Chlorophyll: The green pigment that absorbs light."></textarea></div>
-<div class="study-actions"><button type="button" class="btn primary" id="createDeck">Create deck</button><button type="button" class="btn" id="sampleDeck">Load sample notes</button></div>
+<h4>01 / Build a deck for any class</h4><p class="notice">Choose a subject, name your deck, and paste notes. Use one card per line: <strong>term: definition</strong>, <strong>question? answer</strong>, or <strong>term — definition</strong>.</p>
+<div class="field"><label for="deckSubject">Subject</label><select id="deckSubject"><option value="Science">Science</option><option value="Math">Math</option><option value="History">History</option><option value="English">English / Reading</option><option value="Vocabulary">Vocabulary</option><option value="Languages">Languages</option><option value="Geography">Geography</option><option value="Other">Other</option></select></div>
+<div class="field"><label for="deckName">Deck name</label><input id="deckName" maxlength="60" placeholder="e.g. Biology — cells and organelles"></div>
+<div class="field"><label for="deckNotes">Paste your notes</label><textarea id="deckNotes" rows="7" placeholder="Mitochondria: The part of a cell that releases usable energy.&#10;What is photosynthesis? The process plants use to turn light into chemical energy.&#10;Chlorophyll — the green pigment that absorbs light."></textarea></div>
+<div class="study-actions"><button type="button" class="btn primary" id="createDeck">Create flashcards</button><button type="button" class="btn" id="sampleDeck">Try a sample</button></div>
 <p id="deckMessage" class="math-feedback" aria-live="polite"></p>
 </div>
 <div class="study-review">
@@ -1429,42 +1430,118 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  equation();
 })();
 
-/* LifeBridge Study Studio */
+/* LifeBridge Study Studio — multi-subject decks, flexible note parsing, and reliable review */
 (function(){
  const $id=id=>document.getElementById(id);
  const STORE='lifebridge.study.decks.v1', STATS='lifebridge.study.stats.v1';
- let decks=[],activeId='',cards=[],index=0,revealed=false,reviewed=0,known={};
- try{decks=JSON.parse(localStorage.getItem(STORE)||'[]');if(!Array.isArray(decks))decks=[];}catch(e){decks=[];}
- try{reviewed=Number(localStorage.getItem(STATS)||0)||0;}catch(e){}
- const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(decks));localStorage.setItem(STATS,String(reviewed));}catch(e){msg('Storage is full. Try a smaller deck.');}};
+ const subjects=['Science','Math','History','English / Reading','Vocabulary','Languages','Geography','Other'];
+ let decks=[],activeId='',cards=[],order=[],position=0,revealed=false,reviewed=0;
+ try{
+  const saved=JSON.parse(localStorage.getItem(STORE)||'[]');
+  if(Array.isArray(saved)) decks=saved.filter(d=>d&&typeof d==='object'&&Array.isArray(d.cards)).map(d=>({
+   id:String(d.id||('deck-'+Date.now().toString(36))),name:String(d.name||'My study deck'),
+   subject:subjects.includes(d.subject)?d.subject:'Other',
+   cards:d.cards.filter(c=>c&&typeof c.front==='string'&&typeof c.back==='string').map(c=>({front:c.front,back:c.back,status:['known','again'].includes(c.status)?c.status:(d.mastered||[]).includes(c.front)?'known':''})),
+   created:d.created||new Date().toISOString()
+  }));
+ }catch(e){decks=[];}
+ try{reviewed=Math.max(0,Number(localStorage.getItem(STATS)||0)||0);}catch(e){}
  const msg=t=>{const el=$id('deckMessage');if(el)el.textContent=t;};
  const active=()=>decks.find(d=>d.id===activeId);
- const renderSelect=()=>{const sel=$id('deckSelect');if(!sel)return;sel.innerHTML='';if(!decks.length){sel.add(new Option('No decks yet',''));activeId='';cards=[];}else{decks.forEach(d=>sel.add(new Option(d.name+' ('+d.cards.length+')',d.id)));if(!decks.some(d=>d.id===activeId))activeId=decks[0].id;sel.value=activeId;cards=[...(active()?.cards||[])];}index=Math.min(index,Math.max(0,cards.length-1));revealed=false;renderCard();};
- const renderCard=()=>{const c=cards[index];$id('flashcardLabel').textContent=c?(revealed?'ANSWER':'QUESTION'):'QUESTION';$id('flashcardText').textContent=c?(revealed?c.back:c.front):'Create a deck to begin.';$id('flashcardHint').textContent=c?(revealed?'Think about why this answer is correct. Select to hide it.':'Pause and try to recall the answer before revealing it.'):'Add notes in the box to make your first deck.';$id('deckPosition').textContent=cards.length?(index+1)+' of '+cards.length+' cards':'0 of 0 cards';$id('deckProgress').style.width=cards.length?((index+1)/cards.length*100)+'%':'0%';$id('studyReviewed').textContent=reviewed;$id('flipCard').textContent=revealed?'Hide answer':'Reveal answer';$id('prevCard').disabled=!cards.length;$id('nextCard').disabled=!cards.length;$id('flipCard').disabled=!cards.length;$id('knowCard').disabled=!cards.length;$id('needPractice').disabled=!cards.length;};
- const flip=()=>{if(!cards.length)return;revealed=!revealed;renderCard();};
- const move=n=>{if(!cards.length)return;index=(index+n+cards.length)%cards.length;revealed=false;renderCard();};
- $id('createDeck').addEventListener('click',()=>{const name=$id('deckName').value.trim()||'My study deck';const lines=$id('deckNotes').value.split(/\n+/).map(x=>x.trim()).filter(Boolean);const parsed=lines.map(line=>{const m=line.match(/^(.{1,100}?)\s*(?::|\t|\s+—\s+|\s+-\s+)\s*(.+)$/);return m?{front:m[1].trim(),back:m[2].trim()}:null;}).filter(x=>x&&x.front&&x.back);if(parsed.length<2){msg('Add at least 2 lines in “term: definition” format so your cards have clear questions and answers.');return;}if(parsed.length>100){msg('That is a big deck. Please split it into 100 cards or fewer.');return;}const id='deck-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);decks.push({id,name,cards:parsed,created:new Date().toISOString()});activeId=id;index=0;save();renderSelect();msg('Your '+parsed.length+'-card deck is ready. Start by trying to recall each answer.');});
- $id('sampleDeck').addEventListener('click',()=>{$id('deckName').value='Biology basics';$id('deckNotes').value='Mitochondria: The part of a cell that releases usable energy.\nPhotosynthesis: The process plants use to turn light into chemical energy.\nChlorophyll: The green pigment that absorbs light.\nCell membrane: The thin barrier that controls what enters and leaves a cell.';msg('Sample notes loaded. Select Create deck when you are ready.');});
- $id('deckSelect').addEventListener('change',e=>{activeId=e.target.value;index=0;cards=[...(active()?.cards||[])];revealed=false;renderCard();});
- $id('flashcard').addEventListener('click',flip);$id('flashcard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
- $id('flipCard').addEventListener('click',flip);$id('prevCard').addEventListener('click',()=>move(-1));$id('nextCard').addEventListener('click',()=>move(1));
- const rate=knownIt=>{if(!cards.length)return;reviewed++;if(knownIt){const d=active();d.mastered=d.mastered||[];if(!d.mastered.includes(cards[index].front))d.mastered.push(cards[index].front);}save();move(1);};
- $id('knowCard').addEventListener('click',()=>rate(true));$id('needPractice').addEventListener('click',()=>rate(false));
- $id('shuffleDeck').addEventListener('click',()=>{if(cards.length<2)return;for(let i=cards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]];}index=0;revealed=false;renderCard();});
- $id('deleteDeck').addEventListener('click',()=>{if(!active())return;const name=active().name;decks=decks.filter(d=>d.id!==activeId);activeId='';index=0;save();renderSelect();msg('Deleted “'+name+'” from this browser.');});
- const paths={
- math:{starter:['Review whole-number operations and multiplication facts','Learn what fractions represent using pictures and number lines','Practice adding fractions with the same denominator'],building:['Practice equivalent fractions and common denominators','Connect fractions, decimals, and percentages','Solve one-step equations and check each answer'],confident:['Solve multi-step equations and inequalities','Apply ratios, rates, and percentages to real situations','Explain your solution and check it using a second method']},
- science:{starter:['Learn the difference between an observation and an inference','Explore cells, matter, and energy with labeled diagrams','Write one question you can test or investigate'],building:['Connect a scientific concept to evidence from an experiment','Practice reading graphs, variables, and data tables','Explain a result using a claim, evidence, and reasoning'],confident:['Compare competing explanations using evidence','Design a fair test and identify its variables','Evaluate limitations and communicate a conclusion']},
- reading:{starter:['Read a short passage and identify its main idea','Underline details that support the main idea','Look up unfamiliar words and use context clues'],building:['Summarize a passage in your own words','Compare a character, claim, or idea using text evidence','Write a paragraph with a clear claim and supporting details'],confident:['Analyze an author’s purpose, tone, and point of view','Compare two sources and evaluate their evidence','Write a structured argument and revise for clarity']},
- study:{starter:['Choose one task and break it into a 10-minute first step','Study for 15 minutes, then take a short break','Close your notes and write down what you remember'],building:['Plan three short study sessions across the week','Use flashcards and active recall instead of rereading','Review mistakes and write what you will try next time'],confident:['Use spaced review across several days','Mix related problem types to strengthen flexible thinking','Teach the concept aloud and identify any gaps']}}
- $id('makeLearningPath').addEventListener('click',()=>{const goal=$id('learningGoal').value,level=$id('learningLevel').value;const labels={math:'Math',science:'Science',reading:'Reading & writing',study:'Study skills'};const steps=paths[goal][level];$id('learningPathResult').innerHTML='<strong>'+labels[goal]+' · '+({starter:'Starting out',building:'Building confidence',confident:'Ready for a challenge'}[level])+'</strong><ol>'+steps.map(x=>'<li>'+x+'</li>').join('')+'</ol><span class="notice">Try one step today. Come back to this plan as you make progress.</span>';});
+ const save=()=>{
+  try{localStorage.setItem(STORE,JSON.stringify(decks));localStorage.setItem(STATS,String(reviewed));}
+  catch(e){msg('Your browser could not save this change. Try removing a large deck or check storage settings.');}
+ };
+ const parseLine=line=>{
+  const clean=line.replace(/^\s*(?:[-*•]|\d+[.)])\s*/,'').trim();
+  if(!clean)return null;
+  let m=clean.match(/^(.{1,120}?)\s*:\s*(.{1,500})$/);
+  if(!m)m=clean.match(/^(.{1,120}?)\s*\?\s+(.{1,500})$/);
+  if(!m)m=clean.match(/^(.{1,120}?)\s*(?:\t|\s+[—–]\s+|\s+-\s+)\s*(.{1,500})$/);
+  if(!m)return null;
+  const front=m[1].trim().replace(/[?：:]$/,'');
+  const back=m[2].trim();
+  return front&&back?{front,back,status:''}:null;
+ };
+ const getDeckCards=()=>active()?.cards||[];
+ const resetOrder=()=>{cards=getDeckCards();order=cards.map((_,i)=>i);position=0;revealed=false;};
+ const renderSelect=()=>{
+  const sel=$id('deckSelect');sel.replaceChildren();
+  if(!decks.length){sel.add(new Option('No decks yet',''));activeId='';resetOrder();}
+  else{
+   decks.forEach(d=>sel.add(new Option((d.subject||'Other')+' · '+d.name+' ('+d.cards.length+')',d.id)));
+   if(!decks.some(d=>d.id===activeId))activeId=decks[0].id;
+   sel.value=activeId;resetOrder();
+  }
+  renderCard();
+ };
+ const renderCard=()=>{
+  const c=cards[order[position]],deck=active();
+  const mastered=cards.filter(x=>x.status==='known').length;
+  $id('flashcardLabel').textContent=c?(revealed?'ANSWER':'QUESTION'):'QUESTION';
+  $id('flashcardText').textContent=c?(revealed?c.back:c.front):'Create a deck to begin.';
+  $id('flashcardHint').textContent=c?(revealed?'Answer revealed · tap the card or button to hide it':'Think of your answer first, then reveal it'):'Your cards will appear here when your deck is ready.';
+  $id('deckPosition').textContent=c?(('Card '+(position+1)+' of '+order.length)+' · '+mastered+' mastered'):'0 cards · Create your first deck';
+  $id('deckProgress').style.width=cards.length?(mastered/cards.length*100)+'%':'0%';
+  $id('studyReviewed').textContent=reviewed.toLocaleString();
+  $id('flipCard').textContent=revealed?'Hide answer':'Reveal answer';
+  ['prevCard','nextCard','flipCard','knowCard','needPractice','shuffleDeck','deleteDeck'].forEach(id=>{const b=$id(id);if(b)b.disabled=!c;});
+  const card=$id('flashcard');card.setAttribute('aria-label',c?(revealed?'Answer: '+c.back:'Question: '+c.front):'No flashcards in this deck');
+  card.setAttribute('aria-pressed',String(revealed));
+  if(deck)$id('deckSelect').value=deck.id;
+ };
+ const flip=()=>{if(!order.length)return;revealed=!revealed;renderCard();};
+ const move=step=>{if(!order.length)return;position=(position+step+order.length)%order.length;revealed=false;renderCard();};
+ $id('createDeck').addEventListener('click',()=>{
+  const name=$id('deckName').value.trim()||'My study deck';
+  const subject=$id('deckSubject').value||'Other';
+  const lines=$id('deckNotes').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  const parsed=lines.map(parseLine).filter(Boolean);
+  const skipped=lines.length-parsed.length;
+  if(parsed.length<2){msg('I could only find '+parsed.length+' usable card(s). Add at least 2 lines, each with a term and definition separated by a colon, question mark, dash, or tab.');return;}
+  if(parsed.length>100){msg('This deck has '+parsed.length+' cards. Please split it into decks of 100 cards or fewer.');return;}
+  const seen=new Set(),unique=parsed.filter(c=>{const k=c.front.toLowerCase();if(seen.has(k))return false;seen.add(k);return true;});
+  const id='deck-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
+  decks.push({id,name,subject,cards:unique,created:new Date().toISOString()});
+  activeId=id;save();renderSelect();
+  msg('Created '+unique.length+' '+subject+' cards.'+(skipped?' '+skipped+' line(s) were skipped because they did not look like a question-and-answer pair.':'')+(unique.length<parsed.length?' Duplicate questions were removed.':'')+' Your deck is saved in this browser.');
+  $id('deckNotes').value='';
+ });
+ $id('sampleDeck').addEventListener('click',()=>{
+  $id('deckSubject').value='Science';$id('deckName').value='Biology — cell basics';
+  $id('deckNotes').value='Mitochondria: The part of a cell that releases usable energy.\nWhat is photosynthesis? The process plants use to turn light into chemical energy.\nChlorophyll — the green pigment that absorbs light.\nCell membrane: The thin barrier that controls what enters and leaves a cell.';
+  msg('Sample notes are ready. Press Create flashcards to build the deck.');
+ });
+ $id('deckSelect').addEventListener('change',e=>{activeId=e.target.value;resetOrder();renderCard();});
+ $id('flashcard').addEventListener('click',flip);
+ $id('flashcard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+ $id('flipCard').addEventListener('click',flip);
+ $id('prevCard').addEventListener('click',()=>move(-1));
+ $id('nextCard').addEventListener('click',()=>move(1));
+ const rate=knownIt=>{
+  if(!order.length)return;
+  const card=cards[order[position]];
+  if(knownIt)card.status='known';else card.status='again';
+  reviewed++;save();
+  if(!knownIt&&order.length>1){const missed=order.splice(position,1)[0];order.push(missed);if(position>=order.length)position=0;}
+  else if(position<order.length-1)position++;
+  else position=0;
+  revealed=false;renderCard();
+ };
+ $id('knowCard').addEventListener('click',()=>rate(true));
+ $id('needPractice').addEventListener('click',()=>rate(false));
+ $id('shuffleDeck').addEventListener('click',()=>{
+  if(order.length<2)return;
+  for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+  position=0;revealed=false;renderCard();msg('Cards shuffled. See what you remember in a new order.');
+ });
+ $id('deleteDeck').addEventListener('click',()=>{
+  const d=active();if(!d)return;
+  if(!confirm('Delete the "'+d.name+'" deck from this browser? This cannot be undone.'))return;
+  decks=decks.filter(x=>x.id!==activeId);activeId='';save();renderSelect();msg('Deck deleted from this browser.');
+ });
  renderSelect();
 })();
-
-renderXp();initChallenge();
-
-</script>
-<style id="lifebridge-section-navigation-fix">
 /* Each LifeBridge destination is a separate workspace, not a long scrolling page. */
 body.lb-workspace-mode main>section:not(.hero-upgraded):not(#today):not(#lifebuddy):not(#accessPanel):not(#tools):not(#learn):not(#organize):not(#budget):not(#convert){display:none!important}
 body.lb-workspace-mode .lb-view-hidden{display:none!important}
