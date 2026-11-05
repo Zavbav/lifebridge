@@ -1619,6 +1619,8 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
  function updateChapterLimit(){const n=bibleBooks.find(x=>x[0]===bookSelect.value)?.[1]||1;chapterInput.max=String(n);if(Number(chapterInput.value)>n)chapterInput.value=String(n);}
  bookSelect.addEventListener('change',updateChapterLimit);$('openBibleChapter').addEventListener('click',openChapter);chapterInput.addEventListener('keydown',e=>{if(e.key==='Enter')openChapter();});updateChapterLimit();
 })();
+</script>
+<style id="lifebridge-workspace-system">
 /* Each LifeBridge destination is a separate workspace, not a long scrolling page. */
 body.lb-workspace-mode main>section:not(.hero-upgraded):not(#today):not(#lifebuddy):not(#accessPanel):not(#tools):not(#learn):not(#organize):not(#budget):not(#convert){display:none!important}
 body.lb-workspace-mode .lb-view-hidden{display:none!important}
