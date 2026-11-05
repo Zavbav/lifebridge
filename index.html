@@ -1443,117 +1443,174 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
 .bible-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}.bible-feature-grid article{padding:17px;border:1px solid #e5e0d3;background:#fff;border-radius:16px}.bible-feature-grid h4{margin:9px 0 5px}.bible-feature-grid p{font-size:.9rem;line-height:1.55;color:var(--muted)}.bible-method{padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #e5e0d3}.bible-method h4{margin:0 0 8px}.bible-method ol{padding-left:22px;line-height:1.7}.bible-method li{padding:3px 0}.bible-method .notice{font-size:.82rem}
 @media(max-width:720px){.bible-selectors{grid-template-columns:1fr 110px}.bible-selectors>.btn{grid-column:1/-1}.bible-feature-grid{grid-template-columns:1fr}.bible-hub-head{align-items:flex-start}.quiz-choices{grid-template-columns:1fr}}
 @media(max-width:480px){.study-pack-row{flex-direction:column}.study-pack-row .btn{width:100%}.study-mode-switch button{flex:1;padding:9px 6px;font-size:.78rem}.bible-hub-stat{min-width:88px}.bible-hub-stat span{font-size:.58rem}}
-/* LifeBridge Study Studio — multi-subject decks, flexible note parsing, and reliable review */
+/* LifeBridge Study Studio — multi-subject decks, quizzes, written recall, and Bible learning */
 (function(){
- const $id=id=>document.getElementById(id);
- const STORE='lifebridge.study.decks.v1', STATS='lifebridge.study.stats.v1';
- const subjects=['Science','Math','History','English / Reading','Vocabulary','Languages','Geography','Other'];
- let decks=[],activeId='',cards=[],order=[],position=0,revealed=false,reviewed=0;
- try{
-  const saved=JSON.parse(localStorage.getItem(STORE)||'[]');
-  if(Array.isArray(saved)) decks=saved.filter(d=>d&&typeof d==='object'&&Array.isArray(d.cards)).map(d=>({
-   id:String(d.id||('deck-'+Date.now().toString(36))),name:String(d.name||'My study deck'),
-   subject:subjects.includes(d.subject)?d.subject:'Other',
-   cards:d.cards.filter(c=>c&&typeof c.front==='string'&&typeof c.back==='string').map(c=>({front:c.front,back:c.back,status:['known','again'].includes(c.status)?c.status:(d.mastered||[]).includes(c.front)?'known':''})),
-   created:d.created||new Date().toISOString()
-  }));
- }catch(e){decks=[];}
+ const $=id=>document.getElementById(id), STORE='lifebridge.study.decks.v1',STATS='lifebridge.study.stats.v1';
+ const subjects=['Science','Math','History','English / Reading','Vocabulary','Languages','Geography','Religion','Other'];
+ let decks=[],activeId='',cards=[],order=[],position=0,revealed=false,reviewed=0,mode='cards',quizCard=null,quizAnswered=false,quizCorrect=0,quizTotal=0,writeRevealed=false;
+ const packs={
+ apostles:{subject:'Religion',name:'The 12 Apostles',cards:[
+ ['Peter (Simon)','A fisherman and brother of Andrew. Jesus gave him the name Peter and entrusted him with a leading role among the apostles.'],
+ ['Andrew','Peter’s brother. He was a fisherman and is traditionally remembered as the first-called apostle.'],
+ ['James son of Zebedee','Brother of John. He was one of the apostles in Jesus’ inner circle.'],
+ ['John','Brother of James son of Zebedee. He is traditionally associated with the Gospel of John and the letters of John.'],
+ ['Philip','One of the Twelve. In John’s Gospel, he brings Nathanael to meet Jesus.'],
+ ['Bartholomew','One of the Twelve. Christian tradition often identifies him with Nathanael, though the Bible does not state this directly.'],
+ ['Matthew','A tax collector called by Jesus. He is traditionally associated with the Gospel of Matthew.'],
+ ['Thomas','Also called Didymus. He is remembered for asking to see Jesus’ wounds before believing in the Resurrection.'],
+ ['James son of Alphaeus','One of the Twelve, sometimes called James the Less.'],
+ ['Thaddaeus (Jude)','One of the Twelve. He is also listed as Judas son of James in some Gospel lists, not Judas Iscariot.'],
+ ['Simon the Zealot','One of the Twelve. The Gospels identify him as the Zealot.'],
+ ['Judas Iscariot','The apostle who betrayed Jesus. After his death, Matthias was chosen to take his place among the Twelve.'],
+ ['Who replaced Judas Iscariot?','Matthias was chosen by the gathered disciples in Acts 1:15–26.'],
+ ['Was Paul one of the original Twelve?','No. Paul became an apostle after the Resurrection and is called an apostle, but he was not one of the original Twelve.']
+ ]},
+ bible:{subject:'Religion',name:'Bible Foundations',cards:[
+ ['How many books are in the Catholic Bible?','73 books: 46 in the Old Testament and 27 in the New Testament.'],
+ ['What is the Old Testament?','The first part of the Bible, containing the story of creation, Israel, wisdom, and the prophets before Christ.'],
+ ['What is the New Testament?','The part of the Bible about Jesus Christ, the early Church, and Christian teaching.'],
+ ['What are the four Gospels?','Matthew, Mark, Luke, and John. They tell the story and teachings of Jesus.'],
+ ['What is the Acts of the Apostles about?','It describes the early Church and the mission of the apostles after Jesus’ Resurrection and Ascension.'],
+ ['What is a Gospel?','A written account proclaiming the good news of Jesus Christ.'],
+ ['What are the Psalms?','A collection of prayers, songs, and poems in the Old Testament.'],
+ ['What is a parable?','A short story Jesus used to teach a spiritual or moral lesson.'],
+ ['What does disciple mean?','A learner or follower. Jesus had many disciples; the Twelve were a special group of apostles.'],
+ ['What is a covenant?','A sacred relationship or promise established by God.'],
+ ['What does John 3:16 mean as a Bible reference?','The Gospel of John, chapter 3, verse 16.']
+ ]},
+ sacraments:{subject:'Religion',name:'The 7 Catholic Sacraments',cards:[
+ ['What is a sacrament?','An efficacious sign of grace, instituted by Christ and entrusted to the Church.'],
+ ['Baptism','The sacrament that begins Christian life, gives new birth in Christ, and welcomes a person into the Church.'],
+ ['Confirmation','The sacrament that strengthens baptismal grace through the gift of the Holy Spirit.'],
+ ['Eucharist','The sacrament in which Catholics receive the Body and Blood of Christ under the appearances of bread and wine.'],
+ ['Penance and Reconciliation','The sacrament through which sins committed after Baptism are forgiven and a person is reconciled with God and the Church.'],
+ ['Anointing of the Sick','The sacrament that gives grace, comfort, and strength to those seriously ill or weakened by age.'],
+ ['Holy Orders','The sacrament through which the mission entrusted by Christ to the apostles continues in bishops, priests, and deacons.'],
+ ['Matrimony','The covenant by which a baptized man and woman establish a partnership of the whole of life.'],
+ ['How many sacraments are there in the Catholic Church?','Seven.']
+ ]},
+ commandments:{subject:'Religion',name:'The Ten Commandments',cards:[
+ ['First Commandment','I am the Lord your God; you shall have no other gods before me.'],
+ ['Second Commandment','You shall not take the name of the Lord your God in vain.'],
+ ['Third Commandment','Remember to keep holy the Lord’s Day.'],
+ ['Fourth Commandment','Honor your father and your mother.'],
+ ['Fifth Commandment','You shall not kill.'],
+ ['Sixth Commandment','You shall not commit adultery.'],
+ ['Seventh Commandment','You shall not steal.'],
+ ['Eighth Commandment','You shall not bear false witness against your neighbor.'],
+ ['Ninth Commandment','You shall not covet your neighbor’s wife.'],
+ ['Tenth Commandment','You shall not covet your neighbor’s goods.'],
+ ['Where are the Ten Commandments found?','In Exodus 20 and Deuteronomy 5. Catholic and other Christian traditions sometimes number or phrase them differently.']
+ ]},
+ beatitudes:{subject:'Religion',name:'The Beatitudes',cards:[
+ ['Where are the Beatitudes taught?','In the Sermon on the Mount, Matthew 5:3–12. A related teaching appears in Luke 6:20–23.'],
+ ['Blessed are the poor in spirit','For theirs is the kingdom of heaven.'],
+ ['Blessed are those who mourn','For they will be comforted.'],
+ ['Blessed are the meek','For they will inherit the earth.'],
+ ['Blessed are those who hunger and thirst for righteousness','For they will be satisfied.'],
+ ['Blessed are the merciful','For they will be shown mercy.'],
+ ['Blessed are the pure in heart','For they will see God.'],
+ ['Blessed are the peacemakers','For they will be called children of God.'],
+ ['Blessed are those persecuted for righteousness','For theirs is the kingdom of heaven.']
+ ]},
+ people:{subject:'Religion',name:'People in the Bible',cards:[
+ ['Abraham','The patriarch with whom God made a covenant; traditionally remembered as the father of faith.'],
+ ['Moses','The prophet who led the Israelites out of Egypt and received the Law.'],
+ ['Ruth','A woman whose loyalty to Naomi is central to the Book of Ruth.'],
+ ['David','The shepherd who became king of Israel and is traditionally associated with many Psalms.'],
+ ['Solomon','King of Israel known in the Bible for wisdom and for building the First Temple in Jerusalem.'],
+ ['Esther','A Jewish queen in Persia who courageously helped save her people.'],
+ ['Mary','The mother of Jesus. Catholics honor her as the Mother of God.'],
+ ['Joseph','The husband of Mary and foster father of Jesus.'],
+ ['John the Baptist','The prophet who prepared the way for Jesus and baptized him in the Jordan.'],
+ ['Mary Magdalene','A disciple of Jesus and a witness to the Resurrection.'],
+ ['Peter','An apostle who became a leading figure in the early Church.'],
+ ['Paul','An apostle who preached to the Gentiles and wrote letters included in the New Testament.']
+ ]},
+ churchyear:{subject:'Religion',name:'Catholic Church Year',cards:[
+ ['Advent','The season of preparation and hopeful expectation before Christmas.'],
+ ['Christmas season','The celebration of the birth of Jesus and the mystery of the Incarnation.'],
+ ['Lent','A penitential season of prayer, fasting, and almsgiving in preparation for Easter.'],
+ ['Holy Week','The week that recalls Jesus’ final days, including Palm Sunday, Holy Thursday, Good Friday, and the Easter Vigil.'],
+ ['Easter','The celebration of Jesus Christ’s Resurrection; the central feast of the Christian faith.'],
+ ['Pentecost','The celebration of the Holy Spirit coming upon the apostles, traditionally observed fifty days after Easter.'],
+ ['Ordinary Time','The periods of the liturgical year outside the major seasons, focused on the life and teachings of Christ.'],
+ ['What are the three pillars of Lent?','Prayer, fasting, and almsgiving.']
+ ]}
+ };
+ const bibleBooks=[['Genesis',50],['Exodus',40],['Leviticus',27],['Numbers',36],['Deuteronomy',34],['Joshua',24],['Judges',21],['Ruth',4],['1 Samuel',31],['2 Samuel',24],['1 Kings',22],['2 Kings',25],['1 Chronicles',29],['2 Chronicles',36],['Ezra',10],['Nehemiah',13],['Tobit',14],['Judith',16],['Esther',10],['1 Maccabees',16],['2 Maccabees',15],['Job',42],['Psalms',150],['Proverbs',31],['Ecclesiastes',12],['Song of Songs',8],['Wisdom',19],['Sirach',51],['Isaiah',66],['Jeremiah',52],['Lamentations',5],['Baruch',6],['Ezekiel',48],['Daniel',12],['Hosea',14],['Joel',3],['Amos',9],['Obadiah',1],['Jonah',4],['Micah',7],['Nahum',3],['Habakkuk',3],['Zephaniah',3],['Haggai',2],['Zechariah',14],['Malachi',4],['Matthew',28],['Mark',16],['Luke',24],['John',21],['Acts',28],['Romans',16],['1 Corinthians',16],['2 Corinthians',13],['Galatians',6],['Ephesians',6],['Philippians',4],['Colossians',4],['1 Thessalonians',5],['2 Thessalonians',3],['1 Timothy',6],['2 Timothy',4],['Titus',3],['Philemon',1],['Hebrews',13],['James',5],['1 Peter',5],['2 Peter',3],['1 John',5],['2 John',1],['3 John',1],['Jude',1],['Revelation',22]];
+ const chapterGuides={
+ 'Genesis:1':['Creation','God creates the heavens and the earth, forms light, land, seas, plants, sun, moon, animals, and humanity. The chapter presents creation as ordered and good.','What does this chapter say about the goodness and purpose of creation?'],
+ 'Genesis:3':['The Fall','The serpent tempts the woman and man; they disobey God and experience shame and separation. The chapter introduces the consequences of sin and God’s continued care.','What choices do the people make, and what happens afterward?'],
+ 'Exodus:20':['The Ten Commandments','God gives Israel commandments that shape worship of God and just relationships with other people.','How do the commandments guide both love of God and love of neighbor?'],
+ 'Psalms:23':['The Lord is my shepherd','A prayer of trust that pictures God as a shepherd who guides, protects, and provides even through dark valleys.','Which image in the psalm communicates trust most clearly to you?'],
+ 'Matthew:5':['The Sermon on the Mount begins','Jesus teaches the Beatitudes and calls his followers to be salt of the earth and light of the world. He deepens the meaning of the Law.','What kind of character does Jesus describe in the Beatitudes?'],
+ 'Matthew:6':['Prayer and trust','Jesus teaches about giving, prayer including the Lord’s Prayer, fasting, and trusting God rather than being consumed by worry.','What does Jesus teach about sincere prayer and trust?'],
+ 'Matthew:7':['Build on a strong foundation','Jesus teaches about judging others, asking and seeking, the Golden Rule, and building one’s life on his words.','What does it mean to put Jesus’ teaching into practice?'],
+ 'Luke:1':['The announcements of John and Jesus','Luke introduces the births of John the Baptist and Jesus, including the Annunciation and Mary’s response.','What do Mary and Elizabeth show about faith and trust?'],
+ 'Luke:2':['The birth of Jesus','Jesus is born in Bethlehem, visited by shepherds, and presented in the Temple. The chapter also includes Jesus as a boy in the Temple.','How do different people respond when they encounter Jesus?'],
+ 'John:1':['The Word became flesh','John begins by describing the Word who was with God and was God, then tells of the Word becoming flesh and the first disciples following Jesus.','What does this chapter teach about who Jesus is?'],
+ 'John:3':['A conversation with Nicodemus','Jesus teaches Nicodemus about being born from above and speaks of God’s love for the world.','What does Jesus mean by new birth in the Spirit?'],
+ 'John:20':['The empty tomb and appearances','Mary Magdalene finds the tomb empty; Jesus appears to his disciples and to Thomas. The chapter proclaims the Resurrection.','What helps Thomas move from doubt to faith?'],
+ 'Acts:1':['The Ascension and choosing Matthias','Jesus speaks to the apostles, ascends, and the disciples pray together. Matthias is chosen to take the place of Judas among the Twelve.','Why do the disciples choose someone to join the Twelve?'],
+ 'Acts:2':['Pentecost','The Holy Spirit comes upon the apostles. Peter preaches, many people are baptized, and the early Christian community begins to grow.','What changes when the Holy Spirit comes upon the apostles?'],
+ 'Romans:8':['Life in the Spirit','Paul writes about life in the Spirit, adoption as God’s children, hope amid suffering, and God’s faithful love.','What gives believers hope in the middle of hardship?'],
+ '1 Corinthians:13':['The way of love','Paul explains that gifts and achievements mean little without love, then describes love as patient and kind.','Which quality of love is most important to practice in daily life?'],
+ 'Revelation:21':['A new heaven and a new earth','John describes the new creation, the holy city, and God dwelling with his people, with sorrow and death passing away.','What hope does this vision offer?']
+ };
+ try{const raw=JSON.parse(localStorage.getItem(STORE)||'[]');if(Array.isArray(raw))decks=raw.filter(d=>d&&Array.isArray(d.cards)).map(d=>({id:String(d.id||'deck-'+Date.now()),name:String(d.name||'My deck'),subject:subjects.includes(d.subject)?d.subject:'Other',cards:d.cards.filter(c=>c&&typeof c.front==='string'&&typeof c.back==='string').map(c=>({front:c.front,back:c.back,status:['known','again'].includes(c.status)?c.status:(d.mastered||[]).includes(c.front)?'known':''})),created:d.created||''}));}catch(e){decks=[];}
  try{reviewed=Math.max(0,Number(localStorage.getItem(STATS)||0)||0);}catch(e){}
- const msg=t=>{const el=$id('deckMessage');if(el)el.textContent=t;};
+ const msg=t=>{const n=$('deckMessage');if(n)n.textContent=t;};
  const active=()=>decks.find(d=>d.id===activeId);
- const save=()=>{
-  try{localStorage.setItem(STORE,JSON.stringify(decks));localStorage.setItem(STATS,String(reviewed));}
-  catch(e){msg('Your browser could not save this change. Try removing a large deck or check storage settings.');}
- };
- const parseLine=line=>{
-  const clean=line.replace(/^\s*(?:[-*•]|\d+[.)])\s*/,'').trim();
-  if(!clean)return null;
-  let m=clean.match(/^(.{1,120}?)\s*:\s*(.{1,500})$/);
-  if(!m)m=clean.match(/^(.{1,120}?)\s*\?\s+(.{1,500})$/);
-  if(!m)m=clean.match(/^(.{1,120}?)\s*(?:\t|\s+[—–]\s+|\s+-\s+)\s*(.{1,500})$/);
-  if(!m)return null;
-  const front=m[1].trim().replace(/[?：:]$/,'');
-  const back=m[2].trim();
-  return front&&back?{front,back,status:''}:null;
- };
- const getDeckCards=()=>active()?.cards||[];
- const resetOrder=()=>{cards=getDeckCards();order=cards.map((_,i)=>i);position=0;revealed=false;};
- const renderSelect=()=>{
-  const sel=$id('deckSelect');sel.replaceChildren();
-  if(!decks.length){sel.add(new Option('No decks yet',''));activeId='';resetOrder();}
-  else{
-   decks.forEach(d=>sel.add(new Option((d.subject||'Other')+' · '+d.name+' ('+d.cards.length+')',d.id)));
-   if(!decks.some(d=>d.id===activeId))activeId=decks[0].id;
-   sel.value=activeId;resetOrder();
-  }
-  renderCard();
- };
+ const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(decks));localStorage.setItem(STATS,String(reviewed));}catch(e){msg('Could not save in this browser. Try a smaller deck or check browser storage settings.');}};
+ const parseLine=line=>{let t=line.replace(/^\s*(?:[-*•]|\d+[.)])\s*/,'').trim(),m=t.match(/^(.{1,120}?)\s*:\s*(.{1,500})$/);if(!m)m=t.match(/^(.{1,120}?)\s*\?\s+(.{1,500})$/);if(!m)m=t.match(/^(.{1,120}?)\s*(?:\t|\s+[—–]\s+|\s+-\s+)\s*(.{1,500})$/);return m?{front:m[1].trim().replace(/[?：:]$/,''),back:m[2].trim(),status:''}:null;};
+ const current=()=>cards[order[position]];
+ const resetOrder=()=>{cards=active()?.cards||[];order=cards.map((_,i)=>i);position=0;revealed=false;};
  const renderCard=()=>{
-  const c=cards[order[position]],deck=active();
-  const mastered=cards.filter(x=>x.status==='known').length;
-  $id('flashcardLabel').textContent=c?(revealed?'ANSWER':'QUESTION'):'QUESTION';
-  $id('flashcardText').textContent=c?(revealed?c.back:c.front):'Create a deck to begin.';
-  $id('flashcardHint').textContent=c?(revealed?'Answer revealed · tap the card or button to hide it':'Think of your answer first, then reveal it'):'Your cards will appear here when your deck is ready.';
-  $id('deckPosition').textContent=c?(('Card '+(position+1)+' of '+order.length)+' · '+mastered+' mastered'):'0 cards · Create your first deck';
-  $id('deckProgress').style.width=cards.length?(mastered/cards.length*100)+'%':'0%';
-  $id('studyReviewed').textContent=reviewed.toLocaleString();
-  $id('flipCard').textContent=revealed?'Hide answer':'Reveal answer';
-  ['prevCard','nextCard','flipCard','knowCard','needPractice','shuffleDeck','deleteDeck'].forEach(id=>{const b=$id(id);if(b)b.disabled=!c;});
-  const card=$id('flashcard');card.setAttribute('aria-label',c?(revealed?'Answer: '+c.back:'Question: '+c.front):'No flashcards in this deck');
-  card.setAttribute('aria-pressed',String(revealed));
-  if(deck)$id('deckSelect').value=deck.id;
+  const c=current(),known=cards.filter(x=>x.status==='known').length;
+  $('flashcardLabel').textContent=c?(revealed?'ANSWER':'QUESTION'):'QUESTION';
+  $('flashcardText').textContent=c?(revealed?c.back:c.front):'Create a deck to begin.';
+  $('flashcardHint').textContent=c?(revealed?'Answer revealed · tap to hide it':'Think of your answer before revealing it'):'Your cards will appear here when your deck is ready.';
+  $('flipCard').textContent=revealed?'Hide answer':'Reveal answer';
+  ['prevCard','nextCard','flipCard','knowCard','needPractice','shuffleDeck','deleteDeck'].forEach(id=>$(id).disabled=!c);
+  $('deckPosition').textContent=c?('Card '+(position+1)+' of '+order.length+' · '+known+' mastered'):'0 cards · Create your first deck';
+  $('deckProgress').style.width=cards.length?(known/cards.length*100)+'%':'0%';
+  $('studyReviewed').textContent=reviewed.toLocaleString();
+  $('flashcard').setAttribute('aria-label',c?(revealed?'Answer: '+c.back:'Question: '+c.front):'No flashcards in this deck');
  };
+ const renderSelect=()=>{const sel=$('deckSelect');sel.replaceChildren();if(!decks.length){sel.add(new Option('No decks yet',''));activeId='';resetOrder();}else{decks.forEach(d=>sel.add(new Option((d.subject||'Other')+' · '+d.name+' ('+d.cards.length+')',d.id)));if(!decks.some(d=>d.id===activeId))activeId=decks[0].id;sel.value=activeId;resetOrder();}renderCard();renderMode();};
+ const move=step=>{if(!order.length)return;position=(position+step+order.length)%order.length;revealed=false;renderCard();if(mode==='write')renderWrite();};
  const flip=()=>{if(!order.length)return;revealed=!revealed;renderCard();};
- const move=step=>{if(!order.length)return;position=(position+step+order.length)%order.length;revealed=false;renderCard();};
- $id('createDeck').addEventListener('click',()=>{
-  const name=$id('deckName').value.trim()||'My study deck';
-  const subject=$id('deckSubject').value||'Other';
-  const lines=$id('deckNotes').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
-  const parsed=lines.map(parseLine).filter(Boolean);
-  const skipped=lines.length-parsed.length;
-  if(parsed.length<2){msg('I could only find '+parsed.length+' usable card(s). Add at least 2 lines, each with a term and definition separated by a colon, question mark, dash, or tab.');return;}
-  if(parsed.length>100){msg('This deck has '+parsed.length+' cards. Please split it into decks of 100 cards or fewer.');return;}
-  const seen=new Set(),unique=parsed.filter(c=>{const k=c.front.toLowerCase();if(seen.has(k))return false;seen.add(k);return true;});
-  const id='deck-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
-  decks.push({id,name,subject,cards:unique,created:new Date().toISOString()});
-  activeId=id;save();renderSelect();
-  msg('Created '+unique.length+' '+subject+' cards.'+(skipped?' '+skipped+' line(s) were skipped because they did not look like a question-and-answer pair.':'')+(unique.length<parsed.length?' Duplicate questions were removed.':'')+' Your deck is saved in this browser.');
-  $id('deckNotes').value='';
- });
- $id('sampleDeck').addEventListener('click',()=>{
-  $id('deckSubject').value='Science';$id('deckName').value='Biology — cell basics';
-  $id('deckNotes').value='Mitochondria: The part of a cell that releases usable energy.\nWhat is photosynthesis? The process plants use to turn light into chemical energy.\nChlorophyll — the green pigment that absorbs light.\nCell membrane: The thin barrier that controls what enters and leaves a cell.';
-  msg('Sample notes are ready. Press Create flashcards to build the deck.');
- });
- $id('deckSelect').addEventListener('change',e=>{activeId=e.target.value;resetOrder();renderCard();});
- $id('flashcard').addEventListener('click',flip);
- $id('flashcard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
- $id('flipCard').addEventListener('click',flip);
- $id('prevCard').addEventListener('click',()=>move(-1));
- $id('nextCard').addEventListener('click',()=>move(1));
- const rate=knownIt=>{
-  if(!order.length)return;
-  const card=cards[order[position]];
-  if(knownIt)card.status='known';else card.status='again';
-  reviewed++;save();
-  if(!knownIt&&order.length>1){const missed=order.splice(position,1)[0];order.push(missed);if(position>=order.length)position=0;}
-  else if(position<order.length-1)position++;
-  else position=0;
-  revealed=false;renderCard();
- };
- $id('knowCard').addEventListener('click',()=>rate(true));
- $id('needPractice').addEventListener('click',()=>rate(false));
- $id('shuffleDeck').addEventListener('click',()=>{
-  if(order.length<2)return;
-  for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
-  position=0;revealed=false;renderCard();msg('Cards shuffled. See what you remember in a new order.');
- });
- $id('deleteDeck').addEventListener('click',()=>{
-  const d=active();if(!d)return;
-  if(!confirm('Delete the "'+d.name+'" deck from this browser? This cannot be undone.'))return;
-  decks=decks.filter(x=>x.id!==activeId);activeId='';save();renderSelect();msg('Deck deleted from this browser.');
- });
- renderSelect();
+ const mark=known=>{const c=current();if(!c)return;c.status=known?'known':'again';reviewed++;save();if(mode==='missed'){const left=order.filter(i=>cards[i].status!=='known');if(left.length){order=left;position=position%order.length;}else{order=cards.map((_,i)=>i);position=0;msg('You cleared the missed cards in this deck. Great work.');}}else if(position<order.length-1)position++;else position=0;revealed=false;renderCard();if(mode==='write')renderWrite();};
+ const setMode=m=>{mode=m;document.querySelectorAll('[data-study-mode]').forEach(b=>b.classList.toggle('active',b.dataset.studyMode===m));$('flashcardMode').hidden=m!=='cards'&&m!=='missed';$('quizMode').hidden=m!=='quiz';$('writeMode').hidden=m!=='write';if(m==='missed'){const missed=cards.map((c,i)=>c.status==='again'?i:-1).filter(i=>i>=0);order=missed.length?missed:cards.map((_,i)=>i);position=0;msg(missed.length?'Reviewing '+missed.length+' cards marked for more practice.':'No missed cards yet. Showing the full deck so you can start reviewing.');}else if(m!=='quiz'){order=cards.map((_,i)=>i);position=0;}revealed=false;renderCard();if(m==='quiz')newQuiz();if(m==='write')renderWrite();};
+ const renderMode=()=>{if(mode==='quiz')newQuiz();else if(mode==='write')renderWrite();};
+ const loadPack=id=>{const p=packs[id];if(!p)return;const deck={id:'deck-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7),name:p.name,subject:p.subject,cards:p.cards.map(x=>({front:x[0],back:x[1],status:''})),created:new Date().toISOString()};decks.push(deck);activeId=deck.id;save();renderSelect();$('deckSubject').value='Religion';$('deckName').value=deck.name;msg('Loaded '+deck.name+' with '+deck.cards.length+' cards. Choose Flashcards, Quick quiz, or Written recall to study.');};
+ $('createDeck').addEventListener('click',()=>{const lines=$('deckNotes').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean),parsed=lines.map(parseLine).filter(Boolean),name=$('deckName').value.trim()||'My study deck',subject=$('deckSubject').value||'Other';if(parsed.length<2){msg('I found '+parsed.length+' usable card(s). Add at least 2 lines with a term and answer separated by a colon, question mark, dash, or tab.');return;}if(parsed.length>100){msg('This deck has '+parsed.length+' cards. Split it into decks of 100 or fewer.');return;}const seen=new Set(),unique=parsed.filter(c=>{const k=c.front.toLowerCase();if(seen.has(k))return false;seen.add(k);return true;});const d={id:'deck-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7),name,subject,cards:unique,created:new Date().toISOString()};decks.push(d);activeId=d.id;save();renderSelect();$('deckNotes').value='';msg('Created '+unique.length+' '+subject+' cards. Saved in this browser.'+(lines.length>parsed.length?' '+(lines.length-parsed.length)+' lines were skipped.':''));});
+ $('sampleDeck').addEventListener('click',()=>{$('deckSubject').value='Science';$('deckName').value='Biology — cell basics';$('deckNotes').value='Mitochondria: The part of a cell that releases usable energy.\nWhat is photosynthesis? The process plants use to turn light into chemical energy.\nChlorophyll — the green pigment that absorbs light.\nCell membrane: The thin barrier that controls what enters and leaves a cell.';msg('Sample notes are ready. Press Create flashcards to build the deck.');});
+ $('loadReligionPack').addEventListener('click',()=>loadPack($('religionPack').value));
+ $('apostlesPackShortcut').addEventListener('click',()=>{loadPack('apostles');$('learn').scrollIntoView({behavior:'smooth'});});
+ $('faithPackShortcut').addEventListener('click',()=>{loadPack('sacraments');$('learn').scrollIntoView({behavior:'smooth'});});
+ $('bibleMethodShortcut').addEventListener('click',()=>$('bibleMethod').scrollIntoView({behavior:'smooth',block:'center'}));
+ $('deckSelect').addEventListener('change',e=>{activeId=e.target.value;resetOrder();renderCard();if(mode==='quiz')newQuiz();if(mode==='write')renderWrite();});
+ $('flashcard').addEventListener('click',flip);$('flashcard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip();}});
+ $('flipCard').addEventListener('click',flip);$('prevCard').addEventListener('click',()=>move(-1));$('nextCard').addEventListener('click',()=>move(1));
+ $('knowCard').addEventListener('click',()=>mark(true));$('needPractice').addEventListener('click',()=>mark(false));
+ $('shuffleDeck').addEventListener('click',()=>{if(order.length<2)return;for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}position=0;revealed=false;renderCard();msg('Cards shuffled.');});
+ $('deleteDeck').addEventListener('click',()=>{const d=active();if(!d||!confirm('Delete the "'+d.name+'" deck from this browser? This cannot be undone.'))return;decks=decks.filter(x=>x.id!==activeId);activeId='';save();renderSelect();msg('Deck deleted from this browser.');});
+ document.querySelectorAll('[data-study-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.studyMode)));
+ function newQuiz(){const d=active(),pool=d?.cards||[];quizAnswered=false;$('quizNext').disabled=true;$('quizChoices').replaceChildren();if(pool.length<2){$('quizQuestion').textContent='Add at least two cards to this deck to use Quick quiz.';$('quizFeedback').textContent='A quiz needs at least two cards.';return;}quizCard=pool[Math.floor(Math.random()*pool.length)];$('quizQuestion').textContent=quizCard.front;const choices=[quizCard.back];pool.filter(c=>c!==quizCard).sort(()=>Math.random()-.5).slice(0,3).forEach(c=>{if(!choices.includes(c.back))choices.push(c.back);});choices.sort(()=>Math.random()-.5);choices.forEach(answer=>{const b=document.createElement('button');b.type='button';b.textContent=answer;b.addEventListener('click',()=>{if(quizAnswered)return;quizAnswered=true;quizTotal++;const right=answer===quizCard.back;if(right){quizCorrect++;quizCard.status='known';}else quizCard.status='again';reviewed++;save();Array.from($('quizChoices').children).forEach(x=>{x.disabled=true;if(x.textContent===quizCard.back)x.classList.add('correct');else if(x===b)x.classList.add('incorrect');});$('quizFeedback').textContent=right?'Correct. Nice work.':'Not quite. The correct answer is: '+quizCard.back;$('quizScore').textContent=quizCorrect+' correct out of '+quizTotal;$('quizNext').disabled=false;$('studyReviewed').textContent=reviewed.toLocaleString();$('deckProgress').style.width=(pool.filter(c=>c.status==='known').length/pool.length*100)+'%';});$('quizChoices').append(b);});$('quizFeedback').textContent='Choose the best answer.';$('quizScore').textContent=quizCorrect+' correct out of '+quizTotal;}
+ $('quizNext').addEventListener('click',newQuiz);
+ function renderWrite(){const c=current();$('writeQuestion').textContent=c?c.front:'Create a deck to begin.';$('writeAnswer').value='';$('writeFeedback').textContent=c?'Write the answer in your own words, then reveal the model answer.':'Your written recall prompt will appear here.';writeRevealed=false;$('writeReveal').disabled=!c;$('writeNext').disabled=!c;$('writeKnown').disabled=!c;$('writeAgain').disabled=!c;}
+ $('writeReveal').addEventListener('click',()=>{const c=current();if(!c)return;writeRevealed=true;$('writeFeedback').textContent='Model answer: '+c.back;reviewed++;save();$('studyReviewed').textContent=reviewed.toLocaleString();});
+ $('writeNext').addEventListener('click',()=>move(1));$('writeKnown').addEventListener('click',()=>mark(true));$('writeAgain').addEventListener('click',()=>mark(false));
+ renderSelect();setMode('cards');
+
+ // Bible book/chapter explorer: all 73 Catholic books, chapter counts, and selected chapter guides.
+ const bookSelect=$('bibleBook'),chapterInput=$('bibleChapter');
+ bibleBooks.forEach(([name,count])=>{const o=document.createElement('option');o.value=name;o.textContent=name+' ('+count+' chapters)';bookSelect.append(o);});
+ function openChapter(){const book=bookSelect.value,chapter=Number(chapterInput.value),count=bibleBooks.find(x=>x[0]===book)?.[1]||1,card=$('bibleChapterCard');card.replaceChildren();if(!Number.isInteger(chapter)||chapter<1||chapter>count){const p=document.createElement('p');p.textContent='Enter a chapter from 1 to '+count+' for '+book+'.';card.append(p);return;}const guide=chapterGuides[book+':'+chapter],tag=document.createElement('span');tag.className='flashcard-label';tag.textContent=guide?'CHAPTER GUIDE':'CHAPTER STUDY';const h=document.createElement('h4');h.textContent=book+' '+chapter+(guide?' · '+guide[0]:'');const summary=document.createElement('p');summary.textContent=guide?guide[1]:'Read this chapter in your Bible. Write down the main event or teaching, the people involved, and one detail that stands out. This chapter guide is a personal study prompt rather than a full chapter summary.';const qh=document.createElement('strong');qh.textContent='Think about this';const q=document.createElement('p');q.textContent=guide?guide[2]:'What is the main message of this chapter? What does it reveal about God, people, or faith?';const note=document.createElement('p');note.className='notice';note.textContent='Study tip: read the chapter first, then answer the question in your own words.';card.append(tag,h,summary,qh,q,note);}
+ function updateChapterLimit(){const n=bibleBooks.find(x=>x[0]===bookSelect.value)?.[1]||1;chapterInput.max=String(n);if(Number(chapterInput.value)>n)chapterInput.value=String(n);}
+ bookSelect.addEventListener('change',updateChapterLimit);$('openBibleChapter').addEventListener('click',openChapter);chapterInput.addEventListener('keydown',e=>{if(e.key==='Enter')openChapter();});updateChapterLimit();
 })();
 /* Each LifeBridge destination is a separate workspace, not a long scrolling page. */
 body.lb-workspace-mode main>section:not(.hero-upgraded):not(#today):not(#lifebuddy):not(#accessPanel):not(#tools):not(#learn):not(#organize):not(#budget):not(#convert){display:none!important}
