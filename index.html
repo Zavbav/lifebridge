@@ -734,7 +734,7 @@ main>.lb-view-active>.wrap,main>.lb-view-active .wrap{animation:lb-enter .24s ea
 @keyframes lb-enter{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 body.lb-workspace-mode{background:#f4f8f8}
 body.lb-workspace-mode main{min-height:calc(100vh - 76px)}
-body.lb-workspace-mode main>.section,body.lb-workspace-mode main>#today,body.lb-workspace-mode main>#tools,body.lb-workspace-mode main>#learn,body.lb-workspace-mode main>#organize,body.lb-workspace-mode main>#budget,body.lb-workspace-mode main>#convert,body.lb-workspace-mode main>#calendar,body.lb-workspace-mode main>#focus,body.lb-workspace-mode main>#lifebuddy,body.lb-workspace-mode main>#lifequest,body.lb-workspace-mode main>#levelup{padding-top:42px;padding-bottom:64px}
+body.lb-workspace-mode main>.section,body.lb-workspace-mode main>#today,body.lb-workspace-mode main>#tools,body.lb-workspace-mode main>#learn,body.lb-workspace-mode main>#organize,body.lb-workspace-mode main>#budget,body.lb-workspace-mode main>#convert,body.lb-workspace-mode main>#calendar,body.lb-workspace-mode main>#focus,body.lb-workspace-mode main>#lifequest,body.lb-workspace-mode main>#levelup{padding-top:42px;padding-bottom:64px}
 body.lb-workspace-mode main>#today{padding-top:42px;padding-bottom:64px}
 body.lb-workspace-mode .hero-upgraded{padding:34px 0 28px;background:linear-gradient(115deg,#eaf6f5,#f4f2ff)}
 body.lb-workspace-mode .hero-upgraded .hero-grid{grid-template-columns:1.1fr .9fr;gap:28px}
@@ -752,6 +752,7 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 /* LifeBuddy conversation workspace polish */
 .lifebuddy-panel{overflow:hidden}.ai-chat{display:grid;gap:16px}.ai-chat-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 2px 12px;border-bottom:1px solid var(--line,#e5def7)}.ai-chat-heading>div{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:9px}.ai-chat-heading strong{font-size:1rem;color:var(--ink,#21163f)}.ai-heading-sub{grid-column:2;color:var(--muted,#6f6688);font-size:.84rem;margin-top:2px}.ai-online-dot{width:9px;height:9px;border-radius:50%;background:#20ad82;box-shadow:0 0 0 4px #20ad821a}.ai-new-chat{border:1px solid var(--line,#e5def7);background:#fff;color:var(--ink,#21163f);border-radius:12px;padding:9px 13px;font-weight:750;cursor:pointer}.ai-new-chat:hover{background:#f4f0ff;border-color:#cfc0ff}.ai-messages{display:flex;flex-direction:column;gap:12px;overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth;min-height:230px;max-height:440px;padding:18px!important}.ai-msg{max-width:min(88%,720px);white-space:pre-wrap;overflow-wrap:anywhere}.ai-msg.bot{align-self:flex-start;border-radius:5px 18px 18px 18px!important}.ai-msg.user{align-self:flex-end;border-radius:18px 5px 18px 18px!important;color:#fff}.ai-msg.thinking{display:flex;align-items:center;gap:8px;color:var(--muted);font-style:italic}.ai-msg.thinking:after{content:"";width:6px;height:6px;border-radius:50%;background:#8b78d9;box-shadow:10px 0 #8b78d9,20px 0 #8b78d9;animation:buddy-dots 1s infinite ease-in-out}.ai-msg.error{border-color:#f1caca!important;background:#fff7f7!important;color:#873b3b!important}.tutor-mode-bar{display:grid;gap:9px}.tutor-mode-bar>span{font-size:.72rem;letter-spacing:.11em;font-weight:850;color:var(--muted)}.tutor-mode-options{display:flex;flex-wrap:wrap;gap:8px}.tutor-mode{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 13px;color:var(--muted);font-weight:750;cursor:pointer}.tutor-mode.active{background:#eee8ff;border-color:#bba9ff;color:#5032b5;box-shadow:inset 0 0 0 1px #bba9ff}.ai-form{display:flex;gap:10px;align-items:stretch}.ai-form input{min-width:0;flex:1}.ai-form button{white-space:nowrap}.ai-form button:disabled{opacity:.65;cursor:wait}.ai-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.ai-footer .notice{margin:0;max-width:75%}#aiCharCount{font-size:.75rem;color:var(--muted);white-space:nowrap;padding-top:3px}.prompt-chip{cursor:pointer}.prompt-chip:focus-visible,.tutor-mode:focus-visible,.ai-new-chat:focus-visible,.ai-form button:focus-visible{outline:3px solid #9a83ff;outline-offset:2px}@keyframes buddy-dots{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}@media(max-width:600px){.ai-messages{min-height:190px;max-height:380px;padding:12px!important}.ai-msg{max-width:96%}.ai-form{flex-direction:column}.ai-form button{width:100%}.ai-footer{display:block}.ai-footer .notice{max-width:none}#aiCharCount{display:block;text-align:right;margin-top:5px}.ai-chat-heading{align-items:flex-start}}
 </style>
+<style id="lifebridge-no-chatbot">#lifebuddy,.lifebuddy-float{display:none!important}</style>
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
@@ -760,7 +761,7 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 <label class="quick-palette-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="quickPaletteInput" type="search" placeholder="Search tools or actions…" autocomplete="off"></label>
 <div class="quick-palette-list" id="quickPaletteList">
 <button type="button" data-jump="today"><span class="quick-command-icon">01</span><span><strong>Personal dashboard</strong><small>Today's missions and progress</small></span><kbd>↵</kbd></button>
-<button type="button" data-jump="lifebuddy"><span class="quick-command-icon">02</span><span><strong>Ask LifeBuddy</strong><small>Get help with a task or question</small></span><kbd>↵</kbd></button>
+
 <button type="button" data-jump="learn"><span class="quick-command-icon">03</span><span><strong>Learning center</strong><small>Math and homework tools</small></span><kbd>↵</kbd></button>
 <button type="button" data-jump="budget"><span class="quick-command-icon">04</span><span><strong>Budget helper</strong><small>Plan spending and savings</small></span><kbd>↵</kbd></button>
 <button type="button" data-jump="organize"><span class="quick-command-icon">05</span><span><strong>To-do organizer</strong><small>Keep your tasks in order</small></span><kbd>↵</kbd></button>
@@ -777,7 +778,7 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 <div class="hero-date" id="heroDate">YOUR DAY, AT A GLANCE</div>
 <h1>Big days start<br>with <span class="pop">small wins.</span></h1>
 <p>Learn something new. Get organized. Make a plan and follow through. LifeBridge brings the tools for everyday progress into one clear space.</p>
-<div class="hero-actions"><a class="btn primary lb-main-cta" href="#today" style="text-decoration:none">Open my dashboard <span aria-hidden="true">↗</span></a><a class="btn hero-secondary" href="#lifebuddy" style="text-decoration:none">Meet LifeBuddy</a></div>
+<div class="hero-actions"><a class="btn primary lb-main-cta" href="#today" style="text-decoration:none">Open my dashboard <span aria-hidden="true">↗</span></a><a class="btn hero-secondary" href="#tools" style="text-decoration:none">Explore all tools</a></div>
 <div class="hero-trust"><span><i></i> A calmer way to get things done</span><span><i></i> Your progress stays on this device</span></div>
 <div class="lb-hero-bottomline"><span>LEARN</span><b></b><span>PLAN</span><b></b><span>GROW</span></div>
 </div>
@@ -1485,7 +1486,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
 <script id="lifebridge-workspace-router">
 (()=> {
  const routes = [
- ["today","Home"],["lifebuddy","LifeBuddy"],["learn","Learning"],["tools","Explore"],["organize","Organizer"],["budget","Budget"],["calendar","Calendar"],["focus","Focus & goals"],["lifequest","Skill Quest"]
+ ["today","Home"],["learn","Learning"],["tools","Explore"],["organize","Organizer"],["budget","Budget"],["calendar","Calendar"],["focus","Focus & goals"],["lifequest","Skill Quest"]
  ];
  const routeIds = new Set(routes.map(([id])=>id).concat(["convert","levelup"]));
  const nav = document.querySelector(".navlinks");
@@ -1498,7 +1499,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
  nav.insertBefore(a,quick||access||account||null);
  });
- const panels=[...document.querySelectorAll(".hero-upgraded, #today, #lifebuddy, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
+ const panels=[...document.querySelectorAll(".hero-upgraded, #today, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
  function routeFromHash(){
  const id=(location.hash||"#today").slice(1);
  return routeIds.has(id)?id:"today";
