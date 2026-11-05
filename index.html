@@ -1670,7 +1670,7 @@ function holidayEvents(y){return [...holidays(y),...catholicHolidays(y),...holid
 </script>
 <style id="lifebridge-workspace-system">
 /* Each LifeBridge destination is a separate workspace, not a long scrolling page. */
-body.lb-workspace-mode main>section:not(.hero-upgraded):not(#today):not(#lifebuddy):not(#accessPanel):not(#tools):not(#learn):not(#organize):not(#budget):not(#convert){display:none!important}
+body.lb-workspace-mode main>section:not(.hero-upgraded):not(#today):not(#lifebuddy):not(#accessPanel):not(#tools):not(#learn):not(#organize):not(#budget):not(#convert):not(#calendar):not(#focus):not(#lifequest){display:none!important}
 body.lb-workspace-mode .lb-view-hidden{display:none!important}
 body.lb-workspace-mode .lb-view-active{display:block!important}
 body.lb-workspace-mode .lb-view-active>.wrap,
@@ -1724,7 +1724,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
  });
  if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
- window.scrollTo({top:0,behavior:"auto"});
+ document.documentElement.style.scrollBehavior="auto";document.body.style.scrollBehavior="auto";window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;requestAnimationFrame(()=>{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;});
  document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":"LifeBridge"))+" | LifeBridge";
  if(id==="bibleStudy")requestAnimationFrame(()=>document.getElementById("bibleStudy")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}));
  }
