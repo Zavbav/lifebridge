@@ -2246,5 +2246,76 @@ body{background-image:radial-gradient(ellipse at 12% 18%,#dff4ef 0,transparent 3
 }
 </style>
 
+
+<style id="lifebridge-hero-layout-repair">
+/* Prevent the hero columns and floating UI from forcing horizontal overflow. */
+.lb-hero-v2{width:100%;max-width:100%;overflow:hidden!important;overflow:clip!important}
+.lb-hero-v2>.wrap.hero-grid{
+ width:min(1120px,calc(100% - 64px))!important;
+ max-width:1120px!important;margin-inline:auto!important;
+ box-sizing:border-box!important;
+ display:grid!important;
+ grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;
+ gap:clamp(28px,3.4vw,52px)!important;
+ align-items:center!important;
+}
+.lb-hero-v2 .hero-copy,.lb-hero-v2 .lb-hero-stage{min-width:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+.lb-hero-v2 .hero-copy{padding:8px 0!important}
+.lb-hero-v2 .hero-copy h1{
+ max-width:100%!important;width:100%!important;
+ font-size:clamp(3.1rem,5.1vw,5.15rem)!important;
+ line-height:.98!important;letter-spacing:-.075em!important;
+ overflow-wrap:normal!important;word-break:normal!important;
+}
+.lb-hero-v2 .hero-copy>p{max-width:44ch!important}
+.lb-hero-v2 .hero-actions{align-items:center!important}
+.lb-hero-v2 .hero-trust{display:flex!important;flex-wrap:wrap!important;row-gap:10px!important}
+.lb-hero-v2 .lb-hero-stage{padding:44px 0 34px!important}
+.lb-hero-v2 .lb-hero-stage .hero-dashboard{
+ width:100%!important;max-width:560px!important;min-width:0!important;
+ margin:0 auto!important;box-sizing:border-box!important;
+}
+.lb-hero-v2 .lb-note-top{top:4px!important;right:8px!important}
+.lb-hero-v2 .lb-note-bottom{left:8px!important;bottom:0!important}
+.lb-hero-v2 .lb-stage-orbit{max-width:100%;pointer-events:none!important}
+.lifebuddy-float{
+ z-index:20!important;right:clamp(14px,2vw,28px)!important;
+ bottom:clamp(14px,2vw,26px)!important;
+ max-width:calc(100vw - 28px)!important;
+ box-sizing:border-box!important;
+}
+@media(min-width:901px) and (max-width:1180px){
+ .lb-hero-v2>.wrap.hero-grid{
+  width:calc(100% - 48px)!important;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)!important;
+  gap:26px!important;
+ }
+ .lb-hero-v2 .hero-copy h1{font-size:clamp(3rem,5vw,4.5rem)!important}
+ .lb-hero-v2 .lb-float-note{transform:scale(.92);transform-origin:right top}
+}
+@media(max-width:900px){
+ .lb-hero-v2>.wrap.hero-grid{
+  width:min(680px,calc(100% - 40px))!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:20px!important;
+ }
+ .lb-hero-v2 .hero-copy h1{font-size:clamp(3.25rem,9vw,5.1rem)!important}
+ .lb-hero-v2 .lb-hero-stage{padding:52px 0 38px!important}
+ .lb-hero-v2 .lb-stage-orbit{width:min(590px,100vw)!important;height:min(590px,100vw)!important;right:50%!important;transform:translateX(50%)!important}
+ .lb-hero-v2 .lb-orbit-two{width:min(490px,82vw)!important;height:min(490px,82vw)!important}
+ .lb-hero-v2 .lb-note-top{right:8px!important;top:8px!important}
+ .lb-hero-v2 .lb-note-bottom{left:8px!important;bottom:4px!important}
+}
+@media(max-width:560px){
+ .lb-hero-v2>.wrap.hero-grid{width:calc(100% - 32px)!important}
+ .lb-hero-v2 .hero-copy h1{font-size:clamp(2.85rem,12.2vw,4rem)!important}
+ .lb-hero-v2 .lb-hero-stage .hero-dashboard{padding:18px 14px 14px!important}
+ .lb-hero-v2 .lb-float-note{max-width:calc(100% - 16px)!important}
+ .lb-hero-v2 .lb-note-top{right:4px!important}
+ .lb-hero-v2 .lb-note-bottom{left:4px!important}
+ .lifebuddy-float{right:12px!important;bottom:12px!important;padding:12px 15px!important;font-size:.85rem!important}
+}
+</style>
+
 </body>
 </html>
