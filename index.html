@@ -870,6 +870,17 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 </div><p id="noResults" class="empty hidden">No matching tools yet. Try another word.</p></div></section>
 <section class="section" id="learn" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2>Study Center</h2><p>Your workspace for homework practice, flashcards, guided lessons, math support, and stronger study habits.</p></div></div>
 <div class="learning-studio">
+<section class="lb-learning-worlds" aria-labelledby="lbWorldTitle">
+ <div class="lb-world-heading"><div><span class="lb-world-eyebrow">PICK YOUR NEXT ADVENTURE</span><h3 id="lbWorldTitle">Learning Worlds</h3><p>Choose a world. Launch a ready-to-study deck. Build knowledge by exploring.</p></div><span class="lb-world-stamp">EXPLORE · PRACTICE · MASTER</span></div>
+ <div class="lb-world-map" role="group" aria-label="Choose a subject learning world">
+  <button type="button" class="lb-world-card lb-world-science" data-lb-world="science"><span class="lb-world-orb" aria-hidden="true"></span><span class="lb-world-card-title">Science Lab</span><span class="lb-world-card-copy">Explore cells and living systems</span><span class="lb-world-launch">Enter world <b>↗</b></span></button>
+  <button type="button" class="lb-world-card lb-world-math" data-lb-world="math"><span class="lb-world-orb" aria-hidden="true"></span><span class="lb-world-card-title">Math Mountain</span><span class="lb-world-card-copy">Build confidence with equations</span><span class="lb-world-launch">Enter world <b>↗</b></span></button>
+  <button type="button" class="lb-world-card lb-world-history" data-lb-world="history"><span class="lb-world-orb" aria-hidden="true"></span><span class="lb-world-card-title">History Harbor</span><span class="lb-world-card-copy">Discover people and turning points</span><span class="lb-world-launch">Enter world <b>↗</b></span></button>
+  <button type="button" class="lb-world-card lb-world-words" data-lb-world="english"><span class="lb-world-orb" aria-hidden="true"></span><span class="lb-world-card-title">Word Workshop</span><span class="lb-world-card-copy">Strengthen reading and writing</span><span class="lb-world-launch">Enter world <b>↗</b></span></button>
+  <button type="button" class="lb-world-card lb-world-earth" data-lb-world="geography"><span class="lb-world-orb" aria-hidden="true"></span><span class="lb-world-card-title">World Explorer</span><span class="lb-world-card-copy">Travel through geography basics</span><span class="lb-world-launch">Enter world <b>↗</b></span></button>
+ </div>
+ <p class="lb-world-status" id="lbWorldStatus" aria-live="polite">Your next discovery is one click away.</p>
+</section>
 <div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>Turn your class notes into real practice</h3><p>Create flashcards from your notes, test yourself before checking answers, and keep track of what you have reviewed. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div>
 <div class="study-streak-card" id="studyStreakCard" aria-live="polite">
  <div class="study-streak-top"><span class="study-streak-kicker">DAILY STUDY MISSION</span><span class="study-streak-icon" aria-hidden="true">✦</span></div>
@@ -3533,6 +3544,93 @@ body.lb-workspace-mode .navlinks a[data-lb-route]:hover {transform:translateY(-3
  });
  document.addEventListener("visibilitychange",()=>{if(!document.hidden&&data.day!==today()){data.day=today();data.count=0;save()}});
  paint();
+})();
+</script>
+
+<style id="lifebridge-learning-worlds">
+.lb-learning-worlds{position:relative;margin:0 0 24px;padding:clamp(20px,3vw,30px);overflow:hidden;border:1px solid rgba(255,255,255,.98);border-radius:28px;background:linear-gradient(145deg,#fffdf8 0%,#f4f0ff 52%,#eaf7f1 100%);box-shadow:0 3px 0 #d8d9ed,0 9px 0 #c4cbe6,0 24px 48px rgba(64,75,130,.14),inset 0 2px 0 #fff;perspective:1200px}
+.lb-learning-worlds:before{content:"";position:absolute;width:360px;height:360px;right:-140px;top:-190px;border-radius:50%;background:radial-gradient(circle,#fff 0,rgba(255,255,255,.4) 42%,transparent 70%);pointer-events:none}
+.lb-world-heading{position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}
+.lb-world-eyebrow{display:block;color:#8272b5;font-size:.65rem;font-weight:950;letter-spacing:.16em}
+.lb-world-heading h3{margin:5px 0 4px;color:#29375b;font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.045em}
+.lb-world-heading p{margin:0;color:#687594;font-size:.9rem}
+.lb-world-stamp{flex:none;padding:8px 11px;border-radius:99px;background:#fff;color:#77739c;font-size:.6rem;font-weight:950;letter-spacing:.1em;box-shadow:0 2px 0 #dfe1ef,0 5px 10px #5e66901c}
+.lb-world-map{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;transform-style:preserve-3d}
+.lb-world-card{--world:#7e8fd0;--world-light:#dce4ff;position:relative;display:flex;min-width:0;min-height:188px;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:5px;padding:18px 15px 14px;overflow:visible;text-align:left;border:1px solid rgba(255,255,255,.98)!important;border-radius:22px!important;background:linear-gradient(155deg,#fff 0%,var(--world-light) 100%)!important;color:#2d3b60!important;box-shadow:0 2px 0 color-mix(in srgb,var(--world) 25%,white),0 7px 0 color-mix(in srgb,var(--world) 17%,white),0 17px 24px rgba(62,75,126,.13),inset 0 2px 0 #fff!important;transform:perspective(850px) rotateX(5deg) translateZ(0);transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.8,.2,1),box-shadow .65s ease,border-color .4s ease!important;cursor:pointer}
+.lb-world-card:before{content:"";position:absolute;left:15%;right:15%;bottom:-13px;height:18px;border-radius:50%;background:rgba(47,57,100,.18);filter:blur(8px);transform:translateZ(-18px);transition:all .65s ease}
+.lb-world-card:after{content:"";position:absolute;inset:0 0 auto;height:5px;border-radius:22px 22px 0 0;background:linear-gradient(90deg,var(--world),#fff);opacity:.9}
+.lb-world-orb{position:absolute;top:20px;left:50%;width:76px;height:76px;border-radius:50%;transform:translateX(-50%) translateZ(35px);background:radial-gradient(circle at 30% 24%,#fff 0 5%,var(--world-light) 16%,var(--world) 58%,color-mix(in srgb,var(--world) 55%,#28325f) 100%);box-shadow:inset -9px -12px 18px rgba(40,49,93,.2),inset 5px 5px 10px rgba(255,255,255,.8),0 8px 0 color-mix(in srgb,var(--world) 42%,white),0 16px 25px color-mix(in srgb,var(--world) 25%,transparent);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.lb-world-orb:after{content:"";position:absolute;inset:12px 18px 30px 12px;border-radius:50%;background:linear-gradient(145deg,#fff9,transparent);filter:blur(2px)}
+.lb-world-card-title{position:relative;margin-top:79px;font-size:.98rem;font-weight:950;letter-spacing:-.025em}
+.lb-world-card-copy{position:relative;min-height:2.5em;color:#65728f;font-size:.72rem;line-height:1.35}
+.lb-world-launch{position:relative;display:flex;align-items:center;gap:8px;margin-top:7px;color:color-mix(in srgb,var(--world) 65%,#29365a);font-size:.69rem;font-weight:950;letter-spacing:.04em}
+.lb-world-launch b{display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 2px 0 color-mix(in srgb,var(--world) 22%,white),0 4px 9px #303d6b20}
+.lb-world-card:hover,.lb-world-card:focus-visible{transform:perspective(850px) rotateX(0) rotateY(-2deg) translateY(-8px) translateZ(18px)!important;box-shadow:0 3px 0 color-mix(in srgb,var(--world) 27%,white),0 10px 0 color-mix(in srgb,var(--world) 18%,white),0 29px 38px rgba(62,75,126,.2),inset 0 2px 0 #fff!important;outline:none}
+.lb-world-card:hover .lb-world-orb,.lb-world-card:focus-visible .lb-world-orb{transform:translateX(-50%) translateZ(58px) scale(1.08) rotate(7deg)}
+.lb-world-card:hover:before{left:22%;right:22%;opacity:.75;filter:blur(12px)}
+.lb-world-science{--world:#6cae9e;--world-light:#dff3e9}
+.lb-world-math{--world:#8b7bc8;--world-light:#ebe5ff}
+.lb-world-history{--world:#d28b68;--world-light:#f9e8d9}
+.lb-world-words{--world:#6d91c6;--world-light:#e2edff}
+.lb-world-earth{--world:#7aab75;--world-light:#e4f2df}
+.lb-world-status{position:relative;margin:19px 0 0!important;color:#7a789e!important;font-size:.75rem;font-weight:750}
+@media(max-width:900px){.lb-world-map{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.lb-world-heading{align-items:flex-start;flex-direction:column}.lb-world-map{grid-template-columns:repeat(2,minmax(0,1fr))}.lb-world-card{min-height:175px}.lb-world-stamp{display:none}}
+@media(prefers-reduced-motion:reduce){.lb-world-card,.lb-world-orb,.lb-world-card:before{transition:none!important}}
+</style>
+<script id="lifebridge-learning-worlds-controller">
+(()=>{
+ const worlds={
+  science:{subject:"Science",name:"Science Lab — Cell Basics",notes:[
+   "Mitochondria: The cell structure that releases usable energy from food.",
+   "Nucleus: The part of a cell that contains DNA and directs cell activities.",
+   "Cell membrane: A thin barrier that controls what enters and leaves the cell.",
+   "Chloroplast: The structure in plant cells where photosynthesis takes place."
+  ]},
+  math:{subject:"Math",name:"Math Mountain — Equation Foundations",notes:[
+   "Inverse operations: Operations that undo each other, such as addition and subtraction.",
+   "What is the goal when solving an equation? Isolate the variable while keeping both sides balanced.",
+   "Distributive property: Multiply the factor outside parentheses by every term inside.",
+   "Like terms: Terms with the same variable parts and exponents that can be combined."
+  ]},
+  history:{subject:"History",name:"History Harbor — U.S. Foundations",notes:[
+   "Declaration of Independence: The 1776 document announcing the colonies' separation from Great Britain.",
+   "Constitution: The framework that establishes the structure and powers of the U.S. government.",
+   "Bill of Rights: The first ten amendments to the U.S. Constitution.",
+   "Three branches: Legislative makes laws, executive carries them out, and judicial interprets them."
+  ]},
+  english:{subject:"English / Reading",name:"Word Workshop — Language Basics",notes:[
+   "Thesis statement: A sentence that presents the main claim or central idea of an essay.",
+   "Metaphor: A comparison that describes one thing as another without using like or as.",
+   "Theme: A central idea or message developed throughout a story.",
+   "Evidence: Information or examples used to support a claim or interpretation."
+  ]},
+  geography:{subject:"Geography",name:"World Explorer — Geography Basics",notes:[
+   "Equator: An imaginary line at 0 degrees latitude that divides Earth into Northern and Southern Hemispheres.",
+   "Latitude: Lines that measure distance north or south of the Equator.",
+   "Longitude: Lines that measure distance east or west of the Prime Meridian.",
+   "Continents: The seven commonly recognized large landmasses of Earth."
+  ]}
+ };
+ document.addEventListener("click",event=>{
+  const button=event.target.closest("[data-lb-world]");
+  if(!button)return;
+  const world=worlds[button.dataset.lbWorld];
+  if(!world)return;
+  const subject=document.getElementById("deckSubject");
+  const name=document.getElementById("deckName");
+  const notes=document.getElementById("deckNotes");
+  const create=document.getElementById("createDeck");
+  const status=document.getElementById("lbWorldStatus");
+  if(!subject||!name||!notes||!create)return;
+  subject.value=world.subject;
+  name.value=world.name;
+  notes.value=world.notes.join("\n");
+  create.click();
+  if(status)status.textContent=world.name+" is ready. Your new deck has been added to your study library.";
+  const review=document.querySelector("#learn .study-review");
+  if(review)review.scrollIntoView({behavior:"smooth",block:"start"});
+ });
 })();
 </script>
 
