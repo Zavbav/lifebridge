@@ -1,0 +1,37 @@
+name: Native Safari smoke test
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safari:
+    name: Test the real Safari browser
+    runs-on: macos-15
+    timeout-minutes: 10
+    steps:
+      - name: Check out LifeBridge
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Enable Safari WebDriver
+        run: sudo safaridriver --enable
+      - name: Install Safari test driver
+        run: npm install --no-save selenium-webdriver
+      - name: Start the LifeBridge site
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/lifebridge-http.log 2>&1 &
+          for i in {1..20}; do
+            if curl --silent --fail http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/lifebridge-http.log
+          exit 1
+      - name: Run native Safari checks
+        run: node .github/scripts/safari-smoke.cjs
