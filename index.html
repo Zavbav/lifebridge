@@ -2951,5 +2951,128 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{box-shadow:
 })();
 </script>
 
+
+<style id="lifebridge-futuristic-workspace-system">
+/* LifeBridge visual system: keep the original 3D home hero; bring every workspace into its universe. */
+:root{--lb-void:#071521;--lb-deep:#0b2030;--lb-glass:rgba(13,35,51,.82);--lb-glass-2:rgba(17,45,63,.76);--lb-line:rgba(125,196,213,.2);--lb-text:#eaf7fb;--lb-muted:#a2bac8;--lb-cyan:#72d6e5;--lb-teal:#6de0c3;--lb-violet:#a99aff;--lb-blue:#77baff}
+body.lb-workspace-mode{background:#071521!important;color:var(--lb-text)}
+body.lb-workspace-mode .topbar{position:sticky;top:0;z-index:100;background:rgba(5,19,30,.88)!important;border-bottom:1px solid rgba(113,207,221,.18)!important;box-shadow:0 12px 34px rgba(0,0,0,.22);backdrop-filter:blur(18px) saturate(145%)}
+body.lb-workspace-mode .nav{min-height:72px}
+body.lb-workspace-mode .logo{color:#f0fbff!important;letter-spacing:-.04em}
+body.lb-workspace-mode .logo-mark{filter:drop-shadow(0 0 12px rgba(102,219,222,.28))}
+body.lb-workspace-mode .navlinks{gap:5px}
+body.lb-workspace-mode .navlinks a[data-lb-route]{position:relative;color:#a9c2cf!important;border:1px solid transparent;border-radius:11px;background:transparent!important;transition:color .35s ease,border-color .35s ease,background .35s ease,box-shadow .35s ease}
+body.lb-workspace-mode .navlinks a[data-lb-route]:hover{color:#eaffff!important;border-color:rgba(112,214,225,.24);background:rgba(72,165,187,.1)!important;box-shadow:0 0 20px rgba(72,194,209,.1)}
+body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{color:#eaffff!important;border-color:rgba(110,218,225,.35);background:linear-gradient(120deg,rgba(67,179,191,.2),rgba(126,112,218,.17))!important;box-shadow:inset 0 0 18px rgba(91,196,212,.08),0 0 22px rgba(71,185,205,.12)}
+body.lb-workspace-mode .navlinks .smallbtn,body.lb-workspace-mode .navlinks .account-btn{color:#d6eaf1!important;background:rgba(15,43,59,.9)!important;border:1px solid rgba(126,193,211,.24)!important;border-radius:11px}
+body.lb-workspace-mode main{position:relative;background:#071521!important;isolation:isolate}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded){--lb-accent:#6ed7df;--lb-accent-2:#9b91ff;--lb-page-glow:rgba(52,178,195,.18);position:relative;isolation:isolate;overflow:hidden;min-height:calc(100vh - 72px);padding-top:clamp(34px,4vw,58px)!important;padding-bottom:76px!important;background:radial-gradient(ellipse at 12% 4%,var(--lb-page-glow),transparent 34%),radial-gradient(ellipse at 92% 18%,rgba(109,116,218,.13),transparent 31%),linear-gradient(145deg,#091b29 0%,#0a1b2a 48%,#081725 100%)!important;color:var(--lb-text)!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.48;background-image:linear-gradient(rgba(120,190,209,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(120,190,209,.065) 1px,transparent 1px),radial-gradient(circle at 50% 0%,transparent 0,rgba(4,13,22,.2) 70%);background-size:46px 46px,46px 46px,100% 100%;mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.5) 70%,transparent 100%)}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):after{content:"";position:absolute;z-index:0;pointer-events:none;width:420px;height:420px;right:-250px;top:22%;border:1px solid rgba(112,206,218,.13);border-radius:50%;box-shadow:0 0 0 35px rgba(112,206,218,.025),0 0 0 75px rgba(112,206,218,.018),0 0 90px rgba(79,182,205,.08);animation:lb-workspace-orbit 24s ease-in-out infinite alternate}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>*{position:relative;z-index:1}
+body.lb-workspace-mode main>#today{--lb-page-glow:rgba(66,196,190,.2);--lb-accent:#69dfc6;--lb-accent-2:#69bce7}
+body.lb-workspace-mode main>#learn{--lb-page-glow:rgba(133,112,230,.22);--lb-accent:#b6a1ff;--lb-accent-2:#65d8e5}
+body.lb-workspace-mode main>#tools{--lb-page-glow:rgba(67,164,220,.2);--lb-accent:#6ecbf1;--lb-accent-2:#8c9dff}
+body.lb-workspace-mode main>#lifequest{--lb-page-glow:rgba(194,133,66,.18);--lb-accent:#f1c477;--lb-accent-2:#e995a9}
+body.lb-workspace-mode main>#organize{--lb-page-glow:rgba(65,196,154,.2);--lb-accent:#70e0bb;--lb-accent-2:#65c6df}
+body.lb-workspace-mode main>#budget{--lb-page-glow:rgba(62,186,145,.2);--lb-accent:#6ce0b3;--lb-accent-2:#79c4ef}
+body.lb-workspace-mode main>#focus{--lb-page-glow:rgba(76,143,220,.22);--lb-accent:#7cbcff;--lb-accent-2:#a79bff}
+body.lb-workspace-mode main>#calendar{--lb-page-glow:rgba(194,112,163,.2);--lb-accent:#f09bc9;--lb-accent-2:#9f9bff}
+body.lb-workspace-mode main>#celebrations{--lb-page-glow:rgba(211,139,86,.2);--lb-accent:#f2b77c;--lb-accent-2:#e99ac0}
+body.lb-workspace-mode main>#levelup{--lb-page-glow:rgba(142,111,220,.2);--lb-accent:#b5a0ff;--lb-accent-2:#6ed7e5}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) h1,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) h2,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) h3,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) h4{color:#eaf7fb!important;letter-spacing:-.035em}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) p,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .section-intro,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .eyebrow{color:#a5bdca}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .section-head h2,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>div>h2{color:#f1fbff!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .section-head p{color:#9fb7c6!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .learning-studio,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .equation-coach,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .study-builder,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .study-review,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .study-xp-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .flashcard,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-panel,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-side,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .command-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .daily-plan-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .quickstats>div,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-explorer,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-feature-grid>article,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-method{color:#e7f5fb!important;background:linear-gradient(145deg,rgba(17,45,63,.92),rgba(9,29,44,.94))!important;border:1px solid rgba(126,194,212,.2)!important;border-radius:19px!important;box-shadow:0 18px 42px rgba(0,0,0,.2),inset 0 1px rgba(220,249,255,.055),0 0 26px rgba(64,166,191,.035)!important;backdrop-filter:blur(14px);transition:transform .5s cubic-bezier(.2,.75,.25,1),border-color .5s ease,box-shadow .5s ease}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:hover{transform:translateY(-5px) perspective(900px) rotateX(.45deg);border-color:color-mix(in srgb,var(--lb-accent) 48%,transparent)!important;box-shadow:0 24px 54px rgba(0,0,0,.28),0 0 25px color-mix(in srgb,var(--lb-accent) 13%,transparent)!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .pill,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tag,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .eyebrow{color:var(--lb-accent)!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) button,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .btn{border-radius:11px;transition:transform .35s ease,box-shadow .35s ease,filter .35s ease}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) button:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .btn:hover{transform:translateY(-2px);box-shadow:0 9px 25px rgba(52,174,198,.16);filter:brightness(1.08)}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) input,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) select,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) textarea{color:#e9f8fc!important;background:rgba(4,20,32,.82)!important;border:1px solid rgba(121,190,207,.28)!important;border-radius:11px!important;box-shadow:inset 0 1px 7px rgba(0,0,0,.18)}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) input::placeholder,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) textarea::placeholder{color:#7794a4}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .result,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .notice,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .empty{color:#bdd4df!important;background:rgba(20,53,70,.7)!important;border-color:rgba(115,189,207,.2)!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-grid,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-weekdays{color:#b8d2de}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-grid button{color:#d9edf4;background:rgba(13,38,54,.7);border-color:rgba(125,193,211,.14)}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-grid button:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-grid button[aria-pressed=true]{background:rgba(61,156,180,.3);border-color:var(--lb-accent)}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-head h3{color:#f0fbff}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-legend{color:#a9c3d0}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-event,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-detail{background:rgba(14,39,56,.88);border-color:rgba(120,192,211,.2);color:#d9edf5}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-band,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .fun-panel{background:linear-gradient(140deg,#102c40,#18294b)!important;border:1px solid rgba(155,144,255,.26);box-shadow:0 18px 45px rgba(0,0,0,.22)}
+body.lb-workspace-mode main>#levelup.lb-view-active{background:radial-gradient(ellipse at 12% 5%,rgba(147,112,239,.22),transparent 36%),linear-gradient(145deg,#0b192b,#121c38 60%,#071725)!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebrations-hero{border:1px solid rgba(131,205,218,.28)!important;border-radius:26px;background:radial-gradient(circle at 85% 12%,rgba(227,143,128,.22),transparent 26%),radial-gradient(circle at 12% 100%,rgba(83,201,179,.18),transparent 34%),linear-gradient(125deg,#102b3c,#172541 58%,#0d2935)!important;box-shadow:0 24px 58px rgba(0,0,0,.28),inset 0 1px rgba(220,249,255,.08)}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebrations-hero h2{color:#f3fcff!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebrations-hero p{color:#a9c3d0!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebration-overline,
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebrations-kicker{color:#8ce1df!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .holiday-count-card,
+body.lb-workspace-mode main>#celebrations.lb-view-active .personal-count-card{background:linear-gradient(145deg,rgba(18,48,66,.97),rgba(10,29,44,.97))!important;border:1px solid rgba(133,199,216,.22)!important;box-shadow:0 18px 42px rgba(0,0,0,.22),inset 0 1px rgba(230,251,255,.05)!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .holiday-count-card h4,
+body.lb-workspace-mode main>#celebrations.lb-view-active .personal-count-card h4{color:#eefaff!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .holiday-count-card .holiday-date,
+body.lb-workspace-mode main>#celebrations.lb-view-active .personal-count-card .holiday-date,
+body.lb-workspace-mode main>#celebrations.lb-view-active .holiday-count-card .holiday-type{color:#9eb9c7!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebration-personal{background:linear-gradient(145deg,rgba(13,43,53,.96),rgba(15,34,54,.97))!important;border:1px solid rgba(109,219,195,.24)!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebration-personal-copy p,
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebration-privacy{color:#9dbbc6!important}
+body.lb-workspace-mode main>#celebrations.lb-view-active .birthday-form label{color:#b9d3dc}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebration-orbit{opacity:.55;filter:drop-shadow(0 0 12px rgba(116,204,220,.2))}
+body.lb-workspace-mode main>#celebrations.lb-view-active .celebration-count-label{background:rgba(22,52,69,.8);border-color:rgba(130,203,216,.24);color:#9ce4df}
+body.lb-workspace-mode main>#celebrations.lb-view-active .remove-personal-count{background:rgba(116,67,77,.35);color:#ffd0cf}
+body.lb-workspace-mode main>#learn.lb-view-active .bible-study-hub{color:#eaf7fb}
+body.lb-workspace-mode main>#learn.lb-view-active .bible-hub-head h2,
+body.lb-workspace-mode main>#learn.lb-view-active .bible-study-hub h3{color:#edf9ff}
+body.lb-workspace-mode main>#learn.lb-view-active .bible-study-hub p{color:#a6bfcc}
+body.lb-workspace-mode main>#learn.lb-view-active .bible-study-hub .bible-hub-head{background:linear-gradient(130deg,rgba(22,43,76,.9),rgba(16,57,70,.9));border:1px solid rgba(143,149,255,.24);border-radius:22px;padding:24px}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .study-xp-track,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .xp-track{background:rgba(3,16,26,.8);border:1px solid rgba(118,192,209,.2)}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .study-xp-track>span,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .xp-fill{background:linear-gradient(90deg,#60d7c4,#66c9e8,#a493ff);box-shadow:0 0 18px rgba(103,207,221,.34)}
+@keyframes lb-workspace-orbit{from{transform:translate3d(0,-10px,0) rotate(0deg)}to{transform:translate3d(-28px,24px,0) rotate(12deg)}}
+@media(max-width:760px){body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded){padding-top:30px!important}body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):after{width:240px;height:240px;right:-170px;opacity:.65}body.lb-workspace-mode .navlinks a[data-lb-route]{font-size:.78rem;padding:8px 9px}}
+@media(prefers-reduced-motion:reduce){body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):after{animation:none!important}body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card{transition:none!important}}
+</style>
+
 </body>
 </html>
