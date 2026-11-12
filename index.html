@@ -861,17 +861,6 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 </div>
 </div>
 </section>
-<section class="section" id="lifebuddy"><div class="wrap"><div class="section-head"><div><span class="tag">YOUR HELPER</span><h2 style="margin-top:10px"><span class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span> Meet LifeBuddy</h2><p>Get help breaking down a task, brainstorming, studying, or planning your next step.</p></div></div>
-<div class="panel lifebuddy-panel"><div class="ai-chat">
-<div class="ai-chat-heading"><div><span class="ai-online-dot"></span><strong>LifeBuddy is ready</strong><span class="ai-heading-sub">A learning partner for your next step</span></div><button type="button" class="ai-new-chat" id="aiNewChat">New chat ↺</button></div>
-<div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-relevant="additions text"><div class="ai-msg bot">Hey! I'm LifeBuddy. Tell me what you're working on and we'll figure it out together.
-
-I can help you understand a lesson, check your thinking, make a study plan, or break a big task into smaller steps.</div></div>
-<div class="tutor-mode-bar" aria-label="Choose how LifeBuddy teaches"><span>HOW SHOULD I HELP?</span><div class="tutor-mode-options"><button type="button" class="tutor-mode active" data-tutor-mode="tutor" aria-pressed="true">Tutor</button><button type="button" class="tutor-mode" data-tutor-mode="socratic" aria-pressed="false">Guide me</button><button type="button" class="tutor-mode" data-tutor-mode="explain" aria-pressed="false">Explain</button><button type="button" class="tutor-mode" data-tutor-mode="quiz" aria-pressed="false">Quiz me</button><button type="button" class="tutor-mode" data-tutor-mode="study" aria-pressed="false">Study plan</button></div></div>
-<div class="prompt-chips" aria-label="Try asking LifeBuddy"><button type="button" class="prompt-chip" data-prompt="Help me make a homework plan">Homework plan</button><button type="button" class="prompt-chip" data-prompt="Explain this topic in simple words and give me an example">Explain a topic</button><button type="button" class="prompt-chip" data-prompt="Quiz me on what I am studying, one question at a time">Quiz me</button><button type="button" class="prompt-chip" data-prompt="Help me break a big task into small steps">Break down a task</button></div>
-<form class="ai-form" id="aiForm"><label class="hidden" for="aiInput">Ask LifeBuddy</label><input id="aiInput" maxlength="1200" placeholder="Ask anything you're working on…" autocomplete="off" required><button class="btn primary" type="submit" id="aiSend">Send <span aria-hidden="true"></span></button></form>
-<div class="ai-footer"><p class="notice" id="aiNotice">LifeBuddy is here to help you learn. Check important information with a trusted source.</p><span id="aiCharCount">0 / 1,200</span></div>
-</div></div></div></section>
 <section class="section hidden" id="accessPanel"><div class="wrap panel"><h2>Make LifeBridge comfortable for you</h2><p class="notice">These display settings stay on this device.</p><div class="access"><button class="btn" id="textToggle">Increase text size</button><button class="btn" id="contrastToggle">High contrast</button><button class="btn" id="resetDisplay">Reset display</button></div></div></section>
 <section class="section" id="tools"><div class="wrap"><div class="section-head"><div><h2>Pick your next win</h2><p>Little tools for the stuff life throws at you. What are we tackling today?</p></div><input class="search" id="toolSearch" type="search" placeholder="Search tools, e.g. budget…" aria-label="Search helpful tools"></div><div class="cards" id="toolCards">
 <article class="tool-card" data-search="school homework learning grade percentage calculator"><div class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5zM4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8M8 10h6"/></svg></div><h3>Learning Center</h3><p>Work through grades, percentages, and school tasks step by step.</p><button data-target="learn">Explore learning →</button></article>
@@ -881,7 +870,14 @@ I can help you understand a lesson, check your thinking, make a study plan, or b
 </div><p id="noResults" class="empty hidden">No matching tools yet. Try another word.</p></div></section>
 <section class="section" id="learn" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2>Study Center</h2><p>Your workspace for homework practice, flashcards, guided lessons, math support, and stronger study habits.</p></div></div>
 <div class="learning-studio">
-<div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>Turn your class notes into real practice</h3><p>Create flashcards from your notes, test yourself before checking answers, and keep track of what you have reviewed. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div></div>
+<div class="learning-intro"><div><span class="pill">STUDY STUDIO</span><h3>Turn your class notes into real practice</h3><p>Create flashcards from your notes, test yourself before checking answers, and keep track of what you have reviewed. Your decks stay in this browser.</p></div><div class="learning-stat"><strong id="studyReviewed">0</strong><span>CARDS REVIEWED</span></div>
+<div class="study-streak-card" id="studyStreakCard" aria-live="polite">
+ <div class="study-streak-top"><span class="study-streak-kicker">DAILY STUDY MISSION</span><span class="study-streak-icon" aria-hidden="true">✦</span></div>
+ <strong class="study-streak-number"><span id="studyStreakCount">0</span> day streak</strong>
+ <p id="studyStreakMessage">Five practice checks make today's mission.</p>
+ <div class="study-streak-track"><span id="studyStreakFill"></span></div>
+ <small><span id="studyStreakProgress">0</span> / 5 practice checks today</small>
+</div></div>
 <div class="study-gamebar"><div class="study-xp-card"><span class="flashcard-label">YOUR STUDY LEVEL</span><strong id="studyLevel">Level 1</strong><div class="study-xp-track"><span id="studyXpBar"></span></div><small id="studyXpText">0 / 100 XP to next level</small></div><div class="study-xp-card"><label for="studyDifficulty">Difficulty</label><select id="studyDifficulty"><option value="easy">Easy · 1× XP</option><option value="standard" selected>Standard · 1.5× XP</option><option value="hard">Hard · 2× XP</option><option value="expert">Expert · 3× XP</option></select><small id="studyDifficultyHint">Balanced practice and rewards.</small></div><div class="study-xp-total"><strong id="studyXpTotal">0</strong><span>TOTAL XP EARNED</span></div></div>
 <div class="study-grid">
 <div class="study-builder">
@@ -1237,8 +1233,6 @@ function challengeIndex(){const d=new Date();return (d.getFullYear()*372+(d.getM
 function initChallenge(){const [title,desc]=challenges[challengeIndex()];$('challengeTitle').textContent=title;$('challengeDesc').textContent=desc;const today=new Date().toDateString();const done=xpData.challengeDate===today;$('challengeDone').disabled=done;$('challengeDone').textContent=done?'Completed today ✓':'I did it! +10 XP';if(done)$('challengeStatus').textContent='Nice work! Come back tomorrow for another challenge.'}
 $('challengeDone').addEventListener('click',()=>{const today=new Date().toDateString();if(xpData.challengeDate===today)return;xpData.challengeDate=today;addXp(10,'Daily challenge complete! +10 XP ');initChallenge()});
 const oldSaveTasks=saveTasks;saveTasks=function(){try{localStorage.setItem(taskKey,JSON.stringify(tasks))}catch{}renderTasks();const current=tasks.filter(t=>t.done).length;const previous=Number(localStorage.getItem('lifebridge-last-done-count')||0);if(current>previous){addXp((current-previous)*5,'Task completed! +5 XP ')}try{localStorage.setItem('lifebridge-last-done-count',String(current))}catch{}};
-const aiForm=$('aiForm'),aiInput=$('aiInput'),aiMessages=$('aiMessages'),aiSend=$('aiSend');let aiHistory=[],aiTutorMode='tutor',aiBusy=false;const aiModes=['tutor','socratic','explain','quiz','study'];function setAiMode(mode){if(!aiModes.includes(mode))mode='tutor';aiTutorMode=mode;try{localStorage.setItem('lifebridge-ai-mode',mode)}catch{}document.querySelectorAll('[data-tutor-mode]').forEach(button=>{const active=button.dataset.tutorMode===mode;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});const labels={tutor:'Tutor',socratic:'Guide me',explain:'Explain',quiz:'Quiz me',study:'Study plan'};$('aiNotice').textContent='Teaching style: '+labels[mode]+'. You can change it whenever you like.'}try{const savedMode=localStorage.getItem('lifebridge-ai-mode');if(savedMode&&aiModes.includes(savedMode))aiTutorMode=savedMode}catch{}setAiMode(aiTutorMode);document.querySelectorAll('[data-tutor-mode]').forEach(button=>button.addEventListener('click',()=>setAiMode(button.dataset.tutorMode)));function lifeBuddyErrorMessage(code,message,status){const known={AI_NOT_CONFIGURED:'LifeBuddy is not connected yet. The site owner needs to finish the private AI setup.',OPENAI_INVALID_API_KEY:'LifeBuddy could not verify its AI connection. The site owner needs to update the private API key.',OPENAI_BILLING_LIMIT:'The AI service has reached its usage limit. Please try again later.',OPENAI_MODEL_UNAVAILABLE:'The selected AI model is unavailable. The site owner needs to check the model setting.',OPENAI_RATE_LIMIT:'LifeBuddy is busy right now. Wait a moment and try again.',OPENAI_TIMEOUT:'That took too long. Please try sending your message again.',OPENAI_UPSTREAM_ERROR:'LifeBuddy reached the AI service, but it returned an error. Please try again shortly.',LIFEBUDDY_SERVER_ERROR:'LifeBuddy ran into a server problem. Please try again shortly.'};return known[code]||message||('LifeBuddy could not reply (error '+status+'). Please try again.')}function appendAi(text,who,extraClass=''){const node=document.createElement('div');node.className='ai-msg '+who+(extraClass?' '+extraClass:'');node.textContent=text;node.setAttribute('data-message-role',who);aiMessages.append(node);aiMessages.scrollTop=aiMessages.scrollHeight;return node}function updateAiCount(){$('aiCharCount').textContent=aiInput.value.length.toLocaleString()+' / 1,200'}aiInput.addEventListener('input',updateAiCount);updateAiCount();async function sendAiMessage(rawMessage){const message=String(rawMessage||'').trim();if(!message||aiBusy)return;aiBusy=true;aiHistory.push({role:'user',content:message});appendAi(message,'user');aiInput.value='';updateAiCount();const loading=appendAi('LifeBuddy is thinking','bot','thinking');aiSend.disabled=true;aiInput.disabled=true;aiSend.textContent='Thinking…';$('aiNotice').textContent='Working on your question…';try{const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);let response;try{response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({message,history:aiHistory.slice(0,-1).slice(-8),mode:aiTutorMode}),signal:controller.signal})}finally{clearTimeout(timeout)}const data=await response.json().catch(()=>({}));if(!response.ok){const error=new Error(lifeBuddyErrorMessage(data.error,data.message,response.status));error.code=data.error;throw error}const reply=typeof data.reply==='string'&&data.reply.trim()?data.reply.trim():'I did not get a complete reply. Please try again.';loading.classList.remove('thinking');loading.textContent=reply;aiHistory.push({role:'assistant',content:reply});$('aiNotice').textContent='Reply received. Keep going whenever you are ready.'}catch(err){loading.classList.remove('thinking');loading.classList.add('error');loading.textContent=err.name==='AbortError'?'The connection timed out. Check your connection and try again.':(err.message||'LifeBuddy could not connect. Please try again.');$('aiNotice').textContent='Your message was not answered. You can try again.'}finally{aiBusy=false;aiSend.disabled=false;aiInput.disabled=false;aiSend.innerHTML='Send <span aria-hidden="true"></span>';aiInput.focus();aiMessages.scrollTop=aiMessages.scrollHeight}}aiForm.addEventListener('submit',e=>{e.preventDefault();sendAiMessage(aiInput.value)});$('aiNewChat').addEventListener('click',()=>{if(aiBusy)return;aiHistory=[];aiMessages.replaceChildren();appendAi("Hey! I'm LifeBuddy. What are you working on today? We can take it one step at a time.",'bot');$('aiNotice').textContent='Fresh chat started. Choose a teaching style or ask a question.';aiInput.value='';updateAiCount();aiInput.focus()});document.querySelectorAll('[data-prompt]').forEach(button=>button.addEventListener('click',()=>{if(aiBusy)return;aiInput.value=button.dataset.prompt;updateAiCount();aiInput.focus()}));
-
 /* Math Lab interactive lessons */
 document.querySelectorAll('[data-math-tab]').forEach(button=>button.addEventListener('click',()=>{
  document.querySelectorAll('[data-math-tab]').forEach(b=>b.classList.toggle('active',b===button));
@@ -3452,7 +3446,21 @@ body.lb-workspace-mode .navlinks a[data-lb-route]:hover {transform:translateY(-3
   ["Small steps today. Big possibilities tomorrow.","PROGRESS IN MOTION"],
   ["Your ideas deserve room to grow.","THINK WITHOUT LIMITS"],
   ["Every question opens another door.","KEEP EXPLORING"],
-  ["Build the skills. Create the future.","MADE FOR WHAT'S NEXT"]
+  ["Build the skills. Create the future.","MADE FOR WHAT'S NEXT"],
+  ["The next big idea starts with one small question.","ASK. EXPLORE. DISCOVER."],
+  ["Your future is built one brave attempt at a time.","KEEP MOVING FORWARD"],
+  ["Make learning something you look forward to.","LEARNING, REIMAGINED"],
+  ["Practice turns possibility into progress.","GROW THROUGH PRACTICE"],
+  ["A better way to learn starts with you.","YOUR WORLD. YOUR WAY."],
+  ["Think it. Try it. Understand it.","MAKE KNOWLEDGE YOURS"],
+  ["Big goals are made of little breakthroughs.","ONE BREAKTHROUGH AT A TIME"],
+  ["The world changes when curious minds do.","STAY CURIOUS"],
+  ["Learning should open doors, not add pressure.","PROGRESS WITHOUT PRESSURE"],
+  ["Today is another chance to discover what you can do.","START YOUR NEXT CHAPTER"],
+  ["Build knowledge that goes with you everywhere.","LEARN FOR LIFE"],
+  ["Your ideas are the beginning of something bigger.","DREAM. DESIGN. DO."],
+  ["Don't memorize the future. Learn how to shape it.","SHAPE WHAT COMES NEXT"],
+  ["Every skill you build becomes part of your story.","YOUR PROGRESS MATTERS"]
  ];
  let index=0;
  const line=document.getElementById("lbVisionLine");
@@ -3472,5 +3480,61 @@ body.lb-workspace-mode .navlinks a[data-lb-route]:hover {transform:translateY(-3
  },9000);
 })();
 </script>
+
+<style id="lifebridge-study-streak-depth">
+#learn .learning-intro{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(220px,.72fr);align-items:stretch;gap:16px}
+#learn .study-streak-card{position:relative;overflow:hidden;min-width:0;padding:15px 18px;border:1px solid #fff;border-radius:18px;background:linear-gradient(145deg,#fff 0%,#e8f0ff 58%,#e7f6f0 100%);box-shadow:0 2px 0 #d0dbef,0 6px 0 #b9c9e8,0 17px 30px rgba(55,75,132,.14),inset 0 2px 0 #fff;transform:perspective(900px) rotateX(2deg) translateZ(14px);transition:transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .7s ease}
+#learn .study-streak-card:after{content:"";position:absolute;width:150px;height:150px;right:-54px;top:-75px;border-radius:50%;background:radial-gradient(circle,#fff9 0,transparent 70%);pointer-events:none}
+#learn .study-streak-card:hover{transform:perspective(900px) rotateX(0) translateY(-5px) translateZ(22px);box-shadow:0 3px 0 #cbd8ef,0 9px 0 #b4c5e5,0 25px 42px rgba(55,75,132,.2),inset 0 2px 0 #fff}
+.study-streak-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.study-streak-kicker{font-size:.62rem;font-weight:950;letter-spacing:.13em;color:#6d69a8}
+.study-streak-icon{display:grid;place-items:center;width:27px;height:27px;border-radius:9px;background:linear-gradient(145deg,#8d7bd2,#6e63b5);color:white;box-shadow:0 3px 0 #574b9b,0 7px 12px #6456aa38}
+.study-streak-number{display:block;margin:8px 0 2px;color:#26375c;font-size:1.45rem;letter-spacing:-.04em}
+.study-streak-card p{margin:0 0 10px;font-size:.76rem;color:#63728f!important}
+.study-streak-track{height:8px;border-radius:99px;background:#d9e1f1;overflow:hidden;box-shadow:inset 0 2px 3px #9ba9c42a}
+.study-streak-track span{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#7464c0,#df967f,#79bcae);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.study-streak-card small{display:block;margin-top:7px;color:#7886a2;font-size:.68rem;font-weight:800}
+@media(max-width:760px){#learn .learning-intro{grid-template-columns:1fr}#learn .learning-stat{justify-self:start}}
+@media(prefers-reduced-motion:reduce){#learn .study-streak-card,#learn .study-streak-track span{transition:none!important}}
+</style>
+<script id="lifebridge-study-streak-controller">
+(()=>{
+ const key="lifebridge-study-streak-v1";
+ const el=id=>document.getElementById(id);
+ const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+ const shift=(date,days)=>{const d=new Date(date+"T12:00:00");d.setDate(d.getDate()+days);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+ let data={count:0,streak:0,best:0,lastGoalDate:"",day:today()};
+ try{data={...data,...JSON.parse(localStorage.getItem(key)||"{}")}}catch{}
+ if(data.day!==today()){data.count=0;data.day=today()}
+ const paint=()=>{
+  const count=Math.min(5,Math.max(0,Number(data.count)||0));
+  if(el("studyStreakCount"))el("studyStreakCount").textContent=String(data.streak||0);
+  if(el("studyStreakProgress"))el("studyStreakProgress").textContent=String(count);
+  if(el("studyStreakFill"))el("studyStreakFill").style.width=(count/5*100)+"%";
+  if(el("studyStreakMessage"))el("studyStreakMessage").textContent=count>=5?"Today's mission complete. Nice work.":(5-count)+" more practice "+(5-count===1?"check":"checks")+" to finish today's mission.";
+ };
+ const save=()=>{try{localStorage.setItem(key,JSON.stringify(data))}catch{}paint()};
+ const countPractice=()=>{
+  const date=today();
+  if(data.day!==date){data.day=date;data.count=0}
+  if(data.count>=5)return;
+  data.count++;
+  if(data.count===5&&data.lastGoalDate!==date){
+   data.streak=data.lastGoalDate===shift(date,-1)?(Number(data.streak)||0)+1:1;
+   data.best=Math.max(Number(data.best)||0,data.streak);
+   data.lastGoalDate=date;
+  }
+  save();
+ };
+ document.addEventListener("click",event=>{
+  const button=event.target.closest("#needPractice,#knowCard,#writeAgain,#writeKnown,#quizNext");
+  if(!button||button.disabled)return;
+  countPractice();
+ });
+ document.addEventListener("visibilitychange",()=>{if(!document.hidden&&data.day!==today()){data.day=today();data.count=0;save()}});
+ paint();
+})();
+</script>
+
 </body>
 </html>
