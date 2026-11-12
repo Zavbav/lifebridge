@@ -2926,7 +2926,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{box-shadow:
  const persist=()=>{try{localStorage.setItem(storageKey,JSON.stringify(saved));}catch(_){ }};
  function renderHolidays(){
   const today=new Date(),all=[...holidaysFor(today.getFullYear()),...holidaysFor(today.getFullYear()+1)];
-  const upcoming=all.filter(x=>daysUntil(x.date)>=0).sort((a,b)=>a.date-b.date).slice(0,8);
+  const upcoming=all.filter(x=>daysUntil(x.date)>=0).sort((a,b)=>a.date-b.date);
   grid.replaceChildren();upcoming.forEach(item=>grid.append(card(item)));
   const label=document.getElementById("holidayCountLabel");if(label)label.textContent=upcoming.length+" UPCOMING DATES";
  }
