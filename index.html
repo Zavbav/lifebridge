@@ -814,6 +814,12 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 <div class="hero-date" id="heroDate">YOUR DAY, AT A GLANCE</div>
 <h1>Study smarter.<br>Build <span class="pop">real progress.</span></h1>
 <p>A focused space for homework, practice, planning, and building better study habits. Learn at your pace and keep your progress moving.</p>
+<div class="lb-vision-quote" id="lbVisionQuote" aria-live="polite">
+  <span class="lb-vision-label">A BIGGER WAY TO LEARN</span>
+  <p class="lb-vision-line" id="lbVisionLine">“The future of learning isn't a place. It's what you build.”</p>
+  <span class="lb-vision-source" id="lbVisionSource">LIFEBRIDGE / YOUR NEXT CHAPTER</span>
+  <div class="lb-vision-progress" aria-hidden="true"><i></i></div>
+</div>
 <div class="hero-actions"><a class="btn primary lb-main-cta" href="#learn" style="text-decoration:none">Open Study Center <span aria-hidden="true">↗</span></a><a class="btn hero-secondary" href="#today" style="text-decoration:none">View my dashboard</a></div>
 <div class="hero-trust"><span><i></i> A calmer way to get things done</span><span><i></i> Your progress stays on this device</span></div>
 <div class="lb-hero-bottomline"><span>UNDERSTAND</span><b></b><span>PRACTICE</span><b></b><span>IMPROVE</span></div>
@@ -3304,5 +3310,167 @@ body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .fun-panel {
 }
 </style>
 
+
+<style id="lifebridge-dimensional-world">
+/* A tactile, dimensional learning world — depth and form instead of a flat dashboard. */
+:root { --lb-depth-ink:#17233d; --lb-depth-blue:#3658a7; --lb-depth-violet:#7154b8; --lb-depth-coral:#e48b70; --lb-depth-mint:#77bcae; }
+html { perspective: 1400px; }
+body { background: radial-gradient(ellipse at 12% 4%,#e6efff 0,transparent 30%),radial-gradient(ellipse at 90% 20%,#f8e7e3 0,transparent 26%),linear-gradient(145deg,#e8efff 0%,#f4f0ff 46%,#e7f5f1 100%)!important; }
+body:before { opacity:.32!important; }
+main { transform-style:preserve-3d; }
+main > section { transform-style:preserve-3d; }
+.hero-upgraded {
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 80% 14%,rgba(255,255,255,.92),transparent 32%),
+    radial-gradient(ellipse at 12% 88%,rgba(190,214,255,.72),transparent 35%),
+    linear-gradient(135deg,#e4edff 0%,#f2eaff 48%,#e6f5ef 100%)!important;
+  border-bottom:1px solid rgba(101,119,173,.16);
+}
+.hero-upgraded:before { width:620px;height:620px;border:2px solid rgba(115,133,196,.18);box-shadow:0 0 0 28px rgba(255,255,255,.18),0 0 0 58px rgba(137,158,220,.11),0 0 0 100px rgba(255,255,255,.12); }
+.hero-upgraded .hero-copy { transform:translateZ(34px); }
+.hero-upgraded h1 { color:#1e2b4c!important;text-shadow:0 4px 0 rgba(255,255,255,.55),0 14px 28px rgba(65,79,133,.12); }
+.hero-upgraded .hero-copy>p { color:#4b5d7b!important; }
+.hero-upgraded .pop { color:#6553b0!important;text-shadow:0 3px 0 rgba(255,255,255,.7),0 10px 20px rgba(101,83,176,.18); }
+.lb-hero-stage { perspective:1200px;transform-style:preserve-3d; }
+.hero-dashboard {
+  position:relative;transform:rotateY(-7deg) rotateX(4deg) translateZ(42px);
+  border:1px solid rgba(255,255,255,.94)!important;border-radius:30px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(228,238,255,.93))!important;
+  box-shadow:0 3px 0 #c8d4ef,0 8px 0 #b7c6e6,0 20px 0 rgba(109,126,174,.12),0 34px 70px rgba(45,61,111,.22),inset 0 2px 0 #fff!important;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1),box-shadow .8s ease;
+}
+.hero-dashboard:hover { transform:rotateY(-2deg) rotateX(1deg) translate3d(0,-8px,54px);box-shadow:0 3px 0 #c8d4ef,0 8px 0 #b7c6e6,0 24px 0 rgba(109,126,174,.12),0 46px 86px rgba(45,61,111,.26),inset 0 2px 0 #fff!important; }
+.lb-stage-orbit { transform:translateZ(-35px);filter:drop-shadow(0 16px 14px rgba(80,91,151,.13)); }
+.lb-float-note { transform:translateZ(90px) rotate(-3deg);border:1px solid rgba(255,255,255,.95)!important;background:linear-gradient(145deg,#fff,#edf2ff)!important;box-shadow:0 3px 0 #cbd5ed,0 9px 0 #b9c7e4,0 22px 38px rgba(54,74,130,.19)!important; }
+.lb-note-bottom { transform:translateZ(100px) rotate(3deg); }
+.lb-vision-quote {
+  position:relative;isolation:isolate;max-width:570px;margin:22px 0 24px;padding:19px 22px 17px;
+  border:1px solid rgba(255,255,255,.95);border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(226,233,255,.92));
+  box-shadow:0 2px 0 #d0d9f0,0 7px 0 #bdc9e7,0 17px 30px rgba(65,79,137,.13),inset 0 2px 0 #fff;
+  transform:perspective(900px) rotateX(2deg) translateZ(22px);
+}
+.lb-vision-label,.lb-vision-source {display:block;font-size:.62rem;letter-spacing:.17em;font-weight:900;color:#7163a9}
+.lb-vision-line {margin:9px 0 10px!important;color:#26375c!important;font-size:clamp(1rem,1.8vw,1.2rem)!important;line-height:1.45!important;font-weight:850;letter-spacing:-.025em;min-height:2.8em;transition:opacity .45s ease,transform .45s ease}
+.lb-vision-quote.is-changing .lb-vision-line {opacity:0;transform:translateY(7px)}
+.lb-vision-source {color:#8290ad;font-size:.56rem}
+.lb-vision-progress {height:3px;margin-top:13px;border-radius:9px;background:rgba(106,119,172,.14);overflow:hidden}
+.lb-vision-progress i {display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#6b5ab4,#df927b,#78bcae);animation:lb-quote-progress 9s linear infinite}
+@keyframes lb-quote-progress {to{transform:scaleX(1)}}
+body.lb-workspace-mode {background:linear-gradient(145deg,#e9efff,#f4edff 52%,#e6f5f0)!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) {
+  background:
+    radial-gradient(ellipse at 10% 8%,rgba(150,174,239,.22),transparent 33%),
+    radial-gradient(ellipse at 90% 75%,rgba(235,177,163,.16),transparent 34%),
+    linear-gradient(145deg,#edf1ff 0%,#f5f0ff 48%,#eaf6f2 100%)!important;
+  color:#243454!important;
+  perspective:1400px;transform-style:preserve-3d;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):before {
+  opacity:.3!important;
+  background-image:radial-gradient(rgba(108,127,187,.18) 1px,transparent 1px)!important;
+  background-size:24px 24px!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .section-head h2,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>div>h2 {background:none!important;color:#25365b!important;-webkit-text-fill-color:initial!important;text-shadow:0 2px 0 #fff,0 8px 18px rgba(62,79,135,.12)}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .section-head p,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) p {color:#596987}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-method,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .command-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .daily-plan-wrap,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-band,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .fun-panel {
+  position:relative;transform-style:preserve-3d;
+  border:1px solid rgba(255,255,255,.96)!important;border-radius:22px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(229,236,255,.94))!important;
+  color:#263858!important;
+  box-shadow:0 2px 0 #d2dcf0,0 6px 0 #bdcbe7,0 16px 30px rgba(52,69,121,.13),inset 0 2px 0 #fff!important;
+  transition:transform .65s cubic-bezier(.2,.8,.2,1),box-shadow .65s ease,border-color .5s ease!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:before,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:before,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:before,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .command-card:before {
+  content:"";position:absolute;inset:0 0 auto;height:5px;border-radius:22px 22px 0 0;
+  background:linear-gradient(90deg,#7d8fd0,#a38ad5,#e7a18d,#8bc8b8);opacity:.85;pointer-events:none;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .command-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card:hover {
+  transform:perspective(1000px) translateY(-8px) rotateX(2deg) rotateY(-1.5deg) translateZ(14px)!important;
+  box-shadow:0 3px 0 #c8d4ed,0 9px 0 #b4c3e4,0 27px 48px rgba(52,69,121,.2),inset 0 2px 0 #fff!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) button,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .btn {
+  border:1px solid rgba(255,255,255,.86)!important;border-radius:13px!important;
+  box-shadow:0 2px 0 rgba(74,91,146,.2),0 5px 0 rgba(74,91,146,.12),0 10px 20px rgba(59,77,139,.12)!important;
+  transition:transform .35s ease,box-shadow .35s ease!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) button:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .btn:hover {transform:translateY(-4px) translateZ(8px)!important;box-shadow:0 3px 0 rgba(74,91,146,.18),0 8px 0 rgba(74,91,146,.1),0 17px 27px rgba(59,77,139,.18)!important}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) input,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) textarea,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) select {
+  background:linear-gradient(145deg,#fff,#f0f3ff)!important;color:#263858!important;
+  border:1px solid #d6def0!important;box-shadow:inset 0 2px 5px rgba(70,87,143,.08),0 2px 0 #fff!important;
+}
+body.lb-workspace-mode .navlinks a[data-lb-route] {background:linear-gradient(145deg,#fff,#edf1ff)!important;color:#405276!important;border:1px solid #fff!important;box-shadow:0 2px 0 #d1d9ee,0 5px 12px rgba(59,77,139,.09)!important}
+body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page] {background:linear-gradient(145deg,#7567bd,#554a9e)!important;color:#fff!important;box-shadow:0 3px 0 #403879,0 8px 18px rgba(74,61,147,.24)!important}
+body.lb-workspace-mode .navlinks a[data-lb-route]:hover {transform:translateY(-3px) perspective(400px) rotateX(5deg)!important}
+@media(max-width:760px) {
+ .hero-dashboard {transform:none!important}
+ .lb-float-note {transform:scale(.92)!important}
+ .lb-vision-quote {margin:18px 0}
+}
+@media(prefers-reduced-motion:reduce) {
+ .hero-dashboard,.lb-vision-progress i {animation:none!important;transition:none!important}
+ body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,
+ body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,
+ body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card {transition:none!important}
+}
+</style>
+
+<script id="lifebridge-vision-quotes">
+(function(){
+ const quotes=[
+  ["The future of learning isn't a place. It's what you build.","LIFEBRIDGE / YOUR NEXT CHAPTER"],
+  ["Don't just study it. Experience it.","LEARN BY DOING"],
+  ["Your potential has no loading screen.","START WHERE YOU ARE"],
+  ["Turn curiosity into your superpower.","STAY CURIOUS"],
+  ["The classroom is changing. So are you.","A NEW WAY FORWARD"],
+  ["Learn more. Think bigger. Go further.","MAKE YOUR NEXT MOVE"],
+  ["Small steps today. Big possibilities tomorrow.","PROGRESS IN MOTION"],
+  ["Your ideas deserve room to grow.","THINK WITHOUT LIMITS"],
+  ["Every question opens another door.","KEEP EXPLORING"],
+  ["Build the skills. Create the future.","MADE FOR WHAT'S NEXT"]
+ ];
+ let index=0;
+ const line=document.getElementById("lbVisionLine");
+ const source=document.getElementById("lbVisionSource");
+ const card=document.getElementById("lbVisionQuote");
+ if(!line||!source||!card)return;
+ window.setInterval(function(){
+  card.classList.add("is-changing");
+  window.setTimeout(function(){
+   index=(index+1)%quotes.length;
+   line.textContent="“"+quotes[index][0]+"”";
+   source.textContent=quotes[index][1];
+   card.classList.remove("is-changing");
+  },450);
+  const bar=card.querySelector(".lb-vision-progress i");
+  if(bar){bar.style.animation="none";void bar.offsetWidth;bar.style.animation="lb-quote-progress 9s linear infinite"}
+ },9000);
+})();
+</script>
 </body>
 </html>
