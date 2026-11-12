@@ -3074,5 +3074,123 @@ body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .xp-fill{backgro
 @media(prefers-reduced-motion:reduce){body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):after{animation:none!important}body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card{transition:none!important}}
 </style>
 
+
+<style id="lifebridge-motion-everywhere">
+/* Slow, layered motion across every workspace — Home's original 3D hero remains untouched. */
+@keyframes lb-enter-workspace {
+  0% { opacity: 0; transform: translate3d(0,22px,0) scale(.992); filter: blur(3px); }
+  100% { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+}
+@keyframes lb-card-arrive {
+  0% { opacity: 0; transform: translate3d(0,26px,0) scale(.975); }
+  100% { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+}
+@keyframes lb-soft-float {
+  0%,100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(0,-7px,0); }
+}
+@keyframes lb-light-sweep {
+  0% { transform: translateX(-120%) skewX(-16deg); opacity: 0; }
+  25% { opacity: .34; }
+  65%,100% { transform: translateX(220%) skewX(-16deg); opacity: 0; }
+}
+@keyframes lb-accent-breathe {
+  0%,100% { box-shadow: 0 0 0 rgba(99,207,220,0); }
+  50% { box-shadow: 0 0 24px rgba(99,207,220,.12); }
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) {
+  animation: lb-enter-workspace .95s cubic-bezier(.2,.72,.22,1) both;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>* {
+  animation: lb-enter-workspace .9s cubic-bezier(.2,.72,.22,1) both;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>*:nth-child(2) { animation-delay: .07s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>*:nth-child(3) { animation-delay: .13s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>*:nth-child(4) { animation-delay: .19s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>*:nth-child(5) { animation-delay: .25s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-method,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-feature-grid>article {
+  animation: lb-card-arrive 1.05s cubic-bezier(.2,.72,.22,1) both;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:nth-of-type(2),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:nth-of-type(2),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:nth-of-type(2),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card:nth-child(2),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card:nth-child(2) { animation-delay: .10s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:nth-of-type(3),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:nth-of-type(3),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:nth-of-type(3),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card:nth-child(3),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card:nth-child(3) { animation-delay: .18s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:nth-of-type(4),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:nth-of-type(4),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:nth-of-type(4),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card:nth-child(4) { animation-delay: .26s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:nth-of-type(5),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:nth-of-type(5),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:nth-of-type(5),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card:nth-child(5) { animation-delay: .34s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebrations-hero,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-band,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .fun-panel {
+  position: relative;
+  overflow: hidden;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebrations-hero:after,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-band:after,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .fun-panel:after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 0 auto 0 0;
+  width: 34%;
+  background: linear-gradient(90deg,transparent,rgba(154,232,242,.11),transparent);
+  animation: lb-light-sweep 8s ease-in-out infinite;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .study-xp-card {
+  animation: lb-accent-breathe 6s ease-in-out infinite;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) button,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .btn,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) a {
+  transition: transform .45s cubic-bezier(.2,.75,.25,1), color .4s ease, background .4s ease, box-shadow .45s ease, border-color .4s ease;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) button:active,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .btn:active {
+  transform: translateY(1px) scale(.975);
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .calendar-grid button:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .course-outline-item:hover {
+  transform: translateY(-3px) scale(1.025);
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebration-orbit,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebrations-orbit {
+  animation: lb-soft-float 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded),
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>*,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-method,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-feature-grid>article,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebration-orbit,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebrations-orbit { animation: none !important; }
+}
+</style>
+
 </body>
 </html>
