@@ -3723,3 +3723,36 @@ body.lb-workspace-mode .navlinks a[data-lb-route]:hover {transform:translateY(-3
 
 </body>
 </html>
+
+<!-- LifeBridge readability pass: stronger contrast for pale blue text -->
+<style id="lifebridge-readable-contrast">
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) {
+  --lb-readable-ink:#26334d;
+  --lb-readable-muted:#465570;
+  --lb-readable-soft:#596984;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(p,small,label,li,dt,dd,figcaption,.eyebrow,.section-head p,.muted,.hint,.helper,.description,.subtext,.calendar-legend,.calendar-weekdays,.celebration-privacy,.mastery-local-note,.mastery-counts,.lb-world-heading p,.lb-world-card-copy,.study-streak-card p,.study-streak-card small) {
+  color:var(--lb-readable-muted)!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(input,textarea,select) {
+  color:#26334d!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(input,textarea,select)::placeholder {
+  color:#64728a!important;
+  opacity:1;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(.mastery-summary-label,.mastery-kicker,.lb-world-eyebrow,.lb-world-stamp,.study-streak-kicker) {
+  color:#4d527e!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(.mastery-subject h4,.mastery-summary strong,.mastery-next-step,.lb-world-heading h3,.lb-world-card-title,.study-streak-number) {
+  color:#26334d!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(button,a,[role="button"]) {
+  text-decoration-color:currentColor;
+}
+@media (prefers-contrast:more) {
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(p,small,label,li,.eyebrow,.muted,.hint,.helper,.description,.subtext) {
+    color:#202b40!important;
+  }
+}
+</style>
