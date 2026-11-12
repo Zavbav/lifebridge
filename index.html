@@ -1703,7 +1703,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
   a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
   nav.insertBefore(a,quick||access||account||null);
  });
- const panels=[...document.querySelectorAll(".hero-upgraded, #today, #tools, #learn, #bibleStudy, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
+ const panels=[...document.querySelectorAll(".hero-upgraded, #today, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
  function routeFromHash(){
   const id=(location.hash||"#home").slice(1);
   return routeIds.has(id)?id:"home";
@@ -1713,7 +1713,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
   let activePanel=null;
   panels.forEach(panel=>{
    const active=(id==="home"&&panel.classList.contains("hero-upgraded"))||
-    panel.id===id;
+    panel.id===(id==="bibleStudy"?"learn":id);
    panel.classList.toggle("lb-view-hidden",!active);
    panel.classList.toggle("lb-view-active",active);
    panel.setAttribute("aria-hidden",String(!active));
@@ -1721,7 +1721,17 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
    if(!active)panel.setAttribute("inert","");
    else{panel.removeAttribute("inert");activePanel=panel;}
   });
+  const bibleHub=document.getElementById("bibleStudy");
+  if(bibleHub){
+   [...bibleHub.parentElement.children].forEach(child=>{
+    if(child===bibleHub)return;
+    child.classList.toggle("lb-bible-sibling-hidden",id==="bibleStudy");
+    if(id==="bibleStudy"){child.setAttribute("aria-hidden","true");child.setAttribute("inert","");}
+    else{child.removeAttribute("aria-hidden");child.removeAttribute("inert");}
+   });
+  }
   if(activePanel){activePanel.classList.remove("lb-route-enter");void activePanel.offsetWidth;activePanel.classList.add("lb-route-enter");}
+  if(id==="bibleStudy"&&bibleHub){bibleHub.classList.remove("lb-route-enter");void bibleHub.offsetWidth;bibleHub.classList.add("lb-route-enter");}
   nav.querySelectorAll("[data-lb-route]").forEach(a=>{
    const current=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools");
    if(current)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
@@ -2764,6 +2774,10 @@ body{background-image:radial-gradient(ellipse at 12% 18%,#dff4ef 0,transparent 3
   body.lb-workspace-mode .lb-view-active.lb-route-enter,
   body.lb-workspace-mode .lb-view-active.lb-route-enter *{animation:none!important}
 }
+</style>
+
+<style id="lifebridge-bible-workspace-visibility-fix">
+body.lb-workspace-mode .lb-bible-sibling-hidden{display:none!important}
 </style>
 </style>
 </body>
