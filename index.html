@@ -1722,6 +1722,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
    else{panel.removeAttribute("inert");activePanel=panel;}
   });
   if(id==="bibleStudy")activePanel=document.getElementById("bibleStudy")||activePanel;
+  if(activePanel){activePanel.classList.remove("lb-route-enter");void activePanel.offsetWidth;activePanel.classList.add("lb-route-enter");}
   nav.querySelectorAll("[data-lb-route]").forEach(a=>{
    const current=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools");
    if(current)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
@@ -2707,7 +2708,11 @@ body{background-image:radial-gradient(ellipse at 12% 18%,#dff4ef 0,transparent 3
   .lb-hero-v2 .hero-dashboard{animation:lb-dashboard-float 18s ease-in-out infinite!important}
   .lb-hero-v2 .lb-main-cta{animation:lb-cta-breathe 10s ease-in-out infinite!important}
   body.lb-workspace-mode .lb-view-active{animation:lb-workspace-arrive 1.25s cubic-bezier(.2,.75,.25,1) both}
-  #bibleStudy.lb-view-active{animation:lb-workspace-arrive 1.45s cubic-bezier(.2,.75,.25,1) both}
+  .lb-route-enter{animation:lb-workspace-arrive 1.35s cubic-bezier(.2,.75,.25,1) both}
+  #bibleStudy.lb-route-enter .bible-hub-head,#bibleStudy.lb-route-enter .bible-explorer,#bibleStudy.lb-route-enter .bible-feature-grid>article,#bibleStudy.lb-route-enter .bible-method{animation:lb-bible-stagger 1.35s cubic-bezier(.2,.75,.25,1) both}
+  #bibleStudy.lb-route-enter .bible-explorer{animation-delay:.12s}
+  #bibleStudy.lb-route-enter .bible-feature-grid>article:nth-child(2){animation-delay:.18s}
+  #bibleStudy.lb-route-enter .bible-feature-grid>article:nth-child(3){animation-delay:.3s}
   @keyframes lb-workspace-arrive{
     from{opacity:.35;transform:translateY(18px) scale(.992);filter:blur(2px)}
     to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
