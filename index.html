@@ -3192,5 +3192,117 @@ body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebrations-or
 }
 </style>
 
+
+<style id="lifebridge-alive-motion">
+/* Ambient motion: the workspaces should feel active, not like static dark cards. */
+@keyframes lb-nebula-drift {
+  0% { background-position: 0 0, 0 0, 0% 0%; }
+  50% { background-position: 42px 24px, -28px 34px, 100% 45%; }
+  100% { background-position: 0 0, 0 0, 0% 100%; }
+}
+@keyframes lb-orbit-pulse {
+  0%,100% { opacity:.28; filter:blur(0); }
+  50% { opacity:.72; filter:blur(1px); }
+}
+@keyframes lb-card-aura {
+  0%,100% { box-shadow:0 18px 42px rgba(0,0,0,.2),inset 0 1px rgba(220,249,255,.045),0 0 12px rgba(83,190,208,.025); }
+  50% { box-shadow:0 22px 48px rgba(0,0,0,.24),inset 0 1px rgba(220,249,255,.075),0 0 26px rgba(83,190,208,.09); }
+}
+@keyframes lb-nav-signal {
+  0%,100% { box-shadow:inset 0 0 14px rgba(91,196,212,.06),0 0 10px rgba(71,185,205,.06); }
+  50% { box-shadow:inset 0 0 22px rgba(91,196,212,.14),0 0 24px rgba(71,185,205,.17); }
+}
+@keyframes lb-heading-sheen {
+  0%,65%,100% { background-position:120% 0; }
+  25% { background-position:-120% 0; }
+}
+@keyframes lb-icon-hover {
+  0%,100% { transform:translateY(0) rotate(0); }
+  50% { transform:translateY(-4px) rotate(2deg); }
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):before {
+  background-image:
+    radial-gradient(ellipse at 16% 18%,rgba(66,194,205,.13),transparent 34%),
+    radial-gradient(ellipse at 82% 62%,rgba(137,116,232,.11),transparent 36%),
+    linear-gradient(rgba(120,190,209,.065) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,190,209,.065) 1px,transparent 1px),
+    radial-gradient(circle at 50% 0%,transparent 0,rgba(4,13,22,.2) 70%);
+  background-size:100% 100%,100% 100%,46px 46px,46px 46px,100% 100%;
+  animation:lb-nebula-drift 28s ease-in-out infinite;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):after {
+  animation:lb-workspace-orbit 22s ease-in-out infinite alternate,lb-orbit-pulse 9s ease-in-out infinite;
+}
+body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page] {
+  animation:lb-nav-signal 5s ease-in-out infinite;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .section-head h2,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>div>h2 {
+  background-image:linear-gradient(100deg,#f1fbff 0%,#bfeef2 38%,#e7e2ff 52%,#f1fbff 70%);
+  background-size:220% 100%;
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent!important;
+  animation:lb-heading-sheen 12s ease-in-out infinite;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-method {
+  animation:lb-card-aura 8s ease-in-out infinite;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:nth-child(2n),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:nth-child(2n),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:nth-child(2n),
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card:nth-child(2n) { animation-delay:-3.5s; }
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card:hover {
+  transform:translateY(-7px) perspective(900px) rotateX(1deg) scale(1.012);
+  border-color:rgba(125,220,231,.48)!important;
+  box-shadow:0 28px 58px rgba(0,0,0,.3),0 0 30px rgba(91,201,218,.16)!important;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .navlinks a[data-lb-route]:hover {
+  transform:translateY(-2px);
+  text-shadow:0 0 12px rgba(133,229,236,.48);
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) button:hover,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .btn:hover {
+  transform:translateY(-3px) scale(1.025);
+  box-shadow:0 12px 30px rgba(52,174,198,.22),0 0 18px rgba(99,207,220,.12);
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :focus-visible {
+  outline:2px solid rgba(119,224,235,.9);
+  outline-offset:3px;
+}
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .celebrations-hero,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-band,
+body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .fun-panel {
+  background-size:180% 180%;
+  animation:lb-nebula-drift 22s ease-in-out infinite;
+}
+@media(prefers-reduced-motion:reduce) {
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):before,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded):after,
+  body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page],
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .section-head h2,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded)>div>h2,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .panel,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .tool-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .feature-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .stat-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .upgrade-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .holiday-count-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .personal-count-card,
+  body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) .bible-method { animation:none!important; }
+}
+</style>
+
 </body>
 </html>
