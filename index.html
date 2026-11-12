@@ -1688,7 +1688,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
 }
 </style>
 <script id="lifebridge-workspace-router">
-(()=> {
+(()=>{
  const routes = [
  ["home","Home"],["today","Dashboard"],["learn","Study Center"],["bibleStudy","Bible Study"],["tools","Explore"],["lifequest","Life Skills"],["organize","Organizer"],["budget","Budget"],["focus","Focus Timer"],["calendar","Calendar"],["levelup","Progress"]
  ];
@@ -1699,46 +1699,60 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  const quick=nav.querySelector("#quickJump"), access=nav.querySelector("#accessToggle"), account=nav.querySelector("#accountOpen");
  nav.querySelectorAll("a").forEach(a=>a.remove());
  routes.forEach(([id,label])=>{
- const a=document.createElement("a");
- a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
- nav.insertBefore(a,quick||access||account||null);
+  const a=document.createElement("a");
+  a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
+  nav.insertBefore(a,quick||access||account||null);
  });
  const panels=[...document.querySelectorAll(".hero-upgraded, #today, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
  function routeFromHash(){
- const id=(location.hash||"#home").slice(1);
- return routeIds.has(id)?id:"home";
+  const id=(location.hash||"#home").slice(1);
+  return routeIds.has(id)?id:"home";
  }
  function activate(id,update=true){
- if(!routeIds.has(id))id="home";
- panels.forEach(panel=>{
- const active=(id==="home"&&panel.classList.contains("hero-upgraded"))||
-  (id==="bibleStudy"&&panel.id==="learn")||panel.id===id;
- panel.classList.toggle("lb-view-hidden",!active);
- panel.classList.toggle("lb-view-active",active);
- panel.setAttribute("aria-hidden",String(!active));
- if(!active)panel.setAttribute("inert","");
- else panel.removeAttribute("inert");
- });
- nav.querySelectorAll("[data-lb-route]").forEach(a=>{
- const active=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools");
- if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
- });
- if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
- document.documentElement.style.scrollBehavior="auto";document.body.style.scrollBehavior="auto";if(id==="levelup"){requestAnimationFrame(()=>document.getElementById("levelup")?.scrollIntoView({behavior:"auto",block:"start"}));}else{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;requestAnimationFrame(()=>{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;});}
- document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":"LifeBridge"))+" | LifeBridge";
- if(id==="bibleStudy")requestAnimationFrame(()=>document.getElementById("bibleStudy")?.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"}));
+  if(!routeIds.has(id))id="home";
+  let activePanel=null;
+  panels.forEach(panel=>{
+   const active=(id==="home"&&panel.classList.contains("hero-upgraded"))||
+    (id==="bibleStudy"&&panel.id==="learn")||panel.id===id;
+   panel.classList.toggle("lb-view-hidden",!active);
+   panel.classList.toggle("lb-view-active",active);
+   panel.setAttribute("aria-hidden",String(!active));
+   panel.style.setProperty("display",active?"block":"none","important");
+   if(!active)panel.setAttribute("inert","");
+   else{panel.removeAttribute("inert");activePanel=panel;}
+  });
+  nav.querySelectorAll("[data-lb-route]").forEach(a=>{
+   const current=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools");
+   if(current)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+  });
+  if(update&&location.hash!=="#"+id)history.pushState({lbRoute:id},"","#"+id);
+  document.documentElement.style.scrollBehavior="auto";
+  document.body.style.scrollBehavior="auto";
+  const positionAtTop=()=>{
+   if(!activePanel)return;
+   const header=document.querySelector(".topbar,header.topbar,.site-header");
+   const headerHeight=header?header.getBoundingClientRect().height:0;
+   const target=Math.max(0,window.scrollY+activePanel.getBoundingClientRect().top-headerHeight-8);
+   window.scrollTo(0,target);
+   document.documentElement.scrollTop=target;
+   document.body.scrollTop=target;
+  };
+  positionAtTop();
+  requestAnimationFrame(()=>requestAnimationFrame(positionAtTop));
+  document.title=(routes.find(x=>x[0]===id)?.[1]||(id==="convert"?"Unit Converter":"LifeBridge"))+" | LifeBridge";
  }
  document.addEventListener("click",event=>{
- const jump=event.target.closest("[data-jump]");
- if(jump){event.preventDefault();event.stopImmediatePropagation();activate(jump.dataset.jump);return;}
- const targetButton=event.target.closest("[data-target]");
- if(targetButton){event.preventDefault();event.stopImmediatePropagation();activate(targetButton.dataset.target);return;}
- const clicked=event.target instanceof Element?event.target:event.target?.parentElement;const link=clicked?.closest('a[href^="#"]');
- if(!link)return;
- const raw=link.getAttribute("href");
- if(raw==="#"){event.preventDefault();event.stopImmediatePropagation();activate("home");return;}
- const id=raw.slice(1);
- if(routeIds.has(id)){event.preventDefault();event.stopImmediatePropagation();activate(id);return;}
+  const clicked=event.target instanceof Element?event.target:event.target?.parentElement;
+  const jump=clicked?.closest("[data-jump]");
+  if(jump){event.preventDefault();event.stopImmediatePropagation();activate(jump.dataset.jump);return;}
+  const targetButton=clicked?.closest("[data-target]");
+  if(targetButton){event.preventDefault();event.stopImmediatePropagation();activate(targetButton.dataset.target);return;}
+  const link=clicked?.closest('a[href^="#"]');
+  if(!link)return;
+  const raw=link.getAttribute("href");
+  if(raw==="#"){event.preventDefault();event.stopImmediatePropagation();activate("home");return;}
+  const id=raw.slice(1);
+  if(routeIds.has(id)){event.preventDefault();event.stopImmediatePropagation();activate(id);return;}
  },true);
  window.addEventListener("popstate",()=>activate(routeFromHash(),false));
  window.addEventListener("hashchange",()=>activate(routeFromHash(),false));
