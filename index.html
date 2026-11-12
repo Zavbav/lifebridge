@@ -974,6 +974,22 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 <span id="xpTotal">0</span> XP</span><span class="stat-pill">
 <span id="badgeTotal">0</span> badges</span></div><div class="xp-track"><div class="xp-fill" id="xpFill"></div></div><p id="xpNext">Complete a task to earn your first XP!</p><p class="notice" style="color:#e6e0ff">XP is for encouragement, not pressure. Take breaks whenever you need.</p></div>
 <div class="fun-panel"><h3> Daily mini-challenge</h3><div class="challenge"><strong id="challengeTitle">One small win</strong><p id="challengeDesc">Write down one thing you want to get done today.</p><button id="challengeDone">I did it! +10 XP</button></div><p id="challengeStatus" aria-live="polite" style="color:#e6e0ff"></p></div>
+
+<div class="mastery-observatory" id="masteryObservatory">
+ <div class="mastery-observatory-head">
+  <div><span class="mastery-kicker">YOUR KNOWLEDGE, TAKING SHAPE</span><h3>Mastery Observatory</h3><p>A live map of what you've learned, what you're practicing, and where to go next.</p></div>
+  <button type="button" class="mastery-refresh" id="masteryRefresh">Refresh map ↻</button>
+ </div>
+ <div class="mastery-summary">
+  <div><span class="mastery-summary-label">TOTAL CARDS</span><strong id="masteryTotalCards">0</strong></div>
+  <div><span class="mastery-summary-label">MASTERED</span><strong id="masteryKnownCards">0</strong></div>
+  <div><span class="mastery-summary-label">TO PRACTICE</span><strong id="masteryAgainCards">0</strong></div>
+  <div><span class="mastery-summary-label">SUBJECTS</span><strong id="masterySubjects">0</strong></div>
+ </div>
+ <div class="mastery-world" id="masteryWorld" aria-live="polite"></div>
+ <div class="mastery-next-step" id="masteryNextStep">Create a flashcard deck in Study Center to start building your mastery map.</div>
+ <p class="mastery-local-note">Your map reads your saved flashcard decks on this device. It updates when you refresh it.</p>
+</div>
 </div></div></section>
 <section class="section" id="lifequest" style="background:linear-gradient(135deg,#f0ebff,#e7fff7)"><div class="wrap"><div class="section-head"><div><span class="tag">PLAY • LEARN • LEVEL UP</span><h2 style="margin-top:10px"> LifeBridge Skill Quest</h2><p>Quick interactive mini-games to build real-life skills. Make a choice, see what happens, and earn points for learning.</p></div></div>
 <div class="tool-layout">
@@ -3631,6 +3647,77 @@ body.lb-workspace-mode .navlinks a[data-lb-route]:hover {transform:translateY(-3
   const review=document.querySelector("#learn .study-review");
   if(review)review.scrollIntoView({behavior:"smooth",block:"start"});
  });
+})();
+</script>
+
+<style id="lifebridge-mastery-observatory">
+#levelup .mastery-observatory{position:relative;margin-top:24px;padding:clamp(20px,3vw,32px);overflow:hidden;border:1px solid #fff;border-radius:28px;background:linear-gradient(145deg,#fefeff 0%,#eef1ff 46%,#e5f5f1 100%);color:#29385f;box-shadow:0 3px 0 #d5dbee,0 10px 0 #bdc9e2,0 25px 55px rgba(39,55,105,.18),inset 0 2px 0 #fff;perspective:1200px}
+#levelup .mastery-observatory:before{content:"";position:absolute;inset:-30% -10%;background:radial-gradient(ellipse at 18% 15%,#fff 0,transparent 36%),radial-gradient(ellipse at 86% 78%,#c4d9f6a0 0,transparent 35%);pointer-events:none}
+.mastery-observatory-head{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.mastery-kicker{font-size:.65rem;font-weight:950;letter-spacing:.16em;color:#7772b1}
+.mastery-observatory-head h3{margin:6px 0 4px;color:#29385f;font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.045em}
+.mastery-observatory-head p{max-width:650px;margin:0;color:#6d7894;font-size:.9rem}
+.mastery-refresh{flex:none;border:1px solid #fff;border-radius:13px;padding:10px 14px;background:linear-gradient(145deg,#fff,#e5eaff);color:#5b5e9a;font-size:.76rem;font-weight:900;box-shadow:0 2px 0 #d0d8ef,0 6px 12px #53638a20;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+.mastery-refresh:hover{transform:translateY(-3px);box-shadow:0 3px 0 #c5d0ec,0 10px 18px #53638a25}
+.mastery-summary{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0}
+.mastery-summary>div{padding:13px 15px;border:1px solid #fff;border-radius:16px;background:linear-gradient(145deg,#fff,#edf1ff);box-shadow:0 2px 0 #d9dff0,0 7px 14px #4c5e8a14}
+.mastery-summary-label{display:block;color:#8289a5;font-size:.59rem;font-weight:950;letter-spacing:.12em}
+.mastery-summary strong{display:block;margin-top:5px;color:#35466d;font-size:1.45rem;font-weight:950}
+.mastery-world{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;padding:20px 6px 25px;transform-style:preserve-3d}
+.mastery-subject{--planet:#7e91c9;--planet-pale:#e5eaff;position:relative;min-width:0;padding:17px 13px 14px;border:1px solid #fff;border-radius:21px;background:linear-gradient(155deg,#fff 0%,var(--planet-pale) 100%);box-shadow:0 2px 0 color-mix(in srgb,var(--planet) 24%,white),0 7px 0 color-mix(in srgb,var(--planet) 15%,white),0 16px 24px #3b4e7920,inset 0 2px 0 #fff;transform:perspective(900px) rotateX(5deg);transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s ease}
+.mastery-subject:hover{transform:perspective(900px) rotateX(0) translateY(-7px) translateZ(15px);box-shadow:0 3px 0 color-mix(in srgb,var(--planet) 25%,white),0 10px 0 color-mix(in srgb,var(--planet) 15%,white),0 25px 34px #3b4e7930,inset 0 2px 0 #fff}
+.mastery-planet{position:relative;width:72px;height:72px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle at 28% 22%,#fff 0 5%,var(--planet-pale) 15%,var(--planet) 60%,color-mix(in srgb,var(--planet) 50%,#30395f) 100%);box-shadow:inset -9px -12px 17px #26345b24,inset 5px 5px 9px #ffffffbd,0 7px 0 color-mix(in srgb,var(--planet) 42%,white),0 14px 20px color-mix(in srgb,var(--planet) 22%,transparent);transform:translateZ(28px)}
+.mastery-planet:after{content:"";position:absolute;inset:10px 18px 29px 11px;border-radius:50%;background:linear-gradient(145deg,#fff9,transparent);filter:blur(2px)}
+.mastery-subject h4{margin:0;text-align:center;color:#35466d;font-size:.9rem;font-weight:950}
+.mastery-percent{display:block;margin:4px 0 9px;text-align:center;color:var(--planet);font-size:1.3rem;font-weight:950;letter-spacing:-.04em}
+.mastery-meter{height:7px;overflow:hidden;border-radius:99px;background:#dfe5f1;box-shadow:inset 0 2px 3px #8392ad35}
+.mastery-meter span{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--planet),color-mix(in srgb,var(--planet) 35%,white));transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.mastery-counts{display:flex;justify-content:space-between;gap:5px;margin-top:9px;color:#78839f;font-size:.64rem;font-weight:800}
+.mastery-empty{grid-column:1/-1;padding:30px 20px;text-align:center;border:1px dashed #b9c5df;border-radius:18px;color:#73809d;background:#ffffff80}
+.mastery-next-step{position:relative;margin-top:2px;padding:14px 17px;border-radius:15px;background:linear-gradient(100deg,#e6eaff,#e6f4f0);color:#5d6790;font-size:.82rem;font-weight:850}
+.mastery-local-note{position:relative;margin:10px 0 0;color:#9098ad;font-size:.68rem}
+.mastery-subject[data-subject="Science"]{--planet:#63aa9a;--planet-pale:#e0f3e9}
+.mastery-subject[data-subject="Math"]{--planet:#8977c5;--planet-pale:#eee8ff}
+.mastery-subject[data-subject="History"]{--planet:#d28b68;--planet-pale:#f9e9dc}
+.mastery-subject[data-subject="English / Reading"]{--planet:#6993c8;--planet-pale:#e3edff}
+.mastery-subject[data-subject="Religion"]{--planet:#c39a58;--planet-pale:#f8efd9}
+.mastery-subject[data-subject="Geography"]{--planet:#7ca66f;--planet-pale:#e8f3e1}
+@media(max-width:900px){.mastery-world{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.mastery-observatory-head{align-items:flex-start;flex-direction:column}.mastery-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.mastery-world{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.mastery-subject,.mastery-meter span,.mastery-refresh{transition:none!important}}
+</style>
+<script id="lifebridge-mastery-observatory-controller">
+(()=>{
+ const STORE='lifebridge.study.decks.v1';
+ const subjects=['Science','Math','History','English / Reading','Vocabulary','Languages','Geography','Religion','Other'];
+ const colors=['#63aa9a','#8977c5','#d28b68','#6993c8','#c39a58','#7ca66f','#6a9cae','#bb8d68','#8b91ad'];
+ const $=id=>document.getElementById(id);
+ const safeDecks=()=>{try{const data=JSON.parse(localStorage.getItem(STORE)||'[]');return Array.isArray(data)?data.filter(d=>d&&Array.isArray(d.cards)):[]}catch{return[]}};
+ const render=()=>{
+  const decks=safeDecks(),stats=new Map(subjects.map(x=>[x,{total:0,known:0,again:0,decks:0}]));
+  decks.forEach(deck=>{const subject=subjects.includes(deck.subject)?deck.subject:'Other',entry=stats.get(subject);entry.decks++;deck.cards.forEach(card=>{if(!card||typeof card.front!=='string'||typeof card.back!=='string')return;entry.total++;if(card.status==='known')entry.known++;if(card.status==='again')entry.again++;});});
+  const used=subjects.filter(x=>stats.get(x).total>0);
+  const total=used.reduce((n,x)=>n+stats.get(x).total,0),known=used.reduce((n,x)=>n+stats.get(x).known,0),again=used.reduce((n,x)=>n+stats.get(x).again,0);
+  $('masteryTotalCards').textContent=String(total);$('masteryKnownCards').textContent=String(known);$('masteryAgainCards').textContent=String(again);$('masterySubjects').textContent=String(used.length);
+  const world=$('masteryWorld');world.replaceChildren();
+  if(!used.length){const empty=document.createElement('div');empty.className='mastery-empty';empty.textContent='Your learning universe is waiting. Build a deck in Study Center and your subjects will appear here.';world.append(empty);}
+  used.forEach((subject,index)=>{
+   const st=stats.get(subject),pct=st.total?Math.round(st.known/st.total*100):0;
+   const card=document.createElement('article');card.className='mastery-subject';card.dataset.subject=subject;
+   const planet=document.createElement('div');planet.className='mastery-planet';planet.setAttribute('aria-hidden','true');
+   const title=document.createElement('h4');title.textContent=subject;
+   const percent=document.createElement('strong');percent.className='mastery-percent';percent.textContent=pct+'%';
+   const meter=document.createElement('div');meter.className='mastery-meter';meter.setAttribute('role','progressbar');meter.setAttribute('aria-valuenow',String(pct));meter.setAttribute('aria-valuemin','0');meter.setAttribute('aria-valuemax','100');const fill=document.createElement('span');fill.style.width=pct+'%';meter.append(fill);
+   const counts=document.createElement('div');counts.className='mastery-counts';const left=document.createElement('span');left.textContent=st.known+' mastered';const right=document.createElement('span');right.textContent=st.total+' cards';counts.append(left,right);
+   card.append(planet,title,percent,meter,counts);world.append(card);
+  });
+  const needs=used.map(x=>({subject:x,...stats.get(x)})).filter(x=>x.again>0).sort((a,b)=>b.again-a.again);
+  const next=needs[0]||used.map(x=>({subject:x,...stats.get(x)})).filter(x=>x.known<x.total).sort((a,b)=>(b.total-b.known)-(a.total-a.known))[0];
+  $('masteryNextStep').textContent=!used.length?'Create your first flashcard deck to begin your mastery map.':next?'Next best move: review '+next.subject+' — '+next.again+' cards marked for more practice.':'Every saved card is marked mastered. Add a harder deck to keep learning.';
+ };
+ document.getElementById('masteryRefresh').addEventListener('click',render);
+ window.addEventListener('storage',event=>{if(event.key===STORE)render()});
+ render();
 })();
 </script>
 
