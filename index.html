@@ -1703,7 +1703,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
   a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
   nav.insertBefore(a,quick||access||account||null);
  });
- const panels=[...document.querySelectorAll(".hero-upgraded, #today, #tools, #learn, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
+ const panels=[...document.querySelectorAll(".hero-upgraded, #today, #tools, #learn, #bibleStudy, #organize, #budget, #convert, #levelup, #lifequest, #calendar, #focus")];
  function routeFromHash(){
   const id=(location.hash||"#home").slice(1);
   return routeIds.has(id)?id:"home";
@@ -1713,7 +1713,7 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
   let activePanel=null;
   panels.forEach(panel=>{
    const active=(id==="home"&&panel.classList.contains("hero-upgraded"))||
-    (id==="bibleStudy"&&panel.id==="learn")||panel.id===id;
+    panel.id===id;
    panel.classList.toggle("lb-view-hidden",!active);
    panel.classList.toggle("lb-view-active",active);
    panel.setAttribute("aria-hidden",String(!active));
@@ -1721,7 +1721,6 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
    if(!active)panel.setAttribute("inert","");
    else{panel.removeAttribute("inert");activePanel=panel;}
   });
-  if(id==="bibleStudy")activePanel=document.getElementById("bibleStudy")||activePanel;
   if(activePanel){activePanel.classList.remove("lb-route-enter");void activePanel.offsetWidth;activePanel.classList.add("lb-route-enter");}
   nav.querySelectorAll("[data-lb-route]").forEach(a=>{
    const current=a.dataset.lbRoute===id||(id==="convert"&&a.dataset.lbRoute==="tools");
@@ -2728,6 +2727,44 @@ body{background-image:radial-gradient(ellipse at 12% 18%,#dff4ef 0,transparent 3
 @media(prefers-reduced-motion:reduce){
   body.lb-workspace-mode .lb-view-active,#bibleStudy.lb-view-active,.bible-study-hub .bible-hub-head,.bible-study-hub .bible-explorer,.bible-study-hub .bible-feature-grid>article,.bible-study-hub .bible-method{animation:none!important}
 }
+
+<style id="lifebridge-workspace-entrance-polish">
+@media(prefers-reduced-motion:no-preference){
+  body.lb-workspace-mode .lb-view-active.lb-route-enter{
+    animation:lb-route-focus 1.25s cubic-bezier(.2,.72,.22,1) both!important;
+  }
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .section-head,
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .bible-hub-head,
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .bible-explorer{
+    animation:lb-route-content 1.45s cubic-bezier(.2,.72,.22,1) both;
+  }
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .panel,
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .course-card,
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .feature-card,
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .toolbox,
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .stat-card{
+    animation:lb-route-content 1.5s cubic-bezier(.2,.72,.22,1) both;
+  }
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .panel:nth-of-type(2),
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .course-card:nth-of-type(2),
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .feature-card:nth-of-type(2){animation-delay:.12s}
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .panel:nth-of-type(3),
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .course-card:nth-of-type(3),
+  body.lb-workspace-mode .lb-view-active.lb-route-enter .feature-card:nth-of-type(3){animation-delay:.24s}
+  @keyframes lb-route-focus{
+    from{opacity:.55;filter:blur(1.5px);transform:translateY(10px)}
+    to{opacity:1;filter:blur(0);transform:translateY(0)}
+  }
+  @keyframes lb-route-content{
+    from{opacity:.35;transform:translateY(16px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.lb-workspace-mode .lb-view-active.lb-route-enter,
+  body.lb-workspace-mode .lb-view-active.lb-route-enter *{animation:none!important}
+}
+</style>
 </style>
 </body>
 </html>
