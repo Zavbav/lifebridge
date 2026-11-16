@@ -3756,3 +3756,66 @@ body.lb-workspace-mode main>.lb-view-active:not(.hero-upgraded) :is(button,a,[ro
   }
 }
 </style>
+
+
+<!-- LifeBridge accessibility update: consistent readable contrast across views -->
+<style id="lifebridge-readable-contrast-v2">
+:root {
+  --lb-text-strong: #202b43;
+  --lb-text-body: #35445f;
+  --lb-text-muted: #4b5b75;
+  --lb-text-placeholder: #64728a;
+}
+/* Keep the existing palette, but stop secondary text fading into pale surfaces. */
+body.lb-workspace-mode main .lb-view-active {
+  color: var(--lb-text-strong);
+}
+body.lb-workspace-mode main .lb-view-active :is(
+  p, li, label, small, dt, dd, figcaption, summary,
+  .muted, .hint, .helper, .description, .subtext, .eyebrow,
+  .section-head p, .card-description, .field-hint, .form-hint,
+  .empty-state, .calendar-legend, .calendar-weekdays,
+  .mastery-local-note, .mastery-counts, .lb-world-heading p,
+  .lb-world-card-copy, .study-streak-card p, .study-streak-card small
+) {
+  color: var(--lb-text-muted) !important;
+  opacity: 1 !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(
+  h1, h2, h3, h4, h5, h6, strong, b, .title, .card-title
+) {
+  color: var(--lb-text-strong);
+}
+body.lb-workspace-mode main .lb-view-active :is(input, textarea, select) {
+  color: var(--lb-text-strong) !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(input, textarea, select)::placeholder {
+  color: var(--lb-text-placeholder) !important;
+  opacity: 1 !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(button, [role="button"]) {
+  text-shadow: none;
+}
+body.lb-workspace-mode main .lb-view-active :is(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid #315fbd !important;
+  outline-offset: 3px !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(.badge, .pill, .tag, .status) {
+  color: #34445f;
+}
+/* Preserve intentional white text on dark/colored action surfaces. */
+body.lb-workspace-mode main .lb-view-active :is(
+  .primary, .btn-primary, .button-primary, .cta, .hero-upgraded,
+  [data-contrast="dark"]
+) {
+  color: inherit;
+}
+@media (prefers-contrast: more) {
+  body.lb-workspace-mode main .lb-view-active :is(p, li, label, small, .muted, .hint, .helper, .description, .subtext) {
+    color: #202b40 !important;
+  }
+  body.lb-workspace-mode main .lb-view-active :is(input, textarea, select) {
+    border-color: #52627c !important;
+  }
+}
+</style>
