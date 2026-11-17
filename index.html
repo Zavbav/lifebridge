@@ -3992,6 +3992,117 @@ body:not(.high-contrast) ::selection{background:#315e91;color:#fff}
 }
 </style>
 
+
+<script id="lifebridge-live-clock-05">
+(()=>{
+ const nav=document.querySelector(".nav");
+ const logo=nav&&nav.querySelector(".logo");
+ if(!nav||!logo||document.getElementById("lbLiveClock"))return;
+ const clock=document.createElement("div");
+ clock.id="lbLiveClock";
+ clock.className="lb-live-clock";
+ clock.setAttribute("role","timer");
+ clock.setAttribute("aria-label","Current local time");
+ clock.innerHTML='<span class="lb-clock-time"></span><span class="lb-clock-date"></span>';
+ logo.insertAdjacentElement("afterend",clock);
+ const time=clock.querySelector(".lb-clock-time");
+ const date=clock.querySelector(".lb-clock-date");
+ const timeFormat=new Intl.DateTimeFormat(undefined,{hour:"numeric",minute:"2-digit",second:"2-digit"});
+ const dateFormat=new Intl.DateTimeFormat(undefined,{weekday:"short",month:"short",day:"numeric"});
+ function tick(){
+  const now=new Date();
+  time.textContent=timeFormat.format(now);
+  date.textContent=dateFormat.format(now);
+ }
+ tick();
+ window.setInterval(tick,1000);
+})();
+</script>
+
+<style id="lifebridge-cohesive-theme-clock-05">
+/* One consistent midnight/slate palette; no pale navigation pills or low-contrast headings. */
+html,body{background:#0b1726!important;color:#edf3fb!important}
+body.lb-workspace-mode main{background:#0b1726!important;color:#edf3fb!important}
+body.lb-workspace-mode .topbar{background:#101d2e!important;border-bottom:1px solid #30465f!important;box-shadow:0 10px 28px rgba(0,0,0,.28)!important}
+body.lb-workspace-mode .nav{min-height:82px!important;gap:18px!important}
+body.lb-workspace-mode .logo{color:#f4f7fc!important}
+body.lb-workspace-mode .navlinks a[data-lb-route],
+body.lb-workspace-mode .lb-nav-more>summary{
+ color:#d9e4f1!important;background:#1b2d43!important;border:1px solid #3c536d!important;
+}
+body.lb-workspace-mode .navlinks a[data-lb-route]:hover,
+body.lb-workspace-mode .lb-nav-more>summary:hover{
+ color:#fff!important;background:#29445f!important;border-color:#6a8eae!important;
+}
+body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{
+ color:#fff!important;background:#176f78!important;border:1px solid #64c8c2!important;
+ box-shadow:0 4px 14px rgba(31,153,157,.2)!important;
+}
+body.lb-workspace-mode .navlinks .quick-jump-trigger,
+body.lb-workspace-mode .navlinks #accessToggle{
+ color:#e6eef8!important;background:#1b2d43!important;border:1px solid #405a75!important;
+}
+body.lb-workspace-mode .navlinks #accountOpen{
+ color:#fff!important;background:#176f78!important;border:1px solid #64c8c2!important;
+}
+body.lb-workspace-mode .lb-nav-more-links{background:#14243a!important;border-color:#405a75!important}
+body.lb-workspace-mode .hero-upgraded,
+body.lb-workspace-mode .lb-view-active{
+ color:#edf3fb!important;
+}
+body.lb-workspace-mode .hero-upgraded{
+ background:radial-gradient(ellipse at 80% 10%,rgba(48,108,145,.2),transparent 42%),linear-gradient(140deg,#10243a,#13283e 62%,#17273e)!important;
+}
+body.lb-workspace-mode .hero-upgraded h1,
+body.lb-workspace-mode .hero-upgraded h2,
+body.lb-workspace-mode .hero-upgraded h3,
+body.lb-workspace-mode .hero-upgraded p,
+body.lb-workspace-mode .hero-upgraded .hero-date,
+body.lb-workspace-mode .hero-upgraded .lb-vision-line,
+body.lb-workspace-mode .hero-upgraded .lb-vision-source{
+ color:#edf3fb!important;text-shadow:none!important;
+}
+body.lb-workspace-mode .hero-upgraded .pop{
+ color:#70d5d0!important;background:none!important;-webkit-text-fill-color:#70d5d0!important;
+}
+body.lb-workspace-mode .hero-upgraded .lb-hero-kicker,
+body.lb-workspace-mode .hero-upgraded .lb-vision-label,
+body.lb-workspace-mode .hero-upgraded .dash-overline{color:#a9c2d9!important}
+body.lb-workspace-mode .hero-upgraded .hero-dashboard,
+body.lb-workspace-mode .hero-upgraded .lb-vision-quote,
+body.lb-workspace-mode .hero-upgraded .lb-float-note{
+ color:#edf3fb!important;background:#1b3048!important;border:1px solid #405a75!important;
+}
+body.lb-workspace-mode .hero-upgraded .hero-dashboard p,
+body.lb-workspace-mode .hero-upgraded .hero-dashboard small{color:#c5d3e2!important}
+body.lb-workspace-mode .hero-upgraded .hero-dashboard strong{color:#f4f7fc!important}
+body.lb-workspace-mode .lb-hero-shortcuts>a{
+ color:#f0f5fc!important;background:#1a2e44!important;border:1px solid #405a75!important;
+}
+body.lb-workspace-mode .lb-hero-shortcuts>a:hover{background:#25425d!important;border-color:#70b7c5!important}
+body.lb-workspace-mode .lb-live-clock{
+ display:flex;flex:0 0 auto;flex-direction:column;gap:3px;min-width:112px;
+ padding:9px 13px;border-left:1px solid #40566e;margin-right:auto;
+ font-variant-numeric:tabular-nums;
+}
+body.lb-workspace-mode .lb-clock-time{
+ color:#f3f7fc;font-size:1.05rem;font-weight:750;letter-spacing:.035em;
+}
+body.lb-workspace-mode .lb-clock-date{
+ color:#a9bfd4;font-size:.72rem;font-weight:650;letter-spacing:.035em;
+}
+@media(max-width:1180px){
+ body.lb-workspace-mode .nav{align-items:center!important}
+ body.lb-workspace-mode .lb-live-clock{margin-left:auto;margin-right:0}
+}
+@media(max-width:700px){
+ body.lb-workspace-mode .nav{display:flex!important;flex-wrap:wrap!important}
+ body.lb-workspace-mode .lb-live-clock{margin-left:auto;padding:5px 8px}
+ body.lb-workspace-mode .lb-clock-time{font-size:.94rem}
+ body.lb-workspace-mode .lb-clock-date{font-size:.66rem}
+ body.lb-workspace-mode .navlinks{width:100%!important}
+}
+</style>
 </body>
 
 
