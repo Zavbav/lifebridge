@@ -4074,3 +4074,54 @@ body.lb-workspace-mode main .lb-view-active :is(
   }
 }
 </style>
+
+
+<style id="lifebridge-contrast-correction-03">
+/* Contrast correction: keep typography natural and readable across every view. */
+html, body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important; }
+body { -webkit-font-smoothing: auto !important; text-rendering: auto !important; }
+body.lb-workspace-mode main .lb-view-active,
+body.lb-workspace-mode main .lb-view-active * {
+  text-shadow: none !important;
+}
+body.lb-workspace-mode main .lb-view-active {
+  color: #f4f7fc !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(h1,h2,h3,h4,h5,h6,strong,b,legend,summary,.title,.card-title) {
+  color: #f7f9ff !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(p,li,label,small,dt,dd,figcaption,.muted,.hint,.helper,.description,.subtext,.eyebrow,.section-head p,.card-description,.field-hint,.form-hint,.empty-state,.calendar-legend,.calendar-weekdays,.mastery-local-note,.mastery-counts,.lb-world-heading p,.lb-world-card-copy) {
+  color: #d0dbea !important;
+  opacity: 1 !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(a,.text-action) {
+  color: #a9d4ff !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(input,textarea,select) {
+  background: #101f32 !important;
+  color: #f5f8ff !important;
+  border-color: #637b98 !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(input,textarea,select)::placeholder {
+  color: #b8c7d9 !important;
+  opacity: 1 !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(.tool-card,.panel,.command-card,.daily-plan-card,.upgrade-card,.stat-card,.focus-card,.habit-card,.goal-card,.course-library,.course-outline,.course-content,.study-builder,.study-review,.mastery-observatory,.lb-world-card,.account-card) {
+  background: #17283d !important;
+  color: #f4f7fc !important;
+  border-color: #435b77 !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(button,.btn,.smallbtn,[role="button"]) {
+  color: #f5f8ff !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(.btn.primary,.primary,.account-btn,.cta,[data-contrast="dark"]) {
+  color: #ffffff !important;
+}
+body.lb-workspace-mode main .lb-view-active :is(.pill,.tag,.badge,.status,.eyebrow) {
+  color: #e4efff !important;
+}
+body.lb-workspace-mode main .lb-view-active :focus-visible {
+  outline: 3px solid #9be8f0 !important;
+  outline-offset: 3px !important;
+}
+</style>
