@@ -4763,3 +4763,234 @@ body.lb-workspace-mode main .lb-view-active :focus-visible {
   outline-offset: 3px !important;
 }
 </style>
+
+
+<style id="lifebridge-study-center-update-09">
+/* Study Center: bring the learning workspace into the midnight / slate / teal system. */
+body.lb-workspace-mode #learn,
+body.lb-workspace-mode #learn.lb-view-active{
+  background:#101b2b!important;
+  color:#f2f6fb!important;
+  padding:clamp(28px,4vw,54px) 0 64px!important;
+}
+body.lb-workspace-mode #learn>.wrap{max-width:1320px!important}
+body.lb-workspace-mode #learn .section-head{margin-bottom:24px!important}
+body.lb-workspace-mode #learn .section-head h2{
+  color:#f4f7fc!important;font-size:clamp(2rem,3.4vw,2.8rem)!important;
+  letter-spacing:-.045em!important;
+}
+body.lb-workspace-mode #learn .section-head p{
+  color:#c4d1df!important;max-width:720px;line-height:1.7!important;
+}
+body.lb-workspace-mode #learn .learning-studio{
+  display:flex;flex-direction:column;gap:18px!important;
+}
+body.lb-workspace-mode #learn .lb-learning-worlds,
+body.lb-workspace-mode #learn .learning-intro,
+body.lb-workspace-mode #learn .study-gamebar,
+body.lb-workspace-mode #learn .study-builder,
+body.lb-workspace-mode #learn .study-review,
+body.lb-workspace-mode #learn .learning-path,
+body.lb-workspace-mode #learn .course-library{
+  background:#17283d!important;color:#f2f6fb!important;
+  border:1px solid #405872!important;border-radius:19px!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.16)!important;
+}
+body.lb-workspace-mode #learn .lb-learning-worlds{padding:24px!important}
+body.lb-workspace-mode #learn .lb-world-heading h3,
+body.lb-workspace-mode #learn .learning-intro h3,
+body.lb-workspace-mode #learn .learning-path h4,
+body.lb-workspace-mode #learn .course-library-head h3{
+  color:#f4f7fc!important;letter-spacing:-.025em!important;
+}
+body.lb-workspace-mode #learn .lb-world-heading p,
+body.lb-workspace-mode #learn .learning-intro p,
+body.lb-workspace-mode #learn .learning-path p,
+body.lb-workspace-mode #learn .course-library-head p{
+  color:#c2ceda!important;line-height:1.65!important;
+}
+body.lb-workspace-mode #learn .lb-world-eyebrow,
+body.lb-workspace-mode #learn .lb-world-stamp,
+body.lb-workspace-mode #learn .pill,
+body.lb-workspace-mode #learn .flashcard-label{
+  color:#83ddd5!important;letter-spacing:.12em!important;
+}
+body.lb-workspace-mode #learn .lb-world-map{
+  display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;
+}
+body.lb-workspace-mode #learn .lb-world-card{
+  min-height:164px!important;padding:18px!important;border-radius:15px!important;
+  border:1px solid #4a6681!important;background:#20364e!important;
+  color:#f4f7fc!important;text-align:left!important;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease!important;
+}
+body.lb-workspace-mode #learn .lb-world-card:hover{
+  transform:translateY(-3px);background:#29445e!important;border-color:#77cfc8!important;
+}
+body.lb-workspace-mode #learn .lb-world-card-title{color:#f4f7fc!important;font-weight:800!important}
+body.lb-workspace-mode #learn .lb-world-card-copy{color:#c5d3e1!important}
+body.lb-workspace-mode #learn .lb-world-launch{color:#8fe0d7!important}
+body.lb-workspace-mode #learn .lb-world-status{
+  color:#a9c6d9!important;background:#112237!important;border:1px solid #344e69!important;
+  border-radius:11px;padding:11px 14px;margin:16px 0 0!important;
+}
+body.lb-workspace-mode #learn .learning-intro{
+  display:grid!important;grid-template-columns:minmax(0,1.4fr) minmax(110px,.45fr) minmax(220px,.8fr)!important;
+  gap:20px!important;align-items:center!important;padding:22px!important;
+}
+body.lb-workspace-mode #learn .learning-stat,
+body.lb-workspace-mode #learn .study-streak-card{
+  background:#112237!important;border:1px solid #3d5873!important;border-radius:14px!important;
+  padding:17px!important;
+}
+body.lb-workspace-mode #learn .learning-stat strong,
+body.lb-workspace-mode #learn .study-streak-number{color:#f4f8ff!important}
+body.lb-workspace-mode #learn .learning-stat span,
+body.lb-workspace-mode #learn .study-streak-card small{color:#b9cadd!important}
+body.lb-workspace-mode #learn .study-streak-card p{color:#c2ceda!important}
+body.lb-workspace-mode #learn .study-streak-track,
+body.lb-workspace-mode #learn .study-xp-track,
+body.lb-workspace-mode #learn .progress-track{background:#30465e!important}
+body.lb-workspace-mode #learn :is(.study-streak-track span,.study-xp-track span,.progress-track span){
+  background:linear-gradient(90deg,#55bdb8,#83ddd5)!important;
+}
+body.lb-workspace-mode #learn .study-gamebar{
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto!important;
+  gap:14px!important;padding:17px!important;align-items:stretch!important;
+}
+body.lb-workspace-mode #learn .study-xp-card,
+body.lb-workspace-mode #learn .study-xp-total{
+  min-width:0;background:#20364e!important;border:1px solid #49647f!important;
+  border-radius:13px!important;padding:15px!important;
+}
+body.lb-workspace-mode #learn .study-xp-card :is(label,.flashcard-label),
+body.lb-workspace-mode #learn .study-xp-card small,
+body.lb-workspace-mode #learn .study-xp-total span{color:#c3d2e1!important}
+body.lb-workspace-mode #learn .study-xp-card strong,
+body.lb-workspace-mode #learn .study-xp-total strong{color:#f5f8ff!important}
+body.lb-workspace-mode #learn .study-grid{
+  display:grid!important;grid-template-columns:minmax(280px,.82fr) minmax(0,1.35fr)!important;
+  gap:18px!important;align-items:start!important;
+}
+body.lb-workspace-mode #learn .study-builder,
+body.lb-workspace-mode #learn .study-review{padding:22px!important;min-width:0}
+body.lb-workspace-mode #learn .study-builder h4,
+body.lb-workspace-mode #learn .study-review h4,
+body.lb-workspace-mode #learn .study-mode-panel h4{color:#f3f7fc!important}
+body.lb-workspace-mode #learn .notice,
+body.lb-workspace-mode #learn .study-review-head p{color:#c2ceda!important;line-height:1.6!important}
+body.lb-workspace-mode #learn .study-builder .field{margin-top:15px!important}
+body.lb-workspace-mode #learn .study-builder label,
+body.lb-workspace-mode #learn .study-review label,
+body.lb-workspace-mode #learn .path-controls label,
+body.lb-workspace-mode #learn .course-controls label{
+  color:#dce7f2!important;font-weight:700!important;
+}
+body.lb-workspace-mode #learn :is(input,textarea,select){
+  background:#0f1e30!important;color:#f3f7fc!important;
+  border:1px solid #58718b!important;border-radius:10px!important;
+}
+body.lb-workspace-mode #learn :is(input,textarea,select)::placeholder{color:#9fb2c7!important;opacity:1!important}
+body.lb-workspace-mode #learn :is(input,textarea,select):focus{
+  outline:2px solid #79d8d0!important;outline-offset:2px!important;border-color:#79d8d0!important;
+}
+body.lb-workspace-mode #learn .study-mode-switch{
+  display:flex!important;flex-wrap:wrap!important;gap:7px!important;
+  padding:10px!important;margin:15px 0!important;background:#102136!important;
+  border:1px solid #344e68!important;border-radius:13px!important;
+}
+body.lb-workspace-mode #learn .study-mode-switch button{
+  flex:1 1 auto!important;min-height:38px!important;padding:8px 11px!important;
+  background:#20364e!important;color:#d8e5f2!important;border:1px solid #49647e!important;
+  border-radius:9px!important;font-size:.82rem!important;font-weight:700!important;
+}
+body.lb-workspace-mode #learn .study-mode-switch button.active{
+  background:#176b72!important;color:#fff!important;border-color:#75d4cc!important;
+}
+body.lb-workspace-mode #learn .flashcard,
+body.lb-workspace-mode #learn .study-mode-panel{
+  background:linear-gradient(145deg,#203b55,#182d45)!important;
+  color:#f5f8ff!important;border:1px solid #58718b!important;border-radius:15px!important;
+}
+body.lb-workspace-mode #learn .flashcard{min-height:220px!important;padding:25px!important}
+body.lb-workspace-mode #learn .flashcard strong,
+body.lb-workspace-mode #learn .study-mode-panel h4{color:#f5f8ff!important}
+body.lb-workspace-mode #learn .flashcard-hint,
+body.lb-workspace-mode #learn .study-mode-panel p{color:#c6d4e2!important}
+body.lb-workspace-mode #learn .quiz-choices button,
+body.lb-workspace-mode #learn .study-match-grid button{
+  background:#243d57!important;color:#f3f7fc!important;border:1px solid #58718b!important;
+}
+body.lb-workspace-mode #learn .math-feedback,
+body.lb-workspace-mode #learn .path-result{
+  color:#d9f3ef!important;background:#112b3b!important;
+  border:1px solid #3e7779!important;border-radius:11px!important;padding:12px 14px!important;
+}
+body.lb-workspace-mode #learn .study-progress{margin-top:18px!important}
+body.lb-workspace-mode #learn .study-deck-footer{border-top:1px solid #3d5872!important;padding-top:13px!important}
+body.lb-workspace-mode #learn .text-action{color:#8fe0d7!important}
+body.lb-workspace-mode #learn .learning-path{display:grid!important;grid-template-columns:1fr 1.2fr!important;gap:18px!important;padding:22px!important}
+body.lb-workspace-mode #learn .path-controls{display:flex!important;flex-wrap:wrap!important;gap:10px!important;align-items:end!important}
+body.lb-workspace-mode #learn .path-controls select{min-width:145px!important;flex:1 1 145px!important}
+body.lb-workspace-mode #learn .path-result{grid-column:1/-1}
+body.lb-workspace-mode #learn .course-library{padding:24px!important;margin-top:22px!important}
+body.lb-workspace-mode #learn .course-library-head{
+  display:flex!important;justify-content:space-between!important;align-items:center!important;gap:20px!important;
+}
+body.lb-workspace-mode #learn .course-progress-summary{
+  background:#112237!important;border:1px solid #405872!important;border-radius:13px!important;padding:15px 20px!important;
+}
+body.lb-workspace-mode #learn .course-progress-summary strong{color:#f5f8ff!important}
+body.lb-workspace-mode #learn .course-progress-summary span{color:#b9cadd!important}
+body.lb-workspace-mode #learn .course-controls{
+  display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;
+  padding:16px 0!important;border-bottom:1px solid #405872!important;
+}
+body.lb-workspace-mode #learn .course-body{
+  display:grid!important;grid-template-columns:minmax(210px,.65fr) minmax(0,1.5fr)!important;
+  gap:18px!important;padding-top:18px!important;
+}
+body.lb-workspace-mode #learn .course-outline,
+body.lb-workspace-mode #learn .course-lesson{
+  background:#112237!important;border:1px solid #405872!important;border-radius:13px!important;padding:17px!important;
+}
+body.lb-workspace-mode #learn .course-outline-title,
+body.lb-workspace-mode #learn .course-lesson-meta{color:#8fded8!important}
+body.lb-workspace-mode #learn .course-lesson :is(h4,p){color:#eaf1f8!important}
+body.lb-workspace-mode #learn .course-lesson p{line-height:1.7!important}
+body.lb-workspace-mode #learn :is(.btn,.study-actions button,.path-controls button){
+  border-radius:10px!important;font-weight:750!important;
+}
+body.lb-workspace-mode #learn .btn:not(.primary){background:#243d57!important;color:#edf4fb!important;border:1px solid #58718b!important}
+body.lb-workspace-mode #learn .btn.primary{background:linear-gradient(110deg,#176b78,#207c78)!important;color:#fff!important;border:1px solid #75d4cc!important}
+@media(max-width:1050px){
+ body.lb-workspace-mode #learn .lb-world-map{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ body.lb-workspace-mode #learn .learning-intro{grid-template-columns:1fr 1fr!important}
+ body.lb-workspace-mode #learn .study-streak-card{grid-column:1/-1}
+}
+@media(max-width:760px){
+ body.lb-workspace-mode #learn .lb-learning-worlds,
+ body.lb-workspace-mode #learn .study-builder,
+ body.lb-workspace-mode #learn .study-review,
+ body.lb-workspace-mode #learn .course-library{padding:17px!important}
+ body.lb-workspace-mode #learn .lb-world-map{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body.lb-workspace-mode #learn .learning-intro,
+ body.lb-workspace-mode #learn .study-gamebar,
+ body.lb-workspace-mode #learn .study-grid,
+ body.lb-workspace-mode #learn .learning-path,
+ body.lb-workspace-mode #learn .course-body,
+ body.lb-workspace-mode #learn .course-controls{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #learn .study-streak-card,
+ body.lb-workspace-mode #learn .path-result{grid-column:auto}
+ body.lb-workspace-mode #learn .course-library-head{align-items:flex-start!important;flex-direction:column!important}
+ body.lb-workspace-mode #learn .study-mode-switch{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:thin!important}
+ body.lb-workspace-mode #learn .study-mode-switch button{flex:0 0 auto!important;white-space:nowrap!important}
+}
+@media(max-width:440px){
+ body.lb-workspace-mode #learn .lb-world-map{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #learn .lb-world-card{min-height:120px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.lb-workspace-mode #learn .lb-world-card{transition:none!important}
+}
+</style>
