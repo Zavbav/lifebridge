@@ -4128,6 +4128,104 @@ body.lb-workspace-mode .hero-upgraded{
  body.lb-workspace-mode .lb-hero-shortcuts>a{transition:none!important}
 }
 </style>
+
+<style id="lifebridge-cohesive-palette-05">
+/* COHESIVE PALETTE 05 — remove pale surfaces and restore clear text contrast. */
+:root{
+ --lb-bg:#101b2b;
+ --lb-surface:#18283d;
+ --lb-raised:#20364e;
+ --lb-text:#f2f5f8;
+ --lb-muted:#c2ceda;
+ --lb-accent:#65d2c7;
+ --lb-accent-2:#8eb8ee;
+ --lb-line:#405872;
+}
+html,body{background:#101b2b!important;color:#f2f5f8!important}
+body:not(.high-contrast){background:#101b2b!important;color:#f2f5f8!important}
+body:not(.high-contrast) main{
+ background:linear-gradient(180deg,#111f31 0%,#142338 48%,#101b2b 100%)!important;
+ color:#f2f5f8!important;
+}
+body:not(.high-contrast) main :is(h1,h2,h3,h4,h5,h6,strong,b,legend,summary,.title,.card-title){
+ color:#f4f7fb!important;-webkit-text-fill-color:#f4f7fb!important;
+}
+body:not(.high-contrast) main :is(p,li,label,small,dt,dd,figcaption,.muted,.hint,.helper,.description,.subtext,.eyebrow,.section-head p,.card-description,.field-hint,.form-hint,.empty-state){
+ color:#c2ceda!important;-webkit-text-fill-color:#c2ceda!important;
+}
+body:not(.high-contrast) main :is(a:not(.btn),.text-action){color:#8fded8!important}
+body:not(.high-contrast) main :is(section,.panel,.card,.tool-card,.feature-card,.study-card,.dashboard-card,.content-card,.hero-dashboard,.lb-vision-quote){
+ background-color:#192b41!important;color:#f2f5f8!important;
+ border-color:#405872!important;
+}
+body:not(.high-contrast) main .hero,
+body:not(.high-contrast) main .hero-upgraded,
+body:not(.high-contrast) main .lb-hero-v2{
+ background:
+ radial-gradient(ellipse at 78% 18%,rgba(56,133,160,.22),transparent 40%),
+ linear-gradient(135deg,#14263c 0%,#1a3048 58%,#17283e 100%)!important;
+ color:#f4f7fb!important;
+}
+body:not(.high-contrast) main .hero :is(h1,h2,h3,.hero-date,.lb-hero-kicker,.lb-vision-label,.lb-vision-source,.lb-vision-line,.hero-trust,.lb-hero-bottomline){
+ color:#f2f5f8!important;-webkit-text-fill-color:#f2f5f8!important;
+}
+body:not(.high-contrast) main .hero .pop{
+ color:#75ded2!important;-webkit-text-fill-color:#75ded2!important;
+ background:none!important;background-image:none!important;
+}
+body:not(.high-contrast) main :is(.btn,.smallbtn,button,[role="button"]){
+ background:#263d57!important;color:#f5f7fb!important;
+ border:1px solid #58718c!important;
+}
+body:not(.high-contrast) main :is(.btn.primary,.primary,.account-btn,.cta,.lb-main-cta){
+ background:linear-gradient(115deg,#236c82,#267d79)!important;
+ color:#fff!important;border:1px solid #69c9c0!important;
+}
+body:not(.high-contrast) main :is(.hero-secondary,.smallbtn):hover,
+body:not(.high-contrast) main :is(.btn,.smallbtn,button):hover{
+ background:#31516e!important;color:#fff!important;
+}
+body:not(.high-contrast) main :is(input,textarea,select){
+ background:#111f31!important;color:#f2f5f8!important;
+ border:1px solid #58718c!important;
+}
+body:not(.high-contrast) main :is(input,textarea,select)::placeholder{color:#9eafc1!important;opacity:1}
+body:not(.high-contrast) .topbar{
+ background:#0c1726!important;border-bottom:1px solid #354b63!important;
+ box-shadow:0 10px 26px rgba(0,0,0,.28)!important;
+}
+body:not(.high-contrast) .navlinks a[data-lb-route],
+body:not(.high-contrast) .navlinks> a{
+ background:#1a2d43!important;color:#dce7f2!important;
+ border:1px solid #405872!important;
+}
+body:not(.high-contrast) .navlinks a[data-lb-route][aria-current=page],
+body:not(.high-contrast) .navlinks> a[aria-current=page]{
+ background:linear-gradient(115deg,#236c82,#267d79)!important;
+ color:#fff!important;border-color:#69c9c0!important;
+}
+body:not(.high-contrast) .navlinks .lb-nav-more>summary,
+body:not(.high-contrast) .navlinks .quick-jump-trigger,
+body:not(.high-contrast) .navlinks #accessToggle{
+ background:#1a2d43!important;color:#e3edf6!important;border-color:#405872!important;
+}
+body:not(.high-contrast) .navlinks #accountOpen{
+ background:linear-gradient(115deg,#236c82,#267d79)!important;color:#fff!important;
+}
+body:not(.high-contrast) .lb-nav-more-links{
+ background:#14263b!important;border-color:#405872!important;
+}
+body:not(.high-contrast) footer,
+body:not(.high-contrast) .footer{
+ background:#0c202c!important;color:#d7e5e8!important;border-color:#3a6670!important;
+}
+body:not(.high-contrast) footer :is(p,a,strong,span),
+body:not(.high-contrast) .footer :is(p,a,strong,span){color:#d7e5e8!important}
+body:not(.high-contrast) :focus-visible{outline:3px solid #75ded2!important;outline-offset:3px!important}
+@media(prefers-reduced-motion:reduce){
+ body:not(.high-contrast) *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+</style>
 </html>
 
 <!-- LifeBridge readability pass: stronger contrast for pale blue text -->
