@@ -5178,3 +5178,171 @@ body.lb-workspace-mode #organize :focus-visible{
  body.lb-workspace-mode #organize #taskList .task-row{transition:none!important}
 }
 </style>
+
+
+<style id="lifebridge-skill-quest-update-12">
+/* Skill Quest — a focused challenge arena, keeping every existing game interaction intact. */
+body.lb-workspace-mode #lifequest{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ padding:clamp(34px,4.5vw,66px) 0 76px!important;
+ color:#f3f7fc!important;
+ background:
+ radial-gradient(ellipse at 88% 8%,rgba(29,153,157,.19),transparent 34%),
+ radial-gradient(ellipse at 5% 82%,rgba(77,93,173,.17),transparent 38%),
+ linear-gradient(145deg,#0d1929 0%,#13243a 55%,#102d3b 100%)!important;
+}
+body.lb-workspace-mode #lifequest>.wrap{max-width:1240px!important;position:relative!important;z-index:1!important}
+body.lb-workspace-mode #lifequest .section-head{margin-bottom:28px!important}
+body.lb-workspace-mode #lifequest .section-head .tag{
+ display:inline-flex!important;align-items:center!important;gap:8px!important;
+ padding:8px 12px!important;border-radius:999px!important;
+ background:#193b4d!important;color:#9be6dc!important;
+ border:1px solid #3b7780!important;font-size:.72rem!important;
+ font-weight:800!important;letter-spacing:.11em!important;
+}
+body.lb-workspace-mode #lifequest .section-head h2{
+ color:#f6f8fc!important;font-size:clamp(2.1rem,4vw,3.15rem)!important;
+ line-height:1.08!important;letter-spacing:-.05em!important;margin:13px 0 10px!important;
+}
+body.lb-workspace-mode #lifequest .section-head p{
+ max-width:680px!important;color:#c4d2e0!important;line-height:1.75!important;
+ font-size:1.02rem!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout{
+ display:grid!important;grid-template-columns:minmax(0,1.55fr) minmax(270px,.8fr)!important;
+ gap:18px!important;align-items:stretch!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel{
+ min-width:0!important;padding:clamp(21px,3vw,32px)!important;
+ border-radius:22px!important;background:linear-gradient(155deg,#1c344d 0%,#172a40 100%)!important;
+ border:1px solid #48627e!important;box-shadow:0 20px 48px rgba(0,0,0,.22)!important;
+ color:#f3f7fc!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:first-child{
+ position:relative!important;overflow:hidden!important;
+ background:linear-gradient(150deg,#1d3c53 0%,#1a3049 58%,#182b42 100%)!important;
+ border-color:#527b8b!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:first-child:after{
+ content:"";position:absolute;right:-68px;top:-100px;width:230px;height:230px;
+ border-radius:50%;border:1px solid rgba(121,220,211,.13);
+ box-shadow:0 0 0 25px rgba(121,220,211,.035),0 0 0 52px rgba(121,220,211,.025);
+ pointer-events:none;
+}
+body.lb-workspace-mode #lifequest #questCategory{
+ display:inline-flex!important;align-items:center!important;min-height:30px!important;
+ padding:6px 10px!important;border-radius:999px!important;
+ background:#174e58!important;border:1px solid #4e9b9b!important;
+ color:#a7eee2!important;font-size:.7rem!important;letter-spacing:.1em!important;
+ font-weight:850!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:first-child>div:first-child>strong{
+ color:#c9d7e4!important;font-size:.9rem!important;font-weight:750!important;
+}
+body.lb-workspace-mode #lifequest #questScore{
+ color:#91e4d9!important;font-size:1.45rem!important;font-variant-numeric:tabular-nums!important;
+}
+body.lb-workspace-mode #lifequest #questTitle{
+ position:relative!important;z-index:1!important;color:#f6f9fc!important;
+ font-size:clamp(1.45rem,2.4vw,2rem)!important;letter-spacing:-.035em!important;
+ line-height:1.2!important;margin:27px 0 10px!important;
+}
+body.lb-workspace-mode #lifequest #questPrompt{
+ position:relative!important;z-index:1!important;color:#d0dce7!important;
+ line-height:1.75!important;font-size:1.02rem!important;max-width:720px!important;
+}
+body.lb-workspace-mode #lifequest #questChoices{
+ position:relative!important;z-index:1!important;display:grid!important;
+ grid-template-columns:1fr!important;gap:10px!important;margin:23px 0!important;
+}
+body.lb-workspace-mode #lifequest #questChoices .btn{
+ display:flex!important;align-items:center!important;text-align:left!important;
+ justify-content:flex-start!important;min-height:58px!important;width:100%!important;
+ padding:13px 16px!important;border-radius:13px!important;
+ color:#edf5fb!important;background:#203b55!important;
+ border:1px solid #54718b!important;font-weight:650!important;line-height:1.5!important;
+ white-space:normal!important;transition:transform .18s ease,background .18s ease,border-color .18s ease!important;
+}
+body.lb-workspace-mode #lifequest #questChoices .btn:not(:disabled):hover{
+ transform:translateX(3px)!important;background:#28516a!important;border-color:#82d9d0!important;
+}
+body.lb-workspace-mode #lifequest #questChoices .btn:disabled{
+ opacity:1!important;cursor:default!important;color:#c8d5e1!important;background:#203448!important;
+}
+body.lb-workspace-mode #lifequest #questChoices .btn:disabled[style*="border-color"]{
+ color:#d9fff8!important;background:#15564f!important;border-color:#6ad8c8!important;
+}
+body.lb-workspace-mode #lifequest #questFeedback{
+ position:relative!important;z-index:1!important;min-height:62px!important;
+ padding:15px 17px!important;border-radius:13px!important;
+ background:#132a40!important;border:1px solid #4c6a82!important;
+ color:#d9e5ef!important;line-height:1.65!important;
+}
+body.lb-workspace-mode #lifequest #questNext{
+ position:relative!important;z-index:1!important;min-height:46px!important;
+ padding:11px 18px!important;border-radius:11px!important;
+ color:#fff!important;background:#087f7c!important;border:1px solid #51bcb2!important;
+ font-weight:800!important;transition:background .18s ease,transform .18s ease!important;
+}
+body.lb-workspace-mode #lifequest #questNext:hover{
+ background:#0a9991!important;transform:translateY(-2px)!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child{
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child .tool-icon{
+ display:grid!important;place-items:center!important;width:48px!important;height:48px!important;
+ border-radius:14px!important;background:#24495b!important;
+ border:1px solid #477e89!important;color:#94e1d7!important;margin-bottom:20px!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child .tool-icon:before{
+ content:"";display:block;width:17px;height:17px;border:2px solid currentColor;
+ border-radius:5px;transform:rotate(45deg);
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child h3{
+ color:#f4f8fc!important;font-size:1.35rem!important;letter-spacing:-.03em!important;
+ line-height:1.25!important;margin:0 0 10px!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child>p{
+ color:#c5d3e0!important;line-height:1.7!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child .stat-row{
+ display:grid!important;grid-template-columns:1fr 1fr!important;width:100%!important;gap:9px!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child .stat-pill{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ gap:8px!important;min-height:48px!important;padding:10px 12px!important;
+ color:#dce8f1!important;background:#20394f!important;
+ border:1px solid #4b6881!important;border-radius:11px!important;font-size:.85rem!important;
+}
+body.lb-workspace-mode #lifequest #questBest,
+body.lb-workspace-mode #lifequest #questAnswered{
+ color:#98e6dc!important;font-size:1.1rem!important;font-weight:850!important;
+ font-variant-numeric:tabular-nums!important;
+}
+body.lb-workspace-mode #lifequest #questTip{
+ width:100%!important;margin-top:5px!important;padding:16px!important;
+ border-radius:13px!important;background:#153a46!important;
+ border:1px solid #3e777c!important;color:#c9f0e9!important;line-height:1.65!important;
+}
+body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child .notice{
+ margin-top:auto!important;padding-top:18px!important;color:#aebfd0!important;line-height:1.65!important;
+}
+body.lb-workspace-mode #lifequest :focus-visible{
+ outline:2px solid #8ce4da!important;outline-offset:3px!important;
+}
+@media(max-width:850px){
+ body.lb-workspace-mode #lifequest .tool-layout{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child{min-height:0!important}
+}
+@media(max-width:560px){
+ body.lb-workspace-mode #lifequest{padding:30px 0 48px!important}
+ body.lb-workspace-mode #lifequest .tool-layout>.panel{padding:19px!important;border-radius:17px!important}
+ body.lb-workspace-mode #lifequest #questChoices .btn{min-height:54px!important}
+ body.lb-workspace-mode #lifequest .tool-layout>.panel:last-child .stat-row{grid-template-columns:1fr 1fr!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.lb-workspace-mode #lifequest #questChoices .btn,
+ body.lb-workspace-mode #lifequest #questNext{transition:none!important}
+}
+</style>
