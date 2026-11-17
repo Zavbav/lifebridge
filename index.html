@@ -5346,3 +5346,417 @@ body.lb-workspace-mode #lifequest :focus-visible{
  body.lb-workspace-mode #lifequest #questNext{transition:none!important}
 }
 </style>
+
+
+<style id="lifebridge-remaining-workspaces-update-13">
+/* Final visual consistency pass across the remaining LifeBridge workspaces. */
+body.lb-workspace-mode #today,
+body.lb-workspace-mode #calendar,
+body.lb-workspace-mode #focus,
+body.lb-workspace-mode #budget,
+body.lb-workspace-mode #convert{
+ background:#0e1a2a!important;color:#f2f6fb!important;
+ padding:clamp(32px,4vw,58px) 0 68px!important;
+}
+body.lb-workspace-mode #today>.wrap,
+body.lb-workspace-mode #calendar>.wrap,
+body.lb-workspace-mode #focus>.wrap,
+body.lb-workspace-mode #budget>.wrap,
+body.lb-workspace-mode #convert>.wrap{max-width:1240px!important}
+body.lb-workspace-mode #today .command-head{
+ display:flex!important;align-items:flex-end!important;justify-content:space-between!important;
+ gap:24px!important;margin-bottom:24px!important;
+}
+body.lb-workspace-mode #today .command-kicker,
+body.lb-workspace-mode #focus>.wrap>.eyebrow,
+body.lb-workspace-mode #calendar>.wrap>.eyebrow{
+ color:#8bded5!important;font-size:.72rem!important;font-weight:850!important;letter-spacing:.13em!important;
+}
+body.lb-workspace-mode #today .command-title,
+body.lb-workspace-mode #calendar>.wrap>h2,
+body.lb-workspace-mode #focus>.wrap>h2{
+ color:#f5f8fc!important;font-size:clamp(2rem,3.7vw,2.8rem)!important;
+ letter-spacing:-.05em!important;line-height:1.08!important;margin:10px 0!important;
+}
+body.lb-workspace-mode #today .command-sub,
+body.lb-workspace-mode #calendar .section-intro,
+body.lb-workspace-mode #focus .section-intro{
+ color:#c2cfdd!important;line-height:1.7!important;max-width:720px!important;
+}
+body.lb-workspace-mode #today .command-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;
+}
+body.lb-workspace-mode #today .command-card,
+body.lb-workspace-mode #today .daily-plan-wrap{
+ min-width:0!important;padding:clamp(19px,2.6vw,27px)!important;border-radius:19px!important;
+ background:linear-gradient(150deg,#1b324a,#17283d)!important;
+ border:1px solid #435f79!important;box-shadow:0 16px 38px rgba(0,0,0,.17)!important;
+ color:#f2f6fb!important;
+}
+body.lb-workspace-mode #today .command-card h3,
+body.lb-workspace-mode #today .daily-plan-heading h3{
+ color:#f5f8fc!important;font-size:1.2rem!important;letter-spacing:-.025em!important;
+}
+body.lb-workspace-mode #today .command-card .command-sub,
+body.lb-workspace-mode #today .daily-plan-card p{color:#c1d0de!important;line-height:1.65!important}
+body.lb-workspace-mode #today .command-inputrow{
+ display:flex!important;gap:9px!important;margin:16px 0!important;
+}
+body.lb-workspace-mode #today input,
+body.lb-workspace-mode #today textarea,
+body.lb-workspace-mode #focus input,
+body.lb-workspace-mode #calendar input,
+body.lb-workspace-mode #calendar select,
+body.lb-workspace-mode #calendar textarea,
+body.lb-workspace-mode #budget input,
+body.lb-workspace-mode #convert input,
+body.lb-workspace-mode #convert select{
+ min-width:0!important;min-height:45px!important;padding:11px 13px!important;
+ border-radius:10px!important;background:#10243a!important;color:#f2f6fb!important;
+ border:1px solid #506b85!important;box-shadow:none!important;
+}
+body.lb-workspace-mode #today input::placeholder,
+body.lb-workspace-mode #today textarea::placeholder,
+body.lb-workspace-mode #focus input::placeholder,
+body.lb-workspace-mode #calendar input::placeholder,
+body.lb-workspace-mode #calendar textarea::placeholder,
+body.lb-workspace-mode #budget input::placeholder,
+body.lb-workspace-mode #convert input::placeholder{color:#aabed0!important;opacity:1!important}
+body.lb-workspace-mode #today .command-stats{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:9px!important;margin-top:19px!important;
+}
+body.lb-workspace-mode #today .command-stat{
+ display:flex!important;flex-direction:column!important;gap:5px!important;
+ padding:13px!important;border-radius:12px!important;background:#20384f!important;
+ border:1px solid #48647e!important;
+}
+body.lb-workspace-mode #today .command-stat strong{color:#91e3d9!important;font-size:1.35rem!important}
+body.lb-workspace-mode #today .command-stat span{color:#b9c9d8!important;font-size:.66rem!important;letter-spacing:.08em!important}
+body.lb-workspace-mode #today .command-tip{
+ margin-top:10px!important;padding:13px 15px!important;border-radius:11px!important;
+ color:#cbd8e4!important;background:#20374d!important;border:1px solid #415e78!important;line-height:1.6!important;
+}
+body.lb-workspace-mode #today .command-tip strong{color:#9be4dc!important}
+body.lb-workspace-mode #today .daily-plan-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:13px!important}
+body.lb-workspace-mode #today .daily-plan-card{
+ min-width:0!important;padding:17px!important;border-radius:14px!important;
+ background:#20374d!important;border:1px solid #47627b!important;
+}
+body.lb-workspace-mode #today .daily-plan-card h4{color:#f2f6fb!important}
+body.lb-workspace-mode #today .daily-plan-card label{display:flex!important;align-items:center!important;gap:9px!important;margin-top:10px!important}
+body.lb-workspace-mode #today .daily-plan-card label span{color:#8cdbd3!important;font-weight:850!important}
+body.lb-workspace-mode #today .daily-plan-card input,
+body.lb-workspace-mode #today .daily-plan-card textarea{width:100%!important}
+body.lb-workspace-mode #today .daily-plan-foot{color:#b9d0dc!important;margin-top:15px!important}
+body.lb-workspace-mode #today .daily-plan-saved{color:#9de1d8!important}
+body.lb-workspace-mode #today .command-actions{display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-top:16px!important}
+body.lb-workspace-mode #today .command-actions a,
+body.lb-workspace-mode #today .command-head>.btn{background:#24475a!important;color:#b5ece4!important;border:1px solid #527d88!important}
+body.lb-workspace-mode #accessPanel .wrap.panel{
+ max-width:1100px!important;padding:22px 25px!important;border-radius:18px!important;
+ background:#172b40!important;border:1px solid #45617b!important;color:#f2f6fb!important;
+}
+body.lb-workspace-mode #accessPanel h2{color:#f4f8fc!important}
+body.lb-workspace-mode #accessPanel .notice{color:#bfcedb!important}
+body.lb-workspace-mode #accessPanel .access{display:flex!important;flex-wrap:wrap!important;gap:9px!important}
+body.lb-workspace-mode #accessPanel .access .btn{
+ background:#244357!important;color:#d7e9f1!important;border:1px solid #55768a!important;
+}
+body.lb-workspace-mode #budget,
+body.lb-workspace-mode #convert{background:#111e30!important}
+body.lb-workspace-mode #budget .section-head h2,
+body.lb-workspace-mode #convert .section-head h2{
+ color:#f4f8fc!important;font-size:clamp(1.9rem,3.2vw,2.5rem)!important;letter-spacing:-.04em!important;
+}
+body.lb-workspace-mode #budget .section-head p,
+body.lb-workspace-mode #convert .section-head p{color:#c3d1df!important;line-height:1.7!important}
+body.lb-workspace-mode #budget .panel.toolbox,
+body.lb-workspace-mode #convert .panel.toolbox{
+ max-width:900px!important;padding:clamp(21px,3vw,31px)!important;border-radius:20px!important;
+ background:linear-gradient(145deg,#1b334b,#172a40)!important;
+ border:1px solid #48647d!important;box-shadow:0 18px 42px rgba(0,0,0,.18)!important;
+}
+body.lb-workspace-mode #budget .field label,
+body.lb-workspace-mode #convert .field label{color:#d8e3ed!important;font-weight:700!important}
+body.lb-workspace-mode #budget .btn.primary,
+body.lb-workspace-mode #convert .btn.primary{
+ min-height:45px!important;padding:11px 17px!important;border-radius:10px!important;
+ color:#fff!important;background:#087f7c!important;border:1px solid #53bcb2!important;font-weight:800!important;
+}
+body.lb-workspace-mode #budget .result,
+body.lb-workspace-mode #convert .result{
+ margin-top:16px!important;padding:16px!important;border-radius:12px!important;
+ color:#dce9f2!important;background:#122a40!important;border:1px solid #4a6b83!important;line-height:1.65!important;
+}
+body.lb-workspace-mode #budget .notice,
+body.lb-workspace-mode #convert .notice{color:#b5c5d4!important}
+body.lb-workspace-mode #levelup{
+ padding:clamp(36px,4.5vw,66px) 0 74px!important;
+ color:#f3f7fc!important;
+ background:radial-gradient(ellipse at 80% 0%,rgba(91,79,163,.22),transparent 35%),linear-gradient(145deg,#101a2c,#1c2340 55%,#142d3b)!important;
+}
+body.lb-workspace-mode #levelup>.wrap{max-width:1240px!important}
+body.lb-workspace-mode #levelup>.wrap>.eyebrow{color:#a9a2f4!important;font-weight:850!important;letter-spacing:.12em!important}
+body.lb-workspace-mode #levelup>.wrap>h2{
+ color:#f5f7fc!important;font-size:clamp(2rem,3.8vw,2.85rem)!important;
+ letter-spacing:-.05em!important;line-height:1.1!important;
+}
+body.lb-workspace-mode #levelup>.wrap>p{color:#c4d0df!important;line-height:1.7!important}
+body.lb-workspace-mode #levelup .feature-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;margin-top:24px!important;
+}
+body.lb-workspace-mode #levelup .fun-panel{
+ min-width:0!important;padding:clamp(20px,2.8vw,29px)!important;border-radius:20px!important;
+ background:linear-gradient(150deg,#293452,#202d48)!important;
+ border:1px solid #58658b!important;box-shadow:0 16px 38px rgba(0,0,0,.2)!important;color:#f2f6fb!important;
+}
+body.lb-workspace-mode #levelup .fun-panel h3{color:#f5f7fc!important;font-size:1.25rem!important}
+body.lb-workspace-mode #levelup .fun-panel p{color:#cbd5e3!important;line-height:1.65!important}
+body.lb-workspace-mode #levelup .stat-pill{
+ color:#dfe7f2!important;background:#34415e!important;border:1px solid #65739a!important;
+}
+body.lb-workspace-mode #levelup .stat-pill span,
+body.lb-workspace-mode #levelup #xpLevel,
+body.lb-workspace-mode #levelup #xpTotal,
+body.lb-workspace-mode #levelup #badgeTotal{color:#b9b5ff!important;font-weight:850!important}
+body.lb-workspace-mode #levelup .xp-track{height:11px!important;border-radius:99px!important;background:#111d33!important;overflow:hidden!important}
+body.lb-workspace-mode #levelup .xp-fill{background:linear-gradient(90deg,#7d7be8,#72d8d0)!important;border-radius:99px!important}
+body.lb-workspace-mode #levelup .challenge{
+ padding:17px!important;border-radius:14px!important;background:#303d5b!important;border:1px solid #6977a0!important;
+}
+body.lb-workspace-mode #levelup .challenge strong{color:#fff!important;font-size:1.1rem!important}
+body.lb-workspace-mode #levelup .challenge button{
+ min-height:43px!important;padding:10px 15px!important;border-radius:10px!important;
+ color:#fff!important;background:#635fc0!important;border:1px solid #a5a0f1!important;font-weight:800!important;
+}
+body.lb-workspace-mode #levelup #masteryObservatory{
+ grid-column:1/-1!important;padding:clamp(20px,3vw,30px)!important;border-radius:20px!important;
+ background:linear-gradient(150deg,#1a3048,#17283d)!important;border:1px solid #4a6682!important;
+}
+body.lb-workspace-mode #levelup #masteryObservatory h3{color:#f5f8fc!important}
+body.lb-workspace-mode #levelup #masteryObservatory p{color:#c2d0df!important}
+body.lb-workspace-mode #celebrations{
+ padding:clamp(34px,4vw,60px) 0 72px!important;background:#0e1a2a!important;color:#f2f6fb!important;
+}
+body.lb-workspace-mode #celebrations>.wrap{max-width:1240px!important}
+body.lb-workspace-mode #celebrations .celebrations-hero{
+ position:relative!important;overflow:hidden!important;padding:clamp(25px,4vw,43px)!important;
+ border-radius:23px!important;background:radial-gradient(circle at 88% 20%,rgba(83,204,190,.2),transparent 32%),linear-gradient(125deg,#1b3850,#192a48 70%,#25314e)!important;
+ border:1px solid #4e7087!important;box-shadow:0 18px 44px rgba(0,0,0,.2)!important;
+}
+body.lb-workspace-mode #celebrations .celebrations-kicker,
+body.lb-workspace-mode #celebrations .celebration-overline{color:#91e1d7!important;font-weight:850!important;letter-spacing:.12em!important}
+body.lb-workspace-mode #celebrations .celebrations-hero h2{
+ color:#f5f8fc!important;font-size:clamp(2rem,4vw,3rem)!important;letter-spacing:-.05em!important;
+}
+body.lb-workspace-mode #celebrations .celebrations-hero p,
+body.lb-workspace-mode #celebrations .celebration-section-heading p,
+body.lb-workspace-mode #celebrations .celebration-personal-copy p{color:#c7d5e2!important;line-height:1.7!important}
+body.lb-workspace-mode #celebrations .celebration-section-heading{margin:30px 0 16px!important}
+body.lb-workspace-mode #celebrations .celebration-section-heading h3,
+body.lb-workspace-mode #celebrations .celebration-personal-copy h3{color:#f3f7fc!important}
+body.lb-workspace-mode #celebrations .celebration-count-label{
+ color:#b6e9e3!important;background:#1c3f4d!important;border:1px solid #4d7e85!important;
+}
+body.lb-workspace-mode #celebrations .celebration-grid,
+body.lb-workspace-mode #celebrations .personal-countdown-grid{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:13px!important;
+}
+body.lb-workspace-mode #celebrations .celebration-grid> *,
+body.lb-workspace-mode #celebrations .personal-countdown-grid> *{
+ min-width:0!important;padding:18px!important;border-radius:15px!important;
+ background:#1c3249!important;border:1px solid #47637d!important;color:#f1f6fb!important;
+}
+body.lb-workspace-mode #celebrations .celebration-personal{
+ margin-top:25px!important;padding:clamp(20px,3vw,29px)!important;border-radius:20px!important;
+ background:#172b40!important;border:1px solid #45617b!important;
+}
+body.lb-workspace-mode #celebrations .birthday-form{
+ display:grid!important;grid-template-columns:1fr 1fr auto!important;gap:9px 12px!important;align-items:end!important;margin:18px 0!important;
+}
+body.lb-workspace-mode #celebrations .birthday-form label{color:#d4e0ea!important;font-weight:700!important}
+body.lb-workspace-mode #celebrations .birthday-form input{
+ min-width:0!important;min-height:44px!important;padding:10px 12px!important;border-radius:10px!important;
+ background:#10243a!important;color:#f3f7fc!important;border:1px solid #526e87!important;
+}
+body.lb-workspace-mode #celebrations .birthday-form .btn{grid-column:1/-1!important;justify-self:start!important}
+body.lb-workspace-mode #celebrations .celebration-privacy{color:#aebfd0!important}
+body.lb-workspace-mode #calendar .calendar-layout{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(300px,.85fr)!important;gap:16px!important;margin-top:24px!important}
+body.lb-workspace-mode #calendar .calendar-panel{
+ min-width:0!important;padding:clamp(17px,2.5vw,25px)!important;border-radius:19px!important;
+ background:linear-gradient(150deg,#1b324a,#17283d)!important;border:1px solid #45617b!important;
+ box-shadow:0 15px 35px rgba(0,0,0,.17)!important;color:#f2f6fb!important;
+}
+body.lb-workspace-mode #calendar .calendar-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:9px!important;margin-bottom:18px!important}
+body.lb-workspace-mode #calendar .calendar-head h3{color:#f4f8fc!important;font-size:1.15rem!important}
+body.lb-workspace-mode #calendar .calendar-nav{display:flex!important;gap:6px!important}
+body.lb-workspace-mode #calendar .smallbtn{
+ min-height:36px!important;padding:7px 10px!important;border-radius:9px!important;
+ color:#dceaf3!important;background:#244158!important;border:1px solid #54758c!important;
+}
+body.lb-workspace-mode #calendar .calendar-weekdays,
+body.lb-workspace-mode #calendar .calendar-grid{
+ display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:6px!important;
+}
+body.lb-workspace-mode #calendar .calendar-weekdays span{
+ color:#aebfd0!important;text-align:center!important;font-size:.72rem!important;font-weight:800!important;padding:7px 0!important;
+}
+body.lb-workspace-mode #calendar .calendar-grid button{
+ min-width:0!important;min-height:43px!important;border-radius:9px!important;
+ color:#e7eef5!important;background:#20384f!important;border:1px solid #3d5872!important;
+}
+body.lb-workspace-mode #calendar .calendar-grid button:hover,
+body.lb-workspace-mode #calendar .calendar-grid button[aria-pressed="true"]{
+ color:#fff!important;background:#176b70!important;border-color:#79d8ce!important;
+}
+body.lb-workspace-mode #calendar .calendar-legend,
+body.lb-workspace-mode #calendar .calendar-help{color:#b6c7d6!important;line-height:1.65!important;font-size:.82rem!important}
+body.lb-workspace-mode #calendar .calendar-selected-title{color:#f5f8fc!important;font-size:1.2rem!important}
+body.lb-workspace-mode #calendar .calendar-event-list>*{
+ margin:9px 0!important;padding:12px!important;border-radius:11px!important;
+ color:#dce7f0!important;background:#20374e!important;border:1px solid #47627b!important;
+}
+body.lb-workspace-mode #calendar .calendar-form{
+ display:grid!important;gap:8px!important;margin-top:17px!important;padding:16px!important;
+ border-radius:14px!important;background:#12263b!important;border:1px solid #405e78!important;
+}
+body.lb-workspace-mode #calendar .calendar-form strong{color:#f2f7fc!important;font-size:1.05rem!important;margin-bottom:4px!important}
+body.lb-workspace-mode #calendar .calendar-form label{color:#c9d7e3!important;font-size:.88rem!important;font-weight:700!important}
+body.lb-workspace-mode #calendar .calendar-form button{min-height:43px!important}
+body.lb-workspace-mode #focus .quickstats{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;margin:22px 0!important;
+}
+body.lb-workspace-mode #focus .stat-card{
+ min-width:0!important;display:flex!important;flex-direction:column!important;gap:7px!important;
+ padding:17px!important;border-radius:15px!important;background:#1b3249!important;
+ border:1px solid #45617b!important;color:#c5d3e0!important;
+}
+body.lb-workspace-mode #focus .stat-card strong{color:#91e2d8!important;font-size:1.7rem!important}
+body.lb-workspace-mode #focus .upgrade-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:15px!important;
+}
+body.lb-workspace-mode #focus .upgrade-card{
+ min-width:0!important;padding:clamp(19px,2.5vw,26px)!important;border-radius:19px!important;
+ background:linear-gradient(150deg,#1b334b,#172a40)!important;border:1px solid #46627c!important;
+ box-shadow:0 15px 35px rgba(0,0,0,.16)!important;color:#f1f6fb!important;
+}
+body.lb-workspace-mode #focus .upgrade-card h3{color:#f4f8fc!important;font-size:1.2rem!important}
+body.lb-workspace-mode #focus .upgrade-card p{color:#c2d0dd!important;line-height:1.65!important}
+body.lb-workspace-mode #focus .upgrade-card .pill{
+ display:inline-flex!important;padding:6px 9px!important;border-radius:999px!important;
+ color:#9de5dc!important;background:#1b4553!important;border:1px solid #477b85!important;
+ font-size:.69rem!important;font-weight:850!important;letter-spacing:.1em!important;
+}
+body.lb-workspace-mode #focus .focus-clock{
+ color:#a4eee3!important;font-size:clamp(2.8rem,6vw,4.4rem)!important;
+ font-weight:800!important;letter-spacing:-.06em!important;font-variant-numeric:tabular-nums!important;
+ text-align:center!important;padding:15px!important;margin:13px 0!important;
+ border-radius:15px!important;background:#10243a!important;border:1px solid #3e6079!important;
+}
+body.lb-workspace-mode #focus .focus-actions{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+body.lb-workspace-mode #focus .focus-actions .btn,
+body.lb-workspace-mode #focus #goalForm .btn{
+ min-height:41px!important;padding:9px 13px!important;border-radius:10px!important;
+ color:#d8e8f0!important;background:#244358!important;border:1px solid #52758b!important;
+}
+body.lb-workspace-mode #focus .focus-actions .btn.primary,
+body.lb-workspace-mode #focus #goalForm .btn.primary{color:#fff!important;background:#087f7c!important;border-color:#51bcb2!important}
+body.lb-workspace-mode #focus .habit-row{
+ display:flex!important;align-items:center!important;gap:11px!important;padding:12px!important;margin:8px 0!important;
+ border-radius:11px!important;background:#20394f!important;border:1px solid #47637c!important;
+}
+body.lb-workspace-mode #focus .habit-row label{color:#e0eaf2!important}
+body.lb-workspace-mode #focus .habit-row input{width:18px!important;height:18px!important;accent-color:#65d4c8!important}
+body.lb-workspace-mode #focus .progress-track{height:9px!important;border-radius:99px!important;background:#10243a!important;overflow:hidden!important}
+body.lb-workspace-mode #focus .progress-track span{background:#65d4c8!important}
+body.lb-workspace-mode #focus .goal-row{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;
+ padding:12px!important;margin:8px 0!important;border-radius:11px!important;
+ background:#20394f!important;border:1px solid #47637c!important;color:#e2ebf3!important;
+}
+body.lb-workspace-mode #focus .goal-row button{
+ min-height:34px!important;padding:6px 9px!important;border-radius:8px!important;
+ color:#d9f3ee!important;background:#24515a!important;border:1px solid #4f8586!important;
+}
+body.lb-workspace-mode #bibleStudy{
+ padding:clamp(20px,3vw,30px)!important;border-radius:21px!important;
+ background:linear-gradient(150deg,#1b324a,#17283d)!important;border:1px solid #45617b!important;
+ color:#f2f6fb!important;
+}
+body.lb-workspace-mode #bibleStudy .bible-hub-head{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;
+ padding-bottom:20px!important;border-bottom:1px solid #405c75!important;
+}
+body.lb-workspace-mode #bibleStudy .bible-hub-head h3{color:#f5f8fc!important;font-size:1.5rem!important}
+body.lb-workspace-mode #bibleStudy .bible-hub-head p{color:#c4d2df!important;line-height:1.65!important}
+body.lb-workspace-mode #bibleStudy .bible-hub-stat{
+ padding:15px!important;border-radius:13px!important;background:#203d50!important;border:1px solid #4b7885!important;
+}
+body.lb-workspace-mode #bibleStudy .bible-hub-stat strong{color:#9ce5dc!important;font-size:1.7rem!important}
+body.lb-workspace-mode #bibleStudy .bible-hub-stat span{color:#bed0dc!important;font-size:.68rem!important}
+body.lb-workspace-mode #bibleStudy .bible-explorer,
+body.lb-workspace-mode #bibleStudy .bible-method{
+ margin-top:17px!important;padding:18px!important;border-radius:14px!important;
+ background:#12263b!important;border:1px solid #405e78!important;
+}
+body.lb-workspace-mode #bibleStudy .bible-selectors{display:grid!important;grid-template-columns:1.5fr .7fr auto!important;gap:11px!important;align-items:end!important}
+body.lb-workspace-mode #bibleStudy .field label,
+body.lb-workspace-mode #bibleStudy .bible-method h4{color:#e2ebf3!important}
+body.lb-workspace-mode #bibleStudy select,
+body.lb-workspace-mode #bibleStudy input{background:#1b344b!important;color:#f2f6fb!important;border:1px solid #526d86!important;border-radius:9px!important}
+body.lb-workspace-mode #bibleStudy .bible-chapter-card{
+ margin-top:15px!important;padding:19px!important;border-radius:13px!important;
+ background:#20394f!important;border:1px solid #4b6a82!important;color:#dce7f0!important;
+}
+body.lb-workspace-mode #bibleStudy .bible-chapter-card h4{color:#f4f8fc!important}
+body.lb-workspace-mode #bibleStudy .bible-feature-grid{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:11px!important;margin-top:15px!important;
+}
+body.lb-workspace-mode #bibleStudy .bible-feature-grid article{
+ min-width:0!important;padding:17px!important;border-radius:13px!important;
+ background:#20374d!important;border:1px solid #47627b!important;
+}
+body.lb-workspace-mode #bibleStudy .bible-feature-grid h4{color:#f4f8fc!important}
+body.lb-workspace-mode #bibleStudy .bible-feature-grid p,
+body.lb-workspace-mode #bibleStudy .bible-method li,
+body.lb-workspace-mode #bibleStudy .bible-method p{color:#c4d2df!important;line-height:1.65!important}
+body.lb-workspace-mode #bibleStudy .bible-method h4{color:#f3f7fc!important}
+body.lb-workspace-mode :is(#today,#calendar,#focus,#budget,#convert,#levelup,#celebrations,#bibleStudy,#accessPanel) :focus-visible{
+ outline:2px solid #8ce4da!important;outline-offset:3px!important;
+}
+@media(max-width:900px){
+ body.lb-workspace-mode #calendar .calendar-layout{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #levelup .feature-grid{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #levelup #masteryObservatory{grid-column:auto!important}
+ body.lb-workspace-mode #bibleStudy .bible-feature-grid{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:650px){
+ body.lb-workspace-mode #today .command-head{align-items:flex-start!important;flex-direction:column!important}
+ body.lb-workspace-mode #today .command-grid,
+ body.lb-workspace-mode #today .daily-plan-grid,
+ body.lb-workspace-mode #focus .upgrade-grid{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #today .command-inputrow{flex-direction:column!important;align-items:stretch!important}
+ body.lb-workspace-mode #today .command-stats,
+ body.lb-workspace-mode #focus .quickstats{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #calendar .calendar-grid{gap:3px!important}
+ body.lb-workspace-mode #calendar .calendar-grid button{min-height:37px!important;font-size:.83rem!important}
+ body.lb-workspace-mode #celebrations .celebration-grid,
+ body.lb-workspace-mode #celebrations .personal-countdown-grid{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #celebrations .birthday-form{grid-template-columns:1fr!important}
+ body.lb-workspace-mode #celebrations .birthday-form .btn{grid-column:auto!important;width:100%!important}
+ body.lb-workspace-mode #bibleStudy .bible-hub-head{align-items:flex-start!important;flex-direction:column!important}
+ body.lb-workspace-mode #bibleStudy .bible-selectors,
+ body.lb-workspace-mode #bibleStudy .bible-feature-grid{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.lb-workspace-mode #today *,
+ body.lb-workspace-mode #calendar *,
+ body.lb-workspace-mode #focus *,
+ body.lb-workspace-mode #budget *,
+ body.lb-workspace-mode #convert *,
+ body.lb-workspace-mode #levelup *,
+ body.lb-workspace-mode #celebrations *,
+ body.lb-workspace-mode #bibleStudy *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+</style>
