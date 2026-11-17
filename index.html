@@ -4421,6 +4421,70 @@ body:not(.high-contrast) :focus-visible{outline:3px solid #75ded2!important;outl
  body:not(.high-contrast) *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
 </style>
+
+<style id="lifebridge-compact-header-07">
+/* Compact the oversized header, especially at tablet widths in Safari. */
+body.lb-workspace-mode .topbar{
+ padding:0!important;min-height:0!important;
+}
+body.lb-workspace-mode .nav{
+ width:min(1440px,96%)!important;min-height:0!important;
+ padding:7px 0!important;gap:12px!important;
+ align-items:center!important;flex-direction:row!important;
+}
+body.lb-workspace-mode .logo{
+ font-size:1.12rem!important;gap:8px!important;
+}
+body.lb-workspace-mode .logo-mark{
+ width:40px!important;height:40px!important;
+}
+body.lb-workspace-mode .lb-live-clock{
+ min-width:92px!important;padding:4px 9px!important;
+ margin-right:auto!important;gap:1px!important;
+}
+body.lb-workspace-mode .lb-clock-time{font-size:.92rem!important}
+body.lb-workspace-mode .lb-clock-date{font-size:.65rem!important}
+body.lb-workspace-mode .navlinks{
+ flex:1 1 auto!important;width:auto!important;
+ justify-content:flex-end!important;align-items:center!important;
+ flex-wrap:nowrap!important;gap:5px!important;
+}
+body.lb-workspace-mode .navlinks a[data-lb-route],
+body.lb-workspace-mode .lb-nav-more>summary,
+body.lb-workspace-mode .navlinks .quick-jump-trigger,
+body.lb-workspace-mode .navlinks #accessToggle,
+body.lb-workspace-mode .navlinks #accountOpen{
+ min-height:36px!important;padding:7px 9px!important;
+ font-size:.8rem!important;border-radius:9px!important;
+}
+@media(max-width:1180px){
+ body.lb-workspace-mode .nav{
+  display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;
+  align-items:center!important;gap:5px 10px!important;padding:6px 0!important;
+ }
+ body.lb-workspace-mode .logo{order:1}
+ body.lb-workspace-mode .lb-live-clock{order:2;margin-left:auto!important;margin-right:0!important}
+ body.lb-workspace-mode .navlinks{
+  order:3;flex:1 0 100%!important;width:100%!important;
+  justify-content:flex-start!important;overflow-x:auto!important;
+  overflow-y:hidden!important;flex-wrap:nowrap!important;
+  padding:2px 0 5px!important;scrollbar-width:thin!important;
+  -webkit-overflow-scrolling:touch;
+ }
+ body.lb-workspace-mode .lb-nav-primary{flex-wrap:nowrap!important;flex:0 0 auto!important}
+ body.lb-workspace-mode .lb-nav-more{flex:0 0 auto!important}
+ body.lb-workspace-mode .lb-nav-more-links{left:0!important;right:auto!important}
+}
+@media(max-width:700px){
+ body.lb-workspace-mode .nav{width:94%!important;gap:4px 8px!important}
+ body.lb-workspace-mode .logo{font-size:1rem!important}
+ body.lb-workspace-mode .logo-mark{width:34px!important;height:34px!important}
+ body.lb-workspace-mode .lb-live-clock{min-width:80px!important}
+ body.lb-workspace-mode .navlinks a[data-lb-route],
+ body.lb-workspace-mode .lb-nav-more>summary{font-size:.76rem!important;padding:6px 8px!important}
+ body.lb-workspace-mode .navlinks #accessToggle{display:none!important}
+}
+</style>
 </html>
 
 <!-- LifeBridge readability pass: stronger contrast for pale blue text -->
