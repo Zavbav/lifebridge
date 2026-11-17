@@ -789,6 +789,142 @@ body.lb-workspace-mode .section-head h2,body.lb-workspace-mode main>section>div>
 #lifebuddy,.lifebuddy-float{display:none!important}
 </style>
 
+
+<style id="lifebridge-visual-refresh-01">
+/* LIFEBRIDGE VISUAL REFRESH 01 — midnight canvas, crisp surfaces, readable contrast */
+:root{
+  color-scheme:dark;
+  --bg:#081321;
+  --surface:#111f32;
+  --ink:#edf4ff;
+  --muted:#a8b8cc;
+  --brand:#68a0ff;
+  --brand2:#1a3150;
+  --line:#2a405b;
+  --shadow:0 18px 48px rgba(0,0,0,.28);
+}
+html{background:#081321;color-scheme:dark}
+body{
+  background:
+    radial-gradient(ellipse at 8% 4%,rgba(55,105,190,.22),transparent 34%),
+    radial-gradient(ellipse at 92% 32%,rgba(35,180,195,.10),transparent 28%),
+    linear-gradient(180deg,#081321 0%,#0a1728 58%,#0b192a 100%)!important;
+  color:var(--ink)!important;
+}
+a{color:#a9caff}
+.topbar{
+  background:rgba(8,19,33,.88)!important;
+  border-bottom:1px solid rgba(126,164,211,.18)!important;
+  backdrop-filter:blur(20px) saturate(140%);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);
+}
+.logo{color:#f2f7ff!important}
+.logo-mark img{filter:drop-shadow(0 4px 14px rgba(74,145,255,.25))}
+.navlinks a{color:#b4c3d7!important;transition:color .18s ease,background .18s ease}
+.navlinks a:hover,.navlinks a:focus-visible{color:#fff!important}
+.navlinks .smallbtn,.navlinks .account-btn,.smallbtn{
+  background:#14243a!important;color:#dceaff!important;
+  border:1px solid #2c4564!important;border-radius:12px;
+}
+.navlinks .account-btn{background:linear-gradient(120deg,#3978e8,#3866c5)!important;border:0!important;color:#fff!important}
+.hero{
+  background:
+    radial-gradient(ellipse at 78% 8%,rgba(78,111,218,.25),transparent 36%),
+    radial-gradient(ellipse at 12% 95%,rgba(20,171,181,.12),transparent 34%),
+    linear-gradient(135deg,#0b1a2d 0%,#101f38 58%,#111c34 100%)!important;
+  border-bottom:1px solid rgba(119,157,204,.14);
+}
+.hero h1{color:#f3f7ff!important;letter-spacing:-.055em}
+.hero h1 .pop{
+  background:linear-gradient(100deg,#83b4ff 0%,#5fe0e0 55%,#b3a2ff 100%)!important;
+  background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;
+}
+.hero p,.section-head p,.site-description,.notice{color:#b2c1d4!important}
+.eyebrow{
+  color:#c8ddff!important;background:rgba(32,57,91,.7)!important;
+  border:1px solid rgba(120,164,224,.3)!important;box-shadow:none!important;
+}
+.btn,.smallbtn{
+  background:#15263d!important;color:#eaf2ff!important;border:1px solid #304966!important;
+}
+.btn.primary{
+  background:linear-gradient(115deg,#3979e8,#287fae)!important;
+  color:#fff!important;border:1px solid rgba(145,190,255,.35)!important;
+  box-shadow:0 8px 24px rgba(42,112,220,.24)!important;
+}
+.hero-art,.panel,.tool-card,.upgrade-card,.stat-card,.focus-card,.habit-card,.goal-card,
+.math-box,.math-feature .panel,.account-card{
+  background:linear-gradient(150deg,rgba(20,37,59,.97),rgba(15,30,49,.98))!important;
+  color:#edf4ff!important;border:1px solid #2a425e!important;
+  box-shadow:var(--shadow)!important;
+}
+.hero-art{border-radius:26px}
+.art-circle{
+  background:
+    radial-gradient(circle at 30% 22%,rgba(130,189,255,.85),transparent 28%),
+    linear-gradient(140deg,#2757a7 0%,#167c9b 52%,#5446a8 100%)!important;
+  box-shadow:inset 0 0 55px rgba(255,255,255,.12),0 16px 36px rgba(0,0,0,.22)!important;
+}
+.art-note,.tool-card h3,.upgrade-card h3,.panel h3,.stat-card strong{color:#f1f6ff!important}
+.art-sub,.tool-card p,.upgrade-card p,.stat-card span,.empty{color:#aebed2!important}
+.section{color:var(--ink)!important}
+.section h2,.section h3{color:#f0f5ff!important}
+.tool-card{
+  min-height:220px;border-radius:22px!important;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease!important;
+}
+.tool-card:hover{border-color:#5688c8!important;box-shadow:0 20px 44px rgba(0,0,0,.34)!important}
+.tool-icon{
+  background:linear-gradient(145deg,#1e3d60,#203451)!important;
+  color:#cfe3ff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+.tool-card button{color:#91baff!important}
+.panel{border-radius:22px!important}
+.field label{color:#d9e6f6!important}
+.field input,.field select,.field textarea,.upgrade-card input,.upgrade-card textarea,
+.search,.ai-form input{
+  background:#0b192a!important;color:#f0f5ff!important;
+  border:1px solid #304966!important;border-radius:12px!important;
+}
+input::placeholder,textarea::placeholder{color:#8296af!important;opacity:1}
+.result{background:#1b3553!important;color:#e7f1ff!important;border:1px solid #345476}
+.task-row{border-color:#2a405b!important}
+.feature-band{
+  background:
+    radial-gradient(ellipse at 85% 10%,rgba(91,111,225,.26),transparent 36%),
+    linear-gradient(125deg,#101f36,#122d49 58%,#123e4c)!important;
+  border-top:1px solid rgba(130,170,220,.12);
+  border-bottom:1px solid rgba(130,170,220,.12);
+}
+.feature-band p{color:#c0d0e2!important}
+.fun-panel{background:rgba(9,22,38,.48)!important;border-color:rgba(150,184,225,.2)!important}
+.stat-pill{background:rgba(122,164,220,.12)!important;border-color:rgba(150,184,225,.2)!important;color:#e8f2ff}
+.challenge{background:linear-gradient(125deg,#1a3150,#263253)!important;color:#edf4ff!important;border:1px solid #3a5275}
+.challenge button{background:linear-gradient(120deg,#3979e8,#287fae)!important}
+.pill,tag{background:#1c3555!important;color:#b9d6ff!important}
+.math-tabs button{background:#14243a!important;color:#dceaff!important;border-color:#304966!important}
+.math-tabs button.active{background:#3477dc!important;color:#fff!important;border-color:#5792ed!important}
+.math-step{background:#182e49!important;color:#e8f2ff!important;border-left-color:#68a0ff!important}
+.account-modal{background:rgba(2,8,17,.78)!important}
+.account-card{background:#111f32!important;color:#edf4ff!important}
+.account-card .field input{background:#0b192a!important;color:#f0f5ff!important}
+.account-tabs button{background:#172a43!important;color:#d9e7f8!important;border-color:#304966!important}
+.account-tabs button.active{background:#3979e8!important;color:#fff!important}
+.footer{border-color:#263d57!important;color:#9fb2c9!important}
+.footer a{color:#b8d4ff!important}
+.back-top{background:#3979e8!important;color:#fff!important}
+#toast{background:#eaf2ff!important;color:#102139!important}
+:focus-visible{outline:3px solid #75c9ff!important;outline-offset:3px}
+@media(max-width:700px){
+  .nav{background:transparent!important}
+  .navlinks{scrollbar-color:#486b91 transparent!important}
+  .navlinks a{background:transparent!important}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
