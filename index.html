@@ -4249,51 +4249,63 @@ body.lb-workspace-mode .lb-view-active .daily-plan-heading p{color:#bfcede!impor
 @media(max-width:420px){.lb-age-entry{padding:12px}.lb-age-grid{gap:8px}.lb-age-option{padding:14px 12px}.lb-age-card{padding:20px}}
 @media(prefers-reduced-motion:reduce){.lb-age-option{transition:none}}
 </style>
-<script id="lifebridge-age-entry-14">
+<style id="lifebridge-age-and-use-15">
+.lb-age-entry .lb-age-step[hidden]{display:none!important}
+.lb-age-entry .lb-age-option{min-height:145px}
+.lb-age-entry .lb-age-option[aria-pressed="true"]{border-color:#82e1d5;background:#214b5a;box-shadow:inset 0 0 0 1px #82e1d5}
+.lb-age-back{margin:0 0 18px;padding:8px 12px;border:1px solid #58758d;border-radius:9px;background:#1d3a51;color:#e9f3f8;font-weight:700;cursor:pointer}
+.lb-age-current{flex-wrap:wrap}
+.lb-age-current strong{color:#91e4d9}
+@media(max-width:760px){.lb-age-entry .lb-age-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<script id="lifebridge-age-entry-15">
 (()=>{
- const groups={
-  kids:{name:"Kids",range:"AGES 5–12",description:"A simpler space for younger learners, with clear activities, creative discovery and guided learning.",hero:"Big discoveries start here.",sub:"Explore learning activities, creative challenges and simple everyday tools.",cta:"Explore learning",route:"learn",nav:["home","learn","lifequest","tools","organize","calendar"],cards:[["LEARN","Learning Worlds","Explore maths, science and reading","learn"],["PLAY","Skill Quest","Try friendly learning challenges","lifequest"],["CREATE","Creative Tools","Discover simple tools and activities","tools"],["ORGANISE","My Tasks","Keep school and home tasks in order","organize"]]},
-  teens:{name:"Teens",range:"AGES 13–17",description:"A space for school, interests and growing independence, with study tools and practical life skills.",hero:"Build skills for what comes next.",sub:"Study smarter, organise schoolwork and explore useful skills for everyday life.",cta:"Open Study Center",route:"learn",nav:["home","today","learn","bibleStudy","lifequest","organize","focus","calendar","levelup","tools"],cards:[["STUDY","Study Center","Lessons, revision and subject practice","learn"],["PLAN","School Organizer","Keep assignments and deadlines together","organize"],["PRACTISE","Life Skills","Build confidence with practical challenges","lifequest"],["FOCUS","Focus Space","Make time for the work that matters","focus"]]},
-  adults:{name:"Adults",range:"AGES 18–59",description:"A practical workspace for personal organisation, projects, budgeting and everyday decisions.",hero:"Bring your plans into focus.",sub:"Organise projects, manage everyday tasks and make thoughtful progress.",cta:"Open my workspace",route:"organize",nav:["home","today","tools","organize","budget","calendar","focus","celebrations","levelup"],cards:[["PLAN","Planning & Projects","Turn priorities into manageable steps","organize"],["MONEY","Budget Helper","Review income, expenses and savings plans","budget"],["TOOLS","Everyday Tools","Find practical tools for work and life","tools"],["FOCUS","Focus Timer","Set aside time for important work","focus"]]},
-  seniors:{name:"Seniors",range:"AGES 60+",description:"A clear, comfortable space with easy-to-find tools, learning, reminders and everyday activities.",hero:"Keep learning and doing what matters.",sub:"Find useful tools, keep plans visible and explore learning at a comfortable pace.",cta:"Explore helpful tools",route:"tools",nav:["home","today","tools","organize","calendar","focus","celebrations","lifequest","bibleStudy"],cards:[["DAILY LIFE","Everyday Organizer","Keep reminders and plans together","organize"],["DISCOVER","Learning & Interests","Explore subjects and new interests","learn"],["IMPORTANT DATES","Calendar","Keep events and reminders visible","calendar"],["BRAIN GAMES","Skill Quest","Enjoy short, thoughtful challenges","lifequest"]]}
+ const ages={
+  kids:{name:"Kids",range:"AGES 5–12",description:"A welcoming, simpler space for younger learners.",hero:"Big discoveries start here.",sub:"Explore learning activities, creative challenges and guided tools.",nav:["home","learn","lifequest","tools","organize","calendar"]},
+  teens:{name:"Teens",range:"AGES 13–17",description:"For school, interests and growing independence.",hero:"Build skills for what comes next.",sub:"Study, organise schoolwork and explore useful skills.",nav:["home","today","learn","bibleStudy","lifequest","organize","focus","calendar","levelup","tools"]},
+  adults:{name:"Adults",range:"AGES 18–59",description:"For work, personal goals and everyday decisions.",hero:"Bring your plans into focus.",sub:"Organise projects, manage everyday tasks and keep moving forward.",nav:["home","today","tools","organize","budget","calendar","focus","celebrations","levelup","learn"]},
+  seniors:{name:"Seniors",range:"AGES 60+",description:"A comfortable space for learning, reminders and everyday activities.",hero:"Keep learning and doing what matters.",sub:"Find useful tools, keep plans visible and explore at your own pace.",nav:["home","today","tools","organize","calendar","focus","celebrations","lifequest","bibleStudy","learn"]}
  };
- const key="lifebridge-age-category-v1";
- let selected=null;
- try{const saved=localStorage.getItem(key);if(saved&&groups[saved])selected=saved;}catch{}
+ const uses={
+  student:{name:"Student",description:"Study tools, revision, assignments and learning progress.",hero:"Make progress in every subject.",sub:"Your space for studying, practising and staying on top of assignments.",cta:"Open Study Center",route:"learn",nav:["learn","bibleStudy","lifequest","focus","levelup"],cards:[["STUDY","Study Center","Lessons, flashcards and subject practice","learn"],["PLAN","Study Organizer","Keep assignments and deadlines together","organize"],["PRACTISE","Skill Quest","Build useful skills through challenges","lifequest"],["FOCUS","Focus Space","Make time for learning","focus"]]},
+  teacher:{name:"Teacher",description:"Lesson preparation, classroom resources and teaching organisation.",hero:"Make teaching easier to organise.",sub:"Bring lesson resources, classroom planning and teaching tasks together.",cta:"Open teaching tools",route:"tools",nav:["learn","tools","organize","calendar","levelup"],cards:[["PREPARE","Lesson Resources","Explore learning content and materials","learn"],["CREATE","Teaching Tools","Find useful classroom resources","tools"],["PLAN","Teaching Organizer","Track preparation and classroom tasks","organize"],["SCHEDULE","Calendar","Keep lessons and important dates visible","calendar"]]},
+  everyday:{name:"Everyday",description:"General tools for organisation, hobbies, planning and daily life.",hero:"Make everyday life feel simpler.",sub:"Plan your day, explore useful tools and make room for what matters.",cta:"Explore my tools",route:"tools",nav:["tools","organize","budget","calendar","focus","celebrations","lifequest"],cards:[["PLAN","Planning & Organizing","Keep tasks and plans in one place","organize"],["DISCOVER","Explore Tools","Find helpful tools for everyday life","tools"],["YOUR TIME","Calendar","See what is coming up","calendar"],["GROW","Life Skills","Build practical skills through challenges","lifequest"]]}
+ };
+ const ageKey="lifebridge-age-category-v1",useKey="lifebridge-use-type-v1";
+ let age=null,use=null;
+ try{const a=localStorage.getItem(ageKey),u=localStorage.getItem(useKey);if(ages[a])age=a;if(uses[u])use=u;}catch{}
  const hub=document.querySelector(".lb-home-hub"),nav=document.querySelector(".navlinks"),hero=document.querySelector("#home .hero-copy"),main=document.querySelector("main"),home=document.querySelector("#home");
  if(!hub||!nav||!hero||!main||!home)return;
- const chooser=document.createElement("section");chooser.className="lb-age-entry";chooser.setAttribute("aria-label","Choose your age category");chooser.hidden=!!selected;
- chooser.innerHTML='<div class="lb-age-card"><p class="lb-age-kicker">WELCOME TO LIFEBRIDGE</p><h1>First, choose your age group.</h1><p class="lb-age-intro">We’ll shape the starting page and available sections around the age group you choose. You can change it later.</p><div class="lb-age-grid" id="lbAgeGrid"></div></div>';
+ const chooser=document.createElement("section");chooser.className="lb-age-entry";chooser.setAttribute("aria-label","Personalise your LifeBridge experience");chooser.hidden=!!(age&&use);
+ chooser.innerHTML='<div class="lb-age-card"><div class="lb-age-step" id="lbAgeStep"><p class="lb-age-kicker">WELCOME TO LIFEBRIDGE · STEP 1 OF 2</p><h1>What age group are you in?</h1><p class="lb-age-intro">We’ll tailor the starting experience to the right age group.</p><div class="lb-age-grid" id="lbAgeGrid"></div></div><div class="lb-age-step" id="lbUseStep" hidden><button type="button" class="lb-age-back" id="lbAgeBack">← Back to age groups</button><p class="lb-age-kicker">WELCOME TO LIFEBRIDGE · STEP 2 OF 2</p><h1>How will you use LifeBridge?</h1><p class="lb-age-intro">Choose the experience that best describes what you need. You can change both choices later.</p><div class="lb-age-grid" id="lbUseGrid"></div></div></div>';
  document.body.append(chooser);
- const current=document.createElement("div");current.className="lb-age-current";current.innerHTML='<span>Your LifeBridge age group: <strong id="lbAgeCurrent"></strong></span><button type="button" class="lb-age-change" id="lbAgeChange">Change age group</button>';
+ const current=document.createElement("div");current.className="lb-age-current";current.innerHTML='<span>Your experience: <strong id="lbAgeCurrent"></strong></span><button type="button" class="lb-age-change" id="lbAgeChange">Change choices</button>';
  main.insertBefore(current,home);
  const cards=document.createElement("div");cards.className="lb-mode-home-grid";cards.setAttribute("aria-label","Recommended starting points");
  const departments=hub.querySelector(".lb-home-departments");if(departments)departments.replaceWith(cards);
- const grid=chooser.querySelector("#lbAgeGrid");
- Object.entries(groups).forEach(([id,g])=>{
-  const b=document.createElement("button");b.type="button";b.className="lb-age-option";
-  b.innerHTML='<span class="lb-age-range">'+g.range+'</span><strong>'+g.name+'</strong><span>'+g.description+'</span>';
-  b.addEventListener("click",()=>{selected=id;try{localStorage.setItem(key,id);}catch{}chooser.hidden=true;apply();});
-  grid.append(b);
- });
- document.querySelector("#lbAgeChange").addEventListener("click",()=>{chooser.hidden=false;const first=grid.querySelector("button");if(first)first.focus();});
+ const ageStep=chooser.querySelector("#lbAgeStep"),useStep=chooser.querySelector("#lbUseStep"),ageGrid=chooser.querySelector("#lbAgeGrid"),useGrid=chooser.querySelector("#lbUseGrid");
+ function showAge(){ageStep.hidden=false;useStep.hidden=true;}
+ function showUse(){ageStep.hidden=true;useStep.hidden=false;const first=useGrid.querySelector("button");if(first)first.focus();}
+ Object.entries(ages).forEach(([id,g])=>{const b=document.createElement("button");b.type="button";b.className="lb-age-option";b.innerHTML='<span class="lb-age-range">'+g.range+'</span><strong>'+g.name+'</strong><span>'+g.description+'</span>';b.addEventListener("click",()=>{age=id;try{localStorage.setItem(ageKey,id);}catch{}showUse();});ageGrid.append(b);});
+ Object.entries(uses).forEach(([id,u])=>{const b=document.createElement("button");b.type="button";b.className="lb-age-option";b.innerHTML='<span class="lb-age-range">YOUR PURPOSE</span><strong>'+u.name+'</strong><span>'+u.description+'</span>';b.addEventListener("click",()=>{use=id;try{localStorage.setItem(useKey,id);}catch{}chooser.hidden=true;apply();});useGrid.append(b);});
+ chooser.querySelector("#lbAgeBack").addEventListener("click",showAge);
+ document.querySelector("#lbAgeChange").addEventListener("click",()=>{chooser.hidden=false;showAge();const first=ageGrid.querySelector("button");if(first)first.focus();});
  function apply(){
-  if(!selected)return;
-  const g=groups[selected];
-  document.querySelector("#lbAgeCurrent").textContent=g.name+" ("+g.range.toLowerCase()+")";
-  const h=hero.querySelector("h1"),p=hero.querySelector(":scope > p");
-  if(h)h.textContent=g.hero;if(p)p.textContent=g.sub;
-  const cta=hero.querySelector(".lb-main-cta");if(cta){cta.textContent=g.cta+" ↗";cta.href="#"+g.route;}
-  const kicker=hero.querySelector(".lb-hero-kicker");if(kicker)kicker.lastChild.textContent=" "+g.name.toUpperCase()+" EXPERIENCE";
+  if(!age||!use)return;
+  const a=ages[age],u=uses[use];
+  document.querySelector("#lbAgeCurrent").textContent=a.name+" · "+u.name;
+  const h=hero.querySelector("h1"),p=hero.querySelector(":scope > p");if(h)h.textContent=u.hero;if(p)p.textContent=u.sub;
+  const cta=hero.querySelector(".lb-main-cta");if(cta){cta.textContent=u.cta+" ↗";cta.href="#"+u.route;}
+  const kicker=hero.querySelector(".lb-hero-kicker");if(kicker)kicker.lastChild.textContent=" "+a.name.toUpperCase()+" · "+u.name.toUpperCase()+" EXPERIENCE";
   const hubTitle=hub.querySelector(".lb-home-hub-heading h2");if(hubTitle)hubTitle.textContent="A good place to start";
-  const hubCopy=hub.querySelector(".lb-home-hub-heading p");if(hubCopy)hubCopy.textContent="Helpful places to begin, chosen for your age group.";
+  const hubCopy=hub.querySelector(".lb-home-hub-heading p");if(hubCopy)hubCopy.textContent=a.name+" experience · "+u.name+" tools and recommendations";
   cards.replaceChildren();
-  g.cards.forEach(item=>{const a=document.createElement("a");a.className="lb-mode-home-card";a.href="#"+item[3];const small=document.createElement("small"),strong=document.createElement("strong"),span=document.createElement("span");small.textContent=item[0];strong.textContent=item[1];span.textContent=item[2];a.append(small,strong,span);cards.append(a);});
-  nav.querySelectorAll("[data-lb-route]").forEach(a=>{a.style.display=g.nav.includes(a.dataset.lbRoute)?"":"none";});
-  const more=nav.querySelector(".lb-nav-more");if(more){const visible=[...more.querySelectorAll("[data-lb-route]")].some(a=>a.style.display!=="none");more.style.display=visible?"":"none";}
-  document.title=g.name+" | LifeBridge";
+  u.cards.forEach(item=>{const link=document.createElement("a");link.className="lb-mode-home-card";link.href="#"+item[3];const small=document.createElement("small"),strong=document.createElement("strong"),span=document.createElement("span");small.textContent=item[0];strong.textContent=item[1];span.textContent=item[2];link.append(small,strong,span);cards.append(link);});
+  const allowed=new Set([...a.nav,...u.nav,"home"]);nav.querySelectorAll("[data-lb-route]").forEach(link=>{link.style.display=allowed.has(link.dataset.lbRoute)?"":"none";});
+  const more=nav.querySelector(".lb-nav-more");if(more){const visible=[...more.querySelectorAll("[data-lb-route]")].some(link=>link.style.display!=="none");more.style.display=visible?"":"none";}
+  document.title=a.name+" · "+u.name+" | LifeBridge";
  }
- if(selected)apply();
+ if(age&&use)apply();else if(age)showUse();else showAge();
 })();
 </script>
 
