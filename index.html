@@ -986,6 +986,38 @@ input::placeholder,textarea::placeholder{color:#8296af!important;opacity:1}
 @media(max-width:480px){#budget .lb-budget-expenses{grid-template-columns:1fr}#budget .lb-budget-metrics{gap:6px}#budget .lb-budget-metrics strong{font-size:.85rem}#budget .lb-budget-summary-top{flex-direction:column}body.lb-workspace-mode .lb-nav-more-links{width:min(310px,calc(100vw - 24px));min-width:0}}
 @media(prefers-reduced-motion:reduce){#budget .lb-budget-bar span{transition:none}}
 </style>
+<style id="lifebridge-start-panel">
+.lb-start-panel{position:relative;z-index:2;padding:20px 0 0;background:transparent}
+.lb-start-inner{width:min(1320px,94%);margin:0 auto;padding:20px 22px 22px;border:1px solid #344e68;border-radius:19px;background:linear-gradient(120deg,#14283d 0%,#182e46 58%,#1b344b 100%);box-shadow:0 14px 34px rgba(0,0,0,.16)}
+.lb-start-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:14px}
+.lb-start-kicker{color:#77d7cc;font-size:.65rem;font-weight:900;letter-spacing:.16em}
+.lb-start-heading h2{margin:4px 0 2px;color:#f5f8fc;font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.035em;line-height:1.2}
+.lb-start-heading p{margin:0;color:#c1d0df;font-size:.8rem}
+.lb-start-count{flex:0 0 auto;padding:6px 9px;border:1px solid #46657e;border-radius:99px;color:#c7dce6;font-size:.61rem;font-weight:850;letter-spacing:.1em}
+.lb-start-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.lb-start-card{position:relative;display:flex;min-width:0;min-height:112px;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:13px 12px 11px;border:1px solid #3e5b73;border-radius:12px;background:#203951;color:#f6f8fb;text-decoration:none;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.lb-start-card:hover,.lb-start-card:focus-visible{transform:translateY(-2px);border-color:#81d8ce;background:#29475e;outline:none}
+.lb-start-number{margin-bottom:7px;color:#7fdbd1;font-size:.62rem;font-weight:900;letter-spacing:.1em}
+.lb-start-card strong{color:#fff;font-size:.86rem;line-height:1.25}
+.lb-start-card small{display:block;margin-top:4px;color:#c4d4e0;font-size:.69rem;line-height:1.35}
+.lb-start-card b{margin-top:auto;padding-top:8px;color:#91e2d8;font-size:.65rem;font-weight:800}
+.lb-start-card.start-plan{background:#243c51}.lb-start-card.start-tools{background:#263b55}.lb-start-card.start-grow{background:#233f4b}.lb-start-card.start-calendar{background:#293a50}.lb-start-card.start-focus{background:#25354d}
+body[data-lb-age="kids"] .lb-start-inner{background:linear-gradient(120deg,#243b43,#294b4a);border-color:#d8a85f}
+body[data-lb-age="kids"] .lb-start-card{background:#315b59;border-color:#6a9d88;border-radius:17px}
+body[data-lb-age="preteens"] .lb-start-inner{background:linear-gradient(120deg,#173b55,#1c4558);border-color:#ff806b}
+body[data-lb-age="preteens"] .lb-start-card{background:#214d62;border-color:#4e9c9b}
+body[data-lb-age="teens"] .lb-start-inner{background:linear-gradient(120deg,#1c2947,#22294a);border-color:#8278d8}
+body[data-lb-age="teens"] .lb-start-card{background:#29385b;border-color:#686bb0}
+body[data-lb-age="adults"] .lb-start-inner{background:linear-gradient(120deg,#173b3c,#183d45);border-color:#62bba9}
+body[data-lb-age="adults"] .lb-start-card{background:#21484a;border-color:#4c9c91}
+body[data-lb-age="seniors"] .lb-start-inner{background:linear-gradient(120deg,#34483e,#3b5145);border-color:#c9ae70}
+body[data-lb-age="seniors"] .lb-start-card{background:#435c4d;border-color:#a7ad7b;min-height:120px}
+body[data-lb-age="seniors"] .lb-start-card strong{font-size:.95rem}
+body[data-lb-age="seniors"] .lb-start-card small{font-size:.76rem}
+@media(max-width:1050px){.lb-start-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.lb-start-card{min-height:104px}}
+@media(max-width:620px){.lb-start-panel{padding-top:10px}.lb-start-inner{padding:16px}.lb-start-heading{align-items:flex-start;flex-direction:column;gap:7px}.lb-start-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.lb-start-card{min-height:112px;padding:12px}.lb-start-count{display:none}}
+@media(prefers-reduced-motion:reduce){.lb-start-card{transition:none}}
+</style>
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
@@ -1005,6 +1037,19 @@ input::placeholder,textarea::placeholder{color:#8296af!important;opacity:1}
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true"></span></a>
 <header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#home">Home</a><a href="#today">Dashboard</a><a href="#learn">Learning Worlds</a><a href="#bibleStudy">Bible Study</a><a href="#tools">Explore</a><a href="#lifequest">Life Skills</a><a href="#organize">Organizer</a><a href="#budget">Budget</a><a href="#focus">Focus Timer</a><a href="#calendar">Calendar</a><a href="#levelup">Progress</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">Quick jump <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
+<section class="lb-start-panel" aria-labelledby="lbStartTitle">
+ <div class="lb-start-inner">
+  <div class="lb-start-heading"><div><span class="lb-start-kicker">YOUR LIFE BRIDGE STARTS HERE</span><h2 id="lbStartTitle">What would you like to do today?</h2><p id="lbStartIntro">Choose a starting point. Your shortcuts will adapt to your experience.</p></div><span class="lb-start-count">6 WAYS TO GET STARTED</span></div>
+  <div class="lb-start-grid" id="lbStartGrid">
+   <a class="lb-start-card start-learn" href="#learn"><span class="lb-start-number">01</span><strong>Learn something</strong><small>Explore lessons and new ideas</small><b>Open area ↗</b></a>
+   <a class="lb-start-card start-plan" href="#organize"><span class="lb-start-number">02</span><strong>Get organized</strong><small>Bring tasks and plans together</small><b>Open area ↗</b></a>
+   <a class="lb-start-card start-tools" href="#tools"><span class="lb-start-number">03</span><strong>Explore tools</strong><small>Find a useful everyday helper</small><b>Open area ↗</b></a>
+   <a class="lb-start-card start-grow" href="#lifequest"><span class="lb-start-number">04</span><strong>Build a skill</strong><small>Practise useful real-world skills</small><b>Open area ↗</b></a>
+   <a class="lb-start-card start-calendar" href="#calendar"><span class="lb-start-number">05</span><strong>Plan ahead</strong><small>See events and what is coming up</small><b>Open area ↗</b></a>
+   <a class="lb-start-card start-focus" href="#focus"><span class="lb-start-number">06</span><strong>Focus for a while</strong><small>Set aside time for one task</small><b>Open area ↗</b></a>
+  </div>
+ </div>
+</section>
 <section class="hero hero-upgraded lb-hero-v2" id="home"><div class="lb-hero-gridglow" aria-hidden="true"></div><div class="wrap hero-grid">
 <div class="hero-copy">
 <div class="lb-hero-kicker"><span class="lb-kicker-dot"></span> YOUR SPACE TO MOVE FORWARD <span class="lb-kicker-line"></span></div>
@@ -4414,7 +4459,21 @@ function finishSetup(value){preferredName=(value||"").trim().replace(/\s+/g," ")
 Object.entries(A).forEach(([id,g])=>{let b=document.createElement("button");b.className="lb-age-option";b.type="button";b.innerHTML='<span class="lb-age-range">'+g.range+'</span><strong>'+g.name+'</strong><span>'+g.welcome+'</span>';b.onclick=()=>{age=id;try{localStorage.setItem(ak,id)}catch{}showUse()};ag.append(b)});
 Object.entries(U).forEach(([id,u])=>{let b=document.createElement("button");b.className="lb-age-option";b.type="button";b.innerHTML='<span class="lb-age-range">YOUR PURPOSE</span><strong>'+u.name+'</strong><span>'+({student:"Study and keep schoolwork organised.",teacher:"Prepare and organise teaching tasks.",everyday:"Plan, explore and manage daily life."})[id]+'</span>';b.onclick=()=>{use=id;try{localStorage.setItem(uk,id)}catch{}if(preferredName){chooser.hidden=true;apply()}else showName()};ug.append(b)});
 chooser.querySelector("#lbAgeBack").onclick=showAge;chooser.querySelector("#lbNameBack").onclick=showUse;chooser.querySelector("#lbNameSkip").onclick=()=>finishSetup("");chooser.querySelector("#lbOnboardingNameForm").addEventListener("submit",e=>{e.preventDefault();const value=nameInput.value.trim();if(value)finishSetup(value);});document.querySelector("#lbAgeChange").onclick=()=>{chooser.hidden=false;showAge()};
-function apply(){if(!age||!use)return;let a=A[age],u=U[use],allowed=new Set([...a.sections,...u.sections,"home"]);if(age==="seniors"){["learn","bibleStudy"].forEach(id=>allowed.delete(id));}document.body.dataset.lbAge=age;document.body.classList.toggle("lb-audience-large",!!a.large);document.querySelector("#lbAgeCurrent").textContent=a.name+" · "+u.name;
+function renderStartRecommendations(age,allowed){
+const choices={
+kids:[["Make something","Creative prompts, stories and playful projects","lifequest"],["Learn through play","Friendly lessons and new discoveries","learn"],["Find a helpful tool","Simple helpers for curious questions","tools"],["Keep little plans","Activities and reminders in one place","organize"],["See your day","Check today’s activities and progress","today"],["Look ahead","See upcoming dates and events","calendar"]],
+preteens:[["Discover a topic","Explore a subject and follow your curiosity","learn"],["Start a project","Turn an idea into something of your own","lifequest"],["Manage responsibilities","Keep activities and tasks organised","organize"],["Use a practical tool","Find a helper for school or everyday life","tools"],["Plan activities","Keep dates and commitments in view","calendar"],["Take a focus break","Give one task your full attention","focus"]],
+teens:[["Study smarter","Review topics and practise what you know","learn"],["Plan your week","See deadlines, events and what is next","calendar"],["Get organised","Bring assignments and everyday tasks together","organize"],["Build life skills","Practise useful decisions and real-world skills","lifequest"],["Explore practical tools","Use calculators and everyday helpers","tools"],["Start a focus sprint","Make progress on one thing without distractions","focus"]],
+adults:[["Review your budget","Understand spending, costs and savings goals","budget"],["Organise your tasks","Get responsibilities into one clear place","organize"],["Plan your calendar","Keep appointments and upcoming events visible","calendar"],["Build practical skills","Explore useful everyday decisions","lifequest"],["Find an everyday tool","Open a helper for a task you need to do","tools"],["Protect your focus","Set aside time for one important task","focus"]],
+seniors:[["Everyday helpers","Open practical tools for common questions","tools"],["See what is coming up","Keep appointments and important dates visible","calendar"],["Organise reminders","Keep tasks and useful notes together","organize"],["Explore an interest","Discover a topic or try something new","lifequest"],["Read and discover","Explore information and learning resources","learn"],["See your day","Review your daily overview and plans","today"]]
+};
+const list=choices[age]||choices.adults,grid=document.getElementById("lbStartGrid");if(!grid)return;
+grid.replaceChildren();let shown=0;
+list.forEach((item,i)=>{if(!allowed.has(item[2]))return;const a=document.createElement("a");a.className="lb-start-card "+(["start-learn","start-plan","start-tools","start-grow","start-calendar","start-focus"][i]);a.href="#"+item[2];const n=document.createElement("span");n.className="lb-start-number";n.textContent=String(++shown).padStart(2,"0");const strong=document.createElement("strong");strong.textContent=item[0];const small=document.createElement("small");small.textContent=item[1];const open=document.createElement("b");open.textContent="Open area ↗";a.append(n,strong,small,open);grid.append(a);});
+const intro=document.getElementById("lbStartIntro");if(intro)intro.textContent=age==="kids"?"Creative activities, playful learning and little plans — all ready to explore.":age==="preteens"?"Ideas, projects and responsibilities chosen for your next stage.":age==="teens"?"Your shortcuts for school, planning, practical skills and focus.":age==="adults"?"Practical starting points for money, planning, productivity and everyday life.":"Clear, useful starting points for everyday plans, interests and helpful resources.";
+const count=document.querySelector(".lb-start-count");if(count)count.textContent=shown+" WAYS TO GET STARTED";
+}
+function apply(){if(!age||!use)return;let a=A[age],u=U[use],allowed=new Set([...a.sections,...u.sections,"home"]);renderStartRecommendations(age,allowed);if(age==="seniors"){["learn","bibleStudy"].forEach(id=>allowed.delete(id));}document.body.dataset.lbAge=age;document.body.classList.toggle("lb-audience-large",!!a.large);document.querySelector("#lbAgeCurrent").textContent=a.name+" · "+u.name;
 let h=hero.querySelector("h1"),p=hero.querySelector(":scope > p");if(h)h.textContent=u.hero;if(p)p.textContent=u.sub;let cta=hero.querySelector(".lb-main-cta");if(cta){cta.textContent=u.cta+" ↗";cta.href="#"+u.route}let k=hero.querySelector(".lb-hero-kicker");if(k)k.lastChild.textContent=" "+a.name.toUpperCase()+" · "+u.name.toUpperCase()+" EXPERIENCE";
 let hh=hub.querySelector(".lb-home-hub-heading h2"),hp=hub.querySelector(".lb-home-hub-heading p");if(hh)hh.textContent=a.welcome;if(hp)hp.textContent=a.intro;
 cards.replaceChildren();a.groups.forEach(g=>{let sec=document.createElement("section");sec.className="lb-audience-group";let head=document.createElement("div");head.className="lb-audience-group-head";let title=document.createElement("h3"),desc=document.createElement("p");title.textContent=g[0];desc.textContent=g[1];head.append(title,desc);let grid=document.createElement("div");grid.className="lb-audience-group-grid";g.slice(2).forEach(item=>{let link=document.createElement("a");link.className="lb-audience-card";link.href="#"+item[2];let strong=document.createElement("strong"),span=document.createElement("span"),arrow=document.createElement("b");strong.textContent=item[0];span.textContent=item[1];arrow.textContent="↗";link.append(strong,span,arrow);grid.append(link)});sec.append(head,grid);cards.append(sec)});
