@@ -4343,6 +4343,8 @@ if(age&&use)apply();else if(age)showUse();else showAge();
 @media(max-width:760px){#learn .lb-world-map{grid-template-columns:repeat(2,minmax(0,1fr))}#learn .lb-world-card{min-height:135px}#learn .learning-studio{padding:12px}#learn .lb-study-workspace-head{align-items:flex-start;flex-wrap:wrap}}
 @media(max-width:460px){#learn .lb-world-map{grid-template-columns:1fr}#learn .lb-world-card{min-height:112px}}
 @media(prefers-reduced-motion:reduce){#learn .lb-world-card,#learn .lb-world-orb,#learn .lb-study-workspace,#learn .lb-study-tab{animation:none!important;transition:none!important}}
+/* Selected subject becomes a compact workspace; no forced page jump. */
+#learn .lb-learning-worlds.lb-world-active{min-height:0;display:block;padding:4px 0 0}
 </style>
 <script id="lifebridge-study-center-flow-controller">
 (()=>{
@@ -4390,7 +4392,7 @@ const start=()=>{
  const enter=(key)=>{
   const item=worlds[key];if(!item)return;
   workspace.hidden=false;workspace.classList.remove("is-active");void workspace.offsetWidth;workspace.classList.add("is-active");
-  map.hidden=true;heading.hidden=true;if(status)status.hidden=true;
+  worldSection.classList.add("lb-world-active");map.hidden=true;heading.hidden=true;if(status)status.hidden=true;
   workspace.querySelector("#lbStudySelectedTitle").textContent=item.title;
   workspace.querySelector("#lbStudySelectedCopy").textContent=item.copy;
   if(course){const opt=[...course.options].find(o=>o.value===item.subject);if(opt){course.value=item.subject;course.dispatchEvent(new Event("change",{bubbles:true}));}}
@@ -4404,10 +4406,9 @@ const start=()=>{
   courseTab.hidden=!hasCourse;
   panels.forEach(([node,p])=>{if(node)node.hidden=true;});
   setTab("tools");
-  workspace.scrollIntoView({behavior:"smooth",block:"start"});
  };
  const back=()=>{
-  workspace.classList.remove("is-active");workspace.hidden=true;map.hidden=false;heading.hidden=false;if(status)status.hidden=false;
+  workspace.classList.remove("is-active");workspace.hidden=true;worldSection.classList.remove("lb-world-active");map.hidden=false;heading.hidden=false;if(status)status.hidden=false;
   studio.removeAttribute("data-lb-study-tab");
   panels.forEach(([node])=>{if(node)node.hidden=false;});
  };
