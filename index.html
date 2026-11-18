@@ -4677,7 +4677,99 @@ body[data-lb-age] .lb-age-current button{color:var(--lb-audience-accent)!importa
 body[data-lb-age] .lb-audience-note{color:#d1dbe2!important}
 body[data-lb-age] .lb-audience-group-head h3{color:var(--lb-audience-accent)!important}
 @media(max-width:680px){body[data-lb-age] #home .hero-copy{padding:22px!important}}
-</style></body>
+</style>
+<style id="lifebridge-age-specific-workspaces-18">
+.lb-age-specific-workspace{margin:22px 0;padding:clamp(18px,2.4vw,28px);border:1px solid var(--lb-audience-accent);border-radius:24px;background:linear-gradient(145deg,var(--lb-audience-surface),var(--lb-audience-bg));box-shadow:0 18px 44px var(--lb-audience-glow);animation:lbAgeWorldEnter .48s ease both}
+.lb-age-specific-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px}
+.lb-age-specific-head small{display:block;color:var(--lb-audience-accent);font-weight:850;letter-spacing:.14em;font-size:.72rem;margin-bottom:6px}
+.lb-age-specific-head h3{margin:0;font-size:clamp(1.4rem,2.6vw,2rem);letter-spacing:-.035em;color:inherit}
+.lb-age-specific-head p{max-width:520px;margin:6px 0 0;color:inherit;opacity:.76}
+.lb-age-specific-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.lb-age-tool{min-width:0;padding:17px;border:1px solid color-mix(in srgb,var(--lb-audience-accent) 50%,transparent);border-radius:17px;background:color-mix(in srgb,var(--lb-audience-surface) 83%,var(--lb-audience-bg));color:inherit}
+.lb-age-tool h4{margin:0 0 7px;color:var(--lb-audience-accent);font-size:1.02rem}
+.lb-age-tool p{margin:0 0 12px;font-size:.86rem;line-height:1.55;opacity:.8}
+.lb-age-tool form{display:flex;gap:8px;flex-wrap:wrap}
+.lb-age-tool input,.lb-age-tool select{min-width:0;flex:1 1 130px;padding:10px 11px;border:1px solid color-mix(in srgb,var(--lb-audience-accent) 55%,#8795a2);border-radius:10px;background:rgba(255,255,255,.88);color:#20313c;font:inherit;font-size:.88rem}
+.lb-age-tool button{padding:10px 13px;border:0;border-radius:10px;background:var(--lb-audience-accent);color:#14232b;font-weight:800;cursor:pointer}
+.lb-age-tool button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.lb-age-tool ul{display:grid;gap:7px;margin:12px 0 0;padding:0;list-style:none}
+.lb-age-tool li{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:rgba(255,255,255,.12);font-size:.86rem;overflow-wrap:anywhere}
+.lb-age-tool li button{margin-left:auto;padding:4px 8px;background:transparent;color:inherit;border:1px solid currentColor;font-size:.75rem}
+.lb-age-tool .lb-age-prompt{min-height:68px;padding:13px;border-radius:12px;background:rgba(255,255,255,.16);font-weight:650;line-height:1.5}
+body[data-lb-age="kids"] .lb-age-specific-workspace{border-width:2px;border-radius:28px}
+body[data-lb-age="kids"] .lb-age-tool{background:#fffaf0;color:#294354;border-radius:21px}
+body[data-lb-age="teens"] .lb-age-tool{background:rgba(12,15,42,.68);color:#f4f0ff}
+body[data-lb-age="adults"] .lb-age-tool{background:rgba(9,32,26,.56);color:#f3f3e9}
+body[data-lb-age="seniors"] .lb-age-specific-workspace{border-radius:22px}
+body[data-lb-age="seniors"] .lb-age-tool{background:#fffdf5;color:#304638;padding:21px}
+body[data-lb-age="seniors"] .lb-age-tool :is(input,select,button){min-height:48px;font-size:1rem}
+body[data-lb-age="seniors"] .lb-age-tool li{font-size:1rem;padding:11px}
+@media(max-width:850px){.lb-age-specific-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.lb-age-specific-grid{grid-template-columns:1fr}.lb-age-specific-head{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.lb-age-specific-workspace,.lb-age-tool button{animation:none;transition:none}}
+</style>
+<script id="lifebridge-age-specific-workspaces-18">
+(()=> {
+ const start=()=>{
+  const age=document.body.dataset.lbAge,home=document.querySelector(".lb-audience-home");
+  if(!age||!home||home.querySelector(".lb-age-specific-workspace"))return;
+  const configs={
+   kids:{eyebrow:"MADE FOR CURIOUS MINDS",title:"Your Create & Play Corner",intro:"A place for imagination, small goals and fun things to discover.",cards:[
+    {title:"Creative Spark",copy:"Get a little idea to draw, write or build.",prompt:["Invent a new animal and give it a surprising superpower.","Design a treehouse with three secret rooms.","Create a comic strip about an ordinary day turning into an adventure."],button:"New idea"},
+    {title:"My Little Wins",copy:"Add something you want to finish today.",form:"win",placeholder:"e.g. Finish my reading",list:"wins"},
+    {title:"Choose an Adventure",copy:"Pick a mini activity for a curious break.",prompt:["Look around and find three things that use patterns.","Draw a map of an imaginary island.","Explain one amazing fact you learned this week."],button:"Pick another"}
+   ]},
+   teens:{eyebrow:"BUILT FOR YOUR OWN ROUTINE",title:"Your School & Goals Workspace",intro:"Keep assignments, deadlines and personal goals in one place without mixing them together.",cards:[
+    {title:"Assignment Tracker",copy:"Add a piece of schoolwork and its due date.",form:"assignment",placeholder:"Assignment or project name",date:true,list:"assignments"},
+    {title:"Upcoming Deadline",copy:"Keep your next important date visible.",prompt:["Break a big assignment into three smaller steps.","Choose the subject that needs attention first.","Set a realistic time to start your next task."],button:"Get a planning idea"},
+    {title:"Personal Goal",copy:"Track one goal that matters outside school.",form:"goal",placeholder:"e.g. Practise guitar this week",list:"goals"}
+   ]},
+   adults:{eyebrow:"WORK, HOME & PERSONAL PRIORITIES",title:"Your Everyday Management Desk",intro:"Separate what needs attention at work, at home and in your own plans.",cards:[
+    {title:"Work Priorities",copy:"Capture the next work task you want to move forward.",form:"work",placeholder:"Add a work priority",list:"work"},
+    {title:"Home & Personal",copy:"Keep household and personal responsibilities together.",form:"home",placeholder:"Add a home task",list:"home"},
+    {title:"Weekly Intention",copy:"Choose one outcome you want this week to move toward.",form:"intention",placeholder:"What would make this week feel productive?",list:"intentions"}
+   ]},
+   seniors:{eyebrow:"CLEAR, COMFORTABLE & EASY TO USE",title:"Your Personal Daybook",intro:"Keep appointments, calls and the shape of your day together in a calm, easy-to-read space.",cards:[
+    {title:"Appointments & Visits",copy:"Add an appointment or something you need to remember.",form:"appointment",placeholder:"e.g. Library visit",date:true,list:"appointments"},
+    {title:"People to Contact",copy:"Keep a simple list of people you would like to call or message.",form:"contact",placeholder:"Name or person to contact",list:"contacts"},
+    {title:"Plan My Day",copy:"Add one note for the part of the day that suits you.",form:"day",placeholder:"A simple plan or reminder",select:true,list:"day"}
+   ]}
+  };
+  const cfg=configs[age];if(!cfg)return;
+  const panel=document.createElement("section");panel.className="lb-age-specific-workspace";
+  const head=document.createElement("header");head.className="lb-age-specific-head";
+  const left=document.createElement("div"),eyebrow=document.createElement("small"),title=document.createElement("h3"),intro=document.createElement("p");
+  eyebrow.textContent=cfg.eyebrow;title.textContent=cfg.title;intro.textContent=cfg.intro;left.append(eyebrow,title,intro);head.append(left);panel.append(head);
+  const grid=document.createElement("div");grid.className="lb-age-specific-grid";panel.append(grid);
+  const key="lifebridge-age-workspace-v1-"+age;let saved={};try{saved=JSON.parse(localStorage.getItem(key)||"{}")||{}}catch{}
+  const persist=()=>{try{localStorage.setItem(key,JSON.stringify(saved))}catch{}};
+  cfg.cards.forEach((item,index)=>{
+   const card=document.createElement("article");card.className="lb-age-tool";
+   const h=document.createElement("h4"),p=document.createElement("p");h.textContent=item.title;p.textContent=item.copy;card.append(h,p);
+   if(item.prompt){
+    const prompt=document.createElement("div");prompt.className="lb-age-prompt";let n=0;prompt.textContent=item.prompt[0];card.append(prompt);
+    const b=document.createElement("button");b.type="button";b.textContent=item.button;b.addEventListener("click",()=>{n=(n+1)%item.prompt.length;prompt.textContent=item.prompt[n]});card.append(b);
+   }
+   if(item.form){
+    const form=document.createElement("form"),input=document.createElement("input");input.type="text";input.placeholder=item.placeholder;input.maxLength=120;input.required=true;form.append(input);
+    if(item.date){const date=document.createElement("input");date.type="date";date.setAttribute("aria-label","Date");form.append(date);form.addEventListener("submit",e=>{e.preventDefault();const value=input.value.trim();if(!value)return;add(value+(date.value?" · "+date.value:""));input.value="";date.value=""})}
+    else if(item.select){const select=document.createElement("select");["Morning","Afternoon","Evening"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;select.append(o)});form.append(select);form.addEventListener("submit",e=>{e.preventDefault();const value=input.value.trim();if(!value)return;add(select.value+": "+value);input.value=""})}
+    else form.addEventListener("submit",e=>{e.preventDefault();const value=input.value.trim();if(!value)return;add(value);input.value=""});
+    const submit=document.createElement("button");submit.type="submit";submit.textContent="Add";form.append(submit);card.append(form);
+    const list=document.createElement("ul");card.append(list);
+    function draw(){list.replaceChildren();(saved[item.list]||[]).forEach((value,i)=>{const li=document.createElement("li"),span=document.createElement("span"),remove=document.createElement("button");span.textContent=value;remove.type="button";remove.textContent="Remove";remove.setAttribute("aria-label","Remove "+value);remove.addEventListener("click",()=>{saved[item.list].splice(i,1);persist();draw()});li.append(span,remove);list.append(li)})}
+    function add(value){saved[item.list]=saved[item.list]||[];saved[item.list].push(value);persist();draw()}
+    draw();
+   }
+   grid.append(card);
+  });
+  const anchor=home.querySelector(".lb-age-daily-world");if(anchor)anchor.insertAdjacentElement("afterend",panel);else home.append(panel);
+ };
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
+})();
+</script>
+
+</body>
 
 
 <style id="lifebridge-home-navigation-update-04">
