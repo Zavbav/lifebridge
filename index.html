@@ -983,7 +983,7 @@ input::placeholder,textarea::placeholder{color:#8296af!important;opacity:1}
 #budget .lb-budget-guidance p{font-size:.8rem;line-height:1.55;color:#60758a!important;margin:4px 0 0}
 #budget .lb-budget-disclaimer{font-size:.76rem;color:#718195!important;margin-top:15px}
 @media(max-width:820px){#budget .lb-budget-layout{grid-template-columns:1fr}#budget .lb-budget-heading{align-items:flex-start;flex-direction:column}#budget .lb-budget-period{width:100%}}
-@media(max-width:480px){#budget .lb-budget-expenses{grid-template-columns:1fr}#budget .lb-budget-metrics{gap:6px}#budget .lb-budget-metrics strong{font-size:.85rem}#budget .lb-budget-summary-top{flex-direction:column}}
+@media(max-width:480px){#budget .lb-budget-expenses{grid-template-columns:1fr}#budget .lb-budget-metrics{gap:6px}#budget .lb-budget-metrics strong{font-size:.85rem}#budget .lb-budget-summary-top{flex-direction:column}body.lb-workspace-mode .lb-nav-more-links{width:min(310px,calc(100vw - 24px));min-width:0}}
 @media(prefers-reduced-motion:reduce){#budget .lb-budget-bar span{transition:none}}
 </style>
 </head>
@@ -1490,7 +1490,7 @@ $('percentBtn').addEventListener('click',()=>{const p=num('percent'),n=num('base
  const calculate=()=>{
   const incomeRaw=$("budgetIncome").value.trim(),income=incomeRaw===""?NaN:Number(incomeRaw),savingsRaw=$("budgetSavings").value.trim(),savings=savingsRaw===""?0:Number(savingsRaw),fields=[...document.querySelectorAll("[data-budget-expense]")],values=fields.map(el=>({name:el.dataset.budgetExpense,value:el.value.trim()===""?0:Number(el.value)}));
   const invalid=[income,savings,...values.map(x=>x.value)].some(v=>!Number.isFinite(v)||v<0);
-  if(!Number.isFinite(income)||invalid){$("budgetResultTitle").textContent="Check your figures";$("budgetStatus").textContent="NEEDS REVIEW";$("budgetRemainingNote").textContent="Enter a valid income amount and non-negative values in the other fields.";return;}
+  if(!Number.isFinite(income)||invalid){$("budgetResultTitle").textContent="Check your figures";$("budgetStatus").textContent="NEEDS REVIEW";$("budgetStatus").classList.remove("over");$("budgetRemaining").textContent="—";$("budgetRemainingNote").textContent="Enter a valid income amount and non-negative values in the other fields.";return;}
   const expenses=values.reduce((sum,x)=>sum+x.value,0),remaining=income-expenses-savings,period=$("budgetPeriod").selectedOptions[0].text.toLowerCase(),fmt=money;
   $("budgetIncomeTotal").textContent=fmt(income);$("budgetExpenseTotal").textContent=fmt(expenses);$("budgetSavingsTotal").textContent=fmt(savings);$("budgetRemaining").textContent=fmt(remaining);
   $("budgetResultTitle").textContent=remaining>=0?"Your plan adds up":"Your plan is over income";$("budgetStatus").textContent=remaining>=0?"WITHIN INCOME":"OVER INCOME";$("budgetStatus").classList.toggle("over",remaining<0);
@@ -1502,7 +1502,7 @@ $('percentBtn').addEventListener('click',()=>{const p=num('percent'),n=num('base
   if(!values.some(x=>x.value>0)){const p=document.createElement("p");p.className="lb-budget-empty";p.textContent="No expense categories entered yet. Add any costs you want to include.";$("budgetBreakdown").append(p);}
   const p=document.createElement("p");p.className="lb-budget-breakdown-total";p.textContent="Planned spending uses "+(income>0?(expenses/income*100).toFixed(1):"0")+"% of entered income.";$("budgetBreakdown").append(p);
  };
- inputs.forEach(el=>el.addEventListener("input",()=>{save();calculate()}));$("budgetBtn").addEventListener("click",calculate);
+ inputs.forEach(el=>{el.addEventListener("input",()=>{save();calculate()});el.addEventListener("change",()=>{save();calculate()});});$("budgetBtn").addEventListener("click",calculate);
  $("budgetReset").addEventListener("click",()=>{inputs.forEach(el=>{if(el.id==="budgetPeriod")el.value="month";else el.value="";});try{localStorage.removeItem(key)}catch{}$("budgetSaveStatus").textContent="Figures cleared.";calculate();});
  calculate();
 })();
