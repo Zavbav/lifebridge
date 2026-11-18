@@ -6441,11 +6441,41 @@ const start=()=>{
   seniors:{eyebrow:"A COMFORTABLE START TO YOUR DAY",title:"The important things, made easy",intro:"Keep appointments, people and everyday reminders close at hand.",items:[["Check upcoming appointments","See what is coming up in your calendar.","calendar"],["Remember a call or errand","Add a reminder so an important task is easy to find.","organize"],["Keep special dates close","Remember birthdays and moments worth celebrating.","celebrations"]],copy:{today:["Today at a Glance","A comfortable overview of today's plans and reminders."],calendar:["Appointments & Important Dates","Keep visits, appointments and plans easy to see."],lifequest:["Brain Games & Hobbies","Enjoy optional puzzles and light knowledge challenges."],tools:["Everyday Helpers","Simple calculators and converters, with clear labels."],organize:["Reminders & Errands","Keep calls, errands and everyday tasks together."],celebrations:["People & Special Dates","Remember birthdays and the occasions that matter."],focus:["Gentle Focus Timer","Set a comfortable timer for a task or a break."]}}
  };
  const w=worlds[age];if(!w)return;
+  const readSaved=(key)=>{try{const value=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(value)?value:[]}catch{return[]}};
+  const dateKey=(date)=>date.getFullYear()+"-"+String(date.getMonth()+1).padStart(2,"0")+"-"+String(date.getDate()).padStart(2,"0");
+  const getLiveNextStep=()=>{
+   const missions=readSaved("lifebridge-today-missions-v1");
+   const mission=missions.find(item=>item&&typeof item.text==="string"&&!item.done);
+   if(mission)return {title:mission.text.slice(0,58),description:"Your saved mission is still open. Pick it up when you're ready.",route:"today",kind:"mission"};
+   const tasks=readSaved("lifebridge-tasks");
+   const task=tasks.find(item=>item&&typeof item.text==="string"&&!item.done);
+   if(task)return {title:task.text.slice(0,58),description:"You have an unfinished task in your organizer.",route:"organize",kind:"task"};
+   const today=dateKey(new Date());
+   const events=readSaved("lifebridge-calendar-v1").filter(item=>item&&typeof item.date==="string"&&typeof item.title==="string"&&item.date>=today&&!item.holiday).sort((a,b)=>a.date.localeCompare(b.date)||String(a.time||"").localeCompare(String(b.time||"")));
+   if(events.length){
+    const event=events[0],parts=event.date.split("-").map(Number),eventDate=new Date(parts[0],parts[1]-1,parts[2]),tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);
+    const when=event.date===today?"Today":event.date===dateKey(tomorrow)?"Tomorrow":eventDate.toLocaleDateString(undefined,{month:"short",day:"numeric"});
+    return {title:"Coming up: "+event.title.slice(0,42),description:when+(event.time?" · "+new Date(2000,0,1,...event.time.split(":").map(Number)).toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"}):"")+" · View your calendar.",route:"calendar",kind:"event"};
+   }
+   return null;
+  };
+  const defaultFirst=w.items[0];
  const panel=document.createElement("section");panel.className="lb-age-daily-world";panel.innerHTML='<div class="lb-age-daily-heading"><span></span><h3></h3><p></p></div><div class="lb-age-daily-grid"></div>';
  panel.querySelector("span").textContent=w.eyebrow;panel.querySelector("h3").textContent=w.title;panel.querySelector("p").textContent=w.intro;
  const grid=panel.querySelector(".lb-age-daily-grid");
  w.items.forEach((item,index)=>{const a=document.createElement("a");a.className="lb-age-daily-card";a.href="#"+item[2];const n=document.createElement("b"),t=document.createElement("strong"),p=document.createElement("span"),go=document.createElement("i");n.textContent="0"+(index+1);t.textContent=item[0];p.textContent=item[1];go.textContent="Open";a.append(n,t,p,go);grid.append(a)});
  const note=home.querySelector(".lb-audience-note");if(note)note.insertAdjacentElement("afterend",panel);else home.prepend(panel);
+  const refreshNextStep=()=>{
+   const first=grid.querySelector(".lb-age-daily-card");if(!first)return;
+   const live=getLiveNextStep(),item=live||defaultFirst;
+   first.href="#"+item[2]||"#"+item.route;
+   first.querySelector("strong").textContent=live?live.title:item[0];
+   first.querySelector("span").textContent=live?live.description:item[1];
+   first.querySelector("b").textContent=live?"NEXT STEP":"01";
+  };
+  refreshNextStep();
+  ["todayTaskList","taskList","calendarEvents"].forEach(id=>{const target=document.getElementById(id);if(target&&window.MutationObserver)new MutationObserver(refreshNextStep).observe(target,{childList:true,subtree:true,characterData:true,attributes:true});});
+  window.addEventListener("storage",refreshNextStep);
  Object.entries(w.copy).forEach(([id,pair])=>{const section=document.getElementById(id);if(!section)return;const heading=section.querySelector(".section-head h2"),desc=section.querySelector(".section-head p");if(heading)heading.textContent=pair[0];if(desc)desc.textContent=pair[1]});
 };
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
