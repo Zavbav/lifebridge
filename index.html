@@ -4201,6 +4201,99 @@ body.lb-workspace-mode .lb-view-active .daily-plan-saved{
 body.lb-workspace-mode .lb-view-active .daily-plan-card p,
 body.lb-workspace-mode .lb-view-active .daily-plan-heading p{color:#bfcede!important}
 </style>
+
+<style id="lifebridge-experience-modes-01">
+.lb-mode-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 22px;padding:15px 18px;border:1px solid #3c6177;border-radius:16px;background:linear-gradient(110deg,#142d43,#1b3c50);color:#eff7fb}
+.lb-mode-bar small{display:block;color:#b7cbd8;font-size:.76rem;font-weight:800;letter-spacing:.12em}
+.lb-mode-bar strong{display:block;color:#fff;font-size:1.08rem;margin-top:2px}
+.lb-mode-change{border:1px solid #5d8998;background:#245263;color:#fff;border-radius:10px;padding:10px 14px;font-weight:750;cursor:pointer}
+.lb-mode-chooser{display:none;margin:0 0 24px;padding:clamp(18px,3vw,27px);border-radius:19px;background:#13283d;border:1px solid #45647d;color:#f4f8fc}
+.lb-mode-chooser.is-open{display:block}
+.lb-mode-chooser h3{margin:0 0 6px;color:#fff;font-size:1.35rem}
+.lb-mode-chooser>p{margin:0 0 17px;color:#c1d1df}
+.lb-mode-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.lb-mode-option{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0;text-align:left;padding:15px;border-radius:13px;border:1px solid #48677f;background:#1c354c;color:#f4f8fc;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}
+.lb-mode-option:hover{transform:translateY(-2px);border-color:#83d9d0;background:#24465a}
+.lb-mode-option[aria-pressed="true"]{border-color:#78d8ce;background:#1d4b55;box-shadow:inset 0 0 0 1px #78d8ce}
+.lb-mode-option strong{font-size:.98rem}
+.lb-mode-option span{font-size:.8rem;line-height:1.45;color:#c4d3df}
+.lb-mode-option em{font-style:normal;color:#91e4d9;font-size:.7rem;font-weight:850;letter-spacing:.1em}
+.lb-mode-home-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 18px}
+.lb-mode-home-card{display:flex;flex-direction:column;gap:8px;min-height:120px;padding:17px;border-radius:15px;text-decoration:none;background:#1b354b;border:1px solid #45677e;color:#f3f8fc;transition:transform .18s,border-color .18s}
+.lb-mode-home-card:hover{transform:translateY(-2px);border-color:#79d9d0}
+.lb-mode-home-card small{color:#91dfd6;font-size:.7rem;font-weight:850;letter-spacing:.1em}
+.lb-mode-home-card strong{font-size:1.03rem;color:#fff}
+.lb-mode-home-card span{font-size:.83rem;color:#c3d2df;line-height:1.5}
+@media(max-width:900px){.lb-mode-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.lb-mode-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.lb-mode-grid{grid-template-columns:1fr 1fr}.lb-mode-bar{align-items:flex-start;flex-direction:column}.lb-mode-change{width:100%}.lb-mode-home-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.lb-mode-option,.lb-mode-home-card{transition:none}}
+</style>
+<script id="lifebridge-experience-modes-01">
+(()=>{
+ const modes={
+  student:{name:"Student",tagline:"Your learning space, built around you.",description:"Study, practise, keep track of assignments and build confidence one step at a time.",hero:"Make progress in every subject.",sub:"Your space for studying, planning assignments and building better learning habits.",nav:["home","today","learn","bibleStudy","lifequest","organize","focus","calendar","levelup"],cards:[["STUDY","Study Center","Lessons, flashcards and revision","learn"],["FAITH & LEARNING","Bible Study","Explore Scripture and Catholic learning","bibleStudy"],["PRACTISE","Life Skills","Build useful skills through challenges","lifequest"],["STAY ON TRACK","Organizer","Keep assignments and tasks in order","organize"]]},
+  adult:{name:"Adult",tagline:"Make room for meaningful work and life.",description:"A focused workspace for projects, personal organization, budgeting and everyday decisions.",hero:"Bring your plans into focus.",sub:"Organise projects, manage everyday tasks and make thoughtful progress on what matters.",nav:["home","today","tools","organize","budget","calendar","focus","celebrations","levelup"],cards:[["PLAN","Planning & Projects","Turn priorities into manageable steps","organize"],["MONEY","Budget Helper","Review income, expenses and savings plans","budget"],["TOOLS","Explore Tools","Find practical tools for everyday work","tools"],["FOCUS","Focus Timer","Set aside time for important work","focus"]]},
+  kids:{name:"Kids",tagline:"A safe space to learn, make and explore.",description:"Discover learning activities, creative challenges and simple ways to stay organised.",hero:"Discover something brilliant.",sub:"Explore learning worlds, try friendly challenges and build helpful everyday habits.",nav:["home","learn","tools","lifequest","organize","calendar"],cards:[["DISCOVER","Learning Worlds","Explore science, maths, reading and more","learn"],["PLAY & LEARN","Skill Quest","Try short challenges and learn as you go","lifequest"],["CREATE","Explore Tools","Find simple tools for curious minds","tools"],["GET ORGANISED","My Tasks","Keep track of school and home tasks","organize"]]},
+  teacher:{name:"Teacher",tagline:"A practical workspace for teaching.",description:"Keep classroom planning, learning resources and teaching tasks together.",hero:"Make teaching easier to organise.",sub:"Bring lesson resources, learning activities and classroom tasks into one clear workspace.",nav:["home","today","learn","tools","organize","calendar","levelup"],cards:[["LEARNING","Study Center","Explore guided lessons and subject content","learn"],["RESOURCES","Explore Tools","Find useful classroom and learning tools","tools"],["PLANNING","Organizer","Track preparation and classroom tasks","organize"],["SCHEDULE","Calendar","Keep important dates and plans visible","calendar"]]},
+  everyday:{name:"Everyday",tagline:"A little more organised, every day.",description:"Practical tools for planning, learning, hobbies and the things life brings.",hero:"Make everyday life feel simpler.",sub:"Plan your day, explore useful tools and make time for the things that matter to you.",nav:["home","today","tools","organize","calendar","focus","budget","celebrations","lifequest"],cards:[["PLAN","Planning & Organizing","Keep tasks and plans in one place","organize"],["DISCOVER","Explore Tools","Find helpful tools for everyday life","tools"],["YOUR TIME","Calendar","See what is coming up","calendar"],["GROW","Life Skills","Pick up useful skills through challenges","lifequest"]]}
+ };
+ const key="lifebridge-experience-mode-v1";
+ let selected="student";
+ try{const saved=localStorage.getItem(key);if(saved&&modes[saved])selected=saved;}catch{}
+ const hub=document.querySelector(".lb-home-hub");
+ const nav=document.querySelector(".navlinks");
+ const hero=document.querySelector("#home .hero-copy");
+ if(!hub||!nav||!hero)return;
+ const bar=document.createElement("div");bar.className="lb-mode-bar";
+ bar.innerHTML='<div><small>YOUR EXPERIENCE</small><strong id="lbModeCurrent"></strong></div><button type="button" class="lb-mode-change" id="lbModeChange">Change experience</button>';
+ const chooser=document.createElement("section");chooser.className="lb-mode-chooser";chooser.setAttribute("aria-label","Choose your LifeBridge experience");
+ chooser.innerHTML='<h3>Choose your LifeBridge experience</h3><p>Each mode brings its own starting point and a more relevant set of destinations. You can switch whenever you like.</p><div class="lb-mode-grid" id="lbModeGrid"></div>';
+ const heading=hub.querySelector(".lb-home-hub-heading");
+ hub.insertBefore(chooser,heading);
+ hub.insertBefore(bar,chooser);
+ const cards=document.createElement("div");cards.className="lb-mode-home-grid";cards.setAttribute("aria-label","Recommended starting points");
+ const departments=hub.querySelector(".lb-home-departments");
+ if(departments)departments.replaceWith(cards);
+ const grid=chooser.querySelector("#lbModeGrid");
+ Object.entries(modes).forEach(([id,mode])=>{
+  const b=document.createElement("button");b.type="button";b.className="lb-mode-option";b.dataset.mode=id;
+  b.innerHTML='<em>EXPERIENCE</em><strong>'+mode.name+'</strong><span>'+mode.description+'</span>';
+  b.addEventListener("click",()=>{selected=id;apply();chooser.classList.remove("is-open");});
+  grid.append(b);
+ });
+ document.querySelector("#lbModeChange").addEventListener("click",()=>{chooser.classList.toggle("is-open");if(chooser.classList.contains("is-open"))chooser.scrollIntoView({behavior:"smooth",block:"nearest"});});
+ function apply(){
+  const mode=modes[selected];
+  try{localStorage.setItem(key,selected);}catch{}
+  document.querySelector("#lbModeCurrent").textContent=mode.name;
+  const h=hero.querySelector("h1"),p=hero.querySelector(":scope > p");
+  if(h)h.textContent=mode.hero;
+  if(p)p.textContent=mode.sub;
+  const kicker=hero.querySelector(".lb-hero-kicker");if(kicker)kicker.lastChild.textContent=" "+mode.name.toUpperCase()+" EXPERIENCE";
+  const hubTitle=hub.querySelector(".lb-home-hub-heading h2");if(hubTitle)hubTitle.textContent="Start with what matters to you";
+  const hubCopy=hub.querySelector(".lb-home-hub-heading p");if(hubCopy)hubCopy.textContent=mode.tagline;
+  cards.replaceChildren();
+  mode.cards.forEach((item,i)=>{
+   const a=document.createElement("a");a.className="lb-mode-home-card";a.href="#"+item[3];
+   const small=document.createElement("small");small.textContent=item[0];
+   const strong=document.createElement("strong");strong.textContent=item[1];
+   const span=document.createElement("span");span.textContent=item[2];
+   a.append(small,strong,span);cards.append(a);
+  });
+  nav.querySelectorAll("[data-lb-route]").forEach(a=>{
+   a.style.display=mode.nav.includes(a.dataset.lbRoute)?"":"none";
+  });
+  nav.querySelectorAll(".lb-nav-primary a").forEach(a=>{if(a.dataset.lbRoute==="home")a.textContent=mode.name;});
+  const more=nav.querySelector(".lb-nav-more");
+  if(more){const visible=[...more.querySelectorAll("[data-lb-route]")].some(a=>a.style.display!=="none");more.style.display=visible?"":"none";}
+  grid.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===selected)));
+  const primary=nav.querySelector(".lb-nav-primary a[data-lb-route='home']");if(primary)primary.textContent="Home";
+  document.title=mode.name+" | LifeBridge";
+ }
+ apply();
+})();
+</script>
+
 </body>
 
 
