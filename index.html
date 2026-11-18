@@ -1053,6 +1053,8 @@ input::placeholder,textarea::placeholder{color:#8296af!important;opacity:1}
 <div class="command-head"><div><div class="command-kicker">LIFEBRIDGE // PERSONAL COMMAND CENTER</div><h2 class="command-title">Make today count.</h2><p class="command-sub">One clear next step. Your goals, right here. Your progress, building every day.</p></div><a class="btn primary" href="#focus" style="text-decoration:none">Start a focus sprint </a></div>
 <div class="lb-command-overview" id="lbCommandOverview">
 <div class="lb-command-welcome"><div><span class="lb-command-eyebrow" id="lbCommandEyebrow">YOUR PERSONAL SPACE</span><h3 id="lbCommandGreeting">A fresh start.</h3><p id="lbCommandDate"></p></div><div class="lb-command-date-mark"><span id="lbCommandDay">18</span><small id="lbCommandMonth">NOV</small></div></div>
+<div class="lb-name-setup" id="lbNameSetup"><form id="lbNameForm"><label for="lbPreferredName">WHAT SHOULD WE CALL YOU?</label><div><input id="lbPreferredName" maxlength="32" autocomplete="given-name" placeholder="Enter your preferred name" required><button type="submit">Save name</button></div><small>Your name stays on this device and appears in your welcome.</small></form><button type="button" id="lbChangeName" hidden>Change name</button></div>
+<section class="lb-daily-start" aria-labelledby="lbDailyTitle"><div class="lb-daily-top"><div><span id="lbDailyEyebrow">A NEW DAY, A FRESH START</span><h4 id="lbDailyTitle">Your Daily Start</h4><p id="lbDailyIntro">A little something new for today.</p></div><span class="lb-daily-date" id="lbDailyStamp"></span></div><div class="lb-daily-grid"><article><span>01 / TODAY'S CHALLENGE</span><strong id="lbDailyChallengeTitle"></strong><p id="lbDailyChallenge"></p></article><article><span>02 / SOMETHING TO KNOW</span><strong id="lbDailyFactTitle"></strong><p id="lbDailyFact"></p></article><article><span>03 / TODAY'S FOCUS</span><strong id="lbDailyFocusTitle"></strong><p id="lbDailyFocus"></p></article></div></section>
 <div class="lb-command-widgets">
 <article class="lb-command-widget"><span class="lb-command-widget-label">TODAY'S PRIORITIES</span><strong id="lbCommandPriorityCount">0 / 3</strong><p id="lbCommandPriorityText">Add your top three priorities below.</p><a href="#dailyPlan">Set priorities ↗</a></article>
 <article class="lb-command-widget"><span class="lb-command-widget-label">NEXT UP</span><strong id="lbCommandNextTitle">Nothing scheduled yet</strong><p id="lbCommandNextDescription">Add an event to your calendar and it will appear here.</p><a href="#calendar">Open calendar ↗</a></article>
@@ -4908,6 +4910,23 @@ body[data-lb-age="seniors"] .lb-age-tool li{font-size:1rem;padding:11px}
 })();
 </script>
 
+<style id="lifebridge-daily-start-styles">
+.lb-name-setup{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:-4px 0 18px;padding:14px 16px;border:1px solid #cbd9e7;border-radius:15px;background:rgba(255,255,255,.78);color:#203e61}
+.lb-name-setup form{width:100%}.lb-name-setup form[hidden]{display:none}.lb-name-setup label{display:block;margin-bottom:7px;font-size:.68rem;font-weight:900;letter-spacing:.14em;color:#54708c}
+.lb-name-setup form>div{display:flex;gap:8px}.lb-name-setup input{min-width:0;flex:1;padding:10px 12px;border:1px solid #b8c9da;border-radius:10px;background:#fff;color:#203e61;font:inherit}.lb-name-setup button{padding:10px 14px;border:0;border-radius:10px;background:#244d70;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.lb-name-setup small{display:block;margin-top:6px;color:#61758a;font-size:.75rem}.lb-name-setup>#lbChangeName{flex:0 0 auto;background:transparent;color:#286b9d;text-decoration:underline}
+.lb-daily-start{margin:0 0 19px;padding:20px;border:1px solid #cbd9e7;border-radius:20px;background:linear-gradient(135deg,#edf6ff,#f2f0ff);color:#1d3048}
+.lb-daily-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:14px}.lb-daily-top>div>span{font-size:.67rem;font-weight:900;letter-spacing:.15em;color:#52718f}
+.lb-daily-top h4{margin:4px 0;font-size:1.42rem;letter-spacing:-.025em}.lb-daily-top p{margin:0;color:#61758a;font-size:.88rem}.lb-daily-date{padding:7px 10px;border-radius:9px;background:#203e61;color:white;font-size:.72rem;font-weight:850;letter-spacing:.08em}
+.lb-daily-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.lb-daily-grid article{min-width:0;padding:15px;border:1px solid #d5e1ed;border-radius:14px;background:rgba(255,255,255,.86)}
+.lb-daily-grid article>span{display:block;color:#52718f;font-size:.64rem;font-weight:900;letter-spacing:.1em}.lb-daily-grid article strong{display:block;margin:8px 0 5px;color:#203e61;font-size:1rem;line-height:1.3}.lb-daily-grid article p{margin:0;color:#61758a;font-size:.83rem;line-height:1.55}
+body[data-lb-age="kids"] .lb-daily-start{background:linear-gradient(135deg,#fff3d9,#e2f8ef);border-color:#e4bb6b;color:#304254}body[data-lb-age="kids"] .lb-daily-grid article{background:#fffaf0;border-color:#e8cf9c}
+body[data-lb-age="preteens"] .lb-daily-start{background:linear-gradient(135deg,#173b55,#102d49);border-color:#ff806b;color:#f4fbfc}body[data-lb-age="preteens"] .lb-daily-top h4,body[data-lb-age="preteens"] .lb-daily-grid article strong{color:#fff}body[data-lb-age="preteens"] .lb-daily-top p,body[data-lb-age="preteens"] .lb-daily-grid article p{color:#d0e8eb}body[data-lb-age="preteens"] .lb-daily-grid article{background:#204d65;border-color:#4ed6cb}body[data-lb-age="preteens"] .lb-daily-grid article>span{color:#ffab98}
+body[data-lb-age="teens"] .lb-daily-start{background:linear-gradient(135deg,#1c2947,#121b35);border-color:#8278d8;color:#f5f4ff}body[data-lb-age="teens"] .lb-daily-top h4,body[data-lb-age="teens"] .lb-daily-grid article strong{color:#fff}body[data-lb-age="teens"] .lb-daily-top p,body[data-lb-age="teens"] .lb-daily-grid article p{color:#d2d8ec}body[data-lb-age="teens"] .lb-daily-grid article{background:#253456;border-color:#5b65a2}body[data-lb-age="teens"] .lb-daily-grid article>span{color:#b9b0ff}
+body[data-lb-age="adults"] .lb-daily-start{background:linear-gradient(135deg,#173b3c,#102b38);border-color:#62d6c0;color:#f5f4ed}body[data-lb-age="adults"] .lb-daily-top h4,body[data-lb-age="adults"] .lb-daily-grid article strong{color:#fff}body[data-lb-age="adults"] .lb-daily-top p,body[data-lb-age="adults"] .lb-daily-grid article p{color:#d5e4d9}body[data-lb-age="adults"] .lb-daily-grid article{background:#20464a;border-color:#4c9c91}body[data-lb-age="adults"] .lb-daily-grid article>span{color:#8be7d3}
+body[data-lb-age="seniors"] .lb-daily-start{background:linear-gradient(135deg,#f8f1df,#e8f0e5);border-color:#c9ae70;color:#304638}body[data-lb-age="seniors"] .lb-daily-grid article{background:#fffdf5;border-color:#d8c99e}body[data-lb-age="seniors"] .lb-daily-grid article strong{font-size:1.08rem}
+@media(max-width:760px){.lb-daily-grid{grid-template-columns:1fr}.lb-daily-grid article{padding:14px}.lb-name-setup form>div{flex-wrap:wrap}.lb-name-setup form>div input{flex-basis:100%}.lb-daily-top{align-items:center}}
+</style>
 </body>
 
 
@@ -6690,17 +6709,73 @@ body[data-lb-age="adults"] .lb-command-overview{background:linear-gradient(135de
 body[data-lb-age="seniors"] .lb-command-overview{background:linear-gradient(135deg,#f8f1df,#e8f0e5);border-color:#c9ae70}body[data-lb-age="seniors"] .lb-command-widget{min-height:185px}body[data-lb-age="seniors"] .lb-command-widget strong{font-size:1.3rem}
 @media(max-width:760px){.lb-command-widgets{grid-template-columns:1fr}.lb-command-widget{min-height:140px}.lb-command-goal{align-items:stretch;flex-direction:column}#lbCommandGoalForm{min-width:0;width:100%}}@media(prefers-reduced-motion:reduce){.lb-command-progress i{transition:none}}
 </style><script id="lifebridge-command-center-upgrade-script">
-(()=> {
+(()=>{
  const boot=()=>{
   const $=id=>document.getElementById(id);
   if(!$('lbCommandOverview'))return;
   const now=new Date(),age=document.body.dataset.lbAge||'';
   const copy={kids:'Your adventure starts here',preteens:'Your day, your way',teens:'Make today count',adults:'A clearer day starts here',seniors:'Your day at a glance'};
-  $('lbCommandGreeting').textContent=copy[age]||'A fresh start';
   $('lbCommandEyebrow').textContent=age==='kids'?'YOUR ADVENTURE HUB':age==='seniors'?'YOUR DAILY OVERVIEW':'YOUR PERSONAL SPACE';
   $('lbCommandDate').textContent=now.toLocaleDateString(undefined,{weekday:'long',month:'long',year:'numeric'});
   $('lbCommandDay').textContent=String(now.getDate());
   $('lbCommandMonth').textContent=now.toLocaleDateString(undefined,{month:'short'}).toUpperCase();
+  const nameKey='lifebridge-preferred-name-v1';
+  const nameForm=$('lbNameForm'),nameInput=$('lbPreferredName'),nameSetup=$('lbNameSetup'),changeName=$('lbChangeName');
+  let preferredName='';try{preferredName=localStorage.getItem(nameKey)||''}catch{}
+  const paintName=()=>{
+   $('lbCommandGreeting').textContent=preferredName?'Welcome back, '+preferredName:copy[age]||'A fresh start';
+   nameForm.hidden=!!preferredName;changeName.hidden=!preferredName;
+  };
+  nameForm.addEventListener('submit',e=>{
+   e.preventDefault();const value=nameInput.value.trim().replace(/\s+/g,' ').slice(0,32);if(!value)return;
+   preferredName=value;try{localStorage.setItem(nameKey,value)}catch{}paintName();nameInput.value='';
+  });
+  changeName.addEventListener('click',()=>{nameForm.hidden=false;changeName.hidden=true;nameInput.value=preferredName;nameInput.focus();});
+  paintName();
+  const daily={
+   kids:[
+    ['Build a mini story','Make up a character, give them a problem, and think of one clever way they solve it.','Why do bubbles look round?','Surface tension pulls the surface of a liquid together, which helps a free-floating bubble form a round shape.','Notice something closely','Pick an object nearby and find three details you had never noticed before.'],
+    ['Design a helpful invention','Draw or describe something that would make one everyday job easier.','Can plants make their own food?','Yes. Most plants use sunlight, water, and carbon dioxide in photosynthesis to make sugars.','Make a tiny plan','Choose one small thing to finish today and decide what your first step is.'],
+    ['Spot a pattern','Find a pattern in nature, a building, or a number sequence. Explain what comes next.','How do birds know where to go?','Many birds use a mix of landmarks, the Sun, stars, and Earth’s magnetic field to navigate.','Ask a big question','Write down one question about the world and look for a trustworthy answer.'],
+    ['Create a new game','Invent a simple game with one goal and three rules.','Why does the Moon seem to change shape?','We see different portions of the Moon’s sunlit half as it travels around Earth.','Help someone out','Find one useful way to help at home, school, or in your community.'],
+    ['Think like a scientist','Make a prediction about something you can safely observe, then check what happens.','What makes a rainbow?','Sunlight bends and reflects inside tiny water droplets, separating into different colours.','Read for ten minutes','Choose a story or topic you enjoy and notice one new thing you learn.']
+   ],
+   preteens:[
+    ['Explain it simply','Choose a topic you learned recently and explain it in three clear sentences without notes.','Why do we have fingerprints?','The ridges on fingers help with grip and create patterns that are different for each person.','Take control of one task','Pick one responsibility and decide when you will complete it.'],
+    ['Make a mini budget','Imagine you have $20 for a small event. List costs and leave a little room for surprises.','What is an ecosystem?','An ecosystem is a community of living things interacting with each other and their environment.','Learn one useful skill','Spend 10 minutes practising a skill you could use outside school.'],
+    ['Find the strongest evidence','Read a short article and identify its main claim plus one detail that supports it.','Why do earthquakes happen?','Earthquakes happen when stress builds up in Earth’s crust and rocks suddenly shift along faults.','Organise your next step','Write down the next action for one project or assignment.'],
+    ['Solve a real-world problem','Think of one small problem at school or home and sketch a practical solution.','What is a prime number?','A prime number is a whole number greater than 1 with exactly two positive factors: 1 and itself.','Try focused practice','Work on one thing without switching tasks for 15 minutes.'],
+    ['Compare two viewpoints','Choose a topic and write one fair reason someone might support each side.','How do vaccines help?','Vaccines train the immune system to recognise a germ so the body can respond more effectively later.','Make tomorrow easier','Prepare one item or reminder tonight that will help you tomorrow.']
+   ],
+   teens:[
+    ['Use active recall','Pick one class topic. Close your notes and write everything you remember, then check what you missed.','Why is the sky blue?','Air molecules scatter shorter blue wavelengths of sunlight more strongly than longer red wavelengths.','Protect one focus block','Choose one important task and give it 20 uninterrupted minutes before checking notifications.'],
+    ['Check a claim','Find a claim in an article or post. Identify its evidence, source, and what information might be missing.','What does compound interest do?','Compound interest means interest can be earned on earlier interest as well as the original amount.','Make a realistic plan','Choose your three most important tasks and put the first one on your calendar.'],
+    ['Teach a concept','Explain a topic from class as if you were helping a younger student understand it.','What is a correlation?','Correlation describes how two variables change together; it does not by itself prove that one causes the other.','Start before you feel ready','Spend 10 minutes on the first step of a task you have been putting off.'],
+    ['Improve one paragraph','Rewrite a paragraph so its main point is clearer and each sentence supports it.','What is opportunity cost?','Opportunity cost is the value of the best alternative you give up when you make a choice.','Review your week','Notice one thing that worked well and one adjustment that could make next week smoother.'],
+    ['Think through a decision','Write down the goal, two options, likely trade-offs, and one piece of information you still need.','How does sleep support learning?','Sleep helps the brain strengthen and organise memories formed during the day.','Finish one open loop','Complete or clearly schedule one small task that has been taking up mental space.']
+   ],
+   adults:[
+    ['Clear one point of friction','Identify one recurring hassle and write a two-step change that could make it easier.','What is an emergency fund for?','An emergency fund is money set aside for unexpected necessary expenses, helping reduce reliance on borrowing.','Make space for the important','Block a realistic amount of time for one priority before filling the rest of the day.'],
+    ['Review a recurring expense','Look at one regular bill or subscription and decide whether it still provides value.','What is a sunk cost?','A sunk cost is money or effort already spent that cannot be recovered; future decisions are usually better based on future costs and benefits.','Close one small loop','Send the message, file the document, or schedule the task you have been postponing.'],
+    ['Simplify a routine','Choose one repeated task and remove an unnecessary step from the way you do it.','What is the 50/30/20 guideline?','It is a budgeting framework that groups take-home income into needs, wants, and savings or debt goals; it is a starting point, not a rule.','Plan a useful pause','Set aside a short break between demanding tasks to reset your attention.'],
+    ['Make a decision visible','Write down the decision, the options, and the one criterion that matters most.','What is an index fund?','An index fund aims to track the performance of a market index rather than select investments one by one.','Prepare for tomorrow','Choose the first task for tomorrow and make its starting point obvious.'],
+    ['Check your information','Before sharing a surprising claim, trace it to its original source and check its date.','What is a digital backup?','A backup is a separate copy of important data that can help restore files if the original is lost or damaged.','Reconnect with someone','Send a thoughtful check-in to someone you have been meaning to contact.']
+   ],
+   seniors:[
+    ['Share a useful memory','Write down a memory connected to a place, family tradition, or skill you would like to preserve.','Why do leaves change colour?','As days get shorter and cooler, chlorophyll breaks down and other pigments become easier to see.','Keep a steady rhythm','Choose one enjoyable activity and give it a comfortable place in today’s routine.'],
+    ['Explore a new interest','Choose a topic, craft, or place you are curious about and learn one new detail.','What is a library catalogue?','It is an organised record that helps people find books and other resources by title, author, subject, and more.','Make a connection','Reach out to a friend, relative, or neighbour for a conversation.'],
+    ['Organise one important detail','Update one contact, appointment note, or household reminder so it is easy to find.','Why do we have leap years?','Leap years help keep the calendar aligned with Earth’s orbit, which takes about 365.24 days.','Enjoy a change of scene','Spend a little time with a view, music, reading, or another activity you find relaxing.'],
+    ['Pass along a skill','Think of a skill you know well and write down the first three steps for teaching it.','What is a museum archive?','An archive preserves records and objects so people can study and understand the past.','Keep curiosity active','Choose one question and explore a book, programme, or trusted source for its answer.'],
+    ['Celebrate a small achievement','Name something you handled recently that deserves recognition, even if it seemed ordinary.','How do maps show elevation?','Contour lines connect places of equal height and help show the shape of the land.','Make plans feel manageable','Choose one upcoming appointment or errand and prepare what you need ahead of time.']
+   ]
+  };
+  const dayNumber=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/86400000);
+  const entry=(daily[age]||daily.adults)[((dayNumber%5)+5)%5];
+  $('lbDailyStamp').textContent=now.toLocaleDateString(undefined,{month:'short',day:'numeric'}).toUpperCase();
+  $('lbDailyIntro').textContent=preferredName?'A fresh set of ideas for your day, '+preferredName+'.':'A fresh set of ideas, challenges and useful discoveries for today.';
+  $('lbDailyChallengeTitle').textContent=entry[0];$('lbDailyChallenge').textContent=entry[1];
+  $('lbDailyFactTitle').textContent=entry[2];$('lbDailyFact').textContent=entry[3];
+  $('lbDailyFocusTitle').textContent=entry[4];$('lbDailyFocus').textContent=entry[5];
   const parse=key=>{try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch{return[]}};
   const dateKey=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
   const update=()=>{
