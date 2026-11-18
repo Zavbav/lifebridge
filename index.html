@@ -6236,3 +6236,119 @@ body.lb-workspace-mode :is(#today,#calendar,#focus,#budget,#convert,#levelup,#ce
  body.lb-workspace-mode #bibleStudy *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
 </style>
+
+
+<style id="lifebridge-age-worlds-next-pass">
+/* Strongly separate the four audience worlds across the whole interface. */
+body[data-lb-age="kids"]{
+ --lb-audience-accent:#ff8b55;--lb-audience-accent-2:#20b8ad;--lb-audience-glow:rgba(255,139,85,.22);
+ --lb-audience-surface:#fff0d8;--lb-audience-bg:#dff5f1;
+ background:radial-gradient(ellipse at 8% 0%,#ffe0a8 0,transparent 38%),radial-gradient(ellipse at 95% 15%,#b9eee4 0,transparent 35%),#fff8e9!important;
+ color:#19364a!important
+}
+body[data-lb-age="teens"]{
+ --lb-audience-accent:#bd8cff;--lb-audience-accent-2:#54c9ff;--lb-audience-glow:rgba(189,140,255,.23);
+ --lb-audience-surface:#29204b;--lb-audience-bg:#171b3c;
+ background:radial-gradient(ellipse at 5% 0%,rgba(157,103,255,.28),transparent 38%),radial-gradient(ellipse at 95% 15%,rgba(48,161,255,.18),transparent 35%),#11142d!important;
+ color:#f5f1ff!important
+}
+body[data-lb-age="adults"]{
+ --lb-audience-accent:#e4a66d;--lb-audience-accent-2:#64c7a5;--lb-audience-glow:rgba(228,166,109,.2);
+ --lb-audience-surface:#24443b;--lb-audience-bg:#172f2a;
+ background:radial-gradient(ellipse at 8% 0%,rgba(91,153,118,.23),transparent 38%),radial-gradient(ellipse at 95% 15%,rgba(210,151,91,.15),transparent 35%),#122720!important;
+ color:#f5f4ed!important
+}
+body[data-lb-age="seniors"]{
+ --lb-audience-accent:#a16c37;--lb-audience-accent-2:#648c72;--lb-audience-glow:rgba(161,108,55,.18);
+ --lb-audience-surface:#fff8e9;--lb-audience-bg:#e5eee3;
+ background:radial-gradient(ellipse at 8% 0%,#f3dfb8 0,transparent 38%),radial-gradient(ellipse at 95% 15%,#d4e5d5 0,transparent 35%),#f5f2e8!important;
+ color:#293d32!important
+}
+/* Make the age identity visible in navigation, hero and all workspace panels. */
+body[data-lb-age] .topbar{background:color-mix(in srgb,var(--lb-audience-bg) 92%,transparent)!important;border-bottom:2px solid color-mix(in srgb,var(--lb-audience-accent) 55%,transparent)!important}
+body[data-lb-age] .navlinks a[data-lb-route]{border-color:color-mix(in srgb,var(--lb-audience-accent) 25%,transparent)!important}
+body[data-lb-age] .navlinks a[data-lb-route]:hover,
+body[data-lb-age] .navlinks a[data-lb-route]:focus-visible{background:var(--lb-audience-surface)!important;border-color:var(--lb-audience-accent)!important}
+body[data-lb-age] #home .hero-copy,
+body[data-lb-age] .lb-home-hub,
+body[data-lb-age] .lb-audience-group,
+body[data-lb-age] main>.lb-view-active:not(#home){
+ background:linear-gradient(145deg,var(--lb-audience-surface),var(--lb-audience-bg))!important;
+ border:1px solid color-mix(in srgb,var(--lb-audience-accent) 42%,#64748b)!important;
+ box-shadow:0 16px 42px var(--lb-audience-glow)!important
+}
+body[data-lb-age] .lb-audience-card,
+body[data-lb-age] .lb-home-department,
+body[data-lb-age] .tool-card{
+ border-color:color-mix(in srgb,var(--lb-audience-accent) 52%,#64748b)!important;
+ background:color-mix(in srgb,var(--lb-audience-surface) 84%,var(--lb-audience-bg))!important
+}
+body[data-lb-age] .lb-audience-card b,
+body[data-lb-age] .lb-audience-card strong,
+body[data-lb-age] .lb-age-kicker,
+body[data-lb-age] .lb-home-hub-heading h2,
+body[data-lb-age] .lb-audience-group-head h3{color:var(--lb-audience-accent)!important}
+body[data-lb-age] .lb-age-current{border-color:var(--lb-audience-accent)!important;background:var(--lb-audience-surface)!important}
+body[data-lb-age] .lb-age-current,
+body[data-lb-age] .lb-age-current strong{color:inherit!important}
+body[data-lb-age] .lb-age-change,
+body[data-lb-age] .lb-main-cta{background:var(--lb-audience-accent)!important;border-color:var(--lb-audience-accent)!important;color:#17232b!important}
+body[data-lb-age="kids"] .lb-audience-group,
+body[data-lb-age="kids"] .lb-audience-card{border-radius:24px!important}
+body[data-lb-age="kids"] .lb-audience-card{border-width:2px!important}
+body[data-lb-age="teens"] .lb-audience-card{border-radius:11px!important}
+body[data-lb-age="adults"] .lb-audience-card{border-radius:10px!important}
+body[data-lb-age="seniors"]{font-size:18px!important}
+body[data-lb-age="seniors"] .lb-audience-group{border-radius:22px!important;padding:24px!important}
+body[data-lb-age="seniors"] .lb-audience-card{min-height:112px!important;padding:21px!important;border-radius:17px!important}
+body[data-lb-age="seniors"] .lb-audience-card strong{font-size:1.12rem!important}
+body[data-lb-age="kids"] #home .hero-copy :is(h1,p),
+body[data-lb-age="kids"] .lb-home-hub-heading p,
+body[data-lb-age="kids"] .lb-audience-group-head p,
+body[data-lb-age="kids"] .lb-audience-card span,
+body[data-lb-age="kids"] .lb-audience-note,
+body[data-lb-age="seniors"] #home .hero-copy :is(h1,p),
+body[data-lb-age="seniors"] .lb-home-hub-heading p,
+body[data-lb-age="seniors"] .lb-audience-group-head p,
+body[data-lb-age="seniors"] .lb-audience-card span,
+body[data-lb-age="seniors"] .lb-audience-note{color:#293d45!important}
+body[data-lb-age="kids"] .lb-audience-note,
+body[data-lb-age="seniors"] .lb-audience-note{background:rgba(255,255,255,.64)!important;border-color:var(--lb-audience-accent)!important}
+body[data-lb-age="teens"] .lb-audience-card span,
+body[data-lb-age="teens"] .lb-audience-group-head p,
+body[data-lb-age="teens"] .lb-home-hub-heading p{color:#d7d1ee!important}
+body[data-lb-age="adults"] .lb-audience-card span,
+body[data-lb-age="adults"] .lb-audience-group-head p,
+body[data-lb-age="adults"] .lb-home-hub-heading p{color:#d5e4d9!important}
+body[data-lb-age="kids"] main>.lb-view-active:not(#home),
+body[data-lb-age="seniors"] main>.lb-view-active:not(#home){color:#293d45!important}
+body[data-lb-age="kids"] main>.lb-view-active:not(#home) :is(h1,h2,h3,h4,p,label,small,li),
+body[data-lb-age="seniors"] main>.lb-view-active:not(#home) :is(h1,h2,h3,h4,p,label,small,li){color:#293d45!important}
+body[data-lb-age="kids"] main>.lb-view-active:not(#home) :is(input,textarea,select),
+body[data-lb-age="seniors"] main>.lb-view-active:not(#home) :is(input,textarea,select){background:#fffdf7!important;color:#263b42!important;border-color:#9eaf9f!important}
+@media(max-width:700px){body[data-lb-age] #home .hero-copy{border-radius:18px!important}}
+@media(prefers-reduced-motion:reduce){body[data-lb-age] *{transition:none!important;animation:none!important}}
+</style>
+<script id="lifebridge-age-worlds-next-pass">
+(()=>{
+const start=()=>{
+ const age=document.body.dataset.lbAge;
+ const home=document.querySelector(".lb-audience-home");
+ if(!age||!home||home.querySelector(".lb-age-daily-world"))return;
+ const worlds={
+  kids:{eyebrow:"YOUR ADVENTURE TODAY",title:"Pick a little adventure",intro:"A few fun ways to learn, play and keep your day moving.",items:[["Discover something new","Choose a subject and explore a learning world.","learn"],["Take the challenge","Try a quick Skill Quest and earn a new personal best.","lifequest"],["Remember your little tasks","Keep track of homework, activities and plans.","organize"]],copy:{today:["My Day","A simple look at the little things happening today."],calendar:["My Dates","See birthdays, school events and activities coming up."],lifequest:["Play & Practise","Try friendly challenges, puzzles and useful skills."],tools:["Helpful Little Tools","Easy helpers for everyday questions and simple calculations."],organize:["My Tasks","Keep homework, activities and little reminders together."]}},
+  teens:{eyebrow:"YOUR NEXT MOVE",title:"Make today count",intro:"Keep school under control while making time for the things you care about.",items:[["Get ahead on an assignment","Open your school organiser and choose your next task.","organize"],["Lock in a focus session","Give one subject your full attention for a little while.","focus"],["Build a skill outside class","Try a challenge that helps with real-life decisions.","lifequest"]],copy:{today:["School & Life Dashboard","Keep assignments, deadlines and personal priorities in view."],calendar:["Tests & Deadlines","Keep exams, due dates and plans together."],lifequest:["Skills Beyond School","Practise decisions, problem-solving and useful everyday skills."],tools:["Student Toolkit","Quick helpers for calculations, conversions and school tasks."],organize:["School Organizer","Keep assignments, projects and personal tasks organised."],focus:["Focus Space","Set aside distraction-light time for one assignment."]}},
+  adults:{eyebrow:"YOUR DAILY PRIORITIES",title:"Make room for what matters",intro:"A practical starting point for managing responsibilities, money and time.",items:[["Set your priorities","Bring today's tasks and bigger plans into one clear list.","organize"],["Check your budget","Review your money plan and keep spending in view.","budget"],["Protect focused time","Set a timer for the work that matters most today.","focus"]],copy:{today:["Personal Dashboard","A clear starting point for today's responsibilities and priorities."],calendar:["Work & Life Calendar","Keep appointments, commitments and important dates together."],lifequest:["Everyday Skills","Explore practical decision-making and useful life knowledge."],tools:["Practical Tools","Calculators and converters for everyday tasks."],organize:["Planning & Organizing","Manage projects, responsibilities and personal goals."],budget:["Budget Planner","Keep income, spending and savings plans organised."]}},
+  seniors:{eyebrow:"A COMFORTABLE START TO YOUR DAY",title:"The important things, made easy",intro:"Keep appointments, people and everyday reminders close at hand.",items:[["Check upcoming appointments","See what is coming up in your calendar.","calendar"],["Remember a call or errand","Add a reminder so an important task is easy to find.","organize"],["Keep special dates close","Remember birthdays and moments worth celebrating.","celebrations"]],copy:{today:["Today at a Glance","A comfortable overview of today's plans and reminders."],calendar:["Appointments & Important Dates","Keep visits, appointments and plans easy to see."],lifequest:["Brain Games & Hobbies","Enjoy optional puzzles and light knowledge challenges."],tools:["Everyday Helpers","Simple calculators and converters, with clear labels."],organize:["Reminders & Errands","Keep calls, errands and everyday tasks together."],celebrations:["People & Special Dates","Remember birthdays and the occasions that matter."],focus:["Gentle Focus Timer","Set a comfortable timer for a task or a break."]}}
+ };
+ const w=worlds[age];if(!w)return;
+ const panel=document.createElement("section");panel.className="lb-age-daily-world";panel.innerHTML='<div class="lb-age-daily-heading"><span></span><h3></h3><p></p></div><div class="lb-age-daily-grid"></div>';
+ panel.querySelector("span").textContent=w.eyebrow;panel.querySelector("h3").textContent=w.title;panel.querySelector("p").textContent=w.intro;
+ const grid=panel.querySelector(".lb-age-daily-grid");
+ w.items.forEach((item,index)=>{const a=document.createElement("a");a.className="lb-age-daily-card";a.href="#"+item[2];const n=document.createElement("b"),t=document.createElement("strong"),p=document.createElement("span"),go=document.createElement("i");n.textContent="0"+(index+1);t.textContent=item[0];p.textContent=item[1];go.textContent="Open";a.append(n,t,p,go);grid.append(a)});
+ const note=home.querySelector(".lb-audience-note");if(note)note.insertAdjacentElement("afterend",panel);else home.prepend(panel);
+ Object.entries(w.copy).forEach(([id,pair])=>{const section=document.getElementById(id);if(!section)return;const heading=section.querySelector(".section-head h2"),desc=section.querySelector(".section-head p");if(heading)heading.textContent=pair[0];if(desc)desc.textContent=pair[1]});
+};
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
+})();
+</script>
