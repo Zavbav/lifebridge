@@ -4228,71 +4228,72 @@ body.lb-workspace-mode .lb-view-active .daily-plan-heading p{color:#bfcede!impor
 @media(max-width:560px){.lb-mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lb-mode-bar{align-items:flex-start;flex-direction:column}.lb-mode-change{width:100%}.lb-mode-home-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.lb-mode-option,.lb-mode-home-card{transition:none}}
 </style>
-<script id="lifebridge-experience-modes-01">
+<style id="lifebridge-age-entry-14">
+.lb-age-entry{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 18% 10%,rgba(35,103,145,.34),transparent 38%),rgba(6,15,28,.97);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.lb-age-entry[hidden]{display:none!important}
+.lb-age-card{width:min(980px,100%);padding:clamp(22px,4vw,42px);border:1px solid #476783;border-radius:26px;background:linear-gradient(145deg,#172b43,#102235);box-shadow:0 28px 90px rgba(0,0,0,.42);color:#f5f8fc}
+.lb-age-kicker{margin:0 0 10px;color:#8de0d7;font-size:.75rem;font-weight:850;letter-spacing:.15em}
+.lb-age-card h1{margin:0;color:#fff;font-size:clamp(2rem,5vw,3.35rem);line-height:1.06;letter-spacing:-.045em}
+.lb-age-intro{max-width:650px;margin:13px 0 24px;color:#c4d2e0;font-size:1rem;line-height:1.65}
+.lb-age-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.lb-age-option{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-height:168px;padding:19px 16px;text-align:left;border:1px solid #496783;border-radius:17px;background:#1b354d;color:#f4f8fc;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}
+.lb-age-option:hover,.lb-age-option:focus-visible{transform:translateY(-3px);border-color:#83ddd2;background:#23465b;outline:2px solid #83ddd2;outline-offset:2px}
+.lb-age-range{color:#91e4d9;font-size:.75rem;font-weight:850;letter-spacing:.1em}
+.lb-age-option strong{color:#fff;font-size:1.25rem}
+.lb-age-option span:last-child{color:#c6d4e0;font-size:.84rem;line-height:1.5}
+.lb-age-current{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 auto 16px;padding:10px 14px;width:min(1240px,94%);border:1px solid #45647d;border-radius:12px;background:#142b40;color:#eaf2f8}
+.lb-age-current span{color:#c4d2df;font-size:.88rem}
+.lb-age-current strong{color:#91e4d9}
+.lb-age-change{border:1px solid #5c8997;border-radius:9px;padding:8px 12px;background:#245263;color:#fff;font-weight:750;cursor:pointer}
+@media(max-width:760px){.lb-age-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lb-age-option{min-height:145px}}
+@media(max-width:420px){.lb-age-entry{padding:12px}.lb-age-grid{gap:8px}.lb-age-option{padding:14px 12px}.lb-age-card{padding:20px}}
+@media(prefers-reduced-motion:reduce){.lb-age-option{transition:none}}
+</style>
+<script id="lifebridge-age-entry-14">
 (()=>{
- const modes={
-  student:{name:"Student",tagline:"Your learning space, built around you.",description:"Study, practise, keep track of assignments and build confidence one step at a time.",hero:"Make progress in every subject.",cta:"Open Study Center",ctaRoute:"learn",sub:"Your space for studying, planning assignments and building better learning habits.",nav:["home","today","learn","bibleStudy","lifequest","organize","focus","calendar","levelup"],cards:[["STUDY","Study Center","Lessons, flashcards and revision","learn"],["FAITH & LEARNING","Bible Study","Explore Scripture and Catholic learning","bibleStudy"],["PRACTISE","Life Skills","Build useful skills through challenges","lifequest"],["STAY ON TRACK","Organizer","Keep assignments and tasks in order","organize"]]},
-  adult:{name:"Adult",tagline:"Make room for meaningful work and life.",description:"A focused workspace for projects, personal organization, budgeting and everyday decisions.",hero:"Bring your plans into focus.",cta:"Open my workspace",ctaRoute:"organize",sub:"Organise projects, manage everyday tasks and make thoughtful progress on what matters.",nav:["home","today","tools","organize","budget","calendar","focus","celebrations","levelup"],cards:[["PLAN","Planning & Projects","Turn priorities into manageable steps","organize"],["MONEY","Budget Helper","Review income, expenses and savings plans","budget"],["TOOLS","Explore Tools","Find practical tools for everyday work","tools"],["FOCUS","Focus Timer","Set aside time for important work","focus"]]},
-  kids:{name:"Kids",tagline:"A safe space to learn, make and explore.",description:"Discover learning activities, creative challenges and simple ways to stay organised.",hero:"Discover something brilliant.",cta:"Explore learning",ctaRoute:"learn",sub:"Explore learning worlds, try friendly challenges and build helpful everyday habits.",nav:["home","learn","tools","lifequest","organize","calendar"],cards:[["DISCOVER","Learning Worlds","Explore science, maths, reading and more","learn"],["PLAY & LEARN","Skill Quest","Try short challenges and learn as you go","lifequest"],["CREATE","Explore Tools","Find simple tools for curious minds","tools"],["GET ORGANISED","My Tasks","Keep track of school and home tasks","organize"]]},
-  teacher:{name:"Teacher",tagline:"A practical workspace for teaching.",description:"Keep classroom planning, learning resources and teaching tasks together.",hero:"Make teaching easier to organise.",cta:"Open teaching tools",ctaRoute:"tools",sub:"Bring lesson resources, learning activities and classroom tasks into one clear workspace.",nav:["home","today","learn","tools","organize","calendar","levelup"],cards:[["LEARNING","Study Center","Explore guided lessons and subject content","learn"],["RESOURCES","Explore Tools","Find useful classroom and learning tools","tools"],["PLANNING","Organizer","Track preparation and classroom tasks","organize"],["SCHEDULE","Calendar","Keep important dates and plans visible","calendar"]]},
-  everyday:{name:"Everyday",tagline:"A little more organised, every day.",description:"Practical tools for planning, learning, hobbies and the things life brings.",hero:"Make everyday life feel simpler.",cta:"Explore my tools",ctaRoute:"tools",sub:"Plan your day, explore useful tools and make time for the things that matter to you.",nav:["home","today","tools","organize","calendar","focus","budget","celebrations","lifequest"],cards:[["PLAN","Planning & Organizing","Keep tasks and plans in one place","organize"],["DISCOVER","Explore Tools","Find helpful tools for everyday life","tools"],["YOUR TIME","Calendar","See what is coming up","calendar"],["GROW","Life Skills","Pick up useful skills through challenges","lifequest"]]}
+ const groups={
+  kids:{name:"Kids",range:"AGES 5–12",description:"A simpler space for younger learners, with clear activities, creative discovery and guided learning.",hero:"Big discoveries start here.",sub:"Explore learning activities, creative challenges and simple everyday tools.",cta:"Explore learning",route:"learn",nav:["home","learn","lifequest","tools","organize","calendar"],cards:[["LEARN","Learning Worlds","Explore maths, science and reading","learn"],["PLAY","Skill Quest","Try friendly learning challenges","lifequest"],["CREATE","Creative Tools","Discover simple tools and activities","tools"],["ORGANISE","My Tasks","Keep school and home tasks in order","organize"]]},
+  teens:{name:"Teens",range:"AGES 13–17",description:"A space for school, interests and growing independence, with study tools and practical life skills.",hero:"Build skills for what comes next.",sub:"Study smarter, organise schoolwork and explore useful skills for everyday life.",cta:"Open Study Center",route:"learn",nav:["home","today","learn","bibleStudy","lifequest","organize","focus","calendar","levelup","tools"],cards:[["STUDY","Study Center","Lessons, revision and subject practice","learn"],["PLAN","School Organizer","Keep assignments and deadlines together","organize"],["PRACTISE","Life Skills","Build confidence with practical challenges","lifequest"],["FOCUS","Focus Space","Make time for the work that matters","focus"]]},
+  adults:{name:"Adults",range:"AGES 18–59",description:"A practical workspace for personal organisation, projects, budgeting and everyday decisions.",hero:"Bring your plans into focus.",sub:"Organise projects, manage everyday tasks and make thoughtful progress.",cta:"Open my workspace",route:"organize",nav:["home","today","tools","organize","budget","calendar","focus","celebrations","levelup"],cards:[["PLAN","Planning & Projects","Turn priorities into manageable steps","organize"],["MONEY","Budget Helper","Review income, expenses and savings plans","budget"],["TOOLS","Everyday Tools","Find practical tools for work and life","tools"],["FOCUS","Focus Timer","Set aside time for important work","focus"]]},
+  seniors:{name:"Seniors",range:"AGES 60+",description:"A clear, comfortable space with easy-to-find tools, learning, reminders and everyday activities.",hero:"Keep learning and doing what matters.",sub:"Find useful tools, keep plans visible and explore learning at a comfortable pace.",cta:"Explore helpful tools",route:"tools",nav:["home","today","tools","organize","calendar","focus","celebrations","lifequest","bibleStudy"],cards:[["DAILY LIFE","Everyday Organizer","Keep reminders and plans together","organize"],["DISCOVER","Learning & Interests","Explore subjects and new interests","learn"],["IMPORTANT DATES","Calendar","Keep events and reminders visible","calendar"],["BRAIN GAMES","Skill Quest","Enjoy short, thoughtful challenges","lifequest"]]}
  };
- const key="lifebridge-experience-mode-v1";
- let selected="student";
- try{const saved=localStorage.getItem(key);if(saved&&modes[saved])selected=saved;}catch{}
- const hub=document.querySelector(".lb-home-hub");
- const nav=document.querySelector(".navlinks");
- const hero=document.querySelector("#home .hero-copy");
- if(!hub||!nav||!hero)return;
- const bar=document.createElement("div");bar.className="lb-mode-bar";
- bar.innerHTML='<div><small>YOUR EXPERIENCE</small><strong id="lbModeCurrent"></strong></div><button type="button" class="lb-mode-change" id="lbModeChange">Change experience</button>';
- const chooser=document.createElement("section");chooser.className="lb-mode-chooser is-open";chooser.setAttribute("aria-label","Choose your LifeBridge experience");
- chooser.innerHTML='<h3>Choose your experience</h3><p>Pick the space that fits you. You can switch at any time.</p><div class="lb-mode-grid" id="lbModeGrid"></div>';
- const main=document.querySelector("main");
- const homeSection=document.querySelector("#home");
- if(main&&homeSection)main.insertBefore(chooser,homeSection);
- bar.remove();
+ const key="lifebridge-age-category-v1";
+ let selected=null;
+ try{const saved=localStorage.getItem(key);if(saved&&groups[saved])selected=saved;}catch{}
+ const hub=document.querySelector(".lb-home-hub"),nav=document.querySelector(".navlinks"),hero=document.querySelector("#home .hero-copy"),main=document.querySelector("main"),home=document.querySelector("#home");
+ if(!hub||!nav||!hero||!main||!home)return;
+ const chooser=document.createElement("section");chooser.className="lb-age-entry";chooser.setAttribute("aria-label","Choose your age category");chooser.hidden=!!selected;
+ chooser.innerHTML='<div class="lb-age-card"><p class="lb-age-kicker">WELCOME TO LIFEBRIDGE</p><h1>First, choose your age group.</h1><p class="lb-age-intro">We’ll shape the starting page and available sections around the age group you choose. You can change it later.</p><div class="lb-age-grid" id="lbAgeGrid"></div></div>';
+ document.body.append(chooser);
+ const current=document.createElement("div");current.className="lb-age-current";current.innerHTML='<span>Your LifeBridge age group: <strong id="lbAgeCurrent"></strong></span><button type="button" class="lb-age-change" id="lbAgeChange">Change age group</button>';
+ main.insertBefore(current,home);
  const cards=document.createElement("div");cards.className="lb-mode-home-grid";cards.setAttribute("aria-label","Recommended starting points");
- const departments=hub.querySelector(".lb-home-departments");
- if(departments)departments.replaceWith(cards);
- const grid=chooser.querySelector("#lbModeGrid");
- Object.entries(modes).forEach(([id,mode])=>{
-  const b=document.createElement("button");b.type="button";b.className="lb-mode-option";b.dataset.mode=id;
-  b.innerHTML='<em>EXPERIENCE</em><strong>'+mode.name+'</strong><span>'+mode.description+'</span>';
-  b.addEventListener("click",()=>{selected=id;apply();});
+ const departments=hub.querySelector(".lb-home-departments");if(departments)departments.replaceWith(cards);
+ const grid=chooser.querySelector("#lbAgeGrid");
+ Object.entries(groups).forEach(([id,g])=>{
+  const b=document.createElement("button");b.type="button";b.className="lb-age-option";
+  b.innerHTML='<span class="lb-age-range">'+g.range+'</span><strong>'+g.name+'</strong><span>'+g.description+'</span>';
+  b.addEventListener("click",()=>{selected=id;try{localStorage.setItem(key,id);}catch{}chooser.hidden=true;apply();});
   grid.append(b);
  });
- 
+ document.querySelector("#lbAgeChange").addEventListener("click",()=>{chooser.hidden=false;const first=grid.querySelector("button");if(first)first.focus();});
  function apply(){
-  const mode=modes[selected];
-  try{localStorage.setItem(key,selected);}catch{}
-  
+  if(!selected)return;
+  const g=groups[selected];
+  document.querySelector("#lbAgeCurrent").textContent=g.name+" ("+g.range.toLowerCase()+")";
   const h=hero.querySelector("h1"),p=hero.querySelector(":scope > p");
-  if(h)h.textContent=mode.hero;
-  if(p)p.textContent=mode.sub;
-  const cta=hero.querySelector(".lb-main-cta");if(cta){cta.textContent=mode.cta+" ↗";cta.href="#"+mode.ctaRoute;}
-  const kicker=hero.querySelector(".lb-hero-kicker");if(kicker)kicker.lastChild.textContent=" "+mode.name.toUpperCase()+" EXPERIENCE";
-  const hubTitle=hub.querySelector(".lb-home-hub-heading h2");if(hubTitle)hubTitle.textContent="Start with what matters to you";
-  const hubCopy=hub.querySelector(".lb-home-hub-heading p");if(hubCopy)hubCopy.textContent=mode.tagline;
+  if(h)h.textContent=g.hero;if(p)p.textContent=g.sub;
+  const cta=hero.querySelector(".lb-main-cta");if(cta){cta.textContent=g.cta+" ↗";cta.href="#"+g.route;}
+  const kicker=hero.querySelector(".lb-hero-kicker");if(kicker)kicker.lastChild.textContent=" "+g.name.toUpperCase()+" EXPERIENCE";
+  const hubTitle=hub.querySelector(".lb-home-hub-heading h2");if(hubTitle)hubTitle.textContent="A good place to start";
+  const hubCopy=hub.querySelector(".lb-home-hub-heading p");if(hubCopy)hubCopy.textContent="Helpful places to begin, chosen for your age group.";
   cards.replaceChildren();
-  mode.cards.forEach((item,i)=>{
-   const a=document.createElement("a");a.className="lb-mode-home-card";a.href="#"+item[3];
-   const small=document.createElement("small");small.textContent=item[0];
-   const strong=document.createElement("strong");strong.textContent=item[1];
-   const span=document.createElement("span");span.textContent=item[2];
-   a.append(small,strong,span);cards.append(a);
-  });
-  nav.querySelectorAll("[data-lb-route]").forEach(a=>{
-   a.style.display=mode.nav.includes(a.dataset.lbRoute)?"":"none";
-  });
-  nav.querySelectorAll(".lb-nav-primary a").forEach(a=>{if(a.dataset.lbRoute==="home")a.textContent=mode.name;});
-  const more=nav.querySelector(".lb-nav-more");
-  if(more){const visible=[...more.querySelectorAll("[data-lb-route]")].some(a=>a.style.display!=="none");more.style.display=visible?"":"none";}
-  grid.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===selected)));
-  const primary=nav.querySelector(".lb-nav-primary a[data-lb-route='home']");if(primary)primary.textContent="Home";
-  document.title=mode.name+" | LifeBridge";
+  g.cards.forEach(item=>{const a=document.createElement("a");a.className="lb-mode-home-card";a.href="#"+item[3];const small=document.createElement("small"),strong=document.createElement("strong"),span=document.createElement("span");small.textContent=item[0];strong.textContent=item[1];span.textContent=item[2];a.append(small,strong,span);cards.append(a);});
+  nav.querySelectorAll("[data-lb-route]").forEach(a=>{a.style.display=g.nav.includes(a.dataset.lbRoute)?"":"none";});
+  const more=nav.querySelector(".lb-nav-more");if(more){const visible=[...more.querySelectorAll("[data-lb-route]")].some(a=>a.style.display!=="none");more.style.display=visible?"":"none";}
+  document.title=g.name+" | LifeBridge";
  }
- apply();
+ if(selected)apply();
 })();
 </script>
 
