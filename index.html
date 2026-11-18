@@ -27,7 +27,7 @@
 </script>
 <script>
 /* LifeBridge guided course engine: lesson rendering, checks, and local mastery */
-(()=>{
+const initGuidedCourses=()=>{
 const el=id=>document.getElementById(id);
 const subject=el('courseSubject');
 if(!subject||!el('courseLessonList'))return;
@@ -111,8 +111,8 @@ el('courseComplete').addEventListener('click',()=>{
  else{el('courseFeedback').textContent='You completed this subject’s starter course. Choose another subject to keep learning.';el('courseFeedback').className='course-feedback good';}
 });
 populateLessons();render();
-})();
-
+};
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initGuidedCourses,{once:true});}else{initGuidedCourses();}
 </script>
 <meta name="color-scheme" content="light">
 <style>
