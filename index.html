@@ -925,6 +925,67 @@ input::placeholder,textarea::placeholder{color:#8296af!important;opacity:1}
 }
 </style>
 
+<style id="lifebridge-budget-professional-update">
+#budget{background:#f2f6fb!important;color:#172b3a!important}
+#budget .lb-budget-wrap{max-width:1120px}
+#budget .lb-budget-heading{align-items:end;gap:22px;margin-bottom:22px}
+#budget .lb-budget-eyebrow{display:inline-block;color:#4776b8;font-size:.72rem;font-weight:900;letter-spacing:.13em;margin-bottom:7px}
+#budget .lb-budget-heading h2{font-size:clamp(1.8rem,3vw,2.45rem);letter-spacing:-.045em;margin:0 0 6px;color:#172b3a}
+#budget .lb-budget-heading p{max-width:670px;color:#627487!important;margin:0}
+#budget .lb-budget-period{min-width:155px}
+#budget .lb-budget-period label,#budget .field label{display:block;font-size:.82rem;font-weight:800;color:#344b61!important;margin-bottom:6px}
+#budget .lb-budget-period select,#budget input{width:100%;min-height:44px;border:1px solid #d4deea;border-radius:11px;padding:10px 12px;background:#fff!important;color:#172b3a!important;box-shadow:0 2px 5px #182f4510}
+#budget .lb-budget-layout{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:18px;align-items:start}
+#budget .lb-budget-form,#budget .lb-budget-summary,#budget .lb-budget-breakdown{background:#fff!important;border:1px solid #dce5ee!important;border-radius:18px;padding:clamp(17px,2.3vw,24px);box-shadow:0 10px 28px #1938580a}
+#budget .lb-budget-step{display:flex;gap:12px;align-items:flex-start;margin:4px 0 14px}
+#budget .lb-budget-step:not(:first-child){margin-top:24px;padding-top:20px;border-top:1px solid #edf1f5}
+#budget .lb-budget-step>span{display:grid;place-items:center;flex:0 0 32px;height:32px;border-radius:10px;background:#eaf1fb;color:#3d68a4;font-weight:900;font-size:.78rem}
+#budget .lb-budget-step h3{font-size:1.03rem;margin:0 0 2px;color:#1c344a!important}
+#budget .lb-budget-step p{font-size:.84rem;margin:0;color:#718195!important}
+#budget .lb-budget-expenses{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#budget .lb-budget-form>.field{margin-bottom:8px}
+#budget .lb-budget-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+#budget .lb-budget-actions .btn{min-height:43px}
+#budget .lb-budget-save{font-size:.76rem;color:#7a8b9b!important;margin:12px 0 0}
+#budget .lb-budget-results{display:grid;gap:15px}
+#budget .lb-budget-summary{background:linear-gradient(150deg,#10233a,#1a3654)!important;border-color:#2a496b!important;color:#fff}
+#budget .lb-budget-summary-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+#budget .lb-budget-summary .lb-budget-eyebrow{color:#9fc4f4}
+#budget .lb-budget-summary h3{margin:0;color:#fff!important;font-size:1.2rem}
+#budget .lb-budget-status{padding:6px 9px;border:1px solid #49688a;border-radius:99px;color:#b8d6fb;font-size:.64rem;font-weight:900;letter-spacing:.08em;white-space:nowrap}
+#budget .lb-budget-status.over{color:#ffd1c8;border-color:#b86c64}
+#budget .lb-budget-balance{padding:20px 0 15px;border-bottom:1px solid #ffffff20}
+#budget .lb-budget-balance>span,#budget .lb-budget-balance small{display:block;color:#c0d0e0}
+#budget .lb-budget-balance strong{display:block;font-size:clamp(2rem,4vw,2.8rem);letter-spacing:-.05em;color:#fff;margin:3px 0}
+#budget .lb-budget-balance small{font-size:.78rem;line-height:1.5}
+#budget .lb-budget-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-top:15px}
+#budget .lb-budget-metrics div{min-width:0}
+#budget .lb-budget-metrics span{display:block;color:#b9c9da;font-size:.72rem}
+#budget .lb-budget-metrics strong{display:block;color:#fff;font-size:1rem;overflow-wrap:anywhere;margin-top:3px}
+#budget .lb-budget-bar{display:flex;overflow:hidden;height:10px;border-radius:99px;background:#ffffff24;margin-top:18px}
+#budget .lb-budget-bar span{height:100%;transition:width .2s ease}
+#budget .lb-budget-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+#budget .lb-budget-legend span{display:flex;align-items:center;gap:6px;color:#d1deec;font-size:.7rem}
+#budget .lb-budget-legend i{width:8px;height:8px;border-radius:50%;background:#4776b8}
+#budget .lb-budget-legend .savings-dot{background:#37a58b}
+#budget .lb-budget-legend .left-dot{background:#a8b7c9}
+#budget .lb-budget-breakdown h3{font-size:1rem;margin:0 0 3px;color:#1c344a!important}
+#budget .lb-budget-breakdown-head p{font-size:.8rem;color:#718195!important;margin:0 0 15px}
+#budget .lb-budget-category{margin:12px 0}
+#budget .lb-budget-category>div:first-child{display:flex;justify-content:space-between;gap:12px;font-size:.82rem;color:#30485f}
+#budget .lb-budget-category strong{font-weight:800}
+#budget .lb-budget-category-track{height:7px;border-radius:99px;background:#edf1f6;overflow:hidden;margin-top:6px}
+#budget .lb-budget-category-track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#4776b8,#65a6c8)}
+#budget .lb-budget-empty{font-size:.82rem;color:#78899b!important}
+#budget .lb-budget-breakdown-total{padding-top:12px;margin:14px 0 0;border-top:1px solid #edf1f5;color:#627487!important;font-size:.78rem}
+#budget .lb-budget-guidance{padding:16px 18px;border:1px solid #d9e5f1;border-radius:15px;background:#eaf1f9}
+#budget .lb-budget-guidance strong{font-size:.86rem;color:#294b70}
+#budget .lb-budget-guidance p{font-size:.8rem;line-height:1.55;color:#60758a!important;margin:4px 0 0}
+#budget .lb-budget-disclaimer{font-size:.76rem;color:#718195!important;margin-top:15px}
+@media(max-width:820px){#budget .lb-budget-layout{grid-template-columns:1fr}#budget .lb-budget-heading{align-items:flex-start;flex-direction:column}#budget .lb-budget-period{width:100%}}
+@media(max-width:480px){#budget .lb-budget-expenses{grid-template-columns:1fr}#budget .lb-budget-metrics{gap:6px}#budget .lb-budget-metrics strong{font-size:.85rem}#budget .lb-budget-summary-top{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){#budget .lb-budget-bar span{transition:none}}
+</style>
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
@@ -1114,7 +1175,40 @@ input::placeholder,textarea::placeholder{color:#8296af!important;opacity:1}
 </div>
 <div class="tool-layout"><div class="panel toolbox"><h3>Grade percentage</h3><p class="notice">Enter the points you earned and the total points possible.</p><div class="field"><label for="earned">Points earned</label><input id="earned" type="number" min="0" step="any" placeholder="e.g. 42"></div><div class="field"><label for="possible">Total points possible</label><input id="possible" type="number" min="0.01" step="any" placeholder="e.g. 50"></div><button class="btn primary" id="gradeBtn">Calculate grade</button><div class="result" id="gradeResult" aria-live="polite">Your result will appear here.</div></div><div class="panel toolbox"><h3>Percentage of a number</h3><p class="notice">Find a percentage of any number.</p><div class="field"><label for="percent">Percentage (%)</label><input id="percent" type="number" step="any" placeholder="e.g. 15"></div><div class="field"><label for="baseNumber">Number</label><input id="baseNumber" type="number" step="any" placeholder="e.g. 80"></div><button class="btn primary" id="percentBtn">Calculate amount</button><div class="result" id="percentResult" aria-live="polite">Your result will appear here.</div></div></div></div></section>
 <section class="section" id="organize"><div class="wrap"><div class="section-head"><div><h2> Life Organizer</h2><p>Add tasks and keep them on this device.</p></div></div><div class="panel toolbox"><form id="taskForm" style="display:flex;gap:10px;flex-wrap:wrap"><label for="taskInput" class="hidden">New task</label><input id="taskInput" required maxlength="180" placeholder="What would you like to remember?" style="flex:1;min-width:200px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)"><button class="btn primary" type="submit">Add task +</button></form><div id="taskList" aria-live="polite" style="margin-top:14px"><p class="empty">No tasks yet. Add one small step to get started.</p></div><p class="notice">Your task list is saved only in this browser on this device. Avoid adding passwords or sensitive personal information.</p></div></div></section>
-<section class="section" id="budget" style="background:#edf7f4"><div class="wrap"><div class="section-head"><div><h2> Budget Helper</h2><p>A simple snapshot of money coming in and going out.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="income">Money coming in ($)</label><input id="income" type="number" min="0" step=".01" placeholder="e.g. 1200"></div><div class="field"><label for="expenses">Total expenses ($)</label><input id="expenses" type="number" min="0" step=".01" placeholder="e.g. 850"></div></div><button class="btn primary" id="budgetBtn">See my balance</button><div class="result" id="budgetResult" aria-live="polite">Enter amounts to see the difference.</div><p class="notice">This is a basic planning tool, not financial advice.</p></div></div></section>
+<section class="section" id="budget">
+ <div class="wrap lb-budget-wrap">
+  <div class="section-head lb-budget-heading"><div><span class="lb-budget-eyebrow">MONEY, MADE CLEARER</span><h2>Monthly Budget Planner</h2><p>Build a simple picture of money coming in, regular costs, and what you may have left. Your figures stay in this browser.</p></div><div class="lb-budget-period"><label for="budgetPeriod">Plan period</label><select id="budgetPeriod"><option value="month">Monthly</option><option value="week">Weekly</option><option value="year">Yearly</option></select></div></div>
+  <div class="lb-budget-layout">
+   <div class="lb-budget-form panel">
+    <div class="lb-budget-step"><span>01</span><div><h3>Money coming in</h3><p>Enter the total amount you expect during this period.</p></div></div>
+    <div class="field"><label for="budgetIncome">Total income ($)</label><input id="budgetIncome" type="number" min="0" step="0.01" inputmode="decimal" placeholder="e.g. 2,400"></div>
+    <div class="lb-budget-step"><span>02</span><div><h3>Plan your expenses</h3><p>Add estimates for the costs that apply to you. Leave a field at zero if it doesn't apply.</p></div></div>
+    <div class="lb-budget-expenses">
+     <div class="field"><label for="budgetHousing">Housing</label><input id="budgetHousing" data-budget-expense="Housing" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+     <div class="field"><label for="budgetUtilities">Utilities &amp; phone</label><input id="budgetUtilities" data-budget-expense="Utilities &amp; phone" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+     <div class="field"><label for="budgetGroceries">Groceries</label><input id="budgetGroceries" data-budget-expense="Groceries" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+     <div class="field"><label for="budgetTransport">Transport</label><input id="budgetTransport" data-budget-expense="Transport" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+     <div class="field"><label for="budgetHealth">Health &amp; care</label><input id="budgetHealth" data-budget-expense="Health &amp; care" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+     <div class="field"><label for="budgetOther">Other spending</label><input id="budgetOther" data-budget-expense="Other spending" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></div>
+    </div>
+    <div class="lb-budget-step"><span>03</span><div><h3>Choose a savings target</h3><p>A planning goal, not a requirement. Set it to zero if you don't have one.</p></div></div>
+    <div class="field"><label for="budgetSavings">Savings goal ($)</label><input id="budgetSavings" type="number" min="0" step="0.01" inputmode="decimal" placeholder="e.g. 150"></div>
+    <div class="lb-budget-actions"><button class="btn primary" id="budgetBtn" type="button">Calculate my budget</button><button class="btn" id="budgetReset" type="button">Clear figures</button></div>
+    <p class="lb-budget-save" id="budgetSaveStatus" aria-live="polite">Your plan saves on this device as you edit it.</p>
+   </div>
+   <div class="lb-budget-results">
+    <div class="lb-budget-summary panel" aria-live="polite"><div class="lb-budget-summary-top"><div><span class="lb-budget-eyebrow">YOUR PLAN AT A GLANCE</span><h3 id="budgetResultTitle">Ready when you are</h3></div><span class="lb-budget-status" id="budgetStatus">NOT CALCULATED</span></div>
+     <div class="lb-budget-balance"><span>Estimated amount left</span><strong id="budgetRemaining">$0.00</strong><small id="budgetRemainingNote">Enter your income and expenses to see your estimate.</small></div>
+     <div class="lb-budget-metrics"><div><span>Income</span><strong id="budgetIncomeTotal">$0.00</strong></div><div><span>Expenses</span><strong id="budgetExpenseTotal">$0.00</strong></div><div><span>Savings target</span><strong id="budgetSavingsTotal">$0.00</strong></div></div>
+     <div class="lb-budget-bar" role="img" aria-label="Budget allocation breakdown"><span id="budgetExpenseBar"></span><span id="budgetSavingsBar"></span></div><div class="lb-budget-legend"><span><i class="expense-dot"></i>Expenses</span><span><i class="savings-dot"></i>Savings target</span><span><i class="left-dot"></i>Remaining</span></div>
+    </div>
+    <div class="lb-budget-breakdown panel"><div class="lb-budget-breakdown-head"><div><h3>Where your money is planned to go</h3><p>Each category compared with your total income.</p></div></div><div id="budgetBreakdown"><p class="lb-budget-empty">Your category breakdown will appear here after you calculate.</p></div></div>
+    <div class="lb-budget-guidance"><strong>A useful way to read this</strong><p>This is an estimate based only on the numbers you enter. It does not connect to a bank, move money, or decide what you should spend. Adjust the figures to explore different plans.</p></div>
+   </div>
+  </div>
+  <p class="notice lb-budget-disclaimer">LifeBridge is an educational planning tool, not financial, tax, or investment advice. Avoid entering account numbers or other sensitive information.</p>
+ </div>
+</section>
 <section class="section" id="convert"><div class="wrap"><div class="section-head"><div><h2> Unit Converter</h2><p>Convert common measurements quickly.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="unitValue">Value</label><input id="unitValue" type="number" step="any" placeholder="Enter a number"></div><div class="field"><label for="unitType">Conversion</label><select id="unitType"><option value="mi-km">Miles → kilometers</option><option value="km-mi">Kilometers → miles</option><option value="lb-kg">Pounds → kilograms</option><option value="kg-lb">Kilograms → pounds</option><option value="f-c">Fahrenheit → Celsius</option><option value="c-f">Celsius → Fahrenheit</option><option value="in-cm">Inches → centimeters</option><option value="cm-in">Centimeters → inches</option></select></div></div><button class="btn primary" id="convertBtn">Convert</button><div class="result" id="convertResult" aria-live="polite">Your conversion will appear here.</div></div></div></section>
 <section class="section"><div class="wrap panel"><h2>Built for real life. Made for everyone. </h2><p>Whether you’re figuring out school, managing your first budget, helping your family, or just trying to stay on top of things, LifeBridge meets you where you are. Use accessibility settings to make it feel right for you.</p><p class="notice">LifeBridge provides general educational and organizational support. It is not a substitute for professional medical, legal, or financial advice. No account is needed for these tools.</p></div></section>
 </main>
@@ -1388,7 +1482,30 @@ const num=id=>{const v=$(id).value.trim();return v===''?NaN:Number(v)};
 function show(id,msg){$(id).textContent=msg}
 $('gradeBtn').addEventListener('click',()=>{const e=num('earned'),p=num('possible');if(!Number.isFinite(e)||!Number.isFinite(p)||p<=0||e<0||e>p){show('gradeResult','Please enter valid points. Earned points must be between 0 and total points.');return}const pct=e/p*100;show('gradeResult',`${pct.toFixed(2)}% — ${e} out of ${p} points.`)});
 $('percentBtn').addEventListener('click',()=>{const p=num('percent'),n=num('baseNumber');if(!Number.isFinite(p)||!Number.isFinite(n)){show('percentResult','Please enter both a percentage and a number.');return}show('percentResult',`${p}% of ${n} = ${(p/100*n).toLocaleString(undefined,{maximumFractionDigits:4})}`)});
-$('budgetBtn').addEventListener('click',()=>{const i=num('income'),e=num('expenses');if(!Number.isFinite(i)||!Number.isFinite(e)||i<0||e<0){show('budgetResult','Please enter valid non-negative amounts for both fields.');return}const d=i-e;show('budgetResult',d>=0?`You have $${d.toFixed(2)} left after expenses.`:`Your expenses are $${Math.abs(d).toFixed(2)} more than your income.`)});
+(()=>{
+ const ids=["budgetIncome","budgetHousing","budgetUtilities","budgetGroceries","budgetTransport","budgetHealth","budgetOther","budgetSavings","budgetPeriod"],key="lifebridge-budget-plan-v2",money=n=>n.toLocaleString(undefined,{style:"currency",currency:"USD"}),inputs=ids.map(id=>$(id));
+ const read=()=>{const data={};ids.forEach(id=>data[id]=$(id).value);return data};
+ const save=()=>{try{localStorage.setItem(key,JSON.stringify(read()));$("budgetSaveStatus").textContent="Saved on this device · "+new Date().toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});}catch{$("budgetSaveStatus").textContent="Browser storage is unavailable. Your figures may not be saved."}};
+ try{const saved=JSON.parse(localStorage.getItem(key)||"null");if(saved&&typeof saved==="object")ids.forEach(id=>{if(typeof saved[id]==="string"&&$(id))$(id).value=saved[id];});}catch{}
+ const calculate=()=>{
+  const incomeRaw=$("budgetIncome").value.trim(),income=incomeRaw===""?NaN:Number(incomeRaw),savingsRaw=$("budgetSavings").value.trim(),savings=savingsRaw===""?0:Number(savingsRaw),fields=[...document.querySelectorAll("[data-budget-expense]")],values=fields.map(el=>({name:el.dataset.budgetExpense,value:el.value.trim()===""?0:Number(el.value)}));
+  const invalid=[income,savings,...values.map(x=>x.value)].some(v=>!Number.isFinite(v)||v<0);
+  if(!Number.isFinite(income)||invalid){$("budgetResultTitle").textContent="Check your figures";$("budgetStatus").textContent="NEEDS REVIEW";$("budgetRemainingNote").textContent="Enter a valid income amount and non-negative values in the other fields.";return;}
+  const expenses=values.reduce((sum,x)=>sum+x.value,0),remaining=income-expenses-savings,period=$("budgetPeriod").selectedOptions[0].text.toLowerCase(),fmt=money;
+  $("budgetIncomeTotal").textContent=fmt(income);$("budgetExpenseTotal").textContent=fmt(expenses);$("budgetSavingsTotal").textContent=fmt(savings);$("budgetRemaining").textContent=fmt(remaining);
+  $("budgetResultTitle").textContent=remaining>=0?"Your plan adds up":"Your plan is over income";$("budgetStatus").textContent=remaining>=0?"WITHIN INCOME":"OVER INCOME";$("budgetStatus").classList.toggle("over",remaining<0);
+  $("budgetRemainingNote").textContent=remaining>=0?"Estimated amount left after planned expenses and savings for this "+period+".":"Planned expenses and savings exceed entered income by "+fmt(Math.abs(remaining))+".";
+  const denom=income>0?income:1,expensePct=Math.min(100,expenses/denom*100),savingsPct=Math.min(100-expensePct,savings/denom*100);
+  $("budgetExpenseBar").style.width=expensePct+"%";$("budgetSavingsBar").style.width=savingsPct+"%";
+  $("budgetBreakdown").replaceChildren();
+  values.filter(x=>x.value>0).forEach(item=>{const row=document.createElement("div");row.className="lb-budget-category";const top=document.createElement("div"),name=document.createElement("strong"),amount=document.createElement("span"),track=document.createElement("div"),fill=document.createElement("i");name.textContent=item.name;amount.textContent=fmt(item.value);top.append(name,amount);track.className="lb-budget-category-track";fill.style.width=Math.min(100,item.value/denom*100)+"%";track.append(fill);row.append(top,track);$("budgetBreakdown").append(row);});
+  if(!values.some(x=>x.value>0)){const p=document.createElement("p");p.className="lb-budget-empty";p.textContent="No expense categories entered yet. Add any costs you want to include.";$("budgetBreakdown").append(p);}
+  const p=document.createElement("p");p.className="lb-budget-breakdown-total";p.textContent="Planned spending uses "+(income>0?(expenses/income*100).toFixed(1):"0")+"% of entered income.";$("budgetBreakdown").append(p);
+ };
+ inputs.forEach(el=>el.addEventListener("input",()=>{save();calculate()}));$("budgetBtn").addEventListener("click",calculate);
+ $("budgetReset").addEventListener("click",()=>{inputs.forEach(el=>{if(el.id==="budgetPeriod")el.value="month";else el.value="";});try{localStorage.removeItem(key)}catch{}$("budgetSaveStatus").textContent="Figures cleared.";calculate();});
+ calculate();
+})();
 $('convertBtn').addEventListener('click',()=>{const v=num('unitValue'),t=$('unitType').value;if(!Number.isFinite(v)){show('convertResult','Please enter a number to convert.');return}const conversions={'mi-km':[v=>v*1.609344,'miles','kilometers'],'km-mi':[v=>v/1.609344,'kilometers','miles'],'lb-kg':[v=>v*.45359237,'pounds','kilograms'],'kg-lb':[v=>v/.45359237,'kilograms','pounds'],'f-c':[v=>(v-32)*5/9,'°F','°C'],'c-f':[v=>v*9/5+32,'°C','°F'],'in-cm':[v=>v*2.54,'inches','centimeters'],'cm-in':[v=>v/2.54,'centimeters','inches']};const [fn,from,to]=conversions[t];show('convertResult',`${v} ${from} = ${fn(v).toLocaleString(undefined,{maximumFractionDigits:4})} ${to}`)});
 const search=$('toolSearch');search.addEventListener('input',()=>{const q=search.value.toLowerCase().trim();let count=0;document.querySelectorAll('.tool-card').forEach(card=>{const match=(card.dataset.search+' '+card.innerText).toLowerCase().includes(q);card.classList.toggle('hidden',!match);if(match)count++});$('noResults').classList.toggle('hidden',count!==0)});
 document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.target;if(id==='budget'||id==='convert'||id==='learn'||id==='organize')$(id).scrollIntoView({behavior:'smooth'});else $('learn').scrollIntoView({behavior:'smooth'})}));
@@ -1909,6 +2026,13 @@ body.lb-workspace-mode .navlinks a[data-lb-route][aria-current=page]{background:
  const moreLinks=document.createElement("div");
  moreLinks.className="lb-nav-more-links";
  more.append(moreSummary,moreLinks);
+ const placeMoreMenu=()=>{const rect=moreSummary.getBoundingClientRect();document.documentElement.style.setProperty("--lb-more-top",Math.round(rect.bottom)+"px");};
+ moreSummary.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();more.open=!more.open;if(more.open)placeMoreMenu();});
+ more.addEventListener("toggle",()=>{if(more.open)placeMoreMenu();});
+ window.addEventListener("resize",()=>{if(more.open)placeMoreMenu();});
+ window.addEventListener("scroll",()=>{if(more.open)placeMoreMenu();},{passive:true});
+ document.addEventListener("click",event=>{if(more.open&&!more.contains(event.target))more.open=false;});
+ document.addEventListener("keydown",event=>{if(event.key==="Escape"&&more.open){more.open=false;moreSummary.focus();}});
  routes.forEach(([id,label])=>{
   const a=document.createElement("a");
   a.href="#"+id;a.dataset.lbRoute=id;a.textContent=label;
@@ -4836,7 +4960,7 @@ body.lb-workspace-mode .lb-nav-more>summary:after{content:"";width:7px;height:7p
 body.lb-workspace-mode .lb-nav-more[open]>summary,
 body.lb-workspace-mode .lb-nav-more>summary:hover{background:#203d5d;color:#fff}
 body.lb-workspace-mode .lb-nav-more-links{
- position:absolute;right:0;top:calc(100% + 12px);z-index:120;
+  position:fixed;right:20px;top:calc(var(--lb-more-top, 76px) + 8px);z-index:9999;
  display:grid;grid-template-columns:1fr 1fr;gap:5px;min-width:310px;
  padding:10px;border:1px solid #405a76;border-radius:16px;
  background:#0d1d30;box-shadow:0 20px 48px rgba(0,0,0,.42);
@@ -5061,7 +5185,7 @@ body.lb-workspace-mode .navlinks #accountOpen{
  }
  body.lb-workspace-mode .lb-nav-primary{flex-wrap:nowrap!important;flex:0 0 auto!important}
  body.lb-workspace-mode .lb-nav-more{flex:0 0 auto!important}
- body.lb-workspace-mode .lb-nav-more-links{left:0!important;right:auto!important}
+ body.lb-workspace-mode .lb-nav-more-links{left:auto!important;right:12px!important;top:calc(var(--lb-more-top, 76px) + 8px)!important;position:fixed!important;z-index:9999!important}
 }
 @media(max-width:700px){
  body.lb-workspace-mode .nav{width:94%!important;gap:4px 8px!important}
