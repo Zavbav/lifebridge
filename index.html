@@ -6468,7 +6468,7 @@ const start=()=>{
   const refreshNextStep=()=>{
    const first=grid.querySelector(".lb-age-daily-card");if(!first)return;
    const live=getLiveNextStep(),item=live||defaultFirst;
-   first.href="#"+item[2]||"#"+item.route;
+   first.href="#"+(live?live.route:item[2]);
    first.querySelector("strong").textContent=live?live.title:item[0];
    first.querySelector("span").textContent=live?live.description:item[1];
    first.querySelector("b").textContent=live?"NEXT STEP":"01";
