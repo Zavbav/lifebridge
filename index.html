@@ -1083,6 +1083,15 @@ body[data-lb-age="seniors"] .lb-video-section{background:linear-gradient(145deg,
 @media(max-width:700px){.lb-video-tools{align-items:stretch;flex-direction:column}.lb-video-search{flex-basis:auto}.lb-video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lb-video-hero-stat{flex-basis:86px;min-height:85px}}
 @media(max-width:480px){.lb-video-grid{grid-template-columns:1fr}.lb-video-featured{display:flex}.lb-video-feature-art{margin:10px 16px 0}.lb-video-feature-copy{padding:14px 16px 18px}.lb-video-hero{align-items:flex-start;flex-direction:column}.lb-video-hero-stat{flex-direction:row;gap:8px;min-height:0;padding:8px 13px}.lb-video-hero-stat strong{font-size:1.3rem}}
 </style>
+<style id="lifebridge-navigation-cleanup">
+.navlinks{gap:8px 15px;max-width:980px}
+.navlinks a{font-size:.84rem}
+.navlinks a.lb-nav-watch{padding:8px 13px;border:1px solid #b7dedb;border-radius:10px;background:#eaf8f6;color:#155f69;font-weight:850}
+.lb-start-card.start-watch{background:linear-gradient(135deg,#24556a,#2c6370);border-color:#579da2}
+.lb-start-card.start-watch .lb-start-number,.lb-start-card.start-watch b{color:#a7eee4}
+.lb-start-card.start-watch:hover,.lb-start-card.start-watch:focus-visible{background:linear-gradient(135deg,#2b6577,#347984);border-color:#8de0d8}
+@media(max-width:850px){.navlinks{gap:7px 10px}.navlinks a{font-size:.8rem}}
+</style>
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
@@ -1090,6 +1099,9 @@ body[data-lb-age="seniors"] .lb-video-section{background:linear-gradient(145deg,
 <div class="quick-palette-box"><div class="quick-palette-head"><div><span class="dash-overline">LIFEBRIDGE SHORTCUTS</span><h2 id="quickPaletteTitle">Where do you want to go?</h2></div><button type="button" class="quick-palette-close" id="quickPaletteClose" aria-label="Close quick jump">×</button></div>
 <label class="quick-palette-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="quickPaletteInput" type="search" placeholder="Search tools or actions…" autocomplete="off"></label>
 <div class="quick-palette-list" id="quickPaletteList">
+<button type="button" data-jump="videos"><span class="quick-command-icon">00</span><span><strong>Video Center</strong><small>Watch interesting videos inside LifeBridge</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="bibleStudy"><span class="quick-command-icon">02</span><span><strong>Bible Study</strong><small>Explore the Catholic Bible and faith topics</small></span><kbd>↵</kbd></button>
+<button type="button" data-jump="discover"><span class="quick-command-icon">03</span><span><strong>Discover Center</strong><small>Projects, guides, journal and life skills</small></span><kbd>↵</kbd></button>
 <button type="button" data-jump="today"><span class="quick-command-icon">01</span><span><strong>Personal dashboard</strong><small>Today's missions and progress</small></span><kbd>↵</kbd></button>
 
 <button type="button" data-jump="learn"><span class="quick-command-icon">03</span><span><strong>Learning center</strong><small>Math and homework tools</small></span><kbd>↵</kbd></button>
@@ -1100,18 +1112,18 @@ body[data-lb-age="seniors"] .lb-video-section{background:linear-gradient(145deg,
 </div><div class="quick-palette-foot"><span>Navigate faster</span><span><kbd>ESC</kbd> to close</span></div></div>
 </div><button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true"></span></a>
-<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#home">Home</a><a href="#today">Dashboard</a><a href="#learn">Learning Worlds</a><a href="#bibleStudy">Bible Study</a><a href="#videos">Video Center</a><a href="#tools">Explore</a><a href="#lifequest">Life Skills</a><a href="#organize">Organizer</a><a href="#budget">Budget</a><a href="#focus">Focus Timer</a><a href="#calendar">Calendar</a><a href="#levelup">Progress</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">Quick jump <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
+<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#home">Home</a><a href="#today">My Day</a><a href="#learn">Learn</a><a class="lb-nav-watch" href="#videos">Watch</a><a href="#tools">Explore</a><a href="#organize">Organize</a><a href="#levelup">Progress</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">More <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
 <section class="lb-start-panel" aria-labelledby="lbStartTitle">
  <div class="lb-start-inner">
   <div class="lb-start-heading"><div><span class="lb-start-kicker">YOUR LIFE BRIDGE STARTS HERE</span><h2 id="lbStartTitle">What would you like to do today?</h2><p id="lbStartIntro">Choose a starting point. Your shortcuts will adapt to your experience.</p></div><span class="lb-start-count">6 WAYS TO GET STARTED</span></div>
   <div class="lb-start-grid" id="lbStartGrid">
-   <a class="lb-start-card start-learn" href="#learn"><span class="lb-start-number">01</span><strong>Learn something</strong><small>Explore lessons and new ideas</small><b>Open area ↗</b></a>
-   <a class="lb-start-card start-plan" href="#organize"><span class="lb-start-number">02</span><strong>Get organized</strong><small>Bring tasks and plans together</small><b>Open area ↗</b></a>
-   <a class="lb-start-card start-tools" href="#tools"><span class="lb-start-number">03</span><strong>Explore tools</strong><small>Find a useful everyday helper</small><b>Open area ↗</b></a>
-   <a class="lb-start-card start-grow" href="#lifequest"><span class="lb-start-number">04</span><strong>Build a skill</strong><small>Practise useful real-world skills</small><b>Open area ↗</b></a>
-   <a class="lb-start-card start-calendar" href="#calendar"><span class="lb-start-number">05</span><strong>Plan ahead</strong><small>See events and what is coming up</small><b>Open area ↗</b></a>
-   <a class="lb-start-card start-focus" href="#focus"><span class="lb-start-number">06</span><strong>Focus for a while</strong><small>Set aside time for one task</small><b>Open area ↗</b></a>
+   <a class="lb-start-card start-watch" href="#videos"><span class="lb-start-number">01</span><strong>Watch videos</strong><small>Find something interesting and press play</small><b>Open video center ↗</b></a>
+   <a class="lb-start-card start-learn" href="#learn"><span class="lb-start-number">02</span><strong>Learn something</strong><small>Lessons, flashcards and practice</small><b>Open learning ↗</b></a>
+   <a class="lb-start-card start-plan" href="#organize"><span class="lb-start-number">03</span><strong>Get organized</strong><small>Bring tasks and plans together</small><b>Open organizer ↗</b></a>
+   <a class="lb-start-card start-tools" href="#tools"><span class="lb-start-number">04</span><strong>Explore tools</strong><small>Find a useful everyday helper</small><b>Browse tools ↗</b></a>
+   <a class="lb-start-card start-grow" href="#lifequest"><span class="lb-start-number">05</span><strong>Build a skill</strong><small>Practise useful real-world skills</small><b>Explore skills ↗</b></a>
+   <a class="lb-start-card start-calendar" href="#calendar"><span class="lb-start-number">06</span><strong>Plan ahead</strong><small>See events and what is coming up</small><b>Open calendar ↗</b></a>
   </div>
  </div>
 </section>
@@ -1158,6 +1170,41 @@ body[data-lb-age="seniors"] .lb-video-section{background:linear-gradient(145deg,
   <a href="#calendar"><span>COMING UP</span><strong>Open your calendar</strong><b>→</b></a>
  </div>
 </div></section>
+<section class="lb-video-section" id="videos" aria-labelledby="lbVideoTitle">
+ <div class="wrap">
+  <div class="lb-video-hero">
+   <div><span class="lb-video-kicker">THE LIFEBRIDGE WATCH ROOM</span><h2 id="lbVideoTitle">Good videos. No getting lost.</h2><p id="lbVideoIntro">Find fascinating videos picked for your age group. Press play and watch right here in LifeBridge.</p></div>
+   <div class="lb-video-hero-stat"><strong id="lbVideoCount">3</strong><span>CURATED VIDEOS</span></div>
+  </div>
+  <div class="lb-video-layout">
+   <div class="lb-video-main">
+    <div class="lb-video-player-shell" id="lbVideoPlayerShell">
+     <div class="lb-video-player-empty" id="lbVideoPlayerEmpty"><span class="lb-video-play-mark">PLAY</span><strong>Choose a video to start watching</strong><small>Your video will play here. You will stay on LifeBridge.</small></div>
+     <div class="lb-video-player-frame" id="lbVideoPlayerFrame" hidden></div>
+    </div>
+    <div class="lb-video-now" id="lbVideoNow" aria-live="polite"><span>NOW PLAYING</span><strong>Pick something that looks interesting</strong><p>Choose a video below to load it into the player.</p></div>
+   </div>
+   <aside class="lb-video-featured" aria-label="Featured video">
+    <span class="lb-video-feature-label">TODAY'S FEATURE</span>
+    <div class="lb-video-feature-art" id="lbVideoFeatureArt"></div>
+    <div class="lb-video-feature-copy"><small id="lbVideoFeatureCategory">FEATURED PICK</small><h3 id="lbVideoFeatureTitle">How Things Work</h3><p id="lbVideoFeatureDescription">A fun collection of surprising everyday science.</p><button type="button" class="lb-video-play-button" id="lbVideoFeaturePlay">Play featured video</button></div>
+   </aside>
+  </div>
+  <div class="lb-video-tools">
+   <label class="lb-video-search"><span>Search videos</span><input id="lbVideoSearch" type="search" placeholder="Try science, space, inventions..." autocomplete="off"></label>
+   <div class="lb-video-filters" id="lbVideoFilters" aria-label="Filter videos">
+    <button type="button" class="active" data-video-filter="all">All videos</button>
+    <button type="button" data-video-filter="science">Science</button>
+    <button type="button" data-video-filter="space">Space</button>
+    <button type="button" data-video-filter="engineering">Engineering</button>
+    <button type="button" data-video-filter="saved">Watch later</button>
+   </div>
+  </div>
+  <div class="lb-video-grid" id="lbVideoGrid" aria-live="polite"></div>
+  <p class="lb-video-empty-results" id="lbVideoNoResults" hidden>No videos match that search. Try another topic or switch the category.</p>
+  <p class="lb-video-note">Videos are embedded from their publishers. LifeBridge keeps the player on this page; the video itself is streamed by the original publisher.</p>
+ </div>
+</section>
 <section class="command-center" id="today">
 <div class="wrap">
 <div class="command-head"><div><div class="command-kicker">LIFEBRIDGE // PERSONAL COMMAND CENTER</div><h2 class="command-title">Make today count.</h2><p class="command-sub">One clear next step. Your goals, right here. Your progress, building every day.</p></div><a class="btn primary" href="#focus" style="text-decoration:none">Start a focus sprint </a></div>
@@ -1333,41 +1380,7 @@ body[data-lb-age="seniors"] .lb-video-section{background:linear-gradient(145deg,
 <section class="section" id="convert"><div class="wrap"><div class="section-head"><div><h2> Unit Converter</h2><p>Convert common measurements quickly.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="unitValue">Value</label><input id="unitValue" type="number" step="any" placeholder="Enter a number"></div><div class="field"><label for="unitType">Conversion</label><select id="unitType"><option value="mi-km">Miles → kilometers</option><option value="km-mi">Kilometers → miles</option><option value="lb-kg">Pounds → kilograms</option><option value="kg-lb">Kilograms → pounds</option><option value="f-c">Fahrenheit → Celsius</option><option value="c-f">Celsius → Fahrenheit</option><option value="in-cm">Inches → centimeters</option><option value="cm-in">Centimeters → inches</option></select></div></div><button class="btn primary" id="convertBtn">Convert</button><div class="result" id="convertResult" aria-live="polite">Your conversion will appear here.</div></div></div></section>
 <section class="section"><div class="wrap panel"><h2>Built for real life. Made for everyone. </h2><p>Whether you’re figuring out school, managing your first budget, helping your family, or just trying to stay on top of things, LifeBridge meets you where you are. Use accessibility settings to make it feel right for you.</p><p class="notice">LifeBridge provides general educational and organizational support. It is not a substitute for professional medical, legal, or financial advice. No account is needed for these tools.</p></div></section>
 
-<section class="lb-video-section" id="videos" aria-labelledby="lbVideoTitle">
- <div class="wrap">
-  <div class="lb-video-hero">
-   <div><span class="lb-video-kicker">THE LIFEBRIDGE WATCH ROOM</span><h2 id="lbVideoTitle">Good videos. No getting lost.</h2><p id="lbVideoIntro">Find fascinating videos picked for your age group. Press play and watch right here in LifeBridge.</p></div>
-   <div class="lb-video-hero-stat"><strong id="lbVideoCount">3</strong><span>CURATED VIDEOS</span></div>
-  </div>
-  <div class="lb-video-layout">
-   <div class="lb-video-main">
-    <div class="lb-video-player-shell" id="lbVideoPlayerShell">
-     <div class="lb-video-player-empty" id="lbVideoPlayerEmpty"><span class="lb-video-play-mark">PLAY</span><strong>Choose a video to start watching</strong><small>Your video will play here. You will stay on LifeBridge.</small></div>
-     <div class="lb-video-player-frame" id="lbVideoPlayerFrame" hidden></div>
-    </div>
-    <div class="lb-video-now" id="lbVideoNow" aria-live="polite"><span>NOW PLAYING</span><strong>Pick something that looks interesting</strong><p>Choose a video below to load it into the player.</p></div>
-   </div>
-   <aside class="lb-video-featured" aria-label="Featured video">
-    <span class="lb-video-feature-label">TODAY'S FEATURE</span>
-    <div class="lb-video-feature-art" id="lbVideoFeatureArt"></div>
-    <div class="lb-video-feature-copy"><small id="lbVideoFeatureCategory">FEATURED PICK</small><h3 id="lbVideoFeatureTitle">How Things Work</h3><p id="lbVideoFeatureDescription">A fun collection of surprising everyday science.</p><button type="button" class="lb-video-play-button" id="lbVideoFeaturePlay">Play featured video</button></div>
-   </aside>
-  </div>
-  <div class="lb-video-tools">
-   <label class="lb-video-search"><span>Search videos</span><input id="lbVideoSearch" type="search" placeholder="Try science, space, inventions..." autocomplete="off"></label>
-   <div class="lb-video-filters" id="lbVideoFilters" aria-label="Filter videos">
-    <button type="button" class="active" data-video-filter="all">All videos</button>
-    <button type="button" data-video-filter="science">Science</button>
-    <button type="button" data-video-filter="space">Space</button>
-    <button type="button" data-video-filter="engineering">Engineering</button>
-    <button type="button" data-video-filter="saved">Watch later</button>
-   </div>
-  </div>
-  <div class="lb-video-grid" id="lbVideoGrid" aria-live="polite"></div>
-  <p class="lb-video-empty-results" id="lbVideoNoResults" hidden>No videos match that search. Try another topic or switch the category.</p>
-  <p class="lb-video-note">Videos are embedded from their publishers. LifeBridge keeps the player on this page; the video itself is streamed by the original publisher.</p>
- </div>
-</section>
+
 <section class="section lb-discover-section" id="discover" aria-labelledby="lbDiscoverTitle">
 <div class="wrap">
  <div class="lb-discover-hero"><div><span class="lb-discover-kicker">THE LIFEBRIDGE DISCOVERY COLLECTION</span><h2 id="lbDiscoverTitle">More ways to learn, create and move forward</h2><p id="lbDiscoverIntro">Explore useful knowledge, build projects, practise everyday skills and keep your progress in one place.</p></div><div class="lb-discover-stat"><strong>8</strong><span>NEW EXPERIENCES</span></div></div>
