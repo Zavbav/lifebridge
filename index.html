@@ -1036,6 +1036,53 @@ body[data-lb-age="adults"] .lb-discover-section{background:linear-gradient(145de
 body[data-lb-age="seniors"] .lb-discover-section{background:linear-gradient(145deg,#f8f2e2,#e8f0e7)}body[data-lb-age="seniors"] .lb-discover-hero{background:linear-gradient(120deg,#3b5848,#6e815b 60%,#967a4d)}body[data-lb-age="seniors"] .lb-discover-kicker{color:#f5dfaa}body[data-lb-age="seniors"] .lb-discover-card{background:#fffdf6;border:2px solid #d5c393;color:#304637}body[data-lb-age="seniors"] .lb-discover-card strong{font-size:1.1rem}body[data-lb-age="seniors"] .lb-discover-card small{font-size:.92rem;color:#536b58}body[data-lb-age="seniors"] .lb-discover-card b{color:#557b59}body[data-lb-age="seniors"] .lb-discover-card>span{background:#e8efdf;color:#496d4e}
 @media(max-width:900px){.lb-discover-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lb-discover-list{grid-template-columns:1fr}}@media(max-width:580px){.lb-discover-hero{align-items:flex-start;flex-direction:column}.lb-discover-stat{min-height:72px;flex-basis:auto;width:100%;flex-direction:row;gap:12px}.lb-discover-grid{grid-template-columns:1fr}.lb-discover-card{min-height:165px}.lb-discover-form{grid-template-columns:1fr}.lb-discover-field.full{grid-column:auto}}@media(prefers-reduced-motion:reduce){.lb-discover-card,.lb-discover-progress i{transition:none!important}}
 </style>
+
+<style id="lifebridge-video-center-styles">
+.lb-video-section{padding:clamp(30px,4vw,58px) 0 66px;background:linear-gradient(145deg,#edf5fb,#f4f1ff 55%,#eaf7f5);scroll-margin-top:86px}
+.lb-video-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:22px;padding:clamp(22px,3.5vw,36px);border-radius:25px;background:linear-gradient(120deg,#10243d,#173f60 58%,#334b7c);color:#f7fbff;box-shadow:0 18px 42px rgba(20,47,76,.16)}
+.lb-video-kicker{display:block;margin-bottom:10px;color:#8de0d8;font-size:.7rem;font-weight:900;letter-spacing:.16em}
+.lb-video-hero h2{margin:0 0 10px;color:#fff;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.12;letter-spacing:-.04em}
+.lb-video-hero p{max-width:680px;margin:0;color:#d4e4f1;line-height:1.65}
+.lb-video-hero-stat{display:flex;flex:0 0 112px;flex-direction:column;align-items:center;justify-content:center;min-height:104px;border:1px solid #ffffff38;border-radius:19px;background:#ffffff14}
+.lb-video-hero-stat strong{font-size:2.4rem;color:#a9eee4}.lb-video-hero-stat span{color:#d5e5f3;font-size:.6rem;font-weight:850;letter-spacing:.12em}
+.lb-video-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.75fr);gap:16px;align-items:stretch}
+.lb-video-main,.lb-video-featured{min-width:0;overflow:hidden;border:1px solid #d5e2ed;border-radius:21px;background:#fff;box-shadow:0 12px 32px #18334d12}
+.lb-video-player-shell{position:relative;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(135deg,#101d36,#1b4260);color:#fff}
+.lb-video-player-frame,.lb-video-player-frame iframe{display:block;width:100%;height:100%;border:0}
+.lb-video-player-empty{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:24px;text-align:center}
+.lb-video-play-mark{display:grid;width:58px;height:58px;place-items:center;border:1px solid #a8e7e2;border-radius:50%;background:#a8e7e21a;color:#a8e7e2;font-size:.72rem;font-weight:900;letter-spacing:.1em}
+.lb-video-player-empty strong{font-size:1.05rem}.lb-video-player-empty small{color:#c4d6e5}
+.lb-video-now{padding:16px 19px 18px}.lb-video-now>span{display:block;color:#287e87;font-size:.62rem;font-weight:900;letter-spacing:.14em}.lb-video-now strong{display:block;margin-top:4px;color:#20364c;font-size:1.05rem}.lb-video-now p{margin:5px 0 0;color:#63778a;font-size:.85rem}
+.lb-video-featured{display:flex;flex-direction:column;background:linear-gradient(155deg,#172e49,#203d62);color:#fff}
+.lb-video-feature-label{padding:17px 18px 0;color:#9de8df;font-size:.66rem;font-weight:900;letter-spacing:.14em}
+.lb-video-feature-art{min-height:145px;margin:13px 18px 0;border-radius:15px;background:#244d69 center/cover no-repeat}
+.lb-video-feature-copy{padding:15px 18px 19px}.lb-video-feature-copy small{color:#9de8df;font-size:.65rem;font-weight:900;letter-spacing:.1em}.lb-video-feature-copy h3{margin:6px 0;color:#fff;font-size:1.2rem}.lb-video-feature-copy p{margin:0 0 14px;color:#d1dfed;font-size:.85rem;line-height:1.55}
+.lb-video-play-button{width:100%;padding:11px 14px;border:0;border-radius:11px;background:#a9e9df;color:#12334b;font:inherit;font-weight:850;cursor:pointer}.lb-video-play-button:hover{background:#c7f5ed}
+.lb-video-tools{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:24px 0 14px}
+.lb-video-search{display:flex;flex:0 1 300px;flex-direction:column;gap:5px;color:#29435a;font-size:.75rem;font-weight:850}.lb-video-search input{width:100%;min-width:0;padding:11px 13px;border:1px solid #cbdbe7;border-radius:11px;background:#fff;color:#20364c;font:inherit;font-size:.88rem}
+.lb-video-filters{display:flex;flex-wrap:wrap;gap:7px}.lb-video-filters button{padding:9px 12px;border:1px solid #cad9e6;border-radius:999px;background:#fff;color:#36516a;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer}.lb-video-filters button.active{border-color:#1e7385;background:#1d526c;color:#fff}
+.lb-video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lb-video-card{overflow:hidden;min-width:0;border:1px solid #d8e3ec;border-radius:17px;background:#fff;box-shadow:0 8px 22px #1937500c}
+.lb-video-thumb{position:relative;display:block;width:100%;padding:0;aspect-ratio:16/9;border:0;background:#18334e center/cover no-repeat;cursor:pointer}
+.lb-video-thumb:after{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(0deg,#0b203a55,transparent 65%);content:""}
+.lb-video-thumb span{position:absolute;z-index:1;top:50%;left:50%;display:grid;width:48px;height:48px;place-items:center;border:1px solid #ffffffa8;border-radius:50%;background:#ffffffed;color:#183b55;font-size:.75rem;font-weight:950;transform:translate(-50%,-50%)}
+.lb-video-card-body{padding:14px}.lb-video-card-meta{display:flex;justify-content:space-between;gap:8px;color:#287e87;font-size:.63rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.lb-video-card h3{margin:7px 0 5px;color:#1c344a;font-size:1rem;line-height:1.3}.lb-video-card p{min-height:42px;margin:0;color:#65798b;font-size:.8rem;line-height:1.5}
+.lb-video-card-actions{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.lb-video-card-actions button{padding:8px 10px;border:1px solid #cddce7;border-radius:9px;background:#f6fafc;color:#24465f;font:inherit;font-size:.72rem;font-weight:850;cursor:pointer}
+.lb-video-card-actions button:first-child{border-color:#1d7182;background:#e9f6f6;color:#17596b}
+.lb-video-card-actions button.saved{border-color:#b4a6e7;background:#f0edff;color:#4e3b91}
+.lb-video-empty-results{padding:20px;border:1px dashed #c8d8e5;border-radius:14px;background:#fff;color:#526c80;text-align:center}
+.lb-video-note{margin:17px 0 0;color:#64798b;font-size:.75rem;line-height:1.5}
+body[data-lb-age="kids"] .lb-video-section{background:linear-gradient(145deg,#fff6e8,#eaf8f0)}body[data-lb-age="kids"] .lb-video-hero{background:linear-gradient(120deg,#315c53,#4b7760)}body[data-lb-age="kids"] .lb-video-kicker,body[data-lb-age="kids"] .lb-video-feature-label{color:#f5d28e}
+body[data-lb-age="preteens"] .lb-video-section{background:linear-gradient(145deg,#e9f8f7,#eaf1ff)}body[data-lb-age="preteens"] .lb-video-hero{background:linear-gradient(120deg,#173f54,#236d73)}
+body[data-lb-age="teens"] .lb-video-section{background:linear-gradient(145deg,#edf1ff,#f2efff)}body[data-lb-age="teens"] .lb-video-hero{background:linear-gradient(120deg,#152744,#293d70)}
+body[data-lb-age="adults"] .lb-video-section{background:linear-gradient(145deg,#edf6ef,#eaf4f3)}body[data-lb-age="adults"] .lb-video-hero{background:linear-gradient(120deg,#173d3b,#24635a)}
+body[data-lb-age="seniors"] .lb-video-section{background:linear-gradient(145deg,#f8f2e5,#edf3e9)}body[data-lb-age="seniors"] .lb-video-hero{background:linear-gradient(120deg,#435644,#637354)}
+@media(max-width:900px){.lb-video-layout{grid-template-columns:1fr}.lb-video-featured{display:grid;grid-template-columns:minmax(160px,.8fr) minmax(0,1.2fr);align-items:center}.lb-video-feature-label{grid-column:1/-1}.lb-video-feature-art{min-height:150px;margin:10px 0 10px 16px}.lb-video-feature-copy{padding:10px 16px}}
+@media(max-width:700px){.lb-video-tools{align-items:stretch;flex-direction:column}.lb-video-search{flex-basis:auto}.lb-video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lb-video-hero-stat{flex-basis:86px;min-height:85px}}
+@media(max-width:480px){.lb-video-grid{grid-template-columns:1fr}.lb-video-featured{display:flex}.lb-video-feature-art{margin:10px 16px 0}.lb-video-feature-copy{padding:14px 16px 18px}.lb-video-hero{align-items:flex-start;flex-direction:column}.lb-video-hero-stat{flex-direction:row;gap:8px;min-height:0;padding:8px 13px}.lb-video-hero-stat strong{font-size:1.3rem}}
+</style>
 </head>
 <body>
 <div class="quick-palette hidden" id="quickPalette" role="dialog" aria-modal="true" aria-labelledby="quickPaletteTitle">
@@ -1053,7 +1100,7 @@ body[data-lb-age="seniors"] .lb-discover-section{background:linear-gradient(145d
 </div><div class="quick-palette-foot"><span>Navigate faster</span><span><kbd>ESC</kbd> to close</span></div></div>
 </div><button type="button" class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <a class="lifebuddy-float" href="#lifebuddy" aria-label="Chat with LifeBuddy AI"><span class="buddy-face" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg></span><span>Chat with LifeBuddy</span><span aria-hidden="true"></span></a>
-<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#home">Home</a><a href="#today">Dashboard</a><a href="#learn">Learning Worlds</a><a href="#bibleStudy">Bible Study</a><a href="#tools">Explore</a><a href="#lifequest">Life Skills</a><a href="#organize">Organizer</a><a href="#budget">Budget</a><a href="#focus">Focus Timer</a><a href="#calendar">Calendar</a><a href="#levelup">Progress</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">Quick jump <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
+<header class="topbar"><div class="wrap nav"><a class="logo" href="#" aria-label="LifeBridge home"><span class="logo-mark"><img src="/lifebridge-logo.svg" alt="" width="42" height="42"></span>LifeBridge</a><nav class="navlinks" aria-label="Main navigation"><a href="#home">Home</a><a href="#today">Dashboard</a><a href="#learn">Learning Worlds</a><a href="#bibleStudy">Bible Study</a><a href="#videos">Video Center</a><a href="#tools">Explore</a><a href="#lifequest">Life Skills</a><a href="#organize">Organizer</a><a href="#budget">Budget</a><a href="#focus">Focus Timer</a><a href="#calendar">Calendar</a><a href="#levelup">Progress</a><button class="smallbtn quick-jump-trigger" id="quickJump" type="button" aria-haspopup="dialog">Quick jump <kbd>⌘ K</kbd></button><button class="smallbtn" id="accessToggle" aria-expanded="false">Accessibility</button><button class="account-btn" id="accountOpen" type="button">Sign in / Sign up</button></nav></div></header>
 <main>
 <section class="lb-start-panel" aria-labelledby="lbStartTitle">
  <div class="lb-start-inner">
@@ -1285,6 +1332,42 @@ body[data-lb-age="seniors"] .lb-discover-section{background:linear-gradient(145d
 </section>
 <section class="section" id="convert"><div class="wrap"><div class="section-head"><div><h2> Unit Converter</h2><p>Convert common measurements quickly.</p></div></div><div class="panel toolbox"><div class="tool-layout"><div class="field"><label for="unitValue">Value</label><input id="unitValue" type="number" step="any" placeholder="Enter a number"></div><div class="field"><label for="unitType">Conversion</label><select id="unitType"><option value="mi-km">Miles → kilometers</option><option value="km-mi">Kilometers → miles</option><option value="lb-kg">Pounds → kilograms</option><option value="kg-lb">Kilograms → pounds</option><option value="f-c">Fahrenheit → Celsius</option><option value="c-f">Celsius → Fahrenheit</option><option value="in-cm">Inches → centimeters</option><option value="cm-in">Centimeters → inches</option></select></div></div><button class="btn primary" id="convertBtn">Convert</button><div class="result" id="convertResult" aria-live="polite">Your conversion will appear here.</div></div></div></section>
 <section class="section"><div class="wrap panel"><h2>Built for real life. Made for everyone. </h2><p>Whether you’re figuring out school, managing your first budget, helping your family, or just trying to stay on top of things, LifeBridge meets you where you are. Use accessibility settings to make it feel right for you.</p><p class="notice">LifeBridge provides general educational and organizational support. It is not a substitute for professional medical, legal, or financial advice. No account is needed for these tools.</p></div></section>
+
+<section class="lb-video-section" id="videos" aria-labelledby="lbVideoTitle">
+ <div class="wrap">
+  <div class="lb-video-hero">
+   <div><span class="lb-video-kicker">THE LIFEBRIDGE WATCH ROOM</span><h2 id="lbVideoTitle">Good videos. No getting lost.</h2><p id="lbVideoIntro">Find fascinating videos picked for your age group. Press play and watch right here in LifeBridge.</p></div>
+   <div class="lb-video-hero-stat"><strong id="lbVideoCount">3</strong><span>CURATED VIDEOS</span></div>
+  </div>
+  <div class="lb-video-layout">
+   <div class="lb-video-main">
+    <div class="lb-video-player-shell" id="lbVideoPlayerShell">
+     <div class="lb-video-player-empty" id="lbVideoPlayerEmpty"><span class="lb-video-play-mark">PLAY</span><strong>Choose a video to start watching</strong><small>Your video will play here. You will stay on LifeBridge.</small></div>
+     <div class="lb-video-player-frame" id="lbVideoPlayerFrame" hidden></div>
+    </div>
+    <div class="lb-video-now" id="lbVideoNow" aria-live="polite"><span>NOW PLAYING</span><strong>Pick something that looks interesting</strong><p>Choose a video below to load it into the player.</p></div>
+   </div>
+   <aside class="lb-video-featured" aria-label="Featured video">
+    <span class="lb-video-feature-label">TODAY'S FEATURE</span>
+    <div class="lb-video-feature-art" id="lbVideoFeatureArt"></div>
+    <div class="lb-video-feature-copy"><small id="lbVideoFeatureCategory">FEATURED PICK</small><h3 id="lbVideoFeatureTitle">How Things Work</h3><p id="lbVideoFeatureDescription">A fun collection of surprising everyday science.</p><button type="button" class="lb-video-play-button" id="lbVideoFeaturePlay">Play featured video</button></div>
+   </aside>
+  </div>
+  <div class="lb-video-tools">
+   <label class="lb-video-search"><span>Search videos</span><input id="lbVideoSearch" type="search" placeholder="Try science, space, inventions..." autocomplete="off"></label>
+   <div class="lb-video-filters" id="lbVideoFilters" aria-label="Filter videos">
+    <button type="button" class="active" data-video-filter="all">All videos</button>
+    <button type="button" data-video-filter="science">Science</button>
+    <button type="button" data-video-filter="space">Space</button>
+    <button type="button" data-video-filter="engineering">Engineering</button>
+    <button type="button" data-video-filter="saved">Watch later</button>
+   </div>
+  </div>
+  <div class="lb-video-grid" id="lbVideoGrid" aria-live="polite"></div>
+  <p class="lb-video-empty-results" id="lbVideoNoResults" hidden>No videos match that search. Try another topic or switch the category.</p>
+  <p class="lb-video-note">Videos are embedded from their publishers. LifeBridge keeps the player on this page; the video itself is streamed by the original publisher.</p>
+ </div>
+</section>
 <section class="section lb-discover-section" id="discover" aria-labelledby="lbDiscoverTitle">
 <div class="wrap">
  <div class="lb-discover-hero"><div><span class="lb-discover-kicker">THE LIFEBRIDGE DISCOVERY COLLECTION</span><h2 id="lbDiscoverTitle">More ways to learn, create and move forward</h2><p id="lbDiscoverIntro">Explore useful knowledge, build projects, practise everyday skills and keep your progress in one place.</p></div><div class="lb-discover-stat"><strong>8</strong><span>NEW EXPERIENCES</span></div></div>
@@ -5078,6 +5161,74 @@ grid.addEventListener("click",e=>{const b=e.target.closest("[data-feature]");if(
 $("lbDiscoverBack").addEventListener("click",()=>{workspace.hidden=true;grid.hidden=false;grid.querySelector("button")?.focus()});
 if(intro)intro.textContent=({kids:"Friendly guides, creative challenges and helpful ideas made for curious learners.",preteens:"Clear explainers, practical ideas and projects that help you try new things.",teens:"Build useful knowledge, practise independent decisions and keep track of projects that matter.",adults:"Practical guides and tools for everyday planning, learning and problem-solving.",seniors:"Clear, useful information, interests and important resources made easier to find."})[age]||"Explore useful knowledge, build projects and practise everyday skills.";
 new MutationObserver(()=>{const next=document.body.dataset.lbAge||"adults";if(next!==age){age=next;if(intro)intro.textContent=({kids:"Friendly guides, creative challenges and helpful ideas made for curious learners.",preteens:"Clear explainers, practical ideas and projects that help you try new things.",teens:"Build useful knowledge, practise independent decisions and keep track of projects that matter.",adults:"Practical guides and tools for everyday planning, learning and problem-solving.",seniors:"Clear, useful information, interests and important resources made easier to find."})[age];if(current)open(current)}}).observe(document.body,{attributes:true,attributeFilter:["data-lb-age"]});
+})();
+</script>
+
+<script id="lifebridge-video-center-script">
+(()=>{
+ const boot=()=>{
+  const $=id=>document.getElementById(id);
+  const grid=$('lbVideoGrid');if(!grid||grid.dataset.ready)return;grid.dataset.ready='1';
+  const videos=[
+   {id:'12xX56v4WxI',title:'How Things Work: Submarines, 3D Printers & More',creator:'National Geographic Kids',category:'science',tags:'science inventions animals engineering popcorn technology',description:'A fun tour through the science behind everyday things, from gecko feet to 3D printers.',ages:['kids','preteens','teens','adults','seniors'],art:'https://i.ytimg.com/vi/12xX56v4WxI/hqdefault.jpg'},
+   {id:'EJXTZ5jpSmk',title:'What Is a Black Hole?',creator:'NASA',category:'space',tags:'space astronomy universe black holes science',description:'A NASA expert explains one of the strangest things in the universe.',ages:['preteens','teens','adults','seniors'],art:'https://i.ytimg.com/vi/EJXTZ5jpSmk/hqdefault.jpg'},
+   {id:'rUhllpnYWR8',title:'How to Make Learning Impossibly Fun',creator:'TED',category:'engineering',tags:'engineering creativity experiments learning inventions mark rober',description:'Mark Rober shares how curiosity, creativity and playful engineering can make learning exciting.',ages:['preteens','teens','adults','seniors'],art:'https://i.ytimg.com/vi/rUhllpnYWR8/hqdefault.jpg'},
+   {id:'dqONk48l5vY',title:'What Would Happen If You Didn’t Sleep?',creator:'TED-Ed',category:'science',tags:'brain science health sleep learning',description:'An animated explanation of why sleep matters to the brain and body.',ages:['preteens','teens','adults','seniors'],art:'https://i.ytimg.com/vi/dqONk48l5vY/hqdefault.jpg'}
+  ];
+  const age=document.body.dataset.lbAge||'teens';
+  const ageCopy={kids:'Big questions, amazing animals and discoveries made for curious young explorers.',preteens:'Discover surprising science, space and inventions with videos that make you want to ask more questions.',teens:'Find fascinating science, big ideas and creative engineering worth your time.',adults:'Explore useful ideas, science and creativity through carefully selected videos.',seniors:'Enjoy clear, interesting discoveries about science, space and the world around us.'};
+  $('lbVideoIntro').textContent=ageCopy[age]||ageCopy.teens;
+  const available=videos.filter(v=>v.ages.includes(age));
+  $('lbVideoCount').textContent=String(available.length);
+  const day=Math.floor(Date.UTC(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())/86400000);
+  const featured=available[((day%available.length)+available.length)%available.length];
+  const savedKey='lifebridge-video-watch-later-v1',watchedKey='lifebridge-video-started-v1';
+  let saved=[],watched=[];try{saved=JSON.parse(localStorage.getItem(savedKey)||'[]');if(!Array.isArray(saved))saved=[];watched=JSON.parse(localStorage.getItem(watchedKey)||'[]');if(!Array.isArray(watched))watched=[];}catch{saved=[];watched=[];}
+  let filter='all',query='';
+  const play=(video)=>{
+   const frame=$('lbVideoPlayerFrame'),empty=$('lbVideoPlayerEmpty');
+   frame.replaceChildren();
+   const iframe=document.createElement('iframe');
+   iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(video.id)+'?rel=0&playsinline=1';
+   iframe.title=video.title;iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';
+   frame.append(iframe);frame.hidden=false;empty.hidden=true;
+   $('lbVideoNow').innerHTML='';
+   const label=document.createElement('span');label.textContent='NOW PLAYING';
+   const title=document.createElement('strong');title.textContent=video.title;
+   const detail=document.createElement('p');detail.textContent='Playing inside LifeBridge · '+video.creator;
+   $('lbVideoNow').append(label,title,detail);
+   if(!watched.includes(video.id)){watched.push(video.id);try{localStorage.setItem(watchedKey,JSON.stringify(watched));}catch{}}
+   $('lbVideoPlayerShell').scrollIntoView({behavior:'smooth',block:'center'});
+  };
+  const renderFeatured=()=>{
+   $('lbVideoFeatureTitle').textContent=featured.title;$('lbVideoFeatureCategory').textContent=featured.category.toUpperCase()+' · '+featured.creator;$('lbVideoFeatureDescription').textContent=featured.description;$('lbVideoFeatureArt').style.backgroundImage='url("'+featured.art+'")';$('lbVideoFeaturePlay').onclick=()=>play(featured);
+  };
+  const render=()=>{
+   grid.replaceChildren();
+   const items=available.filter(v=>(filter==='all'||(filter==='saved'?saved.includes(v.id):v.category===filter))&&(!query||(v.title+' '+v.creator+' '+v.description+' '+v.tags).toLowerCase().includes(query)));
+   $('lbVideoNoResults').hidden=items.length>0;
+   items.forEach(v=>{
+    const card=document.createElement('article');card.className='lb-video-card';
+    const thumb=document.createElement('button');thumb.type='button';thumb.className='lb-video-thumb';thumb.style.backgroundImage='url("'+v.art+'")';thumb.setAttribute('aria-label','Play '+v.title);
+    const playMark=document.createElement('span');playMark.textContent='PLAY';thumb.append(playMark);thumb.addEventListener('click',()=>play(v));
+    const body=document.createElement('div');body.className='lb-video-card-body';
+    const meta=document.createElement('div');meta.className='lb-video-card-meta';
+    const category=document.createElement('span');category.textContent=v.category;
+    const status=document.createElement('span');status.textContent=watched.includes(v.id)?'Started':'Selected';
+    meta.append(category,status);
+    const title=document.createElement('h3');title.textContent=v.title;
+    const desc=document.createElement('p');desc.textContent=v.description;
+    const actions=document.createElement('div');actions.className='lb-video-card-actions';
+    const playBtn=document.createElement('button');playBtn.type='button';playBtn.textContent='Play here';playBtn.addEventListener('click',()=>play(v));
+    const saveBtn=document.createElement('button');saveBtn.type='button';saveBtn.className=saved.includes(v.id)?'saved':'';saveBtn.textContent=saved.includes(v.id)?'Saved for later':'Watch later';saveBtn.addEventListener('click',()=>{saved=saved.includes(v.id)?saved.filter(x=>x!==v.id):[...saved,v.id];try{localStorage.setItem(savedKey,JSON.stringify(saved));}catch{}render();});
+    actions.append(playBtn,saveBtn);body.append(meta,title,desc,actions);card.append(thumb,body);grid.append(card);
+   });
+  };
+  $('lbVideoSearch').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();render();});
+  $('lbVideoFilters').addEventListener('click',e=>{const b=e.target.closest('button[data-video-filter]');if(!b)return;filter=b.dataset.videoFilter;$('lbVideoFilters').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));render();});
+  renderFeatured();render();
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
 </script>
 </body>
