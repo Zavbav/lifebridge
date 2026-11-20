@@ -69,7 +69,7 @@ function readLessonAloud(){
  if(!speechAvailable()){audioStatus.textContent='Read-aloud is not available in this browser. You can still use the lesson normally.';return;}
  window.speechSynthesis.cancel();
  const lesson=current();
- const example=el('courseExample').innerText.replace(/^WORKED EXAMPLE\\s*/,'');
+ const example=el('courseExample').innerText.replace('WORKED EXAMPLE','');
  const spokenText=[lesson.title,lesson.intro,el('courseContent').innerText,example,'Check your understanding.',lesson.question].filter(Boolean).join('. ');
  const utterance=new SpeechSynthesisUtterance(spokenText);
  utterance.rate=1;
