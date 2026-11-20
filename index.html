@@ -58,6 +58,28 @@ religion:{label:'RELIGION & BIBLE STUDY',lessons:[
 const progressKey='lifebridge-course-progress-v1';
 let progress={};try{progress=JSON.parse(localStorage.getItem(progressKey)||'{}')||{};}catch{progress={};}
 let currentSubject='math',currentIndex=0,answeredCorrect=false;
+const audioStatus=el('courseAudioStatus'),readButton=el('courseReadAloud'),stopButton=el('courseStopAudio');
+const speechAvailable=()=>('speechSynthesis' in window)&&('SpeechSynthesisUtterance' in window);
+function stopReading(message='Audio stopped.'){
+ if(speechAvailable())window.speechSynthesis.cancel();
+ if(audioStatus)audioStatus.textContent=message;
+ if(stopButton)stopButton.disabled=true;
+}
+function readLessonAloud(){
+ if(!speechAvailable()){audioStatus.textContent='Read-aloud is not available in this browser. You can still use the lesson normally.';return;}
+ window.speechSynthesis.cancel();
+ const lesson=current();
+ const example=el('courseExample').innerText.replace(/^WORKED EXAMPLE\\s*/,'');
+ const spokenText=[lesson.title,lesson.intro,el('courseContent').innerText,example,'Check your understanding.',lesson.question].filter(Boolean).join('. ');
+ const utterance=new SpeechSynthesisUtterance(spokenText);
+ utterance.rate=1;
+ utterance.onstart=()=>{audioStatus.textContent='Reading this lesson aloud.';stopButton.disabled=false;};
+ utterance.onend=()=>{audioStatus.textContent='Lesson finished.';stopButton.disabled=true;};
+ utterance.onerror=()=>{audioStatus.textContent='Audio could not start. Check your browser sound settings.';stopButton.disabled=true;};
+ stopButton.disabled=false;
+ audioStatus.textContent='Starting audio…';
+ window.speechSynthesis.speak(utterance);
+}
 const current=()=>curriculum[currentSubject].lessons[currentIndex];
 const done=(key)=>!!progress[key];
 const key=()=>currentSubject+':'+currentIndex;
@@ -72,6 +94,7 @@ function renderList(){
  });
 }
 function render(){
+ stopReading('Ready to listen to this lesson.');
  const l=current();answeredCorrect=false;
  el('courseLesson').value=String(currentIndex);
  el('courseUnit').textContent=curriculum[currentSubject].label;
@@ -101,6 +124,9 @@ function check(){
 subject.addEventListener('change',()=>{currentSubject=subject.value;currentIndex=0;populateLessons();render();});
 el('courseLesson').addEventListener('change',e=>{currentIndex=Number(e.target.value)||0;render();});
 function populateLessons(){const select=el('courseLesson');select.replaceChildren();curriculum[currentSubject].lessons.forEach((l,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=(i+1)+'. '+l.title;select.append(o);});}
+readButton.addEventListener('click',readLessonAloud);
+stopButton.addEventListener('click',()=>stopReading());
+if(!speechAvailable()){readButton.disabled=true;audioStatus.textContent='Read-aloud is not supported in this browser.';}
 el('courseCheck').addEventListener('click',check);
 el('courseAnswer').addEventListener('keydown',e=>{if(e.key==='Enter')check();});
 el('courseComplete').addEventListener('click',()=>{
@@ -706,6 +732,10 @@ body{background:#f5f8fa;color:var(--ink);line-height:1.62}
 .course-lesson-meta{display:flex;justify-content:space-between;gap:10px;color:#728791;font-size:.65rem;font-weight:900;letter-spacing:.09em}
 .course-lesson h4{font-size:clamp(1.25rem,2.5vw,1.7rem);letter-spacing:-.04em;margin:9px 0;color:#234957}
 .course-intro{color:#617984;margin:0 0 15px}
+.course-audio-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 15px;padding:11px 12px;border:1px solid #dce8eb;border-radius:12px;background:#f7fafb}
+.course-audio-controls button{padding:7px 11px;font-size:.82rem}
+.course-audio-controls button:disabled{opacity:.5;cursor:not-allowed}
+.course-audio-controls span{flex:1 1 180px;color:#617984;font-size:.78rem}
 .course-content{line-height:1.65;color:#385763}
 .course-content p{margin:9px 0}
 .course-content ul{padding-left:21px}
@@ -1298,7 +1328,7 @@ body[data-lb-age="seniors"] .lb-video-section{background:linear-gradient(145deg,
 <div class="course-library" id="courseLibrary">
 <div class="course-library-head"><div><span class="pill">GUIDED COURSES</span><h3>Learn something, one lesson at a time</h3><p>Short lessons, worked examples, and a check-your-understanding question. Your completed lessons are saved on this device.</p></div><div class="course-progress-summary"><strong id="courseCompleted">0</strong><span>LESSONS COMPLETED</span></div></div>
 <div class="course-controls"><label>Subject<select id="courseSubject"><option value="math">Mathematics</option><option value="science">Science</option><option value="reading">Reading & writing</option><option value="history">History & civics</option><option value="religion">Religion & Bible study</option></select></label><label>Lesson<select id="courseLesson"></select></label></div>
-<div class="course-body"><div class="course-outline"><div class="course-outline-title">YOUR LEARNING PATH</div><div id="courseLessonList"></div></div><article class="course-lesson"><div class="course-lesson-meta"><span id="courseUnit">MATHEMATICS</span><span id="courseDuration">5 MIN LESSON</span></div><h4 id="courseTitle">Fractions are parts of a whole</h4><p id="courseIntro" class="course-intro"></p><div id="courseContent" class="course-content"></div><div class="course-example" id="courseExample"></div><div class="course-check"><strong>CHECK YOUR UNDERSTANDING</strong><p id="courseQuestion"></p><div class="course-answer-row"><input id="courseAnswer" type="text" maxlength="100" placeholder="Type your answer" aria-label="Your lesson answer"><button type="button" class="btn primary" id="courseCheck">Check answer</button></div><p id="courseFeedback" class="course-feedback" aria-live="polite">Try it before looking back at the lesson.</p></div><div class="course-footer"><span id="courseLessonProgress">Lesson 1 of 3</span><button type="button" class="btn primary" id="courseComplete">Mark lesson complete →</button></div></article></div>
+<div class="course-body"><div class="course-outline"><div class="course-outline-title">YOUR LEARNING PATH</div><div id="courseLessonList"></div></div><article class="course-lesson"><div class="course-lesson-meta"><span id="courseUnit">MATHEMATICS</span><span id="courseDuration">5 MIN LESSON</span></div><h4 id="courseTitle">Fractions are parts of a whole</h4><p id="courseIntro" class="course-intro"></p><div class="course-audio-controls"><button type="button" class="btn" id="courseReadAloud">Read lesson aloud</button><button type="button" class="btn" id="courseStopAudio" disabled>Stop audio</button><span id="courseAudioStatus" role="status" aria-live="polite">Listen to the lesson instead of reading? Start here.</span></div><div id="courseContent" class="course-content"></div><div class="course-example" id="courseExample"></div><div class="course-check"><strong>CHECK YOUR UNDERSTANDING</strong><p id="courseQuestion"></p><div class="course-answer-row"><input id="courseAnswer" type="text" maxlength="100" placeholder="Type your answer" aria-label="Your lesson answer"><button type="button" class="btn primary" id="courseCheck">Check answer</button></div><p id="courseFeedback" class="course-feedback" aria-live="polite">Try it before looking back at the lesson.</p></div><div class="course-footer"><span id="courseLessonProgress">Lesson 1 of 3</span><button type="button" class="btn primary" id="courseComplete">Mark lesson complete →</button></div></article></div>
 </div>
 <section class="bible-study-hub" id="bibleStudy"><div class="bible-hub-head"><div><span class="pill">RELIGION & FAITH</span><h3>Bible Study Library</h3><p>Explore the Catholic Bible, learn the people and stories, and study one chapter at a time.</p></div><div class="bible-hub-stat"><strong>73</strong><span>BOOKS IN THE CATHOLIC BIBLE</span></div></div>
 <div class="bible-explorer"><div class="bible-selectors"><div class="field"><label for="bibleBook">Choose a Bible book</label><select id="bibleBook"></select></div><div class="field"><label for="bibleChapter">Chapter</label><input id="bibleChapter" type="number" min="1" max="150" value="1"></div><button type="button" class="btn primary" id="openBibleChapter">Study this chapter</button></div><div class="bible-chapter-card" id="bibleChapterCard" aria-live="polite"><span class="flashcard-label">START HERE</span><h4>Pick a book and chapter</h4><p>Choose any of the 73 books in the Catholic Bible. Selected chapters include a short guide; every other chapter gets a reflection template.</p></div></div>
